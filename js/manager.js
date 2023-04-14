@@ -11,7 +11,6 @@ module.exports = function (appData) {
     return {
       start: function (ModulesManager) {
         App.subscribeEvent('MailWebclient::GetCHtmlEditorView', (params) => {
-          console.log({ params })
           params.CHtmlEditorView = require('modules/%ModuleName%/js/views/CSummernoteEditorView.js')
         })
       },

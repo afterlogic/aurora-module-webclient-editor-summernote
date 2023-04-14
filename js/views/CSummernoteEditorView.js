@@ -63,27 +63,14 @@ function CHtmlEditorView(isBuiltInSignature, bAllowComposePlainText, oParent) {
   this.bAllowFileUpload = !(this.bInsertImageAsBase64 && window.File === undefined)
   // TODO: use
   this.bAllowInsertImage = Settings.AllowInsertImage
-  this.bAllowHorizontalLineButton = Settings.AllowHorizontalLineButton
 
   this.bAllowComposePlainText = bAllowComposePlainText
   this.plainTextMode = ko.observable(false)
   this.changeTextModeTitle = ko.computed(function () {
     return this.plainTextMode()
-      ? TextUtils.i18n('%MODULENAME%/LINK_TURNOFF_PLAINTEXT')
-      : TextUtils.i18n('%MODULENAME%/LINK_TURNON_PLAINTEXT')
+      ? TextUtils.i18n('MAILWEBCLIENT/LINK_TURNOFF_PLAINTEXT')
+      : TextUtils.i18n('MAILWEBCLIENT/LINK_TURNON_PLAINTEXT')
   }, this)
-
-  this.bAllowEditHtmlSource = Settings.AllowEditHtmlSource
-  this.editSourceMode = ko.observable(false)
-  this.htmlSourceDom = ko.observable()
-  this.htmlSourceDom.subscribe(() => {
-    sourceEditor.setHtmlSourceDom(this.htmlSourceDom())
-  })
-  this.sourceCodeButtonText = ko.computed(() => {
-    return this.editSourceMode()
-      ? TextUtils.i18n('%MODULENAME%/ACTION_EDIT_HTML_PREVIEW')
-      : TextUtils.i18n('%MODULENAME%/ACTION_EDIT_HTML_SOURCE_CODE')
-  })
 
   this.lockFontSubscribing = ko.observable(false)
   this.bAllowImageDragAndDrop = !Browser.ie10AndAbove
@@ -254,7 +241,7 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
       ['para', ['ul', 'ol', 'paragraph']],
       ['misc', ['table', 'link', 'picture', 'clear']],
     ]
-    if (Settings.AllowSourceCodeButton || this.isBuiltInSignature) {
+    if (Settings.AllowEditHtmlSource) {
       toolbar.push(['codeview', ['codeview']])
     }
     this.oEditor.summernote({
@@ -327,12 +314,6 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
         },
       },
     })
-
-    // 	font_size_formats: 'Small=10pt Normal=12pt Medium=14pt Large=16pt Big=18pt Huge=24pt'
-    // 	// {text: '%MODULENAME%/ACTION_CHOOSE_SMALL_TEXTSIZE', value: '12px'},
-    // 	// 	{text: '%MODULENAME%/ACTION_CHOOSE_NORMAL_TEXTSIZE', value: '15px', default: true},
-    // 	// 	{text: '%MODULENAME%/ACTION_CHOOSE_LARGE_TEXTSIZE', value: '22px'},
-    // 	// font-family: Tahoma; font-size: 15px;
   }
 
   this.getEditableArea().attr('tabindex', sTabIndex)
@@ -571,10 +552,6 @@ CHtmlEditorView.prototype.setText = function (sText, bPlain) {
 CHtmlEditorView.prototype.undoAndClearRedo = function () {
   //TODO
   if (this.oEditor) {
-    // console.log();
-    // tinymce.UndoManager.undo();
-    //TODO clear REDO only
-    // tinymce.UndoManager.reset();
     // this.oEditor.undo();
     // this.oEditor.clearRedo();
   }
@@ -799,7 +776,7 @@ CHtmlEditorView.prototype.uploadFile = function (file, isUploadFromDialog) {
     // and parent can upload attachment
     this.uploadNotImageAsAttachment(file)
   } else {
-    Popups.showPopup(AlertPopup, [TextUtils.i18n('%MODULENAME%/ERROR_NOT_IMAGE_CHOOSEN')])
+    Popups.showPopup(AlertPopup, [TextUtils.i18n('MAILWEBCLIENT/ERROR_NOT_IMAGE_CHOOSEN')])
   }
 }
 
@@ -823,7 +800,7 @@ CHtmlEditorView.prototype.isFileImage = function (oFile) {
  */
 CHtmlEditorView.prototype.onFileUploadSelect = function (sUid, oFile) {
   if (!this.isFileImage(oFile)) {
-    Popups.showPopup(AlertPopup, [TextUtils.i18n('%MODULENAME%/ERROR_NOT_IMAGE_CHOOSEN')])
+    Popups.showPopup(AlertPopup, [TextUtils.i18n('MAILWEBCLIENT/ERROR_NOT_IMAGE_CHOOSEN')])
     return false
   }
   return true

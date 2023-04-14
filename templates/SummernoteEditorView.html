@@ -1,0 +1,13 @@
+<div
+  class="html_editor html_editor__summernote"
+  data-bind="css: {'inactive': inactive()}, onEsc: onEscHandler, initDom: htmlEditorDom"
+>
+  <div class="disable_mask" data-bind="visible: disableEdit"></div>
+
+  <div class="workarea" data-bind="initDom: workareaDom">
+    <div class="scroll-inner" data-bind="attr: {'id': editorId}, initDom: editorDom"></div>
+    <div style="display: none" data-bind="initDom: uploaderAreaDom, css: {'active': editorUploaderBodyDragOver}">
+      <div class="inner"></div>
+    </div>
+  </div>
+</div>
