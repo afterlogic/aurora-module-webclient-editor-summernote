@@ -4,11 +4,12 @@ const _ = require('underscore'),
   ko = require('knockout')
 
 const TextUtils = require('%PathToCoreWebclientModule%/js/utils/Text.js'),
+  AlertPopup = require('%PathToCoreWebclientModule%/js/popups/AlertPopup.js'),
+  ConfirmPopup = require('%PathToCoreWebclientModule%/js/popups/ConfirmPopup.js'),
   App = require('%PathToCoreWebclientModule%/js/App.js'),
   CJua = require('%PathToCoreWebclientModule%/js/CJua.js'),
-  UserSettings = require('%PathToCoreWebclientModule%/js/Settings.js'),
   Popups = require('%PathToCoreWebclientModule%/js/Popups.js'),
-  AlertPopup = require('%PathToCoreWebclientModule%/js/popups/AlertPopup.js')
+  UserSettings = require('%PathToCoreWebclientModule%/js/Settings.js')
 
 const CAttachmentModel = require('modules/MailWebclient/js/models/CAttachmentModel.js'),
   MailCache = require('modules/MailWebclient/js/Cache.js'),
@@ -35,16 +36,18 @@ require('modules/%ModuleName%/js/vendors/summernote/lang/summernote-de-DE.min.js
 /**
  * @constructor
  * @param {boolean} isBuiltInSignature
- * @param {Object=} oParent
+ * @param {boolean} allowPlainTextMode
+ * @param {object} parentView
  */
-function CHtmlEditorView(isBuiltInSignature, bAllowComposePlainText, oParent) {
+function CHtmlEditorView(isBuiltInSignature, allowPlainTextMode, parentView) {
   this.isBuiltInSignature = isBuiltInSignature
-  this.oParent = oParent
+  this.parentView = parentView
 
   this.oEditor = null
-  this.editorId = 'editorId' + Math.random().toString().replace('.', '')
+  this.editorId = `editorId${Math.random().toString().replace('.', '')}`
   this.textFocused = ko.observable(false)
   this.workareaDom = ko.observable()
+  this.plaintextDom = ko.observable()
   this.editorDom = ko.observable()
   this.uploaderAreaDom = ko.observable()
   this.isUploaderAreaDragOver = ko.observable(false)
@@ -54,10 +57,24 @@ function CHtmlEditorView(isBuiltInSignature, bAllowComposePlainText, oParent) {
   this.htmlSize = ko.observable(0)
 
   this.shouldInsertImageAsBase64 = this.isBuiltInSignature
-  this.bAllowFileUpload = !(this.shouldInsertImageAsBase64 && window.File === undefined)
 
-  this.bAllowComposePlainText = bAllowComposePlainText
+  this.allowPlainTextMode = allowPlainTextMode
   this.plainTextMode = ko.observable(false)
+  this.plainTextMode.subscribe(() => {
+    if (!this.oEditor || !this.oEditor.data('summernote')) {
+      return
+    }
+    if (this.plainTextMode()) {
+      this.oEditor.data('summernote').layoutInfo.editor.hide()
+      if (this.plaintextDom() && this.plaintextDom().length > 0) {
+        setTimeout(() => {
+          this.plaintextDom()[0].focus()
+        })
+      }
+    } else {
+      this.oEditor.data('summernote').layoutInfo.editor.show()
+    }
+  })
   this.changeTextModeTitle = ko.computed(function () {
     return this.plainTextMode()
       ? TextUtils.i18n('MAILWEBCLIENT/LINK_TURNOFF_PLAINTEXT')
@@ -477,7 +494,11 @@ CHtmlEditorView.prototype.getPlainText = function () {
  * @param {boolean=} bRemoveSignatureAnchor = false
  */
 CHtmlEditorView.prototype.getText = function (bRemoveSignatureAnchor) {
-  const html = this.oEditor ? this.oEditor.summernote('code') : ''
+  if (this.plainTextMode()) {
+    return this.plaintextDom() ? this.plaintextDom().val() : ''
+  }
+
+  let html = this.oEditor ? this.oEditor.summernote('code') : ''
   if (this.sPlaceholderText !== '' && this.removeAllTags(html) === this.sPlaceholderText) {
     return ''
   }
@@ -499,14 +520,22 @@ CHtmlEditorView.prototype.getEditableArea = function () {
  * @param {string} sText
  * @param {boolean} bPlain
  */
-CHtmlEditorView.prototype.setText = function (sText, bPlain) {
+CHtmlEditorView.prototype.setText = function (sText, bPlain = null) {
   if (this.oEditor && !this.disableEdit()) {
+    if (bPlain !== null) {
+      this.plainTextMode(!!bPlain)
+    }
     if (this.inactive() && sText === '') {
       this.setPlaceholder()
-    } else if (bPlain) {
-      sText = '<p style="white-space: pre;">' + sText + '</p>'
-      this.oEditor.summernote('code', sText)
+    } else if (this.plainTextMode()) {
+      if (TextUtils.isHtml(sText)) {
+        sText = TextUtils.htmlToPlain(sText)
+      }
+      this.plaintextDom().val(sText)
     } else {
+      if (!TextUtils.isHtml(sText)) {
+        sText = TextUtils.plainToHtml(sText)
+      }
       if (sText === '') {
         sText = '<p></p>'
       }
@@ -570,8 +599,8 @@ CHtmlEditorView.prototype.insertComputerImageFromDialog = function (sUid, oAttac
     return
   }
 
-  const accountId = _.isFunction(this.oParent && this.oParent.senderAccountId)
-      ? this.oParent.senderAccountId()
+  const accountId = _.isFunction(this.parentView && this.parentView.senderAccountId)
+      ? this.parentView.senderAccountId()
       : MailCache.currentAccountId(),
     attachment = new CAttachmentModel(accountId)
   attachment.parse(oAttachmentData)
@@ -627,11 +656,11 @@ CHtmlEditorView.prototype.initAttachmentsJua = function () {
   // this.attachmentsJua must be re-initialized because compose popup is destroyed after it is closed
   if (this.uploaderAreaDom()) {
     if (
-      this.oParent &&
-      this.oParent.composeUploaderDragOver &&
-      this.oParent.onFileUploadProgress &&
-      this.oParent.onFileUploadStart &&
-      this.oParent.onFileUploadComplete
+      this.parentView &&
+      this.parentView.composeUploaderDragOver &&
+      this.parentView.onFileUploadProgress &&
+      this.parentView.onFileUploadStart &&
+      this.parentView.onFileUploadComplete
     ) {
       const fBodyDragEnter = _.bind(function () {
         this.isUploaderAreaDragOver(true)
@@ -666,14 +695,14 @@ CHtmlEditorView.prototype.initAttachmentsJua = function () {
       })
 
       this.attachmentsJua
-        .on('onDragEnter', _.bind(this.oParent.composeUploaderDragOver, this.oParent, true))
-        .on('onDragLeave', _.bind(this.oParent.composeUploaderDragOver, this.oParent, false))
+        .on('onDragEnter', _.bind(this.parentView.composeUploaderDragOver, this.parentView, true))
+        .on('onDragLeave', _.bind(this.parentView.composeUploaderDragOver, this.parentView, false))
         .on('onBodyDragEnter', fBodyDragEnter)
         .on('onBodyDragLeave', fBodyDragOver)
-        .on('onProgress', _.bind(this.oParent.onFileUploadProgress, this.oParent))
-        .on('onSelect', _.bind(this.oParent.onFileUploadSelect, this.oParent))
-        .on('onStart', _.bind(this.oParent.onFileUploadStart, this.oParent))
-        .on('onComplete', _.bind(this.oParent.onFileUploadComplete, this.oParent))
+        .on('onProgress', _.bind(this.parentView.onFileUploadProgress, this.parentView))
+        .on('onSelect', _.bind(this.parentView.onFileUploadSelect, this.parentView))
+        .on('onStart', _.bind(this.parentView.onFileUploadStart, this.parentView))
+        .on('onComplete', _.bind(this.parentView.onFileUploadComplete, this.parentView))
     }
   }
 }
@@ -792,6 +821,34 @@ CHtmlEditorView.prototype.onFileUploadComplete = function (sUid, bResponseReceiv
     }
   } else {
     Popups.showPopup(AlertPopup, [TextUtils.i18n('COREWEBCLIENT/ERROR_UPLOAD_UNKNOWN')])
+  }
+}
+
+/**
+ * Changes text mode - html or plain text.
+ */
+CHtmlEditorView.prototype.changeTextMode = function () {
+  const changeTextModeHandler = () => {
+    if (this.plainTextMode()) {
+      const html = '<div>' + TextUtils.plainToHtml(this.getText()) + '</div>'
+      this.setText(html, false)
+    } else {
+      this.setText(this.getPlainText(), true)
+    }
+  }
+
+  if (this.plainTextMode()) {
+    changeTextModeHandler()
+  } else {
+    const confirmText = TextUtils.i18n('MAILWEBCLIENT/CONFIRM_HTML_TO_PLAIN_FORMATTING')
+    Popups.showPopup(ConfirmPopup, [
+      confirmText,
+      function (changeConfirmed) {
+        if (changeConfirmed) {
+          changeTextModeHandler()
+        }
+      },
+    ])
   }
 }
 

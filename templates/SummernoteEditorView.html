@@ -5,9 +5,20 @@
   <div class="disable_mask" data-bind="visible: disableEdit"></div>
 
   <div class="workarea" data-bind="initDom: workareaDom">
-    <div class="scroll-inner" data-bind="attr: {'id': editorId}, initDom: editorDom"></div>
+    <div data-bind="attr: {'id': editorId}, initDom: editorDom"></div>
+
     <div style="display: none" data-bind="initDom: uploaderAreaDom, css: {'active': isUploaderAreaDragOver}">
       <div class="inner"></div>
     </div>
+
+    <div data-bind="visible: plainTextMode()" class="plaintext">
+      <textarea data-bind="initDom: plaintextDom"></textarea>
+    </div>
+
+    <a
+      href="javascript: void(0);"
+      class="plaintext_switcher"
+      data-bind="visible: allowPlainTextMode && !disableEdit(), text: changeTextModeTitle, click: changeTextMode"
+    ></a>
   </div>
 </div>
