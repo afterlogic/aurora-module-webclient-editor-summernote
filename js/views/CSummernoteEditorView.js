@@ -502,10 +502,12 @@ CHtmlEditorView.prototype.getText = function (bRemoveSignatureAnchor) {
   if (this.sPlaceholderText !== '' && this.removeAllTags(html) === this.sPlaceholderText) {
     return ''
   }
+
+  html = `<div data-crea="font-wrapper" style="${FontUtils.getBasicStylesString()}">${html}</div>`
   if (bRemoveSignatureAnchor) {
     return html.replace('data-anchor="signature"', '')
   }
-  // TODO - add font-wrapper like in CCrea.prototype.getText
+
   return html
 }
 
@@ -539,9 +541,35 @@ CHtmlEditorView.prototype.setText = function (sText, bPlain = null) {
       if (sText === '') {
         sText = '<p></p>'
       }
-      this.oEditor.summernote('code', sText)
+      this.oEditor.summernote('code', this.prepareSummernoteCode(sText))
     }
   }
+}
+
+CHtmlEditorView.prototype.prepareSummernoteCode = function (html) {
+  const outerNode = $(html)
+  if (outerNode.length !== 1) {
+    return html
+  }
+
+  if (outerNode.data('crea') === 'font-wrapper') {
+    this.getEditableArea().css(FontUtils.getBasicStylesFromNode(outerNode))
+    return outerNode.html()
+  }
+
+  const oChildren = outerNode.children()
+
+  if (oChildren.length !== 1) {
+    return html
+  }
+
+  const oInner = oChildren.first()
+  if (outerNode.data('xDivType') === 'body' && oInner.data('crea') === 'font-wrapper') {
+    this.setBasicStyles(FontUtils.getBasicStylesFromNode(oInner))
+    return oInner.html()
+  }
+
+  return html
 }
 
 CHtmlEditorView.prototype.undoAndClearRedo = function () {

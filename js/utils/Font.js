@@ -35,7 +35,31 @@ module.exports = {
     if (typeof Settings.DefaultFontSize === 'number' && Settings.DefaultFontSize > 0) {
       basicStyles['font-size'] = `${Settings.DefaultFontSize}px`
     }
-    console.log({ basicStyles, DefaultFontSize: Settings.DefaultFontSize })
     return basicStyles
+  },
+
+  getBasicStylesFromNode(node) {
+    const basicStyles = {}
+    if (node.css('direction')) {
+      basicStyles['direction'] = node.css('direction')
+    }
+    if (node.css('font-family')) {
+      basicStyles['font-family'] = node.css('font-family')
+    }
+    if (node.css('font-size')) {
+      basicStyles['font-size'] = `${node.css('font-size')}px`
+    }
+    return basicStyles
+  },
+
+  getBasicStylesString() {
+    const basicStyles = [`direction: ${UserSettings.IsRTL ? 'rtl' : 'ltr'}`]
+    if (typeof Settings.DefaultFontName === 'string' && Settings.DefaultFontName !== '') {
+      basicStyles.push(`font-family: ${this.getFontNameWithFamily(Settings.DefaultFontName)}`)
+    }
+    if (typeof Settings.DefaultFontSize === 'number' && Settings.DefaultFontSize > 0) {
+      basicStyles.push(`font-size: ${Settings.DefaultFontSize}px`)
+    }
+    return basicStyles.join('; ')
   },
 }
