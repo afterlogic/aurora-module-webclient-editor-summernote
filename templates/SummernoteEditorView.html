@@ -6,7 +6,7 @@
 
   <div class="workarea" data-bind="initDom: workareaDom">
     <div class="scroll-inner" data-bind="attr: {'id': editorId}, initDom: editorDom"></div>
-    <div style="display: none" data-bind="initDom: uploaderAreaDom, css: {'active': editorUploaderBodyDragOver}">
+    <div style="display: none" data-bind="initDom: uploaderAreaDom, css: {'active': isUploaderAreaDragOver}">
       <div class="inner"></div>
     </div>
   </div>

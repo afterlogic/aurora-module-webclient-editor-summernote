@@ -1,11 +1,16 @@
 'use strict'
 
 module.exports = function (appData) {
-  const App = require('%PathToCoreWebclientModule%/js/App.js'),
-    ModulesManager = require('%PathToCoreWebclientModule%/js/ModulesManager.js')
+  const ModulesManager = require('%PathToCoreWebclientModule%/js/ModulesManager.js')
   if (!ModulesManager.isModuleAvailable('MailWebclient')) {
     return null
   }
+
+  const App = require('%PathToCoreWebclientModule%/js/App.js')
+
+  const Settings = require('modules/%ModuleName%/js/Settings.js')
+
+  Settings.init(appData)
 
   if (App.isUserNormalOrTenant()) {
     return {

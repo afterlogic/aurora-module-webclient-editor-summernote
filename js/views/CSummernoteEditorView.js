@@ -1,17 +1,21 @@
 'use strict'
-var _ = require('underscore'),
+const _ = require('underscore'),
   $ = require('jquery'),
-  ko = require('knockout'),
-  TextUtils = require('%PathToCoreWebclientModule%/js/utils/Text.js'),
+  ko = require('knockout')
+
+const TextUtils = require('%PathToCoreWebclientModule%/js/utils/Text.js'),
   App = require('%PathToCoreWebclientModule%/js/App.js'),
-  Browser = require('%PathToCoreWebclientModule%/js/Browser.js'),
   CJua = require('%PathToCoreWebclientModule%/js/CJua.js'),
   UserSettings = require('%PathToCoreWebclientModule%/js/Settings.js'),
   Popups = require('%PathToCoreWebclientModule%/js/Popups.js'),
-  AlertPopup = require('%PathToCoreWebclientModule%/js/popups/AlertPopup.js'),
-  CAttachmentModel = require('modules/MailWebclient/js/models/CAttachmentModel.js'),
+  AlertPopup = require('%PathToCoreWebclientModule%/js/popups/AlertPopup.js')
+
+const CAttachmentModel = require('modules/MailWebclient/js/models/CAttachmentModel.js'),
   MailCache = require('modules/MailWebclient/js/Cache.js'),
-  Settings = require('modules/MailWebclient/js/Settings.js')
+  MailSettings = require('modules/MailWebclient/js/Settings.js')
+
+const FontUtils = require('modules/%ModuleName%/js/utils/Font.js'),
+  Settings = require('modules/%ModuleName%/js/Settings.js')
 
 require('modules/%ModuleName%/js/vendors/summernote/summernote-lite.js')
 require('modules/%ModuleName%/js/vendors/summernote/summernote-lite.css')
@@ -43,26 +47,14 @@ function CHtmlEditorView(isBuiltInSignature, bAllowComposePlainText, oParent) {
   this.workareaDom = ko.observable()
   this.editorDom = ko.observable()
   this.uploaderAreaDom = ko.observable()
-  this.editorUploaderBodyDragOver = ko.observable(false)
+  this.isUploaderAreaDragOver = ko.observable(false)
 
   this.htmlEditorDom = ko.observable()
-  this.toolbarDom = ko.observable()
-  this.colorPickerDropdownDom = ko.observable()
-  this.insertLinkDropdownDom = ko.observable()
-  this.insertImageDropdownDom = ko.observable()
 
-  this.isFWBold = ko.observable(false)
-  this.isFSItalic = ko.observable(false)
-  this.isTDUnderline = ko.observable(false)
-  this.isTDStrikeThrough = ko.observable(false)
-  this.isEnumeration = ko.observable(false)
-  this.isBullets = ko.observable(false)
   this.htmlSize = ko.observable(0)
 
-  this.bInsertImageAsBase64 = this.isBuiltInSignature
-  this.bAllowFileUpload = !(this.bInsertImageAsBase64 && window.File === undefined)
-  // TODO: use
-  this.bAllowInsertImage = Settings.AllowInsertImage
+  this.shouldInsertImageAsBase64 = this.isBuiltInSignature
+  this.bAllowFileUpload = !(this.shouldInsertImageAsBase64 && window.File === undefined)
 
   this.bAllowComposePlainText = bAllowComposePlainText
   this.plainTextMode = ko.observable(false)
@@ -72,18 +64,6 @@ function CHtmlEditorView(isBuiltInSignature, bAllowComposePlainText, oParent) {
       : TextUtils.i18n('MAILWEBCLIENT/LINK_TURNON_PLAINTEXT')
   }, this)
 
-  this.lockFontSubscribing = ko.observable(false)
-  this.bAllowImageDragAndDrop = !Browser.ie10AndAbove
-
-  // TODO: use
-  this.aFontNames = ['Arial', 'Arial Black', 'Courier New', 'Tahoma', 'Verdana']
-  // TODO: use
-  this.sDefaultFont = Settings.DefaultFontName
-  this.correctFontFromSettings()
-
-  // TODO: use
-  this.iDefaultSize = Settings.DefaultFontSize
-
   this.isDialogOpen = ko.observable(false)
 
   this.aUploadedImagesData = []
@@ -91,7 +71,7 @@ function CHtmlEditorView(isBuiltInSignature, bAllowComposePlainText, oParent) {
   this.inactive = ko.observable(false)
   this.sPlaceholderText = ''
 
-  this.bAllowChangeInputDirection = UserSettings.IsRTL || Settings.AllowChangeInputDirection
+  this.bAllowChangeInputDirection = UserSettings.IsRTL || MailSettings.AllowChangeInputDirection
   this.disableEdit = ko.observable(false)
 
   this.textChanged = ko.observable(false)
@@ -103,7 +83,7 @@ function CHtmlEditorView(isBuiltInSignature, bAllowComposePlainText, oParent) {
     this.addTemplatesButton()
   })
 
-  if (Settings.AllowInsertTemplateOnCompose) {
+  if (MailSettings.AllowInsertTemplateOnCompose) {
     App.subscribeEvent(
       'MailWebclient::ParseMessagesBodies::after',
       _.bind(function (oParameters) {
@@ -229,8 +209,11 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
       return buttonGroup.render() // return button as jquery object
     }
 
-    this.initUploader() // uploads inline images
-    this.initEditorUploader() // uploads non-images using parent methods
+    this.inlineImagesJua = null // uploads inline images
+    this.initInlineImagesJua()
+
+    this.attachmentsJua = null // uploads non-images using parent methods
+    this.initAttachmentsJua()
 
     this.oEditor = $(`#${this.editorId}`)
     const toolbar = [
@@ -239,12 +222,12 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
       ['font', ['fontname', 'customfontsize']],
       ['color', ['color']],
       ['para', ['ul', 'ol', 'paragraph']],
-      ['misc', ['table', 'link', 'picture', 'clear']],
+      ['misc', MailSettings.AllowInsertImage ? ['table', 'link', 'picture', 'clear'] : ['table', 'link', 'clear']],
     ]
     if (Settings.AllowEditHtmlSource) {
       toolbar.push(['codeview', ['codeview']])
     }
-    this.oEditor.summernote({
+    const options = {
       lang: summernoteLang,
       toolbar,
       codemirror: {
@@ -252,12 +235,10 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
         htmlMode: true,
         lineNumbers: true,
       },
-      fontNames: ['Arial', 'Tahoma', 'Verdana', 'Courier New'],
-      // addDefaultFonts: false,
       dialogsInBody: true,
       shortcuts: false,
       disableResizeEditor: true,
-      followingToolbar: false, //true makes toolbas sticky
+      followingToolbar: false, //true makes toolbar sticky
       buttons: {
         customfontsize: CustomFontSizeButton,
       },
@@ -313,20 +294,22 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
           })
         },
       },
-    })
+    }
+    if (Array.isArray(Settings.FontNames) && Settings.FontNames.length > 0) {
+      options.fontNames = Settings.FontNames
+    }
+    this.oEditor.summernote(options)
   }
 
   this.getEditableArea().attr('tabindex', sTabIndex)
-  this.clearUndoRedo()
-  this.getEditableArea().css('font-family', 'Tahoma').css('font-size', '16px')
-  this.oEditor.summernote('fontName', 'Tahoma')
-  this.oEditor.summernote('fontSize', '16px')
+  this.getEditableArea().css(FontUtils.getBasicStyles())
 
+  this.clearUndoRedo()
   this.setText(sText, bPlain)
 
   this.aUploadedImagesData = []
 
-  if (Settings.AllowInsertTemplateOnCompose) {
+  if (MailSettings.AllowInsertTemplateOnCompose) {
     this.fillTemplates()
   }
 }
@@ -373,23 +356,6 @@ CHtmlEditorView.prototype.setDisableEdit = function (bDisableEdit) {
   this.disableEdit(!!bDisableEdit)
 }
 
-CHtmlEditorView.prototype.correctFontFromSettings = function () {
-  var sDefaultFont = this.sDefaultFont,
-    bFound = false
-  _.each(this.aFontNames, function (sFont) {
-    if (sFont.toLowerCase() === sDefaultFont.toLowerCase()) {
-      sDefaultFont = sFont
-      bFound = true
-    }
-  })
-
-  if (bFound) {
-    this.sDefaultFont = sDefaultFont
-  } else {
-    this.aFontNames.push(sDefaultFont)
-  }
-}
-
 CHtmlEditorView.prototype.commit = function () {
   this.textChanged(false)
 }
@@ -406,15 +372,15 @@ CHtmlEditorView.prototype.fillTemplates = function () {
       ? oTemplateFolder.getUidList(
           '',
           '',
-          Settings.MessagesSortBy.DefaultSortBy,
-          Settings.MessagesSortBy.DefaultSortOrder
+          MailSettings.MessagesSortBy.DefaultSortBy,
+          MailSettings.MessagesSortBy.DefaultSortOrder
         )
       : null,
     aTemplates = []
   if (oUidList) {
     var aUids = oUidList.collection()
-    if (aUids.length > Settings.MaxTemplatesCountOnCompose) {
-      aUids = aUids.splice(Settings.MaxTemplatesCountOnCompose)
+    if (aUids.length > MailSettings.MaxTemplatesCountOnCompose) {
+      aUids = aUids.splice(MailSettings.MaxTemplatesCountOnCompose)
     }
     _.each(aUids, function (sUid) {
       var oMessage = oTemplateFolder.getMessageByUid(sUid)
@@ -600,7 +566,7 @@ CHtmlEditorView.prototype.insertHtml = function (sHtml) {
  * @param oAttachmentData
  */
 CHtmlEditorView.prototype.insertComputerImageFromDialog = function (sUid, oAttachmentData) {
-  if (!Settings.AllowInsertImage || !this.oEditor) {
+  if (!MailSettings.AllowInsertImage || !this.oEditor) {
     return
   }
 
@@ -626,9 +592,9 @@ CHtmlEditorView.prototype.getUploadedImagesData = function () {
 /**
  * Initializes file uploader.
  */
-CHtmlEditorView.prototype.initUploader = function () {
+CHtmlEditorView.prototype.initInlineImagesJua = function () {
   // this.oJua must be re-initialized because compose popup is destroyed after it is closed
-  this.oJua = new CJua({
+  this.inlineImagesJua = new CJua({
     action: '?/Api/',
     name: 'jua-uploader',
     queueSize: 2,
@@ -638,7 +604,7 @@ CHtmlEditorView.prototype.initUploader = function () {
     disableDragAndDrop: true,
     hidden: _.extendOwn(
       {
-        Module: Settings.ServerModuleName,
+        Module: MailSettings.ServerModuleName,
         Method: 'UploadAttachment',
         Parameters: function () {
           return JSON.stringify({
@@ -649,7 +615,7 @@ CHtmlEditorView.prototype.initUploader = function () {
       App.getCommonRequestParameters()
     ),
   })
-  this.oJua
+  this.inlineImagesJua
     .on('onSelect', _.bind(this.onFileUploadSelect, this))
     .on('onComplete', _.bind(this.onFileUploadComplete, this))
 }
@@ -657,9 +623,9 @@ CHtmlEditorView.prototype.initUploader = function () {
 /**
  * Initializes file uploader for editor.
  */
-CHtmlEditorView.prototype.initEditorUploader = function () {
-  // this.editorUploader must be re-initialized because compose popup is destroyed after it is closed
-  if (Settings.AllowInsertImage && this.uploaderAreaDom()) {
+CHtmlEditorView.prototype.initAttachmentsJua = function () {
+  // this.attachmentsJua must be re-initialized because compose popup is destroyed after it is closed
+  if (this.uploaderAreaDom()) {
     if (
       this.oParent &&
       this.oParent.composeUploaderDragOver &&
@@ -668,26 +634,26 @@ CHtmlEditorView.prototype.initEditorUploader = function () {
       this.oParent.onFileUploadComplete
     ) {
       const fBodyDragEnter = _.bind(function () {
-        this.editorUploaderBodyDragOver(true)
+        this.isUploaderAreaDragOver(true)
         this.oParent.composeUploaderDragOver(true)
       }, this)
 
       const fBodyDragOver = _.bind(function () {
-        this.editorUploaderBodyDragOver(false)
+        this.isUploaderAreaDragOver(false)
         this.oParent.composeUploaderDragOver(false)
       }, this)
 
-      this.editorUploader = new CJua({
+      this.attachmentsJua = new CJua({
         action: '?/Api/',
         name: 'jua-uploader',
         queueSize: 1,
-        dragAndDropElement: this.bAllowImageDragAndDrop ? this.uploaderAreaDom() : null,
+        dragAndDropElement: this.uploaderAreaDom(),
         disableMultiple: true,
         disableAjaxUpload: false,
-        disableDragAndDrop: !this.bAllowImageDragAndDrop,
+        disableDragAndDrop: false,
         hidden: _.extendOwn(
           {
-            Module: Settings.ServerModuleName,
+            Module: MailSettings.ServerModuleName,
             Method: 'UploadAttachment',
             Parameters: function () {
               return JSON.stringify({
@@ -699,7 +665,7 @@ CHtmlEditorView.prototype.initEditorUploader = function () {
         ),
       })
 
-      this.editorUploader
+      this.attachmentsJua
         .on('onDragEnter', _.bind(this.oParent.composeUploaderDragOver, this.oParent, true))
         .on('onDragLeave', _.bind(this.oParent.composeUploaderDragOver, this.oParent, false))
         .on('onBodyDragEnter', fBodyDragEnter)
@@ -713,7 +679,7 @@ CHtmlEditorView.prototype.initEditorUploader = function () {
 }
 
 CHtmlEditorView.prototype.isDragAndDropSupported = function () {
-  return this.editorUploader ? this.editorUploader.isDragAndDropSupported() : false
+  return this.attachmentsJua ? this.attachmentsJua.isDragAndDropSupported() : false
 }
 
 CHtmlEditorView.prototype.uploadNotImageAsAttachment = function (file) {
@@ -724,11 +690,11 @@ CHtmlEditorView.prototype.uploadNotImageAsAttachment = function (file) {
     Size: file.size,
     Type: file.type,
   }
-  this.editorUploader.addNewFile(fileInfo)
+  this.attachmentsJua.addNewFile(fileInfo)
 }
 
 CHtmlEditorView.prototype.uploadImageAsInline = function (file) {
-  if (!Settings.AllowInsertImage || !this.oJua) {
+  if (!MailSettings.AllowInsertImage || !this.inlineImagesJua) {
     return
   }
 
@@ -739,11 +705,11 @@ CHtmlEditorView.prototype.uploadImageAsInline = function (file) {
     Size: file.size,
     Type: file.type,
   }
-  this.oJua.addNewFile(fileInfo)
+  this.inlineImagesJua.addNewFile(fileInfo)
 }
 
 CHtmlEditorView.prototype.uploadImageAsBase64 = function (file) {
-  if (!Settings.AllowInsertImage || !this.oEditor) {
+  if (!MailSettings.AllowInsertImage || !this.oEditor) {
     return
   }
 
@@ -760,20 +726,19 @@ CHtmlEditorView.prototype.uploadFile = function (file, isUploadFromDialog) {
   if (!file || typeof file.type !== 'string') {
     return
   }
-  if (Settings.AllowInsertImage && 0 === file.type.indexOf('image/')) {
-    if (Settings.ImageUploadSizeLimit > 0 && file.size > Settings.ImageUploadSizeLimit) {
+  if (MailSettings.AllowInsertImage && 0 === file.type.indexOf('image/')) {
+    if (MailSettings.ImageUploadSizeLimit > 0 && file.size > MailSettings.ImageUploadSizeLimit) {
       Popups.showPopup(AlertPopup, [TextUtils.i18n('COREWEBCLIENT/ERROR_UPLOAD_SIZE')])
     } else {
-      if (this.bInsertImageAsBase64 || !isUploadFromDialog) {
+      if (this.shouldInsertImageAsBase64 || !isUploadFromDialog) {
         this.uploadImageAsBase64(file)
       } else {
         this.uploadImageAsInline(file)
       }
     }
-  } else if (!isUploadFromDialog && this.editorUploader && this.oParent && this.oParent.onFileUploadSelect) {
+  } else if (!isUploadFromDialog && this.attachmentsJua) {
     // upload is from drag
-    // and uploader is initialized
-    // and parent can upload attachment
+    // and attachmentsJua uploader is initialized
     this.uploadNotImageAsAttachment(file)
   } else {
     Popups.showPopup(AlertPopup, [TextUtils.i18n('MAILWEBCLIENT/ERROR_NOT_IMAGE_CHOOSEN')])
