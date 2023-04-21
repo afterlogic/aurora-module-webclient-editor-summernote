@@ -214,9 +214,9 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
           template: (item) => {
             return '<span style="font-size: ' + item + 'px;">' + getSizeName(item) + '</span>'
           },
-          itemClick: (e, item, value) => {
-            e.stopPropagation()
-            // context.invoke('editor.fontSizeUnit', 'pt');
+          itemClick: (event, item, value) => {
+            event.stopPropagation()
+            event.preventDefault()
             context.invoke('editor.fontStyling', 'font-size', value)
             context.invoke('buttons.updateCurrentStyle')
           },
@@ -323,6 +323,7 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
 
   this.clearUndoRedo()
   this.setText(sText, bPlain)
+  this.setInactive(this.inactive())
 
   this.aUploadedImagesData = []
 
@@ -412,9 +413,10 @@ CHtmlEditorView.prototype.fillTemplates = function () {
   this.templates(aTemplates)
 }
 
-CHtmlEditorView.prototype.insertTemplate = function (sHtml, oEvent) {
-  oEvent.stopPropagation()
-  this.insertHtml(sHtml)
+CHtmlEditorView.prototype.insertTemplate = function (html, event) {
+  event.stopPropagation()
+  event.preventDefault()
+  this.insertHtml(html)
 }
 
 CHtmlEditorView.prototype.isInitialized = function () {
@@ -515,7 +517,7 @@ CHtmlEditorView.prototype.getText = function (bRemoveSignatureAnchor) {
  * Returns JQuery instance of main editable element
  */
 CHtmlEditorView.prototype.getEditableArea = function () {
-  return this.oEditor.data('summernote').layoutInfo.editable
+  return this.oEditor.data('summernote')?.layoutInfo?.editable || null
 }
 
 /**
@@ -553,7 +555,7 @@ CHtmlEditorView.prototype.prepareSummernoteCode = function (html) {
   }
 
   if (outerNode.data('crea') === 'font-wrapper') {
-    this.getEditableArea().css(FontUtils.getBasicStylesFromNode(outerNode))
+    this.getEditableArea()?.css(FontUtils.getBasicStylesFromNode(outerNode))
     return outerNode.html()
   }
 
