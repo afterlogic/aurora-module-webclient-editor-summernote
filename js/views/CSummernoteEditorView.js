@@ -16,6 +16,7 @@ const CAttachmentModel = require('modules/MailWebclient/js/models/CAttachmentMod
   MailSettings = require('modules/MailWebclient/js/Settings.js')
 
 const FontUtils = require('modules/%ModuleName%/js/utils/Font.js'),
+  LangsUtils = require('modules/%ModuleName%/js/utils/Langs.js'),
   Settings = require('modules/%ModuleName%/js/Settings.js')
 
 require('modules/%ModuleName%/js/vendors/summernote/summernote-lite.js')
@@ -24,14 +25,6 @@ require('modules/%ModuleName%/js/vendors/summernote/codemirror.js')
 require('modules/%ModuleName%/js/vendors/summernote/codemirror.css')
 require('modules/%ModuleName%/js/vendors/summernote/xml.js')
 require('modules/%ModuleName%/js/vendors/summernote/formatting.js')
-
-const summernoteLangMap = {
-  English: 'en-US',
-  German: 'de-DE',
-}
-const summernoteLang = summernoteLangMap[UserSettings.Language] || summernoteLangMap.English
-require('modules/%ModuleName%/js/vendors/summernote/lang/summernote-en-US.min.js')
-require('modules/%ModuleName%/js/vendors/summernote/lang/summernote-de-DE.min.js')
 
 /**
  * @constructor
@@ -245,7 +238,7 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
       toolbar.push(['codeview', ['codeview']])
     }
     const options = {
-      lang: summernoteLang,
+      lang: LangsUtils.getSummernoteLang(),
       toolbar,
       codemirror: {
         mode: 'text/html',
