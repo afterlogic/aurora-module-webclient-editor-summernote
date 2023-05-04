@@ -12,7 +12,6 @@ use Aurora\System\Enums;
 
 /**
  * @property bool $Disabled
- * @property bool $AllowChangeInputDirection
  * @property bool $AllowEditHtmlSource
  * @property array $FontNames
  * @property string $DefaultFontName
@@ -25,7 +24,6 @@ class Settings extends \Aurora\System\Module\Settings
     {
         $this->aContainer = [
             'Disabled' => new SettingsProperty(false, 'bool', null, 'Setting to true disables the module'),
-            'AllowChangeInputDirection' => new SettingsProperty(false, 'bool', null, 'Enables switching between RTL and LTR input directions'),
             'AllowEditHtmlSource' => new SettingsProperty(false, 'bool', null, 'If set true, HTML source code editing is added to HTML editor'),
             'FontNames' => new SettingsProperty(['Arial', 'Tahoma', 'Verdana', 'Courier New'], 'array', null, 'List of available font names'),
             'DefaultFontName' => new SettingsProperty('Arial', 'string', null, 'Font name used by default when composing email message'),

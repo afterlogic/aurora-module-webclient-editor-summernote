@@ -81,7 +81,6 @@ function CHtmlEditorView(isBuiltInSignature, allowPlainTextMode, parentView) {
   this.inactive = ko.observable(false)
   this.sPlaceholderText = ''
 
-  this.bAllowChangeInputDirection = UserSettings.IsRTL || MailSettings.AllowChangeInputDirection
   this.disableEdit = ko.observable(false)
 
   this.textChanged = ko.observable(false)

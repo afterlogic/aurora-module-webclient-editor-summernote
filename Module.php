@@ -72,7 +72,6 @@ class Module extends \Aurora\System\Module\AbstractModule
      * @apiSuccess {string} Result.Module Module name.
      * @apiSuccess {string} Result.Method Method name.
      * @apiSuccess {mixed} Result.Result List of module settings in case of success, otherwise **false**.
-     * @apiSuccess {bool} Result.Result.AllowChangeInputDirection Enables switching between RTL and LTR input directions
      * @apiSuccess {bool} Result.Result.AllowEditHtmlSource If set true, HTML source code editing is added to HTML editor
      * @apiSuccess {array} Result.Result.FontNames List of available font names
      * @apiSuccess {string} Result.Result.DefaultFontName Font name used by default when composing email message
@@ -105,7 +104,6 @@ class Module extends \Aurora\System\Module\AbstractModule
         Api::checkUserRoleIsAtLeast(UserRole::Anonymous);
         return array(
             'AllowEditHtmlSource' => $this->getConfig('AllowEditHtmlSource', false),
-            'AllowChangeInputDirection' => $this->getConfig('AllowChangeInputDirection', ['Arial', 'Tahoma', 'Verdana', 'Courier New']),
             'FontNames' => $this->getConfig('FontNames', false),
             'DefaultFontName' => $this->getConfig('DefaultFontName', 'Arial'),
             'DefaultFontSize' => $this->getConfig('DefaultFontSize', '12'),
