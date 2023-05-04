@@ -875,4 +875,11 @@ CHtmlEditorView.prototype.changeTextMode = function () {
   }
 }
 
+CHtmlEditorView.prototype.getHotKeysDescriptions = function () {
+  return [
+    { value: 'Ctrl+Z', action: TextUtils.i18n('MAILWEBCLIENT/LABEL_UNDO_HOTKEY'), visible: ko.observable(true) },
+    { value: 'Ctrl+Y', action: TextUtils.i18n('MAILWEBCLIENT/LABEL_REDO_HOTKEY'), visible: ko.observable(true) },
+  ]
+}
+
 module.exports = CHtmlEditorView
