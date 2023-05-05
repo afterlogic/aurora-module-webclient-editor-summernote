@@ -75,6 +75,7 @@ class Module extends \Aurora\System\Module\AbstractModule
      * @apiSuccess {bool} Result.Result.AllowEditHtmlSource If set true, HTML source code editing is added to HTML editor
      * @apiSuccess {array} Result.Result.FontNames List of available font names
      * @apiSuccess {string} Result.Result.DefaultFontName Font name used by default when composing email message
+     * @apiSuccess {array} Result.Result.FontSizes List of available font sizes (px)
      * @apiSuccess {string} Result.Result.DefaultFontSize Date format.
      * @apiSuccess {int} [Result.ErrorCode] Error code.
      *
@@ -83,7 +84,7 @@ class Module extends \Aurora\System\Module\AbstractModule
      *   Module: 'EditorSummernoteWebclient',
      *   Method: 'GetSettings',
      *   Result: { AllowEditHtmlSource: false, AllowEditHtmlSource: true, FontNames: ['Arial', 'Tahoma', 'Verdana', 'Courier New'], DefaultFontName: 'Arial',
-     *             DefaultFontSize: 12 }
+     *             DefaultFontSize: '16' }
      * }
      *
      * @apiSuccessExample {json} Error response example:
@@ -106,7 +107,8 @@ class Module extends \Aurora\System\Module\AbstractModule
             'AllowEditHtmlSource' => $this->getConfig('AllowEditHtmlSource', false),
             'FontNames' => $this->getConfig('FontNames', false),
             'DefaultFontName' => $this->getConfig('DefaultFontName', 'Arial'),
-            'DefaultFontSize' => $this->getConfig('DefaultFontSize', '12'),
+            'FontSizes' => $this->getConfig('FontSizes', false),
+            'DefaultFontSize' => $this->getConfig('DefaultFontSize', '16'),
         );
     }
     /***** public functions might be called with web API *****/

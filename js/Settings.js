@@ -5,8 +5,9 @@ const Types = require('%PathToCoreWebclientModule%/js/utils/Types.js')
 module.exports = {
   AllowEditHtmlSource: false,
   FontNames: [],
+  FontSizes: [],
   DefaultFontName: '',
-  DefaultFontSize: 0,
+  DefaultFontSize: '',
 
   /**
    * Initializes settings from AppData object sections.
@@ -18,6 +19,7 @@ module.exports = {
     this.AllowEditHtmlSource = Types.pBool(appDataSection?.AllowEditHtmlSource, this.AllowEditHtmlSource)
     this.FontNames = Types.pArray(appDataSection?.FontNames, this.FontNames)
     this.DefaultFontName = Types.pString(appDataSection?.DefaultFontName, this.DefaultFontName)
-    this.DefaultFontSize = Types.pInt(appDataSection?.DefaultFontSize, this.DefaultFontSize)
+    this.FontSizes = Types.pArray(appDataSection?.FontSizes, this.FontSizes)
+    this.DefaultFontSize = Types.pString(appDataSection?.DefaultFontSize, this.DefaultFontSize)
   },
 }

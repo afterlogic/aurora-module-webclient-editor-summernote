@@ -17,6 +17,7 @@ const CAttachmentModel = require('modules/MailWebclient/js/models/CAttachmentMod
   TemplatesUtils = require('modules/MailWebclient/js/utils/Templates.js')
 
 const FontUtils = require('modules/%ModuleName%/js/utils/Font.js'),
+  FontSizeUtils = require('modules/%ModuleName%/js/utils/FontSize.js'),
   LangsUtils = require('modules/%ModuleName%/js/utils/Langs.js'),
   Settings = require('modules/%ModuleName%/js/Settings.js')
 
@@ -105,7 +106,7 @@ CHtmlEditorView.prototype.onClose = function () {
 }
 
 CHtmlEditorView.prototype.addTemplatesButton = function () {
-  if (this.templatesButton || this.templates().length === 0 || !this.oEditor) {
+  if (this.templatesButton || this.templates().length === 0 || !this.oEditor || !this.oEditor.data('summernote')) {
     return
   }
   const templatesIconUrl = 'modules/%ModuleName%/js/vendors/summernote/templates-on.svg'
@@ -160,52 +161,6 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
   }
 
   if (!this.oEditor) {
-    var CustomFontSizeButton = function (context) {
-      const ui = $.summernote.ui
-      const sizes = {
-        10: 'Smallest',
-        12: 'Smaller',
-        16: 'Standard',
-        20: 'Bigger',
-        24: 'Large',
-        // '9': 'Smallest',
-        // '10': 'Smaller',
-        // '12': 'Standard',
-        // '14': 'Bigger',
-        // '18': 'Large',
-      }
-      const getSizeName = (item) => {
-        return sizes[item] !== undefined ? sizes[item] + ' (' + item + 'px)' : item + 'px'
-      }
-
-      const buttonGroup = ui.buttonGroup([
-        ui.button({
-          className: 'dropdown-toggle',
-          contents: ui.dropdownButtonContents('<span class="note-current-fontsize"></span>', ui.options),
-          // tooltip: lang.font.size,
-          data: {
-            toggle: 'dropdown',
-          },
-        }),
-        ui.dropdownCheck({
-          className: 'dropdown-fontsize',
-          checkClassName: ui.options.icons.menuCheck,
-          items: Object.keys(sizes),
-          template: (item) => {
-            return '<span style="font-size: ' + item + 'px;">' + getSizeName(item) + '</span>'
-          },
-          itemClick: (event, item, value) => {
-            event.stopPropagation()
-            event.preventDefault()
-            context.invoke('editor.fontStyling', 'font-size', value)
-            context.invoke('buttons.updateCurrentStyle')
-          },
-        }),
-      ])
-
-      return buttonGroup.render() // return button as jquery object
-    }
-
     this.inlineImagesJua = null // uploads inline images
     this.initInlineImagesJua()
 
@@ -216,7 +171,7 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
     const toolbar = [
       ['history', ['undo', 'redo']],
       ['style', ['bold', 'italic', 'underline']],
-      ['font', ['fontname', 'customfontsize']],
+      ['font', ['fontname', Settings.FontSizes.length > 0 ? 'customfontsize' : 'fontsize']],
       ['color', ['color']],
       ['para', ['ul', 'ol', 'paragraph']],
       ['misc', MailSettings.AllowInsertImage ? ['table', 'link', 'picture', 'clear'] : ['table', 'link', 'clear']],
@@ -233,11 +188,12 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
         lineNumbers: true,
       },
       dialogsInBody: true,
+      addDefaultFonts: false,
       shortcuts: false,
       disableResizeEditor: true,
       followingToolbar: false, //true makes toolbar sticky
       buttons: {
-        customfontsize: CustomFontSizeButton,
+        customfontsize: FontSizeUtils.getFontSizeButtonCreateHandler(),
       },
       colors: [
         ['#4f6573', '#83949b', '#aab2bd', '#afb0a4', '#8b8680', '#69655a', '#c9b037', '#ced85e'],
@@ -292,7 +248,7 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
         },
       },
     }
-    if (Array.isArray(Settings.FontNames) && Settings.FontNames.length > 0) {
+    if (Settings.FontNames.length > 0) {
       options.fontNames = Settings.FontNames
     }
     this.oEditor.summernote(options)
@@ -301,6 +257,12 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
   this.getEditableArea().attr('tabindex', sTabIndex)
   this.getEditableArea().css(FontUtils.getBasicStyles())
 
+  if (typeof Settings.DefaultFontName === 'string' && Settings.DefaultFontName !== '') {
+    this.oEditor.summernote('fontName', Settings.DefaultFontName)
+  }
+  if (typeof Settings.DefaultFontSize === 'string' && Settings.DefaultFontSize !== '') {
+    this.oEditor.summernote('fontSize', Settings.DefaultFontSize)
+  }
   this.clearUndoRedo()
   this.setText(sText, bPlain)
   this.setInactive(this.inactive())
@@ -534,6 +496,10 @@ CHtmlEditorView.prototype.clearUndoRedo = function () {
  */
 CHtmlEditorView.prototype.removeAllTags = function (sText) {
   return sText.replace(/<style>.*<\/style>/g, '').replace(/<[^>]*>/g, '')
+}
+
+CHtmlEditorView.prototype.onEscHandler = function () {
+  // do nothing - summernote will close its dialogs
 }
 
 CHtmlEditorView.prototype.closeAllPopups = function () {

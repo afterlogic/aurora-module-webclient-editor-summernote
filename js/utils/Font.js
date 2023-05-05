@@ -32,7 +32,7 @@ module.exports = {
     if (typeof Settings.DefaultFontName === 'string' && Settings.DefaultFontName !== '') {
       basicStyles['font-family'] = this.getFontNameWithFamily(Settings.DefaultFontName)
     }
-    if (typeof Settings.DefaultFontSize === 'number' && Settings.DefaultFontSize > 0) {
+    if (typeof Settings.DefaultFontSize === 'string' && Settings.DefaultFontSize !== '') {
       basicStyles['font-size'] = `${Settings.DefaultFontSize}px`
     }
     return basicStyles
@@ -57,7 +57,7 @@ module.exports = {
     if (typeof Settings.DefaultFontName === 'string' && Settings.DefaultFontName !== '') {
       basicStyles.push(`font-family: ${this.getFontNameWithFamily(Settings.DefaultFontName)}`)
     }
-    if (typeof Settings.DefaultFontSize === 'number' && Settings.DefaultFontSize > 0) {
+    if (typeof Settings.DefaultFontSize === 'string' && Settings.DefaultFontSize !== '') {
       basicStyles.push(`font-size: ${Settings.DefaultFontSize}px`)
     }
     return basicStyles.join('; ')
