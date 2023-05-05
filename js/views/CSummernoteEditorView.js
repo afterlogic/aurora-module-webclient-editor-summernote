@@ -450,29 +450,20 @@ CHtmlEditorView.prototype.setText = function (sText, bPlain = null) {
 }
 
 CHtmlEditorView.prototype.prepareSummernoteCode = function (html) {
-  const outerNode = $(html)
-  if (outerNode.length !== 1) {
-    return html
+  let outerNode = $(html)
+  while (
+    outerNode.length === 1 &&
+    (outerNode.data('x-div-type') === 'html' || outerNode.data('x-div-type') === 'body')
+  ) {
+    outerNode = outerNode.children()
   }
 
-  if (outerNode.data('crea') === 'font-wrapper') {
+  if (outerNode.length === 1 && outerNode.data('crea') === 'font-wrapper') {
     this.getEditableArea()?.css(FontUtils.getBasicStylesFromNode(outerNode))
     return outerNode.html()
   }
 
-  const oChildren = outerNode.children()
-
-  if (oChildren.length !== 1) {
-    return html
-  }
-
-  const oInner = oChildren.first()
-  if (outerNode.data('xDivType') === 'body' && oInner.data('crea') === 'font-wrapper') {
-    this.setBasicStyles(FontUtils.getBasicStylesFromNode(oInner))
-    return oInner.html()
-  }
-
-  return html
+  return outerNode.prop('outerHTML')
 }
 
 CHtmlEditorView.prototype.undoAndClearRedo = function () {
