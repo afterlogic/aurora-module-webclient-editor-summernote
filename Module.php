@@ -77,6 +77,7 @@ class Module extends \Aurora\System\Module\AbstractModule
      * @apiSuccess {string} Result.Result.DefaultFontName Font name used by default when composing email message
      * @apiSuccess {array} Result.Result.FontSizes List of available font sizes (px)
      * @apiSuccess {string} Result.Result.DefaultFontSize Date format.
+     * @apiSuccess {array} Result.Result.Colors List of available colors
      * @apiSuccess {int} [Result.ErrorCode] Error code.
      *
      * @apiSuccessExample {json} Success response example:
@@ -105,10 +106,11 @@ class Module extends \Aurora\System\Module\AbstractModule
         Api::checkUserRoleIsAtLeast(UserRole::Anonymous);
         return array(
             'AllowEditHtmlSource' => $this->getConfig('AllowEditHtmlSource', false),
-            'FontNames' => $this->getConfig('FontNames', false),
+            'FontNames' => $this->getConfig('FontNames', []),
             'DefaultFontName' => $this->getConfig('DefaultFontName', 'Arial'),
-            'FontSizes' => $this->getConfig('FontSizes', false),
+            'FontSizes' => $this->getConfig('FontSizes', []),
             'DefaultFontSize' => $this->getConfig('DefaultFontSize', '16'),
+            'Colors' => $this->getConfig('Colors', []),
         );
     }
     /***** public functions might be called with web API *****/
