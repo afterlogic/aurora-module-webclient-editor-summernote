@@ -518,10 +518,8 @@ CHtmlEditorView.prototype.prepareSummernoteCode = function (html) {
 }
 
 CHtmlEditorView.prototype.undoAndClearRedo = function () {
-  //TODO
   if (this.oEditor) {
-    // this.oEditor.undo();
-    // this.oEditor.clearRedo();
+    this.oEditor.summernote('undo')
   }
 }
 
@@ -529,15 +527,6 @@ CHtmlEditorView.prototype.clearUndoRedo = function () {
   if (this.oEditor) {
     this.oEditor.summernote('commit')
   }
-}
-
-CHtmlEditorView.prototype.isEditing = function () {
-  // bEditing in oCrea means that the history is clear
-  // There might be an error in CComposeView because clearUndoRedo method is called when isEditing=false
-  // Should be the other way around
-
-  // TODO: Also summernote cannot return if the history is clear
-  return this.oEditor ? true : false
 }
 
 /**
