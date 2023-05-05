@@ -29,10 +29,10 @@ module.exports = {
     const basicStyles = {
       direction: UserSettings.IsRTL ? 'rtl' : 'ltr',
     }
-    if (typeof Settings.DefaultFontName === 'string' && Settings.DefaultFontName !== '') {
+    if (Settings.DefaultFontName !== '') {
       basicStyles['font-family'] = this.getFontNameWithFamily(Settings.DefaultFontName)
     }
-    if (typeof Settings.DefaultFontSize === 'string' && Settings.DefaultFontSize !== '') {
+    if (Settings.DefaultFontSize !== '') {
       basicStyles['font-size'] = `${Settings.DefaultFontSize}px`
     }
     return basicStyles
@@ -54,10 +54,10 @@ module.exports = {
 
   getBasicStylesString() {
     const basicStyles = [`direction: ${UserSettings.IsRTL ? 'rtl' : 'ltr'}`]
-    if (typeof Settings.DefaultFontName === 'string' && Settings.DefaultFontName !== '') {
+    if (Settings.DefaultFontName !== '') {
       basicStyles.push(`font-family: ${this.getFontNameWithFamily(Settings.DefaultFontName)}`)
     }
-    if (typeof Settings.DefaultFontSize === 'string' && Settings.DefaultFontSize !== '') {
+    if (Settings.DefaultFontSize !== '') {
       basicStyles.push(`font-size: ${Settings.DefaultFontSize}px`)
     }
     return basicStyles.join('; ')

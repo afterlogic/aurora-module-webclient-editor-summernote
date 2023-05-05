@@ -253,10 +253,10 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
   this.getEditableArea().attr('tabindex', sTabIndex)
   this.getEditableArea().css(FontUtils.getBasicStyles())
 
-  if (typeof Settings.DefaultFontName === 'string' && Settings.DefaultFontName !== '') {
+  if (Settings.DefaultFontName !== '') {
     this.oEditor.summernote('fontName', Settings.DefaultFontName)
   }
-  if (typeof Settings.DefaultFontSize === 'string' && Settings.DefaultFontSize !== '') {
+  if (Settings.DefaultFontSize !== '') {
     this.oEditor.summernote('fontSize', Settings.DefaultFontSize)
   }
   this.clearUndoRedo()
