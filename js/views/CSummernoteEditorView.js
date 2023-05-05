@@ -13,7 +13,8 @@ const TextUtils = require('%PathToCoreWebclientModule%/js/utils/Text.js'),
 
 const CAttachmentModel = require('modules/MailWebclient/js/models/CAttachmentModel.js'),
   MailCache = require('modules/MailWebclient/js/Cache.js'),
-  MailSettings = require('modules/MailWebclient/js/Settings.js')
+  MailSettings = require('modules/MailWebclient/js/Settings.js'),
+  TemplatesUtils = require('modules/MailWebclient/js/utils/Templates.js')
 
 const FontUtils = require('modules/%ModuleName%/js/utils/Font.js'),
   LangsUtils = require('modules/%ModuleName%/js/utils/Langs.js'),
@@ -91,20 +92,7 @@ function CHtmlEditorView(isBuiltInSignature, allowPlainTextMode, parentView) {
   this.templates.subscribe(() => {
     this.addTemplatesButton()
   })
-
-  if (MailSettings.AllowInsertTemplateOnCompose) {
-    App.subscribeEvent(
-      'MailWebclient::ParseMessagesBodies::after',
-      _.bind(function (oParameters) {
-        if (
-          oParameters.AccountID === MailCache.currentAccountId() &&
-          oParameters.Folder === MailCache.getTemplateFolder()
-        ) {
-          this.fillTemplates()
-        }
-      }, this)
-    )
-  }
+  TemplatesUtils.initTemplatesSubscription(this.templates)
 }
 
 CHtmlEditorView.prototype.ViewTemplate = '%ModuleName%_SummernoteEditorView'
@@ -319,9 +307,7 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
 
   this.aUploadedImagesData = []
 
-  if (MailSettings.AllowInsertTemplateOnCompose) {
-    this.fillTemplates()
-  }
+  TemplatesUtils.fillTemplatesOptions(this.templates)
 }
 
 CHtmlEditorView.prototype.setInactive = function (bInactive) {
@@ -368,41 +354,6 @@ CHtmlEditorView.prototype.setDisableEdit = function (bDisableEdit) {
 
 CHtmlEditorView.prototype.commit = function () {
   this.textChanged(false)
-}
-
-/**
- * Fills template list if there is template folder in account.
- * Messages of template folder are requested in Prefetcher.
- */
-CHtmlEditorView.prototype.fillTemplates = function () {
-  var oFolderList = MailCache.folderList(),
-    sTemplateFolder = MailCache.getTemplateFolder(),
-    oTemplateFolder = sTemplateFolder ? oFolderList.getFolderByFullName(sTemplateFolder) : null,
-    oUidList = oTemplateFolder
-      ? oTemplateFolder.getUidList(
-          '',
-          '',
-          MailSettings.MessagesSortBy.DefaultSortBy,
-          MailSettings.MessagesSortBy.DefaultSortOrder
-        )
-      : null,
-    aTemplates = []
-  if (oUidList) {
-    var aUids = oUidList.collection()
-    if (aUids.length > MailSettings.MaxTemplatesCountOnCompose) {
-      aUids = aUids.splice(MailSettings.MaxTemplatesCountOnCompose)
-    }
-    _.each(aUids, function (sUid) {
-      var oMessage = oTemplateFolder.getMessageByUid(sUid)
-      if (oMessage.text() !== '') {
-        aTemplates.push({
-          subject: oMessage.subject(),
-          text: oMessage.text(),
-        })
-      }
-    })
-  }
-  this.templates(aTemplates)
 }
 
 CHtmlEditorView.prototype.insertTemplate = function (html, event) {
