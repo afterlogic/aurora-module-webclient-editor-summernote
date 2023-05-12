@@ -336,43 +336,80 @@ CHtmlEditorView.prototype.setFocus = function () {
  */
 CHtmlEditorView.prototype.changeSignatureContent = function (sNewSignatureContent, sOldSignatureContent) {
   if (this.oEditor && !this.disableEdit()) {
-    const content = this.getEditableArea(),
-      $SignatureContainer = $(content).find('div[data-anchor="signature"]'),
-      $NewSignature = $(sNewSignatureContent).closest('div[data-crea="font-wrapper"]'),
+    const editableArea = this.getEditableArea()
+    let $SignatureContainer = $(editableArea).find('div[data-anchor="signature"]')
+    const $NewSignature = $(sNewSignatureContent).closest('div[data-crea="font-wrapper"]'),
       $OldSignature = $(sOldSignatureContent).closest('div[data-crea="font-wrapper"]')
-    /*** there is a signature container in the message ***/
     if ($SignatureContainer.length > 0) {
+      /*** there is a signature container in the message ***/
       const sCurrentSignatureContent = $SignatureContainer.html()
-      /*** previous signature is empty -> append to the container a new signature ***/
       if (sOldSignatureContent === '') {
+        /*** previous signature is empty -> append to the container a new signature ***/
         $SignatureContainer.html(sCurrentSignatureContent + sNewSignatureContent)
-      } else if (
+      } else if (sCurrentSignatureContent.indexOf(sOldSignatureContent) !== -1) {
         /*** previous signature was found in the container -> replace it with a new ***/
-        sCurrentSignatureContent.indexOf(sOldSignatureContent) !== -1
-      ) {
         $SignatureContainer.html(sCurrentSignatureContent.replace(sOldSignatureContent, sNewSignatureContent))
-      } else if (
+      } else if (sCurrentSignatureContent.indexOf(sNewSignatureContent) !== -1) {
         /*** new signature is found in the container -> do nothing ***/
-        sCurrentSignatureContent.indexOf(sNewSignatureContent) !== -1
-      ) {
       } else {
         const sClearOldSignature =
           $NewSignature.length === 0 || $OldSignature.length === 0 ? sOldSignatureContent : $OldSignature.html()
         const sClearNewSignature =
           $NewSignature.length === 0 || $OldSignature.length === 0 ? sNewSignatureContent : $NewSignature.html()
-        /*** found a previous signature without wrapper -> replace it with a new ***/
         if (sCurrentSignatureContent.indexOf(sClearOldSignature) !== -1) {
+          /*** found a previous signature without wrapper -> replace it with a new ***/
           $SignatureContainer.html(sCurrentSignatureContent.replace(sClearOldSignature, sNewSignatureContent))
-        } else if (
+        } else if (sCurrentSignatureContent.indexOf(sClearNewSignature) !== -1) {
           /*** found a new signature without wrapper -> do nothing ***/
-          sCurrentSignatureContent.indexOf(sClearNewSignature) !== -1
-        ) {
         } else {
           /*** append the new signature to the end of the container ***/
           $SignatureContainer.html(sCurrentSignatureContent + sNewSignatureContent)
         }
       }
+    } else {
+      /*** there is NO signature container in the message ***/
+      let sFoundOldSignature = sOldSignatureContent
+      try {
+        /*** Attempt 1 to find element which contains old signature ***/
+        $SignatureContainer = editableArea.find('*:contains("' + sFoundOldSignature + '")')
+      } catch (err) {
+        $SignatureContainer = $('')
+      }
+      if ($SignatureContainer.length === 0 && $OldSignature.length > 0) {
+        sFoundOldSignature = $OldSignature.html()
+        try {
+          /*** Attempt 2 to find element which contains old signature ***/
+          $SignatureContainer = editableArea.find('*:contains("' + sFoundOldSignature + '")')
+        } catch (oErr) {
+          $SignatureContainer = $('')
+        }
+      }
+
+      let $SignatureBlockquoteParent = null
+      if ($SignatureContainer.length > 0) {
+        /*** Element which contains old signature is found ***/
+        $SignatureContainer = $($SignatureContainer[0])
+        $SignatureBlockquoteParent = $SignatureContainer.closest('blockquote')
+      }
+
+      if ($SignatureBlockquoteParent && $SignatureBlockquoteParent.length === 0) {
+        $SignatureContainer.html($SignatureContainer.html().replace(sFoundOldSignature, sNewSignatureContent))
+      } else {
+        let $replyTitle = editableArea.find('div[data-anchor="reply-title"]')
+        let $replyTitleBlockquoteParent = $replyTitle.length > 0 ? $($replyTitle[0]).closest('blockquote') : $replyTitle
+        if ($replyTitle.length === 0 || $replyTitleBlockquoteParent.length > 0) {
+          $replyTitle = editableArea.find('blockquote')
+        }
+
+        if ($replyTitle.length > 0) {
+          $($replyTitle[0]).before($('<br /><div data-anchor="signature">' + sNewSignatureContent + '</div><br />'))
+        } else {
+          editableArea.append($('<br /><div data-anchor="signature">' + sNewSignatureContent + '</div><br />'))
+        }
+      }
     }
+    this.textChanged(true)
+    this.actualTextСhanged.valueHasMutated()
   }
 }
 
@@ -451,19 +488,27 @@ CHtmlEditorView.prototype.setText = function (sText, bPlain = null) {
 
 CHtmlEditorView.prototype.prepareSummernoteCode = function (html) {
   let outerNode = $(html)
+  let isOuterElemChanged = false
   while (
     outerNode.length === 1 &&
     (outerNode.data('x-div-type') === 'html' || outerNode.data('x-div-type') === 'body')
   ) {
     outerNode = outerNode.children()
+    isOuterElemChanged = true
   }
-
   if (outerNode.length === 1 && outerNode.data('crea') === 'font-wrapper') {
     this.getEditableArea()?.css(FontUtils.getBasicStylesFromNode(outerNode))
     return outerNode.html()
   }
-
-  return outerNode.prop('outerHTML')
+  if (!isOuterElemChanged) {
+    return html
+  } else {
+    let res = ''
+    outerNode.each((index, elem) => {
+      res += elem.outerHTML
+    })
+    return res
+  }
 }
 
 CHtmlEditorView.prototype.undoAndClearRedo = function () {
