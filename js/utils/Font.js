@@ -47,18 +47,24 @@ module.exports = {
       basicStyles['font-family'] = node.css('font-family')
     }
     if (node.css('font-size')) {
-      basicStyles['font-size'] = `${node.css('font-size')}px`
+      basicStyles['font-size'] = node.css('font-size')
     }
     return basicStyles
   },
 
-  getBasicStylesString() {
-    const basicStyles = [`direction: ${UserSettings.IsRTL ? 'rtl' : 'ltr'}`]
-    if (Settings.DefaultFontName !== '') {
-      basicStyles.push(`font-family: ${this.getFontNameWithFamily(Settings.DefaultFontName)}`)
+  getBasicStylesString(node) {
+    let direction = node ? node.css('direction') : null
+    if (!direction) {
+      direction = UserSettings.IsRTL ? 'rtl' : 'ltr'
     }
-    if (Settings.DefaultFontSize !== '') {
-      basicStyles.push(`font-size: ${Settings.DefaultFontSize}px`)
+    const basicStyles = [`direction: ${direction}`]
+    const fontName = node && node.css('font-family') ? node.css('font-family') : Settings.DefaultFontName
+    if (fontName) {
+      basicStyles.push(`font-family: ${this.getFontNameWithFamily(fontName)}`)
+    }
+    const fontSize = node && node.css('font-size') ? node.css('font-size') : `${Settings.DefaultFontSize}px`
+    if (fontSize) {
+      basicStyles.push(`font-size: ${fontSize}`)
     }
     return basicStyles.join('; ')
   },

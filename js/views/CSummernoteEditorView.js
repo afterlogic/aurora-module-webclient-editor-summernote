@@ -443,7 +443,7 @@ CHtmlEditorView.prototype.getText = function (bRemoveSignatureAnchor) {
     return ''
   }
 
-  html = `<div data-crea="font-wrapper" style="${FontUtils.getBasicStylesString()}">${html}</div>`
+  html = `<div data-crea="font-wrapper" style="${FontUtils.getBasicStylesString(this.getEditableArea())}">${html}</div>`
   if (bRemoveSignatureAnchor) {
     return html.replace('data-anchor="signature"', '')
   }
