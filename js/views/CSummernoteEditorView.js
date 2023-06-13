@@ -627,12 +627,12 @@ CHtmlEditorView.prototype.initAttachmentsJua = function () {
     ) {
       const fBodyDragEnter = _.bind(function () {
         this.isUploaderAreaDragOver(true)
-        this.oParent.composeUploaderDragOver(true)
+        this.parentView.composeUploaderDragOver(true)
       }, this)
 
       const fBodyDragOver = _.bind(function () {
         this.isUploaderAreaDragOver(false)
-        this.oParent.composeUploaderDragOver(false)
+        this.parentView.composeUploaderDragOver(false)
       }, this)
 
       this.attachmentsJua = new CJua({
