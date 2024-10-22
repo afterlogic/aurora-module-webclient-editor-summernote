@@ -201,6 +201,7 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
         ],
         link: [['link', ['linkDialogShow', 'unlink']]],
         table: [
+          ['resize', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeManual']],
           ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
           ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
         ],
