@@ -8,7 +8,6 @@
 namespace Aurora\Modules\EditorSummernoteWebclient;
 
 use Aurora\System\SettingsProperty;
-use Aurora\System\Enums;
 
 /**
  * @property bool $Disabled
@@ -28,6 +27,14 @@ class Settings extends \Aurora\System\Module\Settings
                 'bool',
                 null,
                 'Setting to true disables the module'
+            ),
+            "AvailableFor" => new SettingsProperty(
+                [
+                    "MailWebclient"
+                ],
+                "array",
+                null,
+                "Automatically provide this feature if one of the listed modules is requested by the entry point",
             ),
             'AllowEditHtmlSource' => new SettingsProperty(
                 false,
