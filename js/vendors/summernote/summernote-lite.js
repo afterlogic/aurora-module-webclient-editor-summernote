@@ -6,7 +6,7 @@
  * Copyright 2013~ Hackerwins and contributors
  * Summernote may be freely distributed under the MIT license.
  *
- * Date: 2024-10-22T17:44Z
+ * Date: 2024-12-05T10:43Z
  *
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -4553,8 +4553,16 @@ var Table = /*#__PURE__*/function () {
       }
       trHTML = trs.join('');
       var $table = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<table>' + trHTML + '</table>');
-      if (options && options.tableClassName) {
-        $table.addClass(options.tableClassName);
+      if (options) {
+        if (options.tableClassName) {
+          $table.addClass(options.tableClassName);
+        }
+        if (options.tableAttrStyle) {
+          $table.attr('style', options.tableAttrStyle);
+        }
+        if (options.tableAttrBorder) {
+          $table.attr('border', options.tableAttrBorder);
+        }
       }
       return $table[0];
     }
@@ -6288,7 +6296,7 @@ var Handle = /*#__PURE__*/function () {
 
         var origImageObj = new Image();
         origImageObj.src = $image.attr('src');
-        var sizingText = imageRect.width + 'x' + imageRect.height + ' (' + this.lang.image.original + ': ' + origImageObj.width + 'x' + origImageObj.height + ')';
+        var sizingText = Math.ceil(imageRect.width) + 'px x ' + Math.ceil(imageRect.height) + 'px (' + this.lang.image.original + ': ' + origImageObj.width + 'px x ' + origImageObj.height + 'px)';
         $selection.find('.note-control-selection-info').text(sizingText);
         this.context.invoke('editor.saveTarget', target);
       } else if (dom.isTable(target) || dom.isCell(target)) {
@@ -6307,7 +6315,7 @@ var Handle = /*#__PURE__*/function () {
             width: elementRect.width,
             height: elementRect.height
           }).data('target', $element); // save current table element.
-          var _sizingText = elementRect.width + 'x' + elementRect.height;
+          var _sizingText = Math.ceil(elementRect.width) + 'px x ' + Math.ceil(elementRect.height) + 'px';
           $selection.find('.note-control-selection-info').text(_sizingText);
         }
         this.context.invoke('editor.saveTarget', target);
@@ -9021,6 +9029,8 @@ var HintPopover = /*#__PURE__*/function () {
     },
     lineHeights: ['1.0', '1.2', '1.4', '1.5', '1.6', '1.8', '2.0', '3.0'],
     tableClassName: 'table table-bordered',
+    tableAttrBorder: '1',
+    tableAttrStyle: '',
     insertTableMaxSize: {
       col: 10,
       row: 10

@@ -6,7 +6,7 @@
  * Copyright 2013~ Hackerwins and contributors
  * Summernote may be freely distributed under the MIT license.
  *
- * Date: 2024-10-22T17:44Z
+ * Date: 2024-12-05T10:43Z
  *
  */
 @font-face {
@@ -1457,11 +1457,9 @@ html .note-fullscreen-body, body .note-fullscreen-body {
 }
 
 .note-editor .note-editing-area .note-editable table {
-    width: 100%;
     border-collapse: collapse;
 }
 .note-editor .note-editing-area .note-editable table td, .note-editor .note-editing-area .note-editable table th {
-    border: 1px solid #ececec;
     padding: 5px 3px;
 }
 .note-editor .note-editing-area .note-editable a {
