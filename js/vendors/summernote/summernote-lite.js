@@ -6,7 +6,7 @@
  * Copyright 2013~ Hackerwins and contributors
  * Summernote may be freely distributed under the MIT license.
  *
- * Date: 2024-12-05T10:43Z
+ * Date: 2024-12-05T12:53Z
  *
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -5674,6 +5674,12 @@ var Editor = /*#__PURE__*/function () {
 }();
 
 ;// CONCATENATED MODULE: ./src/js/module/Clipboard.js
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function Clipboard_typeof(o) { "@babel/helpers - typeof"; return Clipboard_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Clipboard_typeof(o); }
 function Clipboard_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function Clipboard_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Clipboard_toPropertyKey(o.key), o); } }
@@ -5709,15 +5715,22 @@ var Clipboard = /*#__PURE__*/function () {
       if (clipboardData && clipboardData.items && clipboardData.items.length) {
         var clipboardFiles = clipboardData.files;
         var clipboardText = clipboardData.getData('Text');
+        var clipboardHtml = clipboardData.getData('text/html');
 
         // paste img file
-        if (clipboardFiles.length > 0 && this.options.allowClipboardImagePasting) {
+        if (!clipboardHtml && clipboardFiles.length > 0 && this.options.allowClipboardImagePasting) {
           this.context.invoke('editor.insertImagesOrCallback', clipboardFiles);
           event.preventDefault();
         }
-
-        // paste text with maxTextLength check
-        if (clipboardText.length > 0 && this.context.invoke('editor.isLimited', clipboardText.length)) {
+        if (clipboardHtml) {
+          clipboardHtml = preparePastedHtml(clipboardHtml);
+        }
+        if (clipboardHtml.length > 0 && !this.context.invoke('editor.isLimited', clipboardHtml.length)) {
+          event.preventDefault();
+          this.context.invoke('editor.pasteHTML', clipboardHtml);
+        }
+        // abord pasting text if text length is over the limit option.maxTextLength
+        else if (clipboardText.length > 0 && this.context.invoke('editor.isLimited', clipboardText.length)) {
           event.preventDefault();
         }
       } else if (window.clipboardData) {
@@ -5735,7 +5748,46 @@ var Clipboard = /*#__PURE__*/function () {
     }
   }]);
 }();
+/**
+ * Fragments pasted from MS Excel contain a bunch of styles in the style tag, the browser cuts them out.
+ * This method finds the MS Excel class names in the fragment and, if found, places the styles from the classes as inline styles to the elements.
+ */
 
+function preparePastedHtml(html) {
+  var fragment = $("<div>".concat(html, "</div>"));
+  var regex = /class=["']{0,1}(xl\d+)["']{0,1}/gm;
+  var matches = _toConsumableArray(html.matchAll(regex));
+  if (matches.length > 0) {
+    matches.forEach(function (group) {
+      var className = group[1];
+      var styles = getExelStyles(html, className);
+      if (styles) {
+        var elem = fragment.find(".".concat(className));
+        elem.css(styles);
+      }
+    });
+  }
+
+  // adding default table border
+  fragment.find('table').attr('border', 1);
+  return fragment.html();
+}
+function getExelStyles(html, className) {
+  var re = new RegExp(".".concat(className, "\\s*{([^}]*)}"), 'gm');
+  var matches = _toConsumableArray(html.matchAll(re));
+  if (matches.length === 1 && matches[0].length === 2) {
+    var styles = matches[0][1].replaceAll('\r', '').replaceAll('\n', '').replaceAll('\t', '').split(';');
+    var stylesProperties = {};
+    styles.forEach(function (style) {
+      if (style) {
+        var styleParts = style.split(':');
+        stylesProperties[styleParts[0]] = styleParts[1];
+      }
+    });
+    return stylesProperties;
+  }
+  return false;
+}
 ;// CONCATENATED MODULE: ./src/js/module/Dropzone.js
 function Dropzone_typeof(o) { "@babel/helpers - typeof"; return Dropzone_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Dropzone_typeof(o); }
 function Dropzone_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
@@ -5864,9 +5916,9 @@ var Dropzone = /*#__PURE__*/function () {
 
 ;// CONCATENATED MODULE: ./src/js/module/Codeview.js
 function Codeview_typeof(o) { "@babel/helpers - typeof"; return Codeview_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Codeview_typeof(o); }
-function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = Codeview_unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function Codeview_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return Codeview_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? Codeview_arrayLikeToArray(r, a) : void 0; } }
+function Codeview_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function Codeview_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function Codeview_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Codeview_toPropertyKey(o.key), o); } }
 function Codeview_createClass(e, r, t) { return r && Codeview_defineProperties(e.prototype, r), t && Codeview_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }

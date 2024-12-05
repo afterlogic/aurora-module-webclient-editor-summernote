@@ -195,7 +195,7 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
         customfontsize: FontSizeUtils.getFontSizeButtonCreateHandler(),
       },
       tableClassName: '',
-      tableAttsStyle: 'width: 100%;',
+      tableAttrStyle: 'width: 100%;',
       tableAttrBorder: '1',
       popover: {
         image: [
