@@ -6,7 +6,7 @@
  * Copyright 2013~ Hackerwins and contributors
  * Summernote may be freely distributed under the MIT license.
  *
- * Date: 2024-12-05T12:53Z
+ * Date: 2024-12-06T12:22Z
  *
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -4552,16 +4552,14 @@ var Table = /*#__PURE__*/function () {
         trs.push('<tr>' + tdHTML + '</tr>');
       }
       trHTML = trs.join('');
-      var $table = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<table>' + trHTML + '</table>');
+      var tableAttributes = options && options.tableAttributes ? ' ' + options.tableAttributes : '';
+      var $table = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<table' + tableAttributes + '>' + trHTML + '</table>');
       if (options) {
         if (options.tableClassName) {
           $table.addClass(options.tableClassName);
         }
         if (options.tableAttrStyle) {
           $table.attr('style', options.tableAttrStyle);
-        }
-        if (options.tableAttrBorder) {
-          $table.attr('border', options.tableAttrBorder);
         }
       }
       return $table[0];
@@ -9081,7 +9079,7 @@ var HintPopover = /*#__PURE__*/function () {
     },
     lineHeights: ['1.0', '1.2', '1.4', '1.5', '1.6', '1.8', '2.0', '3.0'],
     tableClassName: 'table table-bordered',
-    tableAttrBorder: '1',
+    tableAttributes: 'border="1" cellpadding="0" cellspacing="0"',
     tableAttrStyle: '',
     insertTableMaxSize: {
       col: 10,
