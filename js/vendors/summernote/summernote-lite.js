@@ -6,7 +6,7 @@
  * Copyright 2013~ Hackerwins and contributors
  * Summernote may be freely distributed under the MIT license.
  *
- * Date: 2024-12-06T12:22Z
+ * Date: 2024-12-10T18:59Z
  *
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -9501,7 +9501,7 @@ var ModalUI = /*#__PURE__*/function () {
       this.$backdrop.appendTo(document.body).show();
       this.$modal.addClass('open').show();
       this.$modal.trigger('note.modal.show');
-      this.$modal.off('click', '.close').on('click', '.close', this.hide.bind(this));
+      this.$modal.off('click', '.note-close').on('click', '.note-close', this.hide.bind(this));
       this.$modal.on('keydown', function (event) {
         if (event.which === 27) {
           event.preventDefault();
@@ -9834,7 +9834,7 @@ var dialog = renderer.create('<div class="note-modal" aria-hidden="false" tabind
   $node.attr({
     'aria-label': options.title
   });
-  $node.html(['<div class="note-modal-content">', options.title ? '<div class="note-modal-header"><button type="button" class="close" aria-label="Close" aria-hidden="true"><i class="note-icon-close"></i></button><h4 class="note-modal-title">' + options.title + '</h4></div>' : '', '<div class="note-modal-body">' + options.body + '</div>', options.footer ? '<div class="note-modal-footer">' + options.footer + '</div>' : '', '</div>'].join(''));
+  $node.html(['<div class="note-modal-content">', options.title ? '<div class="note-modal-header"><button type="button" class="note-close" aria-label="Close" aria-hidden="true"><i class="note-icon-close"></i></button><h4 class="note-modal-title">' + options.title + '</h4></div>' : '', '<div class="note-modal-body">' + options.body + '</div>', options.footer ? '<div class="note-modal-footer">' + options.footer + '</div>' : '', '</div>'].join(''));
   $node.data('modal', new js_ModalUI($node, options));
 });
 var videoDialog = function videoDialog(opt) {

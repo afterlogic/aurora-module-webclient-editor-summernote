@@ -6,7 +6,7 @@
  * Copyright 2013~ Hackerwins and contributors
  * Summernote may be freely distributed under the MIT license.
  *
- * Date: 2024-12-06T12:22Z
+ * Date: 2024-12-10T18:59Z
  *
  */
 @font-face {
@@ -431,7 +431,7 @@ input[type=button].note-btn-block {
     width: 100%;
 }
 
-button.close {
+button.note-close {
     padding: 0;
     cursor: pointer;
     background: transparent;
@@ -439,15 +439,14 @@ button.close {
     -webkit-appearance: none;
 }
 
-.close {
+.note-close {
     float: right;
     font-size: 21px;
     line-height: 1;
     color: #000;
     opacity: 0.2;
 }
-
-.close:hover {
+.note-close:hover {
     -webkit-opacity: 1;
     -khtml-opacity: 1;
     -moz-opacity: 1;
