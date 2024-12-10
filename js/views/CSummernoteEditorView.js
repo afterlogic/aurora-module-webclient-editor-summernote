@@ -28,6 +28,11 @@ require('modules/%ModuleName%/js/vendors/summernote/codemirror.css')
 require('modules/%ModuleName%/js/vendors/summernote/xml.js')
 require('modules/%ModuleName%/js/vendors/summernote/formatting.js')
 
+// require('modules/%ModuleName%/js/vendors/summernote-ext-table/summernote-ext-table-custom.js')
+// TODO: this CSS doesn't work cause' webpack can't resolve it font paths, But thi
+// require('modules/%ModuleName%/js/vendors/summernote-ext-table/summernote-ext-table.css')
+// require('modules/%ModuleName%/js/vendors/summernote-ext-table/summernote-ext-table-no-fonts.css')
+
 /**
  * @constructor
  * @param {boolean} isBuiltInSignature
@@ -204,10 +209,14 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
         ],
         link: [['link', ['linkDialogShow', 'unlink']]],
         table: [
+          // available TableExtPlugin commands ['jMerge', 'jTableInfo', 'jWidthHeightReset', 'jBackcolor', 'jBorderColor', 'jAlign']
           ['resize', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeManual']],
           ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
           ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
         ],
+        // jTable : {
+        //   mergeMode: 'drag' //drag || dialog
+        // },
       },
       callbacks: {
         onChange: () => {
