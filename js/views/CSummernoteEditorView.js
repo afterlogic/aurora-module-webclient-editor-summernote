@@ -501,28 +501,28 @@ CHtmlEditorView.prototype.setText = function (sText, bPlain = null) {
   }
 }
 
+/**
+ * This method returs html code without tags [x-div-type: html|body]
+ */
 CHtmlEditorView.prototype.prepareSummernoteCode = function (html) {
-  let outerNode = $(html)
-  let isOuterElemChanged = false
-  while (
-    outerNode.length === 1 &&
-    (outerNode.data('x-div-type') === 'html' || outerNode.data('x-div-type') === 'body')
-  ) {
-    outerNode = outerNode.children()
-    isOuterElemChanged = true
+  let oHtml = $(html)
+  let isHtmlChanged = false
+  while (oHtml.length === 1 && (oHtml.data('x-div-type') === 'html' || oHtml.data('x-div-type') === 'body')) {
+    oHtml = oHtml.contents() //children() doesn't work here, becase it omits text nodes
+    isHtmlChanged = true
   }
-  if (outerNode.length === 1 && outerNode.data('crea') === 'font-wrapper') {
+
+  if (oHtml.length === 1 && oHtml.nodeType === Node.ELEMENT_NODE && oHtml.data('crea') === 'font-wrapper') {
     this.getEditableArea()?.css(FontUtils.getBasicStylesFromNode(outerNode))
-    return outerNode.html()
+    return oHtml.html()
   }
-  if (!isOuterElemChanged) {
+
+  if (!isHtmlChanged) { // no tags with [x-div-type: html|body] were found
     return html
-  } else {
-    let res = ''
-    outerNode.each((index, elem) => {
-      res += elem.outerHTML
-    })
-    return res
+  } else { // tags with [x-div-type: html|body] were found and filtered out
+    let resultHtml = ''
+    oHtml.each((index, node) => resultHtml += (node.nodeType === Node.TEXT_NODE ? '<p>' + node.nodeValue + '</p>' : node.outerHTML))
+    return resultHtml
   }
 }
 
