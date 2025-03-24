@@ -350,8 +350,9 @@ CHtmlEditorView.prototype.changeSignatureContent = function (sNewSignatureConten
   if (this.oEditor && !this.disableEdit()) {
     const editableArea = this.getEditableArea()
     let $SignatureContainer = $(editableArea).find('div[data-anchor="signature"]')
-    const $NewSignature = $(sNewSignatureContent).closest('div[data-crea="font-wrapper"]'),
-      $OldSignature = $(sOldSignatureContent).closest('div[data-crea="font-wrapper"]')
+    let $NewSignature = $(sNewSignatureContent)
+    let $OldSignature = $(sOldSignatureContent)
+
     if ($SignatureContainer.length > 0) {
       /*** there is a signature container in the message ***/
       const sCurrentSignatureContent = $SignatureContainer.html()
@@ -365,9 +366,9 @@ CHtmlEditorView.prototype.changeSignatureContent = function (sNewSignatureConten
         /*** new signature is found in the container -> do nothing ***/
       } else {
         const sClearOldSignature =
-          $NewSignature.length === 0 || $OldSignature.length === 0 ? sOldSignatureContent : $OldSignature.html()
+          $NewSignature.length === 0 || $OldSignature.length === 0 ? sOldSignatureContent : $OldSignature[0].outerHTML
         const sClearNewSignature =
-          $NewSignature.length === 0 || $OldSignature.length === 0 ? sNewSignatureContent : $NewSignature.html()
+          $NewSignature.length === 0 || $OldSignature.length === 0 ? sNewSignatureContent : $NewSignature[0].outerHTML
         if (sCurrentSignatureContent.indexOf(sClearOldSignature) !== -1) {
           /*** found a previous signature without wrapper -> replace it with a new ***/
           $SignatureContainer.html(sCurrentSignatureContent.replace(sClearOldSignature, sNewSignatureContent))
@@ -452,6 +453,8 @@ CHtmlEditorView.prototype.getText = function (bRemoveSignatureAnchor) {
   }
 
   let html = this.oEditor ? this.oEditor.summernote('code') : ''
+
+  //check if editor text is equal to placeholder text
   if (this.sPlaceholderText !== '' && this.removeAllTags(html) === this.sPlaceholderText) {
     return ''
   }
@@ -461,10 +464,10 @@ CHtmlEditorView.prototype.getText = function (bRemoveSignatureAnchor) {
     html = html.replace('data-anchor="signature"', '')
   }
 
-  let htmlElem = $(html)
-  htmlElem.find('p').css('margin', 0)
+  let $html = $(html)
+  $html.find('p').css('margin', 0)
 
-  return htmlElem.html()
+  return $html[0].outerHTML
 }
 
 /**
@@ -506,23 +509,23 @@ CHtmlEditorView.prototype.setText = function (sText, bPlain = null) {
  * This method returs html code without tags [x-div-type: html|body]
  */
 CHtmlEditorView.prototype.prepareSummernoteCode = function (html) {
-  let oHtml = $(html)
+  let $html = $(html)
   let isHtmlChanged = false
-  while (oHtml.length === 1 && (oHtml.data('x-div-type') === 'html' || oHtml.data('x-div-type') === 'body')) {
-    oHtml = oHtml.contents() //children() doesn't work here, becase it omits text nodes
+  while ($html.length === 1 && ($html.data('x-div-type') === 'html' || $html.data('x-div-type') === 'body')) {
+    $html = $html.contents() //children() doesn't work here, becase it omits text nodes
     isHtmlChanged = true
   }
 
-  if (oHtml.length === 1 && oHtml.nodeType === Node.ELEMENT_NODE && oHtml.data('crea') === 'font-wrapper') {
-    this.getEditableArea()?.css(FontUtils.getBasicStylesFromNode(outerNode))
-    return oHtml.html()
+  if ($html.length === 1 && $html[0].nodeType === Node.ELEMENT_NODE && $html.data('crea') === 'font-wrapper') {
+    this.getEditableArea()?.css(FontUtils.getBasicStylesFromNode($html))
+    return $html.contents()
   }
 
   if (!isHtmlChanged) { // no tags with [x-div-type: html|body] were found
     return html
   } else { // tags with [x-div-type: html|body] were found and filtered out
     let resultHtml = ''
-    oHtml.each((index, node) => resultHtml += (node.nodeType === Node.TEXT_NODE ? '<p>' + node.nodeValue + '</p>' : node.outerHTML))
+    $html.each((index, node) => resultHtml += (node.nodeType === Node.TEXT_NODE ? '<p>' + node.nodeValue + '</p>' : node.outerHTML))
     return resultHtml
   }
 }
