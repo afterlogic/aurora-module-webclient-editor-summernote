@@ -92,7 +92,7 @@ function CHtmlEditorView(isBuiltInSignature, allowPlainTextMode, parentView) {
 
   this.textChanged = ko.observable(false)
 
-  this.actualTextСhanged = ko.observable(false)
+  this.actualTextChanged = ko.observable(false)
 
   this.templates = ko.observableArray([])
   this.templates.subscribe(() => {
@@ -221,13 +221,13 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
       callbacks: {
         onChange: () => {
           this.textChanged(true)
-          this.actualTextСhanged.valueHasMutated()
+          this.actualTextChanged.valueHasMutated()
           const html = this.oEditor ? this.oEditor.summernote('code') : ''
           this.htmlSize(html.length)
         },
         onChangeCodeview: () => {
           this.textChanged(true)
-          this.actualTextСhanged.valueHasMutated()
+          this.actualTextChanged.valueHasMutated()
           const html = this.oEditor ? this.oEditor.summernote('code') : ''
           this.htmlSize(html.length)
         },
@@ -420,8 +420,9 @@ CHtmlEditorView.prototype.changeSignatureContent = function (sNewSignatureConten
         }
       }
     }
+
     this.textChanged(true)
-    this.actualTextСhanged.valueHasMutated()
+    this.actualTextChanged.valueHasMutated()
   }
 }
 
