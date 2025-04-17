@@ -46,9 +46,7 @@ class Module extends \Aurora\System\Module\AbstractModule
      *
      * @ignore
      */
-    public function init()
-    {
-    }
+    public function init() {}
     /***** private functions *****/
 
     /***** public functions might be called with web API *****/
