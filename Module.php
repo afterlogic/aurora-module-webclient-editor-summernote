@@ -108,6 +108,7 @@ class Module extends \Aurora\System\Module\AbstractModule
             'FontSizes' => $this->getConfig('FontSizes', []),
             'DefaultFontSize' => $this->getConfig('DefaultFontSize', '16'),
             'Colors' => $this->getConfig('Colors', []),
+            'Icons' => $this->getConfig('Icons', []),
         );
     }
     /***** public functions might be called with web API *****/

@@ -84,6 +84,12 @@ class Settings extends \Aurora\System\Module\Settings
                 null,
                 'List of available colors'
             ),
+            'Icons' => new SettingsProperty(
+                [],
+                'array',
+                null,
+                'List of custom icons'
+            ),
         ];
     }
 }

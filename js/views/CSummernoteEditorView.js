@@ -176,7 +176,7 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
     const toolbar = [
       ['history', ['undo', 'redo']],
       ['style', ['bold', 'italic', 'underline']],
-      ['font', ['fontname', Settings.FontSizes.length > 0 ? 'customfontsize' : 'fontsize']],
+      ['font', ['strikethrough', 'fontname', Settings.FontSizes.length > 0 ? 'customfontsize' : 'fontsize']],
       ['color', ['color']],
       ['para', ['ul', 'ol', 'paragraph']],
       ['misc', MailSettings.AllowInsertImage ? ['table', 'link', 'picture', 'clear'] : ['table', 'link', 'clear']],
@@ -256,6 +256,7 @@ CHtmlEditorView.prototype.init = function (sText, bPlain, sTabIndex, sPlaceholde
     if (Settings.FontNames.length > 0) {
       options.fontNames = Settings.FontNames
     }
+    options.icons = Settings.Icons
     if (Settings.Colors.length > 0) {
       options.colors = Settings.Colors
     }

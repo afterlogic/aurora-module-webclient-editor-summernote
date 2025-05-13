@@ -9,6 +9,7 @@ module.exports = {
   FontSizes: [],
   DefaultFontSize: '',
   Colors: [],
+  Icons: [],
 
   /**
    * Initializes settings from AppData object sections.
@@ -23,5 +24,6 @@ module.exports = {
     this.FontSizes = Types.pArray(appDataSection?.FontSizes, this.FontSizes)
     this.DefaultFontSize = Types.pString(appDataSection?.DefaultFontSize, this.DefaultFontSize)
     this.Colors = Types.pArray(appDataSection?.Colors, this.Colors)
+    this.Icons = Types.pObject(appDataSection?.Icons, this.Icons)
   },
 }
