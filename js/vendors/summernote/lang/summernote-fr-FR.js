@@ -109,7 +109,7 @@ var __webpack_exports__ = {};
         codeview: 'Afficher le code HTML'
       },
       paragraph: {
-        paragraph: 'Paragraphe',
+        paragraph: 'Aligner le texte',
         outdent: 'Diminuer le retrait',
         indent: 'Augmenter le retrait',
         left: 'Aligner à gauche',
