@@ -113,7 +113,7 @@ var __webpack_exports__ = {};
         outdent: 'Diminuer le retrait',
         indent: 'Augmenter le retrait',
         left: 'Aligner à gauche',
-        center: 'Centrer',
+        center: 'Aligner au centre',
         right: 'Aligner à droite',
         justify: 'Justifier'
       },
@@ -148,7 +148,7 @@ var __webpack_exports__ = {};
         'strikethrough': 'Mettre en texte barré',
         'removeFormat': 'Nettoyer les styles',
         'justifyLeft': 'Aligner à gauche',
-        'justifyCenter': 'Centrer',
+        'justifyCenter': 'Aligner au centre',
         'justifyRight': 'Aligner à droite',
         'justifyFull': 'Justifier à gauche et à droite',
         'insertUnorderedList': 'Basculer liste à puces',
