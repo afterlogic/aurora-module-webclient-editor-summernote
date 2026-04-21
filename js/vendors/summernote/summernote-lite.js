@@ -2741,6 +2741,29 @@ var WrappedRange = /*#__PURE__*/function () {
     key: "pasteHTML",
     value: function pasteHTML(markup) {
       markup = ((markup || '') + '').trim(markup);
+
+      /**
+       * Begin custom code block
+       * 
+       * This code block added intentionally
+       * 
+       * Without it, summernote will paste html
+       * inside signature block
+       * 
+       * Original code leaved as is as a fallback
+       * if browser does not support W3C Range API
+       */
+      if (env.isW3CRangeSupport) {
+        var nativeRng = this.nativeRange();
+        var fragment = nativeRng.createContextualFragment(markup);
+        var insertedNodes = lists.from(fragment.childNodes);
+
+        nativeRng.insertNode(fragment);
+
+        return insertedNodes;
+      }
+      // End custom code block
+
       var contentsContainer = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<div></div>').html(markup)[0];
       var childNodes = lists.from(contentsContainer.childNodes);
 
@@ -6004,6 +6027,18 @@ var CodeView = /*#__PURE__*/function () {
     value: function purify(value) {
       if (this.options.codeviewFilter) {
         // filter code view regex
+
+        /**
+         * Begin custom code block
+         * 
+         * This comment removal code is added intentionally
+         * bc this is a new requirement
+         * 
+         * When updating summernote, don't forget to update this code
+         */
+        value = value.replace(/<!--[\s\S]*?-->/gmi, '');
+        // End custom code block
+
         value = value.replace(this.options.codeviewFilterRegex, '');
         // allow specific iframe tag
         if (this.options.codeviewIframeFilter) {
