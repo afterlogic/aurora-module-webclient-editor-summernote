@@ -1,27 +1,4 @@
-/*!
- * 
- * Super simple WYSIWYG editor v0.9.1
- * https://summernote.org
- *
- * Copyright 2013~ Hackerwins and contributors
- * Summernote may be freely distributed under the MIT license.
- *
- * Date: 2024-10-22T17:44Z
- *
- */
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(self, () => {
-return /******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-(function ($) {
+(function($) {
   $.extend(true, $.summernote.lang, {
     'de-CH': {
       font: {
@@ -34,7 +11,7 @@ var __webpack_exports__ = {};
         strikethrough: 'Durchgestrichen',
         subscript: 'Tiefgestellt',
         superscript: 'Hochgestellt',
-        size: 'Schriftgrösse'
+        size: 'Schriftgrösse',
       },
       image: {
         image: 'Bild',
@@ -56,14 +33,14 @@ var __webpack_exports__ = {};
         maximumFileSizeError: 'Maximale Dateigrösse überschritten',
         url: 'Bild URL',
         remove: 'Bild entfernen',
-        original: 'Original'
+        original: 'Original',
       },
       video: {
         video: 'Video',
         videoLink: 'Videolink',
         insert: 'Video einfügen',
         url: 'Video URL',
-        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion oder Youku)'
+        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion oder Youku)',
       },
       link: {
         link: 'Link',
@@ -72,7 +49,7 @@ var __webpack_exports__ = {};
         edit: 'Bearbeiten',
         textToDisplay: 'Anzeigetext',
         url: 'Link URL',
-        openInNewWindow: 'In neuem Fenster öffnen'
+        openInNewWindow: 'In neuem Fenster öffnen',
       },
       table: {
         table: 'Tabelle',
@@ -82,10 +59,10 @@ var __webpack_exports__ = {};
         addColRight: '+ Spalte rechts',
         delRow: 'Zeile löschen',
         delCol: 'Spalte löschen',
-        delTable: 'Tabelle löschen'
+        delTable: 'Tabelle löschen',
       },
       hr: {
-        insert: 'Horizontale Linie einfügen'
+        insert: 'Horizontale Linie einfügen',
       },
       style: {
         style: 'Stil',
@@ -98,16 +75,16 @@ var __webpack_exports__ = {};
         h3: 'Überschrift 3',
         h4: 'Überschrift 4',
         h5: 'Überschrift 5',
-        h6: 'Überschrift 6'
+        h6: 'Überschrift 6',
       },
       lists: {
         unordered: 'Aufzählung',
-        ordered: 'Nummerierung'
+        ordered: 'Nummerierung',
       },
       options: {
         help: 'Hilfe',
         fullscreen: 'Vollbild',
-        codeview: 'Quellcode anzeigen'
+        codeview: 'Quellcode anzeigen',
       },
       paragraph: {
         paragraph: 'Absatz',
@@ -116,7 +93,7 @@ var __webpack_exports__ = {};
         left: 'Links ausrichten',
         center: 'Zentriert ausrichten',
         right: 'Rechts ausrichten',
-        justify: 'Blocksatz'
+        justify: 'Blocksatz',
       },
       color: {
         recent: 'Letzte Farbe',
@@ -126,7 +103,7 @@ var __webpack_exports__ = {};
         transparent: 'Transparenz',
         setTransparent: 'Transparenz setzen',
         reset: 'Zurücksetzen',
-        resetToDefault: 'Auf Standard zurücksetzen'
+        resetToDefault: 'Auf Standard zurücksetzen',
       },
       shortcut: {
         shortcuts: 'Tastenkürzel',
@@ -135,7 +112,7 @@ var __webpack_exports__ = {};
         action: 'Aktion',
         paragraphFormatting: 'Absatzformatierung',
         documentStyle: 'Dokumentenstil',
-        extraKeys: 'Weitere Tasten'
+        extraKeys: 'Weitere Tasten',
       },
       help: {
         insertParagraph: 'Absatz einfügen',
@@ -164,21 +141,16 @@ var __webpack_exports__ = {};
         formatH5: 'Formatiert aktuellen Block als H5',
         formatH6: 'Formatiert aktuellen Block als H6',
         insertHorizontalRule: 'Fügt eine horizontale Linie ein',
-        'linkDialog.show': 'Zeigt den Linkdialog'
+        'linkDialog.show': 'Zeigt den Linkdialog',
       },
       history: {
         undo: 'Rückgängig',
-        redo: 'Wiederholen'
+        redo: 'Wiederholen',
       },
       specialChar: {
         specialChar: 'Sonderzeichen',
-        select: 'Zeichen auswählen'
-      }
-    }
+        select: 'Zeichen auswählen',
+      },
+    },
   });
 })(jQuery);
-/******/ 	return __webpack_exports__;
-/******/ })()
-;
-});
-//# sourceMappingURL=summernote-de-CH.js.map

@@ -1,27 +1,4 @@
-/*!
- * 
- * Super simple WYSIWYG editor v0.9.1
- * https://summernote.org
- *
- * Copyright 2013~ Hackerwins and contributors
- * Summernote may be freely distributed under the MIT license.
- *
- * Date: 2024-10-22T17:44Z
- *
- */
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(self, () => {
-return /******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-(function ($) {
+(function($) {
   $.extend(true, $.summernote.lang, {
     'sv-SE': {
       font: {
@@ -34,7 +11,7 @@ var __webpack_exports__ = {};
         strikethrough: 'Genomstruken',
         subscript: 'Nedsänkt',
         superscript: 'Upphöjd',
-        size: 'Teckenstorlek'
+        size: 'Teckenstorlek',
       },
       image: {
         image: 'Bild',
@@ -56,14 +33,14 @@ var __webpack_exports__ = {};
         maximumFileSizeError: 'Maximal filstorlek har överskridits.',
         url: 'Länk till bild',
         remove: 'Ta bort bild',
-        original: 'Original'
+        original: 'Original',
       },
       video: {
         video: 'Filmklipp',
         videoLink: 'Länk till filmklipp',
         insert: 'Infoga filmklipp',
         url: 'Länk till filmklipp',
-        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion eller Youku)'
+        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion eller Youku)',
       },
       link: {
         link: 'Länk',
@@ -72,7 +49,7 @@ var __webpack_exports__ = {};
         edit: 'Redigera',
         textToDisplay: 'Visningstext',
         url: 'Till vilken URL ska denna länk peka?',
-        openInNewWindow: 'Öppna i ett nytt fönster'
+        openInNewWindow: 'Öppna i ett nytt fönster',
       },
       table: {
         table: 'Tabell',
@@ -82,10 +59,10 @@ var __webpack_exports__ = {};
         addColRight: 'Lägg till kolumn åt höger',
         delRow: 'Radera rad',
         delCol: 'Radera kolumn',
-        delTable: 'Radera tabell'
+        delTable: 'Radera tabell',
       },
       hr: {
-        insert: 'Infoga horisontell linje'
+        insert: 'Infoga horisontell linje',
       },
       style: {
         style: 'Stil',
@@ -97,16 +74,16 @@ var __webpack_exports__ = {};
         h3: 'Rubrik 3',
         h4: 'Rubrik 4',
         h5: 'Rubrik 5',
-        h6: 'Rubrik 6'
+        h6: 'Rubrik 6',
       },
       lists: {
         unordered: 'Punktlista',
-        ordered: 'Numrerad lista'
+        ordered: 'Numrerad lista',
       },
       options: {
         help: 'Hjälp',
         fullscreen: 'Fullskärm',
-        codeview: 'HTML-visning'
+        codeview: 'HTML-visning',
       },
       paragraph: {
         paragraph: 'Justera text',
@@ -115,7 +92,7 @@ var __webpack_exports__ = {};
         left: 'Vänsterjusterad',
         center: 'Centrerad',
         right: 'Högerjusterad',
-        justify: 'Justera text'
+        justify: 'Justera text',
       },
       color: {
         recent: 'Senast använda färg',
@@ -125,7 +102,7 @@ var __webpack_exports__ = {};
         transparent: 'Genomskinlig',
         setTransparent: 'Gör genomskinlig',
         reset: 'Nollställ',
-        resetToDefault: 'Återställ till standard'
+        resetToDefault: 'Återställ till standard',
       },
       shortcut: {
         shortcuts: 'Kortkommandon',
@@ -134,7 +111,7 @@ var __webpack_exports__ = {};
         action: 'Funktion',
         paragraphFormatting: 'Avsnittsformatering',
         documentStyle: 'Dokumentstil',
-        extraKeys: 'Extra tangenter'
+        extraKeys: 'Extra tangenter',
       },
       help: {
         'insertParagraph': 'Infoga paragraf',
@@ -163,21 +140,16 @@ var __webpack_exports__ = {};
         'formatH5': 'Ändra formatet för aktuellt block till rubrik 5',
         'formatH6': 'Ändra formatet för aktuellt block till rubrik 6',
         'insertHorizontalRule': 'Infoga horisontell linje',
-        'linkDialog.show': 'Visa dialogruta för länk'
+        'linkDialog.show': 'Visa dialogruta för länk',
       },
       history: {
         undo: 'Ångra',
-        redo: 'Gör om'
+        redo: 'Gör om',
       },
       specialChar: {
         specialChar: 'SPECIALTECKEN',
-        select: 'Välj specialtecken'
-      }
-    }
+        select: 'Välj specialtecken',
+      },
+    },
   });
 })(jQuery);
-/******/ 	return __webpack_exports__;
-/******/ })()
-;
-});
-//# sourceMappingURL=summernote-sv-SE.js.map

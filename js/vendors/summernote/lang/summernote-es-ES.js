@@ -1,27 +1,4 @@
-/*!
- * 
- * Super simple WYSIWYG editor v0.9.1
- * https://summernote.org
- *
- * Copyright 2013~ Hackerwins and contributors
- * Summernote may be freely distributed under the MIT license.
- *
- * Date: 2024-10-22T17:44Z
- *
- */
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(self, () => {
-return /******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-(function ($) {
+(function($) {
   $.extend(true, $.summernote.lang, {
     'es-ES': {
       font: {
@@ -35,7 +12,7 @@ var __webpack_exports__ = {};
         subscript: 'Subíndice',
         superscript: 'Superíndice',
         size: 'Tamaño de la fuente',
-        sizeunit: 'Unidad del tamaño de letra'
+        sizeunit: 'Unidad del tamaño de letra',
       },
       image: {
         image: 'Imagen',
@@ -58,14 +35,14 @@ var __webpack_exports__ = {};
         maximumFileSizeError: 'Superado el tamaño máximo de fichero.',
         url: 'URL de la imagen',
         remove: 'Eliminar la imagen',
-        original: 'Original'
+        original: 'Original',
       },
       video: {
         video: 'Vídeo',
         videoLink: 'Enlace del vídeo',
         insert: 'Insertar un vídeo',
         url: 'URL del vídeo',
-        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion o Youku)'
+        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion o Youku)',
       },
       link: {
         link: 'Enlace',
@@ -74,7 +51,7 @@ var __webpack_exports__ = {};
         edit: 'Editar',
         textToDisplay: 'Texto a mostrar',
         url: '¿A qué URL lleva este enlace?',
-        openInNewWindow: 'Abrir en una nueva ventana'
+        openInNewWindow: 'Abrir en una nueva ventana',
       },
       table: {
         table: 'Tabla',
@@ -84,10 +61,10 @@ var __webpack_exports__ = {};
         addColRight: 'Añadir una columna a la derecha',
         delRow: 'Borrar la fila',
         delCol: 'Borrar la columna',
-        delTable: 'Borrar la tabla'
+        delTable: 'Borrar la tabla',
       },
       hr: {
-        insert: 'Insertar una línea horizontal'
+        insert: 'Insertar una línea horizontal',
       },
       style: {
         style: 'Estilo',
@@ -99,16 +76,16 @@ var __webpack_exports__ = {};
         h3: 'Título 3',
         h4: 'Título 4',
         h5: 'Título 5',
-        h6: 'Título 6'
+        h6: 'Título 6',
       },
       lists: {
         unordered: 'Lista',
-        ordered: 'Lista numerada'
+        ordered: 'Lista numerada',
       },
       options: {
         help: 'Ayuda',
         fullscreen: 'Pantalla completa',
-        codeview: 'Ver el código fuente'
+        codeview: 'Ver el código fuente',
       },
       paragraph: {
         paragraph: 'Párrafo',
@@ -117,7 +94,7 @@ var __webpack_exports__ = {};
         left: 'Alinear a la izquierda',
         center: 'Centrar',
         right: 'Alinear a la derecha',
-        justify: 'Justificar'
+        justify: 'Justificar',
       },
       color: {
         recent: 'Último color',
@@ -128,7 +105,7 @@ var __webpack_exports__ = {};
         setTransparent: 'Establecer transparente',
         reset: 'Restablecer',
         resetToDefault: 'Restablecer a los valores predefinidos',
-        cpSelect: 'Seleccionar'
+        cpSelect: 'Seleccionar',
       },
       shortcut: {
         shortcuts: 'Atajos de teclado',
@@ -137,7 +114,7 @@ var __webpack_exports__ = {};
         action: 'Acción',
         paragraphFormatting: 'Formato de párrafo',
         documentStyle: 'Estilo de documento',
-        extraKeys: 'Teclas adicionales'
+        extraKeys: 'Teclas adicionales',
       },
       help: {
         insertParagraph: 'Insertar un párrafo',
@@ -166,24 +143,19 @@ var __webpack_exports__ = {};
         formatH5: 'Cambiar el formato del bloque actual a H5',
         formatH6: 'Cambiar el formato del bloque actual a H6',
         insertHorizontalRule: 'Insertar una línea horizontal',
-        'linkDialog.show': 'Mostrar el panel de enlaces'
+        'linkDialog.show': 'Mostrar el panel de enlaces',
       },
       history: {
         undo: 'Deshacer',
-        redo: 'Rehacer'
+        redo: 'Rehacer',
       },
       specialChar: {
         specialChar: 'CARACTERES ESPECIALES',
-        select: 'Seleccionar caracteres especiales'
+        select: 'Seleccionar caracteres especiales',
       },
       output: {
-        noSelection: '¡No ha seleccionado nada!'
-      }
-    }
+        noSelection: '¡No ha seleccionado nada!',
+      },
+    },
   });
 })(jQuery);
-/******/ 	return __webpack_exports__;
-/******/ })()
-;
-});
-//# sourceMappingURL=summernote-es-ES.js.map

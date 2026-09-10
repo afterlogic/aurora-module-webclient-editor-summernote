@@ -1,27 +1,4 @@
-/*!
- * 
- * Super simple WYSIWYG editor v0.9.1
- * https://summernote.org
- *
- * Copyright 2013~ Hackerwins and contributors
- * Summernote may be freely distributed under the MIT license.
- *
- * Date: 2024-10-22T17:44Z
- *
- */
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(self, () => {
-return /******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-(function ($) {
+(function($) {
   $.extend(true, $.summernote.lang, {
     'bn-BD': {
       font: {
@@ -35,7 +12,7 @@ var __webpack_exports__ = {};
         subscript: 'নিম্নলিপি',
         superscript: 'উর্ধ্বলিপি',
         size: 'ফন্টের আকার',
-        sizeunit: 'ফন্টের আকারের একক'
+        sizeunit: 'ফন্টের আকারের একক',
       },
       image: {
         image: 'ছবি',
@@ -58,14 +35,14 @@ var __webpack_exports__ = {};
         maximumFileSizeError: 'সর্বোচ্চ ফাইলের আকার অতিক্রম করেছে।',
         url: 'ছবির URL',
         remove: 'ছবি সরান',
-        original: 'আসল'
+        original: 'আসল',
       },
       video: {
         video: 'ভিডিও',
         videoLink: 'ভিডিওর লিঙ্ক',
         insert: 'ভিডিও সন্নিবেশ করুন',
         url: 'ভিডিওর URL',
-        providers: '(ইউটিউব, গুগল ড্রাইভ, ভিমিও, ভিন, ইনস্টাগ্রাম, ডেইলিমোশন বা ইউকু)'
+        providers: '(ইউটিউব, গুগল ড্রাইভ, ভিমিও, ভিন, ইনস্টাগ্রাম, ডেইলিমোশন বা ইউকু)',
       },
       link: {
         link: 'লিঙ্ক',
@@ -74,7 +51,7 @@ var __webpack_exports__ = {};
         edit: 'সম্পাদনা করুন',
         textToDisplay: 'দেখানোর জন্য লেখা',
         url: 'এই লিঙ্কটি কোন URL-এ যাবে?',
-        openInNewWindow: 'নতুন উইন্ডোতে খুলুন'
+        openInNewWindow: 'নতুন উইন্ডোতে খুলুন',
       },
       table: {
         table: 'ছক',
@@ -84,10 +61,10 @@ var __webpack_exports__ = {};
         addColRight: 'ডানে কলাম যোগ করুন',
         delRow: 'সারি মুছুন',
         delCol: 'কলাম মুছুন',
-        delTable: 'ছক মুছুন'
+        delTable: 'ছক মুছুন',
       },
       hr: {
-        insert: 'বিভাজক রেখা সন্নিবেশ করুন'
+        insert: 'বিভাজক রেখা সন্নিবেশ করুন',
       },
       style: {
         style: 'শৈলী',
@@ -99,16 +76,16 @@ var __webpack_exports__ = {};
         h3: 'শীর্ষক ৩',
         h4: 'শীর্ষক ৪',
         h5: 'শীর্ষক ৫',
-        h6: 'শীর্ষক ৬'
+        h6: 'শীর্ষক ৬',
       },
       lists: {
         unordered: 'অবিন্যস্ত তালিকা',
-        ordered: 'বিন্যস্ত তালিকা'
+        ordered: 'বিন্যস্ত তালিকা',
       },
       options: {
         help: 'সাহায্য',
         fullscreen: 'পূর্ণ পর্দা',
-        codeview: 'কোড দৃশ্য'
+        codeview: 'কোড দৃশ্য',
       },
       paragraph: {
         paragraph: 'অনুচ্ছেদ',
@@ -117,7 +94,7 @@ var __webpack_exports__ = {};
         left: 'বামে সারিবদ্ধ করুন',
         center: 'কেন্দ্রে সারিবদ্ধ করুন',
         right: 'ডানে সারিবদ্ধ করুন',
-        justify: 'যথাযথ ফাঁক দিয়ে সাজান'
+        justify: 'যথাযথ ফাঁক দিয়ে সাজান',
       },
       color: {
         recent: 'সাম্প্রতিক রং',
@@ -128,7 +105,7 @@ var __webpack_exports__ = {};
         setTransparent: 'স্বচ্ছ নির্ধারণ করুন',
         reset: 'পুনঃস্থাপন করুন',
         resetToDefault: 'পূর্বনির্ধারিত ফিরিয়ে আনুন',
-        cpSelect: 'নির্বাচন করুন'
+        cpSelect: 'নির্বাচন করুন',
       },
       shortcut: {
         shortcuts: 'কীবোর্ড শর্টকাট',
@@ -137,7 +114,7 @@ var __webpack_exports__ = {};
         action: 'কার্য',
         paragraphFormatting: 'অনুচ্ছেদের বিন্যাসন',
         documentStyle: 'নথির শৈলী',
-        extraKeys: 'অতিরিক্ত কীগুলি'
+        extraKeys: 'অতিরিক্ত কীগুলি',
       },
       help: {
         'escape': 'এস্কেপ',
@@ -167,21 +144,16 @@ var __webpack_exports__ = {};
         'formatH5': 'বর্তমান ব্লকের বিন্যাসটি H5 হিসেবে পরিবর্তন',
         'formatH6': 'বর্তমান ব্লকের বিন্যাসটি H6 হিসেবে পরিবর্তন',
         'insertHorizontalRule': 'বিভাজক রেখা সন্নিবেশ',
-        'linkDialog.show': 'লিংক ডায়ালগ প্রদর্শন'
+        'linkDialog.show': 'লিংক ডায়ালগ প্রদর্শন',
       },
       history: {
         undo: 'পূর্বাবস্থায় আনুন',
-        redo: 'পুনঃকরুন'
+        redo: 'পুনঃকরুন',
       },
       specialChar: {
         specialChar: 'বিশেষ অক্ষর',
-        select: 'বিশেষ অক্ষর নির্বাচন করুন'
-      }
-    }
+        select: 'বিশেষ অক্ষর নির্বাচন করুন',
+      },
+    },
   });
 })(jQuery);
-/******/ 	return __webpack_exports__;
-/******/ })()
-;
-});
-//# sourceMappingURL=summernote-bn-BD.js.map

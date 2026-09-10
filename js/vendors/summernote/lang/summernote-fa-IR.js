@@ -1,27 +1,4 @@
-/*!
- * 
- * Super simple WYSIWYG editor v0.9.1
- * https://summernote.org
- *
- * Copyright 2013~ Hackerwins and contributors
- * Summernote may be freely distributed under the MIT license.
- *
- * Date: 2024-10-22T17:44Z
- *
- */
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(self, () => {
-return /******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-(function ($) {
+(function($) {
   $.extend(true, $.summernote.lang, {
     'fa-IR': {
       font: {
@@ -34,7 +11,7 @@ var __webpack_exports__ = {};
         strikethrough: 'خط خورده',
         subscript: 'زیرنویس',
         superscript: 'بالا نویس',
-        size: 'اندازه ی فونت'
+        size: 'اندازه ی فونت',
       },
       image: {
         image: 'تصویر',
@@ -56,14 +33,14 @@ var __webpack_exports__ = {};
         maximumFileSizeError: 'از حداکثر اندازه فایل بیشتر شده است.',
         url: 'آدرس تصویر',
         remove: 'حذف تصویر',
-        original: 'اصلی'
+        original: 'اصلی',
       },
       video: {
         video: 'ویدیو',
         videoLink: 'لینک ویدیو',
         insert: 'افزودن ویدیو',
         url: 'آدرس ویدیو ؟',
-        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion یا Youku)'
+        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion یا Youku)',
       },
       link: {
         link: 'لینک',
@@ -72,7 +49,7 @@ var __webpack_exports__ = {};
         edit: 'ویرایش',
         textToDisplay: 'متن جهت نمایش',
         url: 'این لینک به چه آدرسی باید برود ؟',
-        openInNewWindow: 'در یک پنجره ی جدید باز شود'
+        openInNewWindow: 'در یک پنجره ی جدید باز شود',
       },
       table: {
         table: 'جدول',
@@ -82,10 +59,10 @@ var __webpack_exports__ = {};
         addColRight: 'افزودن ستون راست',
         delRow: 'حذف ردیف',
         delCol: 'حذف ستون',
-        delTable: 'حذف جدول'
+        delTable: 'حذف جدول',
       },
       hr: {
-        insert: 'افزودن خط افقی'
+        insert: 'افزودن خط افقی',
       },
       style: {
         style: 'استیل',
@@ -97,16 +74,16 @@ var __webpack_exports__ = {};
         h3: 'سرتیتر 3',
         h4: 'سرتیتر 4',
         h5: 'سرتیتر 5',
-        h6: 'سرتیتر 6'
+        h6: 'سرتیتر 6',
       },
       lists: {
         unordered: 'لیست غیر ترتیبی',
-        ordered: 'لیست ترتیبی'
+        ordered: 'لیست ترتیبی',
       },
       options: {
         help: 'راهنما',
         fullscreen: 'نمایش تمام صفحه',
-        codeview: 'مشاهده ی کد'
+        codeview: 'مشاهده ی کد',
       },
       paragraph: {
         paragraph: 'پاراگراف',
@@ -115,7 +92,7 @@ var __webpack_exports__ = {};
         left: 'چپ چین',
         center: 'میان چین',
         right: 'راست چین',
-        justify: 'بلوک چین'
+        justify: 'بلوک چین',
       },
       color: {
         recent: 'رنگ اخیرا استفاده شده',
@@ -125,7 +102,7 @@ var __webpack_exports__ = {};
         transparent: 'بی رنگ',
         setTransparent: 'تنظیم حالت بی رنگ',
         reset: 'بازنشاندن',
-        resetToDefault: 'حالت پیش فرض'
+        resetToDefault: 'حالت پیش فرض',
       },
       shortcut: {
         shortcuts: 'دکمه های میان بر',
@@ -134,7 +111,7 @@ var __webpack_exports__ = {};
         action: 'عملیات',
         paragraphFormatting: 'فرمت پاراگراف',
         documentStyle: 'استیل سند',
-        extraKeys: 'کلیدهای اضافی'
+        extraKeys: 'کلیدهای اضافی',
       },
       help: {
         'insertParagraph': 'افزودن پاراگراف',
@@ -163,21 +140,16 @@ var __webpack_exports__ = {};
         'formatH5': 'تغییر فرمت متن به تگ <h5>',
         'formatH6': 'تغییر فرمت متن به تگ <h6>',
         'insertHorizontalRule': 'وارد کردن به صورت افقی',
-        'linkDialog.show': 'نمایش پیام لینک'
+        'linkDialog.show': 'نمایش پیام لینک',
       },
       history: {
         undo: 'واچیدن',
-        redo: 'بازچیدن'
+        redo: 'بازچیدن',
       },
       specialChar: {
         specialChar: 'کاراکتر خاص',
-        select: 'انتخاب کاراکتر خاص'
-      }
-    }
+        select: 'انتخاب کاراکتر خاص',
+      },      
+    },
   });
 })(jQuery);
-/******/ 	return __webpack_exports__;
-/******/ })()
-;
-});
-//# sourceMappingURL=summernote-fa-IR.js.map

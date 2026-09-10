@@ -1,27 +1,4 @@
-/*!
- * 
- * Super simple WYSIWYG editor v0.9.1
- * https://summernote.org
- *
- * Copyright 2013~ Hackerwins and contributors
- * Summernote may be freely distributed under the MIT license.
- *
- * Date: 2024-10-22T17:44Z
- *
- */
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(self, () => {
-return /******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-(function ($) {
+(function($) {
   $.extend(true, $.summernote.lang, {
     'bg-BG': {
       font: {
@@ -34,7 +11,7 @@ var __webpack_exports__ = {};
         strikethrough: 'Задраскано',
         subscript: 'Долен индекс',
         superscript: 'Горен индекс',
-        size: 'Размер на шрифта'
+        size: 'Размер на шрифта',
       },
       image: {
         image: 'Изображение',
@@ -56,14 +33,14 @@ var __webpack_exports__ = {};
         maximumFileSizeError: 'Достигнат Максимален размер на файла.',
         url: 'URL адрес на изображение',
         remove: 'Премахни изображение',
-        original: 'Оригинал'
+        original: 'Оригинал',
       },
       video: {
         video: 'Видео',
         videoLink: 'Видео линк',
         insert: 'Добави Видео',
         url: 'Видео URL?',
-        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion or Youku)'
+        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion or Youku)',
       },
       link: {
         link: 'Връзка',
@@ -72,7 +49,7 @@ var __webpack_exports__ = {};
         edit: 'Промени',
         textToDisplay: 'Текст за показване',
         url: 'URL адрес',
-        openInNewWindow: 'Отвори в нов прозорец'
+        openInNewWindow: 'Отвори в нов прозорец',
       },
       table: {
         table: 'Таблица',
@@ -82,10 +59,10 @@ var __webpack_exports__ = {};
         addColRight: 'Добави колона отдясно',
         delRow: 'Изтрии ред',
         delCol: 'Изтрии колона',
-        delTable: 'Изтрии таблица'
+        delTable: 'Изтрии таблица',
       },
       hr: {
-        insert: 'Добави хоризонтална линия'
+        insert: 'Добави хоризонтална линия',
       },
       style: {
         style: 'Стил',
@@ -97,16 +74,16 @@ var __webpack_exports__ = {};
         h3: 'Заглавие 3',
         h4: 'Заглавие 4',
         h5: 'Заглавие 5',
-        h6: 'Заглавие 6'
+        h6: 'Заглавие 6',
       },
       lists: {
         unordered: 'Символен списък',
-        ordered: 'Цифров списък'
+        ordered: 'Цифров списък',
       },
       options: {
         help: 'Помощ',
         fullscreen: 'На цял екран',
-        codeview: 'Преглед на код'
+        codeview: 'Преглед на код',
       },
       paragraph: {
         paragraph: 'Параграф',
@@ -115,7 +92,7 @@ var __webpack_exports__ = {};
         left: 'Подравняване в ляво',
         center: 'Център',
         right: 'Подравняване в дясно',
-        justify: 'Разтягане по ширина'
+        justify: 'Разтягане по ширина',
       },
       color: {
         recent: 'Последния избран цвят',
@@ -126,7 +103,7 @@ var __webpack_exports__ = {};
         setTransparent: 'Направете прозрачен',
         reset: 'Възстанови',
         resetToDefault: 'Възстанови оригиналните',
-        cpSelect: 'Изберете'
+        cpSelect: 'Изберете',
       },
       shortcut: {
         shortcuts: 'Клавишни комбинации',
@@ -135,7 +112,7 @@ var __webpack_exports__ = {};
         action: 'Действие',
         paragraphFormatting: 'Форматиране на параграф',
         documentStyle: 'Стил на документа',
-        extraKeys: 'Екстра бутони'
+        extraKeys: 'Екстра бутони',
       },
       help: {
         'insertParagraph': 'Добави Параграф',
@@ -164,21 +141,16 @@ var __webpack_exports__ = {};
         'formatH5': 'Change current block\'s format as H5',
         'formatH6': 'Change current block\'s format as H6',
         'insertHorizontalRule': 'Вмъкни хоризонтално правило',
-        'linkDialog.show': 'Show Link Dialog'
+        'linkDialog.show': 'Show Link Dialog',
       },
       history: {
         undo: 'Назад',
-        redo: 'Напред'
+        redo: 'Напред',
       },
       specialChar: {
         specialChar: 'SPECIAL CHARACTERS',
-        select: 'Избери Специални символи'
-      }
-    }
+        select: 'Избери Специални символи',
+      },
+    },
   });
 })(jQuery);
-/******/ 	return __webpack_exports__;
-/******/ })()
-;
-});
-//# sourceMappingURL=summernote-bg-BG.js.map

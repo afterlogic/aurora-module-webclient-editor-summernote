@@ -1,27 +1,4 @@
-/*!
- * 
- * Super simple WYSIWYG editor v0.9.1
- * https://summernote.org
- *
- * Copyright 2013~ Hackerwins and contributors
- * Summernote may be freely distributed under the MIT license.
- *
- * Date: 2024-10-22T17:44Z
- *
- */
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(self, () => {
-return /******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-(function ($) {
+(function($) {
   $.extend(true, $.summernote.lang, {
     'sr-RS': {
       font: {
@@ -34,7 +11,7 @@ var __webpack_exports__ = {};
         strikethrough: 'Прецртано',
         subscript: 'Subscript',
         superscript: 'Superscript',
-        size: 'Величина фонта'
+        size: 'Величина фонта',
       },
       image: {
         image: 'Слика',
@@ -56,14 +33,14 @@ var __webpack_exports__ = {};
         maximumFileSizeError: 'Maximum file size exceeded.',
         url: 'Адреса слике',
         remove: 'Уклони слику',
-        original: 'Original'
+        original: 'Original',
       },
       video: {
         video: 'Видео',
         videoLink: 'Веза ка видеу',
         insert: 'Уметни видео',
         url: 'URL видео',
-        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion или Youku)'
+        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion или Youku)',
       },
       link: {
         link: 'Веза',
@@ -72,7 +49,7 @@ var __webpack_exports__ = {};
         edit: 'Уреди',
         textToDisplay: 'Текст за приказ',
         url: 'Интернет адреса',
-        openInNewWindow: 'Отвори у новом прозору'
+        openInNewWindow: 'Отвори у новом прозору',
       },
       table: {
         table: 'Табела',
@@ -82,10 +59,10 @@ var __webpack_exports__ = {};
         addColRight: 'Add column right',
         delRow: 'Delete row',
         delCol: 'Delete column',
-        delTable: 'Delete table'
+        delTable: 'Delete table',
       },
       hr: {
-        insert: 'Уметни хоризонталну линију'
+        insert: 'Уметни хоризонталну линију',
       },
       style: {
         style: 'Стил',
@@ -97,16 +74,16 @@ var __webpack_exports__ = {};
         h3: 'Заглавље 3',
         h4: 'Заглавље 4',
         h5: 'Заглавље 5',
-        h6: 'Заглавље 6'
+        h6: 'Заглавље 6',
       },
       lists: {
         unordered: 'Обична листа',
-        ordered: 'Нумерисана листа'
+        ordered: 'Нумерисана листа',
       },
       options: {
         help: 'Помоћ',
         fullscreen: 'Преко целог екрана',
-        codeview: 'Изворни код'
+        codeview: 'Изворни код',
       },
       paragraph: {
         paragraph: 'Параграф',
@@ -115,7 +92,7 @@ var __webpack_exports__ = {};
         left: 'Поравнај у лево',
         center: 'Центрирано',
         right: 'Поравнај у десно',
-        justify: 'Поравнај обострано'
+        justify: 'Поравнај обострано',
       },
       color: {
         recent: 'Последња боја',
@@ -125,7 +102,7 @@ var __webpack_exports__ = {};
         transparent: 'Провидна',
         setTransparent: 'Провидна',
         reset: 'Опозив',
-        resetToDefault: 'Подразумевана'
+        resetToDefault: 'Подразумевана',
       },
       shortcut: {
         shortcuts: 'Пречице са тастатуре',
@@ -134,7 +111,7 @@ var __webpack_exports__ = {};
         action: 'Акција',
         paragraphFormatting: 'Форматирање параграфа',
         documentStyle: 'Стил документа',
-        extraKeys: 'Додатне комбинације'
+        extraKeys: 'Додатне комбинације',
       },
       help: {
         'insertParagraph': 'Insert Paragraph',
@@ -163,21 +140,16 @@ var __webpack_exports__ = {};
         'formatH5': 'Change current block\'s format as H5',
         'formatH6': 'Change current block\'s format as H6',
         'insertHorizontalRule': 'Insert horizontal rule',
-        'linkDialog.show': 'Show Link Dialog'
+        'linkDialog.show': 'Show Link Dialog',
       },
       history: {
         undo: 'Поништи',
-        redo: 'Понови'
+        redo: 'Понови',
       },
       specialChar: {
         specialChar: 'SPECIAL CHARACTERS',
-        select: 'Select Special characters'
-      }
-    }
+        select: 'Select Special characters',
+      },
+    },
   });
 })(jQuery);
-/******/ 	return __webpack_exports__;
-/******/ })()
-;
-});
-//# sourceMappingURL=summernote-sr-RS.js.map

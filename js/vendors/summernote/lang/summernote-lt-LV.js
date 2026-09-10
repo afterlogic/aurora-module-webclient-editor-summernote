@@ -1,27 +1,4 @@
-/*!
- * 
- * Super simple WYSIWYG editor v0.9.1
- * https://summernote.org
- *
- * Copyright 2013~ Hackerwins and contributors
- * Summernote may be freely distributed under the MIT license.
- *
- * Date: 2024-10-22T17:44Z
- *
- */
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(self, () => {
-return /******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-(function ($) {
+(function($) {
   $.extend(true, $.summernote.lang, {
     'lv-LV': {
       font: {
@@ -34,7 +11,7 @@ var __webpack_exports__ = {};
         strikethrough: 'Nosvītrots',
         superscript: 'Augšraksts',
         subscript: 'Apakšraksts',
-        size: 'Fonta lielums'
+        size: 'Fonta lielums',
       },
       image: {
         image: 'Attēls',
@@ -56,14 +33,14 @@ var __webpack_exports__ = {};
         maximumFileSizeError: 'Faila izmērs pārāk liels!',
         url: 'Attēla URL',
         remove: 'Dzēst attēlu',
-        original: 'Oriģināls'
+        original: 'Oriģināls',
       },
       video: {
         video: 'Video',
         videoLink: 'Video saite',
         insert: 'Ievietot Video',
         url: 'Video URL?',
-        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion or Youku)'
+        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion or Youku)',
       },
       link: {
         link: 'Saite',
@@ -72,7 +49,7 @@ var __webpack_exports__ = {};
         edit: 'Rediģēt',
         textToDisplay: 'Saites saturs',
         url: 'Uz kādu URL šai saitei būtu jāved?',
-        openInNewWindow: 'Atvērt jaunā logā'
+        openInNewWindow: 'Atvērt jaunā logā',
       },
       table: {
         table: 'Tabula',
@@ -82,10 +59,10 @@ var __webpack_exports__ = {};
         addColRight: 'Pievienot kolonnu pa labi',
         delRow: 'Dzēst rindu',
         delCol: 'Dzēst kolonnu',
-        delTable: 'Dzēst tabulu'
+        delTable: 'Dzēst tabulu',
       },
       hr: {
-        insert: 'Ievietot līniju'
+        insert: 'Ievietot līniju',
       },
       style: {
         style: 'Stils',
@@ -97,16 +74,16 @@ var __webpack_exports__ = {};
         h3: 'Virsraksts h3',
         h4: 'Virsraksts h4',
         h5: 'Virsraksts h5',
-        h6: 'Virsraksts h6'
+        h6: 'Virsraksts h6',
       },
       lists: {
         unordered: 'Nenumurēts saraksts',
-        ordered: 'Numurēts saraksts'
+        ordered: 'Numurēts saraksts',
       },
       options: {
         help: 'Palīdzība',
         fullscreen: 'Pa visu ekrānu',
-        codeview: 'HTML kods'
+        codeview: 'HTML kods',
       },
       paragraph: {
         paragraph: 'Paragrāfs',
@@ -115,7 +92,7 @@ var __webpack_exports__ = {};
         left: 'Līdzināt pa kreisi',
         center: 'Centrēt',
         right: 'Līdzināt pa labi',
-        justify: 'Līdzināt gar abām malām'
+        justify: 'Līdzināt gar abām malām',
       },
       color: {
         recent: 'Nesen izmantotās',
@@ -125,7 +102,7 @@ var __webpack_exports__ = {};
         transparent: 'Caurspīdīgs',
         setTransparent: 'Iestatīt caurspīdīgumu',
         reset: 'Atjaunot',
-        resetToDefault: 'Atjaunot noklusējumu'
+        resetToDefault: 'Atjaunot noklusējumu',
       },
       shortcut: {
         shortcuts: 'Saīsnes',
@@ -134,7 +111,7 @@ var __webpack_exports__ = {};
         action: 'Darbība',
         paragraphFormatting: 'Paragrāfa formatēšana',
         documentStyle: 'Dokumenta stils',
-        extraKeys: 'Citas taustiņu kombinācijas'
+        extraKeys: 'Citas taustiņu kombinācijas',
       },
       help: {
         insertParagraph: 'Ievietot Paragrāfu',
@@ -163,21 +140,16 @@ var __webpack_exports__ = {};
         formatH5: 'Mainīt bloka tipu uz virsrakstu H5',
         formatH6: 'Mainīt bloka tipu uz virsrakstu H6',
         insertHorizontalRule: 'Ievietot horizontālu līniju',
-        'linkDialog.show': 'Parādīt saites logu'
+        'linkDialog.show': 'Parādīt saites logu',
       },
       history: {
         undo: 'Atsauks (undo)',
-        redo: 'Atkārtot (redo)'
+        redo: 'Atkārtot (redo)',
       },
       specialChar: {
         specialChar: 'ĪPAŠIE SIMBOLI',
-        select: 'Izvēlieties īpašos simbolus'
-      }
-    }
+        select: 'Izvēlieties īpašos simbolus',
+      },
+    },
   });
 })(jQuery);
-/******/ 	return __webpack_exports__;
-/******/ })()
-;
-});
-//# sourceMappingURL=summernote-lt-LV.js.map

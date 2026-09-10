@@ -1,27 +1,4 @@
-/*!
- * 
- * Super simple WYSIWYG editor v0.9.1
- * https://summernote.org
- *
- * Copyright 2013~ Hackerwins and contributors
- * Summernote may be freely distributed under the MIT license.
- *
- * Date: 2024-10-22T17:44Z
- *
- */
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(self, () => {
-return /******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-(function ($) {
+(function($) {
   $.extend(true, $.summernote.lang, {
     'zh-TW': {
       font: {
@@ -34,7 +11,7 @@ var __webpack_exports__ = {};
         strikethrough: '刪除線',
         subscript: '下標',
         superscript: '上標',
-        size: '字號'
+        size: '字號',
       },
       image: {
         image: '圖片',
@@ -56,14 +33,14 @@ var __webpack_exports__ = {};
         maximumFileSizeError: '文件大小超出最大值。',
         url: '圖片網址',
         remove: '移除圖片',
-        original: 'Original'
+        original: 'Original',
       },
       video: {
         video: '影片',
         videoLink: '影片連結',
         insert: '插入影片',
         url: '影片網址',
-        providers: '(優酷, Instagram, DailyMotion, Youtube等)'
+        providers: '(優酷, Instagram, DailyMotion, Youtube等)',
       },
       link: {
         link: '連結',
@@ -72,7 +49,7 @@ var __webpack_exports__ = {};
         edit: '編輯連結',
         textToDisplay: '顯示文字',
         url: '連結網址',
-        openInNewWindow: '在新視窗開啟'
+        openInNewWindow: '在新視窗開啟',
       },
       table: {
         table: '表格',
@@ -82,10 +59,10 @@ var __webpack_exports__ = {};
         addColRight: '右方插入欄',
         delRow: '刪除列',
         delCol: '刪除欄',
-        delTable: '刪除表格'
+        delTable: '刪除表格',
       },
       hr: {
-        insert: '水平線'
+        insert: '水平線',
       },
       style: {
         style: '樣式',
@@ -97,16 +74,16 @@ var __webpack_exports__ = {};
         h3: '標題 3',
         h4: '標題 4',
         h5: '標題 5',
-        h6: '標題 6'
+        h6: '標題 6',
       },
       lists: {
         unordered: '項目清單',
-        ordered: '編號清單'
+        ordered: '編號清單',
       },
       options: {
         help: '幫助',
         fullscreen: '全螢幕',
-        codeview: '原始碼'
+        codeview: '原始碼',
       },
       paragraph: {
         paragraph: '段落',
@@ -115,7 +92,7 @@ var __webpack_exports__ = {};
         left: '靠左對齊',
         center: '靠中對齊',
         right: '靠右對齊',
-        justify: '左右對齊'
+        justify: '左右對齊',
       },
       color: {
         recent: '字型顏色',
@@ -125,7 +102,7 @@ var __webpack_exports__ = {};
         transparent: '透明',
         setTransparent: '透明',
         reset: '重設',
-        resetToDefault: '預設'
+        resetToDefault: '預設',
       },
       shortcut: {
         shortcuts: '快捷鍵',
@@ -134,7 +111,7 @@ var __webpack_exports__ = {};
         action: '動作',
         paragraphFormatting: '段落格式',
         documentStyle: '文件格式',
-        extraKeys: '額外按鍵'
+        extraKeys: '額外按鍵',
       },
       help: {
         'insertParagraph': 'Insert Paragraph',
@@ -163,21 +140,16 @@ var __webpack_exports__ = {};
         'formatH5': 'Change current block\'s format as H5',
         'formatH6': 'Change current block\'s format as H6',
         'insertHorizontalRule': 'Insert horizontal rule',
-        'linkDialog.show': 'Show Link Dialog'
+        'linkDialog.show': 'Show Link Dialog',
       },
       history: {
         undo: '復原',
-        redo: '取消復原'
+        redo: '取消復原',
       },
       specialChar: {
         specialChar: 'SPECIAL CHARACTERS',
-        select: 'Select Special characters'
-      }
-    }
+        select: 'Select Special characters',
+      },
+    },
   });
 })(jQuery);
-/******/ 	return __webpack_exports__;
-/******/ })()
-;
-});
-//# sourceMappingURL=summernote-zh-TW.js.map

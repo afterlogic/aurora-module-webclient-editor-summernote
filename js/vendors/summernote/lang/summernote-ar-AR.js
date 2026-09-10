@@ -1,27 +1,4 @@
-/*!
- * 
- * Super simple WYSIWYG editor v0.9.1
- * https://summernote.org
- *
- * Copyright 2013~ Hackerwins and contributors
- * Summernote may be freely distributed under the MIT license.
- *
- * Date: 2024-10-22T17:44Z
- *
- */
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(self, () => {
-return /******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-(function ($) {
+(function($) {
   $.extend(true, $.summernote.lang, {
     'ar-AR': {
       font: {
@@ -34,7 +11,7 @@ var __webpack_exports__ = {};
         strikethrough: 'فى وسطه خط',
         subscript: 'مخطوطة',
         superscript: 'حرف فوقي',
-        size: 'الحجم'
+        size: 'الحجم',
       },
       image: {
         image: 'صورة',
@@ -56,14 +33,14 @@ var __webpack_exports__ = {};
         maximumFileSizeError: 'تم تجاوز الحد الأقصى لحجم الملف',
         url: 'رابط الصورة',
         remove: 'حذف الصورة',
-        original: 'Original'
+        original: 'Original',
       },
       video: {
         video: 'فيديو',
         videoLink: 'رابط الفيديو',
         insert: 'إدراج الفيديو',
         url: 'رابط الفيديو',
-        providers: '(YouTube, Google Drive, Vimeo, Vine, Instagram, DailyMotion or Youku)'
+        providers: '(YouTube, Google Drive, Vimeo, Vine, Instagram, DailyMotion or Youku)',
       },
       link: {
         link: 'رابط',
@@ -72,7 +49,7 @@ var __webpack_exports__ = {};
         edit: 'تعديل',
         textToDisplay: 'النص',
         url: 'مسار الرابط',
-        openInNewWindow: 'فتح في نافذة جديدة'
+        openInNewWindow: 'فتح في نافذة جديدة',
       },
       table: {
         table: 'جدول',
@@ -82,10 +59,10 @@ var __webpack_exports__ = {};
         addColRight: 'إضافة عمود بعده',
         delRow: 'حذف سطر',
         delCol: 'حذف عمود',
-        delTable: 'حذف الجدول'
+        delTable: 'حذف الجدول',
       },
       hr: {
-        insert: 'إدراج خط أفقي'
+        insert: 'إدراج خط أفقي',
       },
       style: {
         style: 'تنسيق',
@@ -97,16 +74,16 @@ var __webpack_exports__ = {};
         h3: 'عنوان رئيسي 3',
         h4: 'عنوان رئيسي 4',
         h5: 'عنوان رئيسي 5',
-        h6: 'عنوان رئيسي 6'
+        h6: 'عنوان رئيسي 6',
       },
       lists: {
         unordered: 'قائمة مُنقطة',
-        ordered: 'قائمة مُرقمة'
+        ordered: 'قائمة مُرقمة',
       },
       options: {
         help: 'مساعدة',
         fullscreen: 'حجم الشاشة بالكامل',
-        codeview: 'شفيرة المصدر'
+        codeview: 'شفيرة المصدر',
       },
       paragraph: {
         paragraph: 'فقرة',
@@ -115,7 +92,7 @@ var __webpack_exports__ = {};
         left: 'محاذاة لليسار',
         center: 'توسيط',
         right: 'محاذاة لليمين',
-        justify: 'ملئ السطر'
+        justify: 'ملئ السطر',
       },
       color: {
         recent: 'تم إستخدامه',
@@ -126,7 +103,7 @@ var __webpack_exports__ = {};
         setTransparent: 'بدون خلفية',
         reset: 'إعادة الضبط',
         resetToDefault: 'إعادة الضبط',
-        cpSelect: 'اختار'
+        cpSelect: 'اختار',
       },
       shortcut: {
         shortcuts: 'إختصارات',
@@ -135,7 +112,7 @@ var __webpack_exports__ = {};
         action: 'Action',
         paragraphFormatting: 'تنسيق الفقرة',
         documentStyle: 'تنسيق المستند',
-        extraKeys: 'أزرار إضافية'
+        extraKeys: 'أزرار إضافية',
       },
       help: {
         'insertParagraph': 'إدراج فقرة',
@@ -164,21 +141,16 @@ var __webpack_exports__ = {};
         'formatH5': 'تغيير التنسيق للكتلة الحالية إلى ترويسة 5',
         'formatH6': 'تغيير التنسيق للكتلة الحالية إلى ترويسة 6',
         'insertHorizontalRule': 'إدراج خط أفقي',
-        'linkDialog.show': 'إظهار خصائص الرابط'
+        'linkDialog.show': 'إظهار خصائص الرابط',
       },
       history: {
         undo: 'تراجع',
-        redo: 'إعادة'
+        redo: 'إعادة',
       },
       specialChar: {
         specialChar: 'محارف خاصة',
-        select: 'اختر المحرف الخاص'
-      }
-    }
+        select: 'اختر المحرف الخاص',
+      },
+    },
   });
 })(jQuery);
-/******/ 	return __webpack_exports__;
-/******/ })()
-;
-});
-//# sourceMappingURL=summernote-ar-AR.js.map

@@ -1,27 +1,4 @@
-/*!
- * 
- * Super simple WYSIWYG editor v0.9.1
- * https://summernote.org
- *
- * Copyright 2013~ Hackerwins and contributors
- * Summernote may be freely distributed under the MIT license.
- *
- * Date: 2024-10-22T17:44Z
- *
- */
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else {
-		var a = factory();
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(self, () => {
-return /******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-(function ($) {
+(function($) {
   $.extend(true, $.summernote.lang, {
     'sk-SK': {
       font: {
@@ -34,7 +11,7 @@ var __webpack_exports__ = {};
         strikethrough: 'Prečiarknuté',
         subscript: 'Subscript',
         superscript: 'Superscript',
-        size: 'Veľkosť písma'
+        size: 'Veľkosť písma',
       },
       image: {
         image: 'Obrázok',
@@ -56,14 +33,14 @@ var __webpack_exports__ = {};
         maximumFileSizeError: 'Maximálna veľkosť súboru bola prekročená.',
         url: 'URL obrázku',
         removeMedia: 'Odstrániť obrázok',
-        original: 'Originál'
+        original: 'Originál',
       },
       video: {
         video: 'Video',
         videoLink: 'Odkaz videa',
         insert: 'Vložiť video',
         url: 'URL videa?',
-        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion alebo Youku)'
+        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion alebo Youku)',
       },
       link: {
         link: 'Odkaz',
@@ -72,7 +49,7 @@ var __webpack_exports__ = {};
         edit: 'Upraviť',
         textToDisplay: 'Zobrazovaný text',
         url: 'Na akú URL adresu má tento odkaz viesť?',
-        openInNewWindow: 'Otvoriť v novom okne'
+        openInNewWindow: 'Otvoriť v novom okne',
       },
       table: {
         table: 'Tabuľka',
@@ -82,10 +59,10 @@ var __webpack_exports__ = {};
         addColRight: 'Pridať stĺpec vpravo',
         delRow: 'Odstrániť riadok',
         delCol: 'Odstrániť stĺpec',
-        delTable: 'Odstrániť tabuľku'
+        delTable: 'Odstrániť tabuľku',
       },
       hr: {
-        insert: 'Vložit vodorovnú čiaru'
+        insert: 'Vložit vodorovnú čiaru',
       },
       style: {
         style: 'Štýl',
@@ -97,16 +74,16 @@ var __webpack_exports__ = {};
         h3: 'Nadpis 3',
         h4: 'Nadpis 4',
         h5: 'Nadpis 5',
-        h6: 'Nadpis 6'
+        h6: 'Nadpis 6',
       },
       lists: {
         unordered: 'Odrážkový zoznam',
-        ordered: 'Číselný zoznam'
+        ordered: 'Číselný zoznam',
       },
       options: {
         help: 'Pomoc',
         fullscreen: 'Celá obrazovka',
-        codeview: 'HTML kód'
+        codeview: 'HTML kód',
       },
       paragraph: {
         paragraph: 'Odsek',
@@ -115,7 +92,7 @@ var __webpack_exports__ = {};
         left: 'Zarovnať doľava',
         center: 'Zarovnať na stred',
         right: 'Zarovnať doprava',
-        justify: 'Zarovnať obojstranne'
+        justify: 'Zarovnať obojstranne',
       },
       color: {
         recent: 'Aktuálna farba',
@@ -125,7 +102,7 @@ var __webpack_exports__ = {};
         transparent: 'Priehľadnosť',
         setTransparent: 'Nastaviť priehľadnosť',
         reset: 'Obnoviť',
-        resetToDefault: 'Obnoviť prednastavené'
+        resetToDefault: 'Obnoviť prednastavené',
       },
       shortcut: {
         shortcuts: 'Klávesové skratky',
@@ -134,7 +111,7 @@ var __webpack_exports__ = {};
         action: 'Akcia',
         paragraphFormatting: 'Formátovanie odseku',
         documentStyle: 'Štýl dokumentu',
-        extraKeys: 'Ďalšie kombinácie'
+        extraKeys: 'Ďalšie kombinácie',
       },
       help: {
         'insertParagraph': 'Vložiť odsek',
@@ -163,21 +140,16 @@ var __webpack_exports__ = {};
         'formatH5': 'Change current block\'s format as H5',
         'formatH6': 'Change current block\'s format as H6',
         'insertHorizontalRule': 'Vložiť horizontálne pravidlo',
-        'linkDialog.show': 'Dialóg na zadanie odkazu'
+        'linkDialog.show': 'Dialóg na zadanie odkazu',
       },
       history: {
         undo: 'Krok vzad',
-        redo: 'Krok dopredu'
+        redo: 'Krok dopredu',
       },
       specialChar: {
         specialChar: 'ŠPECIÁLNE ZNAKY',
-        select: 'Vybrať špeciálne znaky'
-      }
-    }
+        select: 'Vybrať špeciálne znaky',
+      },
+    },
   });
 })(jQuery);
-/******/ 	return __webpack_exports__;
-/******/ })()
-;
-});
-//# sourceMappingURL=summernote-sk-SK.js.map

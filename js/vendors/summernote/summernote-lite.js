@@ -1,1956 +1,1217 @@
-/*!
- * 
- * Super simple WYSIWYG editor v0.9.1
- * https://summernote.org
- *
- * Copyright 2013~ Hackerwins and contributors
- * Summernote may be freely distributed under the MIT license.
- *
- * Date: 2024-12-10T18:59Z
- *
+/*! 
+Super simple WYSIWYG editor v0.9.1
+https://summernote.org
+
+Copyright 2013- Hackerwins and contributors
+Summernote may be freely distributed under the MIT license.
+
+Date: 2026-09-10T13:57Z
  */
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("jquery"));
-	else if(typeof define === 'function' && define.amd)
-		define(["jquery"], factory);
-	else {
-		var a = typeof exports === 'object' ? factory(require("jquery")) : factory(root["jQuery"]);
-		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
-	}
-})(self, (__WEBPACK_EXTERNAL_MODULE__8938__) => {
-return /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
-
-/***/ 7000:
-/***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
-
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8938);
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-
-(jquery__WEBPACK_IMPORTED_MODULE_0___default().summernote) = (jquery__WEBPACK_IMPORTED_MODULE_0___default().summernote) || {
-  lang: {}
-};
-jquery__WEBPACK_IMPORTED_MODULE_0___default().extend(true, (jquery__WEBPACK_IMPORTED_MODULE_0___default().summernote).lang, {
-  'en-US': {
-    font: {
-      bold: 'Bold',
-      italic: 'Italic',
-      underline: 'Underline',
-      clear: 'Remove Font Style',
-      height: 'Line Height',
-      name: 'Font Family',
-      strikethrough: 'Strikethrough',
-      subscript: 'Subscript',
-      superscript: 'Superscript',
-      size: 'Font Size',
-      sizeunit: 'Font Size Unit'
-    },
-    image: {
-      image: 'Picture',
-      insert: 'Insert Image',
-      resizeFull: 'Resize full',
-      resizeHalf: 'Resize half',
-      resizeQuarter: 'Resize quarter',
-      resizeNone: 'Original size',
-      floatLeft: 'Float Left',
-      floatRight: 'Float Right',
-      floatNone: 'Remove float',
-      shapeRounded: 'Shape: Rounded',
-      shapeCircle: 'Shape: Circle',
-      shapeThumbnail: 'Shape: Thumbnail',
-      shapeNone: 'Shape: None',
-      dragImageHere: 'Drag image or text here',
-      dropImage: 'Drop image or Text',
-      selectFromFiles: 'Select from files',
-      maximumFileSize: 'Maximum file size',
-      maximumFileSizeError: 'Maximum file size exceeded.',
-      url: 'Image URL',
-      remove: 'Remove Image',
-      original: 'Original'
-    },
-    video: {
-      video: 'Video',
-      videoLink: 'Video Link',
-      insert: 'Insert Video',
-      url: 'Video URL',
-      providers: '(YouTube, Google Drive, Vimeo, Vine, Instagram, DailyMotion, Youku, Peertube)'
-    },
-    link: {
-      link: 'Link',
-      insert: 'Insert Link',
-      unlink: 'Unlink',
-      edit: 'Edit',
-      textToDisplay: 'Text to display',
-      url: 'To what URL should this link go?',
-      openInNewWindow: 'Open in new window'
-    },
-    table: {
-      table: 'Table',
-      addRowAbove: 'Add row above',
-      addRowBelow: 'Add row below',
-      addColLeft: 'Add column left',
-      addColRight: 'Add column right',
-      delRow: 'Delete row',
-      delCol: 'Delete column',
-      delTable: 'Delete table'
-    },
-    hr: {
-      insert: 'Insert Horizontal Rule'
-    },
-    style: {
-      style: 'Style',
-      p: 'Normal',
-      blockquote: 'Quote',
-      pre: 'Code',
-      h1: 'Header 1',
-      h2: 'Header 2',
-      h3: 'Header 3',
-      h4: 'Header 4',
-      h5: 'Header 5',
-      h6: 'Header 6'
-    },
-    lists: {
-      unordered: 'Unordered list',
-      ordered: 'Ordered list'
-    },
-    options: {
-      help: 'Help',
-      fullscreen: 'Full Screen',
-      codeview: 'Code View'
-    },
-    paragraph: {
-      paragraph: 'Paragraph',
-      outdent: 'Outdent',
-      indent: 'Indent',
-      left: 'Align left',
-      center: 'Align center',
-      right: 'Align right',
-      justify: 'Justify full'
-    },
-    color: {
-      recent: 'Recent Color',
-      more: 'More Color',
-      background: 'Background Color',
-      foreground: 'Text Color',
-      transparent: 'Transparent',
-      setTransparent: 'Set transparent',
-      reset: 'Reset',
-      resetToDefault: 'Reset to default',
-      cpSelect: 'Select'
-    },
-    shortcut: {
-      shortcuts: 'Keyboard shortcuts',
-      close: 'Close',
-      textFormatting: 'Text formatting',
-      action: 'Action',
-      paragraphFormatting: 'Paragraph formatting',
-      documentStyle: 'Document Style',
-      extraKeys: 'Extra keys'
-    },
-    help: {
-      'escape': 'Escape',
-      'insertParagraph': 'Insert Paragraph',
-      'undo': 'Undo the last command',
-      'redo': 'Redo the last command',
-      'tab': 'Tab',
-      'untab': 'Untab',
-      'bold': 'Set a bold style',
-      'italic': 'Set a italic style',
-      'underline': 'Set a underline style',
-      'strikethrough': 'Set a strikethrough style',
-      'removeFormat': 'Clean a style',
-      'justifyLeft': 'Set left align',
-      'justifyCenter': 'Set center align',
-      'justifyRight': 'Set right align',
-      'justifyFull': 'Set full align',
-      'insertUnorderedList': 'Toggle unordered list',
-      'insertOrderedList': 'Toggle ordered list',
-      'outdent': 'Outdent on current paragraph',
-      'indent': 'Indent on current paragraph',
-      'formatPara': 'Change current block\'s format as a paragraph(P tag)',
-      'formatH1': 'Change current block\'s format as H1',
-      'formatH2': 'Change current block\'s format as H2',
-      'formatH3': 'Change current block\'s format as H3',
-      'formatH4': 'Change current block\'s format as H4',
-      'formatH5': 'Change current block\'s format as H5',
-      'formatH6': 'Change current block\'s format as H6',
-      'insertHorizontalRule': 'Insert horizontal rule',
-      'linkDialog.show': 'Show Link Dialog'
-    },
-    history: {
-      undo: 'Undo',
-      redo: 'Redo'
-    },
-    specialChar: {
-      specialChar: 'SPECIAL CHARACTERS',
-      select: 'Select Special characters'
-    },
-    output: {
-      noSelection: 'No Selection Made!'
+(function() {
+  "use strict";
+  $.summernote = $.summernote || {
+    lang: {}
+  };
+  $.extend(true, $.summernote.lang, {
+    "en-US": {
+      font: {
+        bold: "Bold",
+        italic: "Italic",
+        underline: "Underline",
+        clear: "Remove Font Style",
+        height: "Line Height",
+        name: "Font Family",
+        strikethrough: "Strikethrough",
+        subscript: "Subscript",
+        superscript: "Superscript",
+        size: "Font Size",
+        sizeunit: "Font Size Unit"
+      },
+      image: {
+        image: "Picture",
+        insert: "Insert Image",
+        resizeFull: "Resize full",
+        resizeHalf: "Resize half",
+        resizeQuarter: "Resize quarter",
+        resizeNone: "Original size",
+        floatLeft: "Float Left",
+        floatRight: "Float Right",
+        floatNone: "Remove float",
+        shapeRounded: "Shape: Rounded",
+        shapeCircle: "Shape: Circle",
+        shapeThumbnail: "Shape: Thumbnail",
+        shapeNone: "Shape: None",
+        dragImageHere: "Drag image or text here",
+        dropImage: "Drop image or Text",
+        selectFromFiles: "Select from files",
+        maximumFileSize: "Maximum file size",
+        maximumFileSizeError: "Maximum file size exceeded.",
+        url: "Image URL",
+        remove: "Remove Image",
+        original: "Original"
+      },
+      video: {
+        video: "Video",
+        videoLink: "Video Link",
+        insert: "Insert Video",
+        url: "Video URL",
+        providers: "(YouTube, Google Drive, Vimeo, Vine, Instagram, DailyMotion, Youku, Peertube)"
+      },
+      link: {
+        link: "Link",
+        insert: "Insert Link",
+        unlink: "Unlink",
+        edit: "Edit",
+        textToDisplay: "Text to display",
+        url: "To what URL should this link go?",
+        openInNewWindow: "Open in new window"
+      },
+      table: {
+        table: "Table",
+        addRowAbove: "Add row above",
+        addRowBelow: "Add row below",
+        addColLeft: "Add column left",
+        addColRight: "Add column right",
+        delRow: "Delete row",
+        delCol: "Delete column",
+        delTable: "Delete table"
+      },
+      hr: {
+        insert: "Insert Horizontal Rule"
+      },
+      style: {
+        style: "Style",
+        p: "Normal",
+        blockquote: "Quote",
+        pre: "Code",
+        h1: "Header 1",
+        h2: "Header 2",
+        h3: "Header 3",
+        h4: "Header 4",
+        h5: "Header 5",
+        h6: "Header 6"
+      },
+      lists: {
+        unordered: "Unordered list",
+        ordered: "Ordered list"
+      },
+      options: {
+        help: "Help",
+        fullscreen: "Full Screen",
+        codeview: "Code View"
+      },
+      paragraph: {
+        paragraph: "Paragraph",
+        outdent: "Outdent",
+        indent: "Indent",
+        left: "Align left",
+        center: "Align center",
+        right: "Align right",
+        justify: "Justify full"
+      },
+      color: {
+        recent: "Recent Color",
+        more: "More Color",
+        background: "Background Color",
+        foreground: "Text Color",
+        transparent: "Transparent",
+        setTransparent: "Set transparent",
+        reset: "Reset",
+        resetToDefault: "Reset to default",
+        cpSelect: "Select"
+      },
+      shortcut: {
+        shortcuts: "Keyboard shortcuts",
+        close: "Close",
+        textFormatting: "Text formatting",
+        action: "Action",
+        paragraphFormatting: "Paragraph formatting",
+        documentStyle: "Document Style",
+        extraKeys: "Extra keys"
+      },
+      help: {
+        "escape": "Escape",
+        "insertParagraph": "Insert Paragraph",
+        "undo": "Undo the last command",
+        "redo": "Redo the last command",
+        "tab": "Tab",
+        "untab": "Untab",
+        "bold": "Set a bold style",
+        "italic": "Set a italic style",
+        "underline": "Set a underline style",
+        "strikethrough": "Set a strikethrough style",
+        "removeFormat": "Clean a style",
+        "justifyLeft": "Set left align",
+        "justifyCenter": "Set center align",
+        "justifyRight": "Set right align",
+        "justifyFull": "Set full align",
+        "insertUnorderedList": "Toggle unordered list",
+        "insertOrderedList": "Toggle ordered list",
+        "outdent": "Outdent on current paragraph",
+        "indent": "Indent on current paragraph",
+        "formatPara": "Change current block's format as a paragraph(P tag)",
+        "formatH1": "Change current block's format as H1",
+        "formatH2": "Change current block's format as H2",
+        "formatH3": "Change current block's format as H3",
+        "formatH4": "Change current block's format as H4",
+        "formatH5": "Change current block's format as H5",
+        "formatH6": "Change current block's format as H6",
+        "insertHorizontalRule": "Insert horizontal rule",
+        "linkDialog.show": "Show Link Dialog"
+      },
+      history: {
+        undo: "Undo",
+        redo: "Redo"
+      },
+      specialChar: {
+        specialChar: "SPECIAL CHARACTERS",
+        select: "Select Special characters"
+      },
+      output: {
+        noSelection: "No Selection Made!"
+      }
     }
-  }
-});
-
-/***/ }),
-
-/***/ 8938:
-/***/ ((module) => {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE__8938__;
-
-/***/ })
-
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/************************************************************************/
-var __webpack_exports__ = {};
-
-// EXTERNAL MODULE: external {"root":"jQuery","commonjs":"jquery","commonjs2":"jquery","amd":"jquery"}
-var external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_ = __webpack_require__(8938);
-var external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default = /*#__PURE__*/__webpack_require__.n(external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_);
-// EXTERNAL MODULE: ./src/lang/summernote-en-US.js
-var summernote_en_US = __webpack_require__(7000);
-;// CONCATENATED MODULE: ./src/js/core/env.js
-
-
-/**
- * returns whether font is installed or not.
- *
- * @param {String} fontName
- * @return {Boolean}
- */
-var genericFontFamilies = ['sans-serif', 'serif', 'monospace', 'cursive', 'fantasy'];
-function validFontName(fontName) {
-  return external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().inArray(fontName.toLowerCase(), genericFontFamilies) === -1 ? "'".concat(fontName, "'") : fontName;
-}
-function createIsFontInstalledFunc() {
-  var testText = "mw";
-  var fontSize = "20px";
-  var canvasWidth = 40;
-  var canvasHeight = 20;
-  var canvas = document.createElement("canvas");
-  var context = canvas.getContext("2d", {
-    willReadFrequently: true
   });
-  canvas.width = canvasWidth;
-  canvas.height = canvasHeight;
-  context.textAlign = "center";
-  context.fillStyle = "black";
-  context.textBaseline = "middle";
-  function getPxInfo(font, testFontName) {
-    context.clearRect(0, 0, canvasWidth, canvasHeight);
-    context.font = fontSize + ' ' + validFontName(font) + ', "' + testFontName + '"';
-    context.fillText(testText, canvasWidth / 2, canvasHeight / 2);
-    // Get pixel information
-    var pxInfo = context.getImageData(0, 0, canvasWidth, canvasHeight).data;
-    return pxInfo.join("");
+  const genericFontFamilies = ["sans-serif", "serif", "monospace", "cursive", "fantasy"];
+  function validFontName(fontName) {
+    return $.inArray(fontName.toLowerCase(), genericFontFamilies) === -1 ? `'${fontName}'` : fontName;
   }
-  return function (fontName) {
-    var testFontName = fontName === 'Comic Sans MS' ? 'Courier New' : 'Comic Sans MS';
-    var testInfo = getPxInfo(testFontName, testFontName);
-    var fontInfo = getPxInfo(fontName, testFontName);
-    return testInfo !== fontInfo;
-  };
-}
-var userAgent = navigator.userAgent;
-var isMSIE = /MSIE|Trident/i.test(userAgent);
-var browserVersion;
-if (isMSIE) {
-  var matches = /MSIE (\d+[.]\d+)/.exec(userAgent);
-  if (matches) {
-    browserVersion = parseFloat(matches[1]);
+  function createIsFontInstalledFunc() {
+    const testText = "mw";
+    const fontSize = "20px";
+    const canvasWidth = 40;
+    const canvasHeight = 20;
+    var canvas = document.createElement("canvas");
+    var context = canvas.getContext("2d", { willReadFrequently: true });
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+    context.textAlign = "center";
+    context.fillStyle = "black";
+    context.textBaseline = "middle";
+    function getPxInfo(font, testFontName) {
+      context.clearRect(0, 0, canvasWidth, canvasHeight);
+      context.font = fontSize + " " + validFontName(font) + ', "' + testFontName + '"';
+      context.fillText(testText, canvasWidth / 2, canvasHeight / 2);
+      var pxInfo = context.getImageData(0, 0, canvasWidth, canvasHeight).data;
+      return pxInfo.join("");
+    }
+    return (fontName) => {
+      const testFontName = fontName === "Comic Sans MS" ? "Courier New" : "Comic Sans MS";
+      let testInfo = getPxInfo(testFontName, testFontName);
+      let fontInfo = getPxInfo(fontName, testFontName);
+      return testInfo !== fontInfo;
+    };
   }
-  matches = /Trident\/.*rv:([0-9]{1,}[.0-9]{0,})/.exec(userAgent);
-  if (matches) {
-    browserVersion = parseFloat(matches[1]);
-  }
-}
-var isEdge = /Edge\/\d+/.test(userAgent);
-var isSupportTouch = 'ontouchstart' in window || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-
-// [workaround] IE doesn't have input events for contentEditable
-// - see: https://goo.gl/4bfIvA
-var inputEventName = isMSIE ? 'DOMCharacterDataModified DOMSubtreeModified DOMNodeInserted' : 'input';
-
-/**
- * @class core.env
- *
- * Object which check platform and agent
- *
- * @singleton
- * @alternateClassName env
- */
-/* harmony default export */ const env = ({
-  isMac: navigator.appVersion.indexOf('Mac') > -1,
-  isMSIE: isMSIE,
-  isEdge: isEdge,
-  isFF: !isEdge && /firefox/i.test(userAgent),
-  isPhantom: /PhantomJS/i.test(userAgent),
-  isWebkit: !isEdge && /webkit/i.test(userAgent),
-  isChrome: !isEdge && /chrome/i.test(userAgent),
-  isSafari: !isEdge && /safari/i.test(userAgent) && !/chrome/i.test(userAgent),
-  browserVersion: browserVersion,
-  isSupportTouch: isSupportTouch,
-  isFontInstalled: createIsFontInstalledFunc(),
-  isW3CRangeSupport: !!document.createRange,
-  inputEventName: inputEventName,
-  genericFontFamilies: genericFontFamilies,
-  validFontName: validFontName
-});
-;// CONCATENATED MODULE: ./src/js/core/func.js
-
-
-/**
- * @class core.func
- *
- * func utils (for high-order func's arg)
- *
- * @singleton
- * @alternateClassName func
- */
-function eq(itemA) {
-  return function (itemB) {
-    return itemA === itemB;
-  };
-}
-function eq2(itemA, itemB) {
-  return itemA === itemB;
-}
-function peq2(propName) {
-  return function (itemA, itemB) {
-    return itemA[propName] === itemB[propName];
-  };
-}
-function ok() {
-  return true;
-}
-function fail() {
-  return false;
-}
-function not(f) {
-  return function () {
-    return !f.apply(f, arguments);
-  };
-}
-function and(fA, fB) {
-  return function (item) {
-    return fA(item) && fB(item);
-  };
-}
-function func_self(a) {
-  return a;
-}
-function invoke(obj, method) {
-  return function () {
-    return obj[method].apply(obj, arguments);
-  };
-}
-var idCounter = 0;
-
-/**
- * reset globally-unique id
- *
- */
-function resetUniqueId() {
-  idCounter = 0;
-}
-
-/**
- * generate a globally-unique id
- *
- * @param {String} [prefix]
- */
-function uniqueId(prefix) {
-  var id = ++idCounter + '';
-  return prefix ? prefix + id : id;
-}
-
-/**
- * returns bnd (bounds) from rect
- *
- * - IE Compatibility Issue: http://goo.gl/sRLOAo
- * - Scroll Issue: http://goo.gl/sNjUc
- *
- * @param {Rect} rect
- * @return {Object} bounds
- * @return {Number} bounds.top
- * @return {Number} bounds.left
- * @return {Number} bounds.width
- * @return {Number} bounds.height
- */
-function rect2bnd(rect) {
-  var $document = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(document);
-  return {
-    top: rect.top + $document.scrollTop(),
-    left: rect.left + $document.scrollLeft(),
-    width: rect.right - rect.left,
-    height: rect.bottom - rect.top
-  };
-}
-
-/**
- * returns a copy of the object where the keys have become the values and the values the keys.
- * @param {Object} obj
- * @return {Object}
- */
-function invertObject(obj) {
-  var inverted = {};
-  for (var key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      inverted[obj[key]] = key;
+  const userAgent = navigator.userAgent;
+  const isMSIE = /MSIE|Trident/i.test(userAgent);
+  let browserVersion;
+  if (isMSIE) {
+    let matches = /MSIE (\d+[.]\d+)/.exec(userAgent);
+    if (matches) {
+      browserVersion = parseFloat(matches[1]);
+    }
+    matches = /Trident\/.*rv:([0-9]{1,}[.0-9]{0,})/.exec(userAgent);
+    if (matches) {
+      browserVersion = parseFloat(matches[1]);
     }
   }
-  return inverted;
-}
-
-/**
- * @param {String} namespace
- * @param {String} [prefix]
- * @return {String}
- */
-function namespaceToCamel(namespace, prefix) {
-  prefix = prefix || '';
-  return prefix + namespace.split('.').map(function (name) {
-    return name.substring(0, 1).toUpperCase() + name.substring(1);
-  }).join('');
-}
-
-/**
- * Returns a function, that, as long as it continues to be invoked, will not
- * be triggered. The function will be called after it stops being called for
- * N milliseconds. If `immediate` is passed, trigger the function on the
- * leading edge, instead of the trailing.
- * @param {Function} func
- * @param {Number} wait
- * @param {Boolean} immediate
- * @return {Function}
- */
-function debounce(func, wait, immediate) {
-  var timeout;
-  return function () {
-    var context = this;
-    var args = arguments;
-    var later = function later() {
-      timeout = null;
-      if (!immediate) {
-        func.apply(context, args);
+  const isEdge = /Edge\/\d+/.test(userAgent);
+  const isSupportTouch = "ontouchstart" in window || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+  const inputEventName = isMSIE ? "DOMCharacterDataModified DOMSubtreeModified DOMNodeInserted" : "input";
+  const env = {
+    isMac: navigator.appVersion.indexOf("Mac") > -1,
+    isMSIE,
+    isEdge,
+    isFF: !isEdge && /firefox/i.test(userAgent),
+    isPhantom: /PhantomJS/i.test(userAgent),
+    isWebkit: !isEdge && /webkit/i.test(userAgent),
+    isChrome: !isEdge && /chrome/i.test(userAgent),
+    isSafari: !isEdge && /safari/i.test(userAgent) && !/chrome/i.test(userAgent),
+    browserVersion,
+    isSupportTouch,
+    isFontInstalled: createIsFontInstalledFunc(),
+    isW3CRangeSupport: !!document.createRange,
+    inputEventName,
+    genericFontFamilies,
+    validFontName
+  };
+  function eq(itemA) {
+    return function(itemB) {
+      return itemA === itemB;
+    };
+  }
+  function eq2(itemA, itemB) {
+    return itemA === itemB;
+  }
+  function peq2(propName) {
+    return function(itemA, itemB) {
+      return itemA[propName] === itemB[propName];
+    };
+  }
+  function ok() {
+    return true;
+  }
+  function fail() {
+    return false;
+  }
+  function not(f) {
+    return function() {
+      return !f.apply(f, arguments);
+    };
+  }
+  function and(fA, fB) {
+    return function(item) {
+      return fA(item) && fB(item);
+    };
+  }
+  function self(a) {
+    return a;
+  }
+  function invoke(obj, method) {
+    return function() {
+      return obj[method].apply(obj, arguments);
+    };
+  }
+  let idCounter = 0;
+  function resetUniqueId() {
+    idCounter = 0;
+  }
+  function uniqueId(prefix) {
+    const id = ++idCounter + "";
+    return prefix ? prefix + id : id;
+  }
+  function rect2bnd(rect) {
+    const $document = $(document);
+    if (!rect) {
+      return {
+        top: 0,
+        left: 0,
+        width: 0,
+        height: 0
+      };
+    }
+    return {
+      top: rect.top + $document.scrollTop(),
+      left: rect.left + $document.scrollLeft(),
+      width: rect.right - rect.left,
+      height: rect.bottom - rect.top
+    };
+  }
+  function invertObject(obj) {
+    const inverted = {};
+    for (const key2 in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key2)) {
+        inverted[obj[key2]] = key2;
+      }
+    }
+    return inverted;
+  }
+  function namespaceToCamel(namespace, prefix) {
+    prefix = prefix || "";
+    return prefix + namespace.split(".").map(function(name) {
+      return name.substring(0, 1).toUpperCase() + name.substring(1);
+    }).join("");
+  }
+  function debounce(func2, wait, immediate) {
+    let timeout;
+    return function() {
+      const context = this;
+      const args = arguments;
+      const later = () => {
+        timeout = null;
+        if (!immediate) {
+          func2.apply(context, args);
+        }
+      };
+      const callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) {
+        func2.apply(context, args);
       }
     };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) {
-      func.apply(context, args);
-    }
+  }
+  function isValidUrl(url) {
+    const expression = /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi;
+    return expression.test(url);
+  }
+  const func = {
+    eq,
+    eq2,
+    peq2,
+    ok,
+    fail,
+    self,
+    not,
+    and,
+    invoke,
+    resetUniqueId,
+    uniqueId,
+    rect2bnd,
+    invertObject,
+    namespaceToCamel,
+    debounce,
+    isValidUrl
   };
-}
-
-/**
- *
- * @param {String} url
- * @return {Boolean}
- */
-function isValidUrl(url) {
-  var expression = /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi;
-  return expression.test(url);
-}
-/* harmony default export */ const func = ({
-  eq: eq,
-  eq2: eq2,
-  peq2: peq2,
-  ok: ok,
-  fail: fail,
-  self: func_self,
-  not: not,
-  and: and,
-  invoke: invoke,
-  resetUniqueId: resetUniqueId,
-  uniqueId: uniqueId,
-  rect2bnd: rect2bnd,
-  invertObject: invertObject,
-  namespaceToCamel: namespaceToCamel,
-  debounce: debounce,
-  isValidUrl: isValidUrl
-});
-;// CONCATENATED MODULE: ./src/js/core/lists.js
-
-
-/**
- * returns the first item of an array.
- *
- * @param {Array} array
- */
-function head(array) {
-  return array[0];
-}
-
-/**
- * returns the last item of an array.
- *
- * @param {Array} array
- */
-function last(array) {
-  return array[array.length - 1];
-}
-
-/**
- * returns everything but the last entry of the array.
- *
- * @param {Array} array
- */
-function initial(array) {
-  return array.slice(0, array.length - 1);
-}
-
-/**
- * returns the rest of the items in an array.
- *
- * @param {Array} array
- */
-function tail(array) {
-  return array.slice(1);
-}
-
-/**
- * returns item of array
- */
-function find(array, pred) {
-  for (var idx = 0, len = array.length; idx < len; idx++) {
-    var item = array[idx];
-    if (pred(item)) {
-      return item;
+  function head(array) {
+    return array[0];
+  }
+  function last(array) {
+    return array[array.length - 1];
+  }
+  function initial(array) {
+    return array.slice(0, array.length - 1);
+  }
+  function tail(array) {
+    return array.slice(1);
+  }
+  function find(array, pred) {
+    for (let idx = 0, len = array.length; idx < len; idx++) {
+      const item = array[idx];
+      if (pred(item)) {
+        return item;
+      }
     }
   }
-}
-
-/**
- * returns true if all of the values in the array pass the predicate truth test.
- */
-function lists_all(array, pred) {
-  for (var idx = 0, len = array.length; idx < len; idx++) {
-    if (!pred(array[idx])) {
+  function all(array, pred) {
+    for (let idx = 0, len = array.length; idx < len; idx++) {
+      if (!pred(array[idx])) {
+        return false;
+      }
+    }
+    return true;
+  }
+  function contains(array, item) {
+    if (array && array.length && item) {
+      if (array.indexOf) {
+        return array.indexOf(item) !== -1;
+      } else if (array.contains) {
+        return array.contains(item);
+      }
+    }
+    return false;
+  }
+  function sum(array, fn) {
+    fn = fn || func.self;
+    return array.reduce(function(memo, v) {
+      return memo + fn(v);
+    }, 0);
+  }
+  function from(collection) {
+    const result = [];
+    const length = collection.length;
+    let idx = -1;
+    while (++idx < length) {
+      result[idx] = collection[idx];
+    }
+    return result;
+  }
+  function isEmpty$1(array) {
+    return !array || !array.length;
+  }
+  function clusterBy(array, fn) {
+    if (!array.length) {
+      return [];
+    }
+    const aTail = tail(array);
+    return aTail.reduce(function(memo, v) {
+      const aLast = last(memo);
+      if (fn(last(aLast), v)) {
+        aLast[aLast.length] = v;
+      } else {
+        memo[memo.length] = [v];
+      }
+      return memo;
+    }, [[head(array)]]);
+  }
+  function compact(array) {
+    const aResult = [];
+    for (let idx = 0, len = array.length; idx < len; idx++) {
+      if (array[idx]) {
+        aResult.push(array[idx]);
+      }
+    }
+    return aResult;
+  }
+  function unique(array) {
+    const results = [];
+    for (let idx = 0, len = array.length; idx < len; idx++) {
+      if (!contains(results, array[idx])) {
+        results.push(array[idx]);
+      }
+    }
+    return results;
+  }
+  function next(array, item) {
+    if (array && array.length && item) {
+      const idx = array.indexOf(item);
+      return idx === -1 ? null : array[idx + 1];
+    }
+    return null;
+  }
+  function prev(array, item) {
+    if (array && array.length && item) {
+      const idx = array.indexOf(item);
+      return idx === -1 ? null : array[idx - 1];
+    }
+    return null;
+  }
+  const lists = {
+    head,
+    last,
+    initial,
+    tail,
+    prev,
+    next,
+    find,
+    contains,
+    all,
+    sum,
+    from,
+    isEmpty: isEmpty$1,
+    clusterBy,
+    compact,
+    unique
+  };
+  const NBSP_CHAR = String.fromCharCode(160);
+  const ZERO_WIDTH_NBSP_CHAR = "\uFEFF";
+  function isEditable(node) {
+    return node && $(node).hasClass("note-editable");
+  }
+  function isControlSizing(node) {
+    return node && $(node).hasClass("note-control-sizing");
+  }
+  function makePredByNodeName(nodeName) {
+    nodeName = nodeName.toUpperCase();
+    return function(node) {
+      return node && node.nodeName.toUpperCase() === nodeName;
+    };
+  }
+  function isText(node) {
+    return node && node.nodeType === 3;
+  }
+  function isElement(node) {
+    return node && node.nodeType === 1;
+  }
+  function isVoid(node) {
+    return node && /^BR|^IMG|^HR|^IFRAME|^BUTTON|^INPUT|^AUDIO|^VIDEO|^EMBED/.test(node.nodeName.toUpperCase());
+  }
+  function isPara(node) {
+    if (isEditable(node)) {
       return false;
     }
+    return node && /^DIV|^P|^LI|^H[1-7]/.test(node.nodeName.toUpperCase());
   }
-  return true;
-}
-
-/**
- * returns true if the value is present in the list.
- */
-function contains(array, item) {
-  if (array && array.length && item) {
-    if (array.indexOf) {
-      return array.indexOf(item) !== -1;
-    } else if (array.contains) {
-      // `DOMTokenList` doesn't implement `.indexOf`, but it implements `.contains`
-      return array.contains(item);
+  function isHeading(node) {
+    return node && /^H[1-7]/.test(node.nodeName.toUpperCase());
+  }
+  const isPre = makePredByNodeName("PRE");
+  const isLi = makePredByNodeName("LI");
+  function isPurePara(node) {
+    return isPara(node) && !isLi(node);
+  }
+  const isTable = makePredByNodeName("TABLE");
+  const isData = makePredByNodeName("DATA");
+  function isInline(node) {
+    return !isBodyContainer(node) && !isList(node) && !isHr(node) && !isPara(node) && !isTable(node) && !isBlockquote(node) && !isData(node);
+  }
+  function isList(node) {
+    return node && /^UL|^OL/.test(node.nodeName.toUpperCase());
+  }
+  const isHr = makePredByNodeName("HR");
+  function isCell(node) {
+    return node && /^TD|^TH/.test(node.nodeName.toUpperCase());
+  }
+  const isBlockquote = makePredByNodeName("BLOCKQUOTE");
+  function isBodyContainer(node) {
+    return isCell(node) || isBlockquote(node) || isEditable(node);
+  }
+  const isAnchor = makePredByNodeName("A");
+  function isParaInline(node) {
+    return isInline(node) && !!ancestor(node, isPara);
+  }
+  function isBodyInline(node) {
+    return isInline(node) && !ancestor(node, isPara);
+  }
+  const isBody = makePredByNodeName("BODY");
+  function isClosestSibling(nodeA, nodeB) {
+    return nodeA.nextSibling === nodeB || nodeA.previousSibling === nodeB;
+  }
+  function withClosestSiblings(node, pred) {
+    pred = pred || func.ok;
+    const siblings = [];
+    if (node.previousSibling && pred(node.previousSibling)) {
+      siblings.push(node.previousSibling);
+    }
+    siblings.push(node);
+    if (node.nextSibling && pred(node.nextSibling)) {
+      siblings.push(node.nextSibling);
+    }
+    return siblings;
+  }
+  const blankHTML = env.isMSIE && env.browserVersion < 11 ? "&nbsp;" : "<br>";
+  function nodeLength(node) {
+    if (isText(node)) {
+      return node.nodeValue.length;
+    }
+    if (node) {
+      return node.childNodes.length;
+    }
+    return 0;
+  }
+  function deepestChildIsEmpty(node) {
+    do {
+      if (node.firstElementChild === null || node.firstElementChild.innerHTML === "") break;
+    } while (node = node.firstElementChild);
+    return isEmpty(node);
+  }
+  function isEmpty(node) {
+    const len = nodeLength(node);
+    if (len === 0) {
+      return true;
+    } else if (!isText(node) && len === 1 && node.innerHTML === blankHTML) {
+      return true;
+    } else if (lists.all(node.childNodes, isText) && node.innerHTML === "") {
+      return true;
+    }
+    return false;
+  }
+  function paddingBlankHTML(node) {
+    if (!isVoid(node) && !nodeLength(node)) {
+      node.innerHTML = blankHTML;
     }
   }
-  return false;
-}
-
-/**
- * get sum from a list
- *
- * @param {Array} array - array
- * @param {Function} fn - iterator
- */
-function sum(array, fn) {
-  fn = fn || func.self;
-  return array.reduce(function (memo, v) {
-    return memo + fn(v);
-  }, 0);
-}
-
-/**
- * returns a copy of the collection with array type.
- * @param {Collection} collection - collection eg) node.childNodes, ...
- */
-function from(collection) {
-  var result = [];
-  var length = collection.length;
-  var idx = -1;
-  while (++idx < length) {
-    result[idx] = collection[idx];
+  function ancestor(node, pred) {
+    while (node) {
+      if (pred(node)) {
+        return node;
+      }
+      if (isEditable(node)) {
+        break;
+      }
+      node = node.parentNode;
+    }
+    return null;
   }
-  return result;
-}
-
-/**
- * returns whether list is empty or not
- */
-function isEmpty(array) {
-  return !array || !array.length;
-}
-
-/**
- * cluster elements by predicate function.
- *
- * @param {Array} array - array
- * @param {Function} fn - predicate function for cluster rule
- * @param {Array[]}
- */
-function clusterBy(array, fn) {
-  if (!array.length) {
-    return [];
+  function singleChildAncestor(node, pred) {
+    node = node.parentNode;
+    while (node) {
+      if (nodeLength(node) !== 1) {
+        break;
+      }
+      if (pred(node)) {
+        return node;
+      }
+      if (isEditable(node)) {
+        break;
+      }
+      node = node.parentNode;
+    }
+    return null;
   }
-  var aTail = tail(array);
-  return aTail.reduce(function (memo, v) {
-    var aLast = last(memo);
-    if (fn(last(aLast), v)) {
-      aLast[aLast.length] = v;
+  function listAncestor(node, pred) {
+    pred = pred || func.fail;
+    const ancestors = [];
+    ancestor(node, function(el) {
+      if (!isEditable(el)) {
+        ancestors.push(el);
+      }
+      return pred(el);
+    });
+    return ancestors;
+  }
+  function lastAncestor(node, pred) {
+    const ancestors = listAncestor(node);
+    return lists.last(ancestors.filter(pred));
+  }
+  function commonAncestor(nodeA, nodeB) {
+    const ancestors = listAncestor(nodeA);
+    for (let n = nodeB; n; n = n.parentNode) {
+      if (ancestors.indexOf(n) > -1) return n;
+    }
+    return null;
+  }
+  function listPrev(node, pred) {
+    pred = pred || func.fail;
+    const nodes = [];
+    while (node) {
+      if (pred(node)) {
+        break;
+      }
+      nodes.push(node);
+      node = node.previousSibling;
+    }
+    return nodes;
+  }
+  function listNext(node, pred) {
+    pred = pred || func.fail;
+    const nodes = [];
+    while (node) {
+      if (pred(node)) {
+        break;
+      }
+      nodes.push(node);
+      node = node.nextSibling;
+    }
+    return nodes;
+  }
+  function listDescendant(node, pred) {
+    const descendants = [];
+    pred = pred || func.ok;
+    (function fnWalk(current) {
+      if (node !== current && pred(current)) {
+        descendants.push(current);
+      }
+      for (let idx = 0, len = current.childNodes.length; idx < len; idx++) {
+        fnWalk(current.childNodes[idx]);
+      }
+    })(node);
+    return descendants;
+  }
+  function wrap(node, wrapperName) {
+    const parent = node.parentNode;
+    const wrapper = $("<" + wrapperName + ">")[0];
+    parent.insertBefore(wrapper, node);
+    wrapper.appendChild(node);
+    return wrapper;
+  }
+  function insertAfter(node, preceding) {
+    const next2 = preceding.nextSibling;
+    let parent = preceding.parentNode;
+    if (next2) {
+      parent.insertBefore(node, next2);
     } else {
-      memo[memo.length] = [v];
+      parent.appendChild(node);
     }
-    return memo;
-  }, [[head(array)]]);
-}
-
-/**
- * returns a copy of the array with all false values removed
- *
- * @param {Array} array - array
- * @param {Function} fn - predicate function for cluster rule
- */
-function compact(array) {
-  var aResult = [];
-  for (var idx = 0, len = array.length; idx < len; idx++) {
-    if (array[idx]) {
-      aResult.push(array[idx]);
+    return node;
+  }
+  function appendChildNodes(node, aChild, isSkipPaddingBlankHTML) {
+    $.each(aChild, function(idx, child) {
+      if (!isSkipPaddingBlankHTML && isLi(node) && node.firstChild === null && isList(child)) {
+        node.appendChild(create("br"));
+      }
+      node.appendChild(child);
+    });
+    return node;
+  }
+  function isLeftEdgePoint(point) {
+    return point.offset === 0;
+  }
+  function isRightEdgePoint(point) {
+    return point.offset === nodeLength(point.node);
+  }
+  function isEdgePoint(point) {
+    return isLeftEdgePoint(point) || isRightEdgePoint(point);
+  }
+  function isLeftEdgeOf(node, ancestor2) {
+    while (node && node !== ancestor2) {
+      if (position(node) !== 0) {
+        return false;
+      }
+      node = node.parentNode;
     }
-  }
-  return aResult;
-}
-
-/**
- * produces a duplicate-free version of the array
- *
- * @param {Array} array
- */
-function unique(array) {
-  var results = [];
-  for (var idx = 0, len = array.length; idx < len; idx++) {
-    if (!contains(results, array[idx])) {
-      results.push(array[idx]);
-    }
-  }
-  return results;
-}
-
-/**
- * returns next item.
- * @param {Array} array
- */
-function next(array, item) {
-  if (array && array.length && item) {
-    var idx = array.indexOf(item);
-    return idx === -1 ? null : array[idx + 1];
-  }
-  return null;
-}
-
-/**
- * returns prev item.
- * @param {Array} array
- */
-function prev(array, item) {
-  if (array && array.length && item) {
-    var idx = array.indexOf(item);
-    return idx === -1 ? null : array[idx - 1];
-  }
-  return null;
-}
-
-/**
- * @class core.list
- *
- * list utils
- *
- * @singleton
- * @alternateClassName list
- */
-/* harmony default export */ const lists = ({
-  head: head,
-  last: last,
-  initial: initial,
-  tail: tail,
-  prev: prev,
-  next: next,
-  find: find,
-  contains: contains,
-  all: lists_all,
-  sum: sum,
-  from: from,
-  isEmpty: isEmpty,
-  clusterBy: clusterBy,
-  compact: compact,
-  unique: unique
-});
-;// CONCATENATED MODULE: ./src/js/core/dom.js
-
-
-
-
-var NBSP_CHAR = String.fromCharCode(160);
-var ZERO_WIDTH_NBSP_CHAR = "\uFEFF";
-
-/**
- * @method isEditable
- *
- * returns whether node is `note-editable` or not.
- *
- * @param {Node} node
- * @return {Boolean}
- */
-function isEditable(node) {
-  return node && external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(node).hasClass('note-editable');
-}
-
-/**
- * @method isControlSizing
- *
- * returns whether node is `note-control-sizing` or not.
- *
- * @param {Node} node
- * @return {Boolean}
- */
-function isControlSizing(node) {
-  return node && external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(node).hasClass('note-control-sizing');
-}
-
-/**
- * @method makePredByNodeName
- *
- * returns predicate which judge whether nodeName is same
- *
- * @param {String} nodeName
- * @return {Function}
- */
-function makePredByNodeName(nodeName) {
-  nodeName = nodeName.toUpperCase();
-  return function (node) {
-    return node && node.nodeName.toUpperCase() === nodeName;
-  };
-}
-
-/**
- * @method isText
- *
- *
- *
- * @param {Node} node
- * @return {Boolean} true if node's type is text(3)
- */
-function isText(node) {
-  return node && node.nodeType === 3;
-}
-
-/**
- * @method isElement
- *
- *
- *
- * @param {Node} node
- * @return {Boolean} true if node's type is element(1)
- */
-function isElement(node) {
-  return node && node.nodeType === 1;
-}
-
-/**
- * ex) br, col, embed, hr, img, input, ...
- * @see http://www.w3.org/html/wg/drafts/html/master/syntax.html#void-elements
- */
-function isVoid(node) {
-  return node && /^BR|^IMG|^HR|^IFRAME|^BUTTON|^INPUT|^AUDIO|^VIDEO|^EMBED/.test(node.nodeName.toUpperCase());
-}
-function isPara(node) {
-  if (isEditable(node)) {
-    return false;
-  }
-
-  // Chrome(v31.0), FF(v25.0.1) use DIV for paragraph
-  return node && /^DIV|^P|^LI|^H[1-7]/.test(node.nodeName.toUpperCase());
-}
-function isHeading(node) {
-  return node && /^H[1-7]/.test(node.nodeName.toUpperCase());
-}
-var isPre = makePredByNodeName('PRE');
-var isLi = makePredByNodeName('LI');
-function isPurePara(node) {
-  return isPara(node) && !isLi(node);
-}
-var isTable = makePredByNodeName('TABLE');
-var isData = makePredByNodeName('DATA');
-function isInline(node) {
-  return !isBodyContainer(node) && !isList(node) && !isHr(node) && !isPara(node) && !isTable(node) && !isBlockquote(node) && !isData(node);
-}
-function isList(node) {
-  return node && /^UL|^OL/.test(node.nodeName.toUpperCase());
-}
-var isHr = makePredByNodeName('HR');
-function isCell(node) {
-  return node && /^TD|^TH/.test(node.nodeName.toUpperCase());
-}
-var isBlockquote = makePredByNodeName('BLOCKQUOTE');
-function isBodyContainer(node) {
-  return isCell(node) || isBlockquote(node) || isEditable(node);
-}
-var isAnchor = makePredByNodeName('A');
-function isParaInline(node) {
-  return isInline(node) && !!ancestor(node, isPara);
-}
-function isBodyInline(node) {
-  return isInline(node) && !ancestor(node, isPara);
-}
-var isBody = makePredByNodeName('BODY');
-
-/**
- * returns whether nodeB is closest sibling of nodeA
- *
- * @param {Node} nodeA
- * @param {Node} nodeB
- * @return {Boolean}
- */
-function isClosestSibling(nodeA, nodeB) {
-  return nodeA.nextSibling === nodeB || nodeA.previousSibling === nodeB;
-}
-
-/**
- * returns array of closest siblings with node
- *
- * @param {Node} node
- * @param {function} [pred] - predicate function
- * @return {Node[]}
- */
-function withClosestSiblings(node, pred) {
-  pred = pred || func.ok;
-  var siblings = [];
-  if (node.previousSibling && pred(node.previousSibling)) {
-    siblings.push(node.previousSibling);
-  }
-  siblings.push(node);
-  if (node.nextSibling && pred(node.nextSibling)) {
-    siblings.push(node.nextSibling);
-  }
-  return siblings;
-}
-
-/**
- * blank HTML for cursor position
- * - [workaround] old IE only works with &nbsp;
- * - [workaround] IE11 and other browser works with bogus br
- */
-var blankHTML = env.isMSIE && env.browserVersion < 11 ? '&nbsp;' : '<br>';
-
-/**
- * @method nodeLength
- *
- * returns #text's text size or element's childNodes size
- *
- * @param {Node} node
- */
-function nodeLength(node) {
-  if (isText(node)) {
-    return node.nodeValue.length;
-  }
-  if (node) {
-    return node.childNodes.length;
-  }
-  return 0;
-}
-
-/**
- * returns whether deepest child node is empty or not.
- *
- * @param {Node} node
- * @return {Boolean}
- */
-function deepestChildIsEmpty(node) {
-  do {
-    if (node.firstElementChild === null || node.firstElementChild.innerHTML === '') break;
-  } while (node = node.firstElementChild);
-  return dom_isEmpty(node);
-}
-
-/**
- * returns whether node is empty or not.
- *
- * @param {Node} node
- * @return {Boolean}
- */
-function dom_isEmpty(node) {
-  var len = nodeLength(node);
-  if (len === 0) {
-    return true;
-  } else if (!isText(node) && len === 1 && node.innerHTML === blankHTML) {
-    // ex) <p><br></p>, <span><br></span>
-    return true;
-  } else if (lists.all(node.childNodes, isText) && node.innerHTML === '') {
-    // ex) <p></p>, <span></span>
     return true;
   }
-  return false;
-}
-
-/**
- * padding blankHTML if node is empty (for cursor position)
- */
-function paddingBlankHTML(node) {
-  if (!isVoid(node) && !nodeLength(node)) {
-    node.innerHTML = blankHTML;
-  }
-}
-
-/**
- * find nearest ancestor predicate hit
- *
- * @param {Node} node
- * @param {Function} pred - predicate function
- */
-function ancestor(node, pred) {
-  while (node) {
-    if (pred(node)) {
-      return node;
-    }
-    if (isEditable(node)) {
-      break;
-    }
-    node = node.parentNode;
-  }
-  return null;
-}
-
-/**
- * find nearest ancestor only single child blood line and predicate hit
- *
- * @param {Node} node
- * @param {Function} pred - predicate function
- */
-function singleChildAncestor(node, pred) {
-  node = node.parentNode;
-  while (node) {
-    if (nodeLength(node) !== 1) {
-      break;
-    }
-    if (pred(node)) {
-      return node;
-    }
-    if (isEditable(node)) {
-      break;
-    }
-    node = node.parentNode;
-  }
-  return null;
-}
-
-/**
- * returns new array of ancestor nodes (until predicate hit).
- *
- * @param {Node} node
- * @param {Function} [optional] pred - predicate function
- */
-function listAncestor(node, pred) {
-  pred = pred || func.fail;
-  var ancestors = [];
-  ancestor(node, function (el) {
-    if (!isEditable(el)) {
-      ancestors.push(el);
-    }
-    return pred(el);
-  });
-  return ancestors;
-}
-
-/**
- * find farthest ancestor predicate hit
- */
-function lastAncestor(node, pred) {
-  var ancestors = listAncestor(node);
-  return lists.last(ancestors.filter(pred));
-}
-
-/**
- * returns common ancestor node between two nodes.
- *
- * @param {Node} nodeA
- * @param {Node} nodeB
- */
-function commonAncestor(nodeA, nodeB) {
-  var ancestors = listAncestor(nodeA);
-  for (var n = nodeB; n; n = n.parentNode) {
-    if (ancestors.indexOf(n) > -1) return n;
-  }
-  return null; // difference document area
-}
-
-/**
- * listing all previous siblings (until predicate hit).
- *
- * @param {Node} node
- * @param {Function} [optional] pred - predicate function
- */
-function listPrev(node, pred) {
-  pred = pred || func.fail;
-  var nodes = [];
-  while (node) {
-    if (pred(node)) {
-      break;
-    }
-    nodes.push(node);
-    node = node.previousSibling;
-  }
-  return nodes;
-}
-
-/**
- * listing next siblings (until predicate hit).
- *
- * @param {Node} node
- * @param {Function} [pred] - predicate function
- */
-function listNext(node, pred) {
-  pred = pred || func.fail;
-  var nodes = [];
-  while (node) {
-    if (pred(node)) {
-      break;
-    }
-    nodes.push(node);
-    node = node.nextSibling;
-  }
-  return nodes;
-}
-
-/**
- * listing descendant nodes
- *
- * @param {Node} node
- * @param {Function} [pred] - predicate function
- */
-function listDescendant(node, pred) {
-  var descendants = [];
-  pred = pred || func.ok;
-
-  // start DFS(depth first search) with node
-  (function fnWalk(current) {
-    if (node !== current && pred(current)) {
-      descendants.push(current);
-    }
-    for (var idx = 0, len = current.childNodes.length; idx < len; idx++) {
-      fnWalk(current.childNodes[idx]);
-    }
-  })(node);
-  return descendants;
-}
-
-/**
- * wrap node with new tag.
- *
- * @param {Node} node
- * @param {Node} tagName of wrapper
- * @return {Node} - wrapper
- */
-function wrap(node, wrapperName) {
-  var parent = node.parentNode;
-  var wrapper = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<' + wrapperName + '>')[0];
-  parent.insertBefore(wrapper, node);
-  wrapper.appendChild(node);
-  return wrapper;
-}
-
-/**
- * insert node after preceding
- *
- * @param {Node} node
- * @param {Node} preceding - predicate function
- */
-function insertAfter(node, preceding) {
-  var next = preceding.nextSibling;
-  var parent = preceding.parentNode;
-  if (next) {
-    parent.insertBefore(node, next);
-  } else {
-    parent.appendChild(node);
-  }
-  return node;
-}
-
-/**
- * append elements.
- *
- * @param {Node} node
- * @param {Collection} aChild
- */
-function appendChildNodes(node, aChild, isSkipPaddingBlankHTML) {
-  external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(aChild, function (idx, child) {
-    // special case: appending a pure UL/OL to a LI element creates inaccessible LI element
-    // e.g. press enter in last LI which has UL/OL-subelements
-    // Therefore, if current node is LI element with no child nodes (text-node) and appending a list, add a br before
-    if (!isSkipPaddingBlankHTML && isLi(node) && node.firstChild === null && isList(child)) {
-      node.appendChild(create("br"));
-    }
-    node.appendChild(child);
-  });
-  return node;
-}
-
-/**
- * returns whether boundaryPoint is left edge or not.
- *
- * @param {BoundaryPoint} point
- * @return {Boolean}
- */
-function isLeftEdgePoint(point) {
-  return point.offset === 0;
-}
-
-/**
- * returns whether boundaryPoint is right edge or not.
- *
- * @param {BoundaryPoint} point
- * @return {Boolean}
- */
-function isRightEdgePoint(point) {
-  return point.offset === nodeLength(point.node);
-}
-
-/**
- * returns whether boundaryPoint is edge or not.
- *
- * @param {BoundaryPoint} point
- * @return {Boolean}
- */
-function isEdgePoint(point) {
-  return isLeftEdgePoint(point) || isRightEdgePoint(point);
-}
-
-/**
- * returns whether node is left edge of ancestor or not.
- *
- * @param {Node} node
- * @param {Node} ancestor
- * @return {Boolean}
- */
-function isLeftEdgeOf(node, ancestor) {
-  while (node && node !== ancestor) {
-    if (position(node) !== 0) {
+  function isRightEdgeOf(node, ancestor2) {
+    if (!ancestor2) {
       return false;
     }
-    node = node.parentNode;
-  }
-  return true;
-}
-
-/**
- * returns whether node is right edge of ancestor or not.
- *
- * @param {Node} node
- * @param {Node} ancestor
- * @return {Boolean}
- */
-function isRightEdgeOf(node, ancestor) {
-  if (!ancestor) {
-    return false;
-  }
-  while (node && node !== ancestor) {
-    if (position(node) !== nodeLength(node.parentNode) - 1) {
-      return false;
+    while (node && node !== ancestor2) {
+      if (position(node) !== nodeLength(node.parentNode) - 1) {
+        return false;
+      }
+      node = node.parentNode;
     }
-    node = node.parentNode;
+    return true;
   }
-  return true;
-}
-
-/**
- * returns whether point is left edge of ancestor or not.
- * @param {BoundaryPoint} point
- * @param {Node} ancestor
- * @return {Boolean}
- */
-function isLeftEdgePointOf(point, ancestor) {
-  return isLeftEdgePoint(point) && isLeftEdgeOf(point.node, ancestor);
-}
-
-/**
- * returns whether point is right edge of ancestor or not.
- * @param {BoundaryPoint} point
- * @param {Node} ancestor
- * @return {Boolean}
- */
-function isRightEdgePointOf(point, ancestor) {
-  return isRightEdgePoint(point) && isRightEdgeOf(point.node, ancestor);
-}
-
-/**
- * returns offset from parent.
- *
- * @param {Node} node
- */
-function position(node) {
-  var offset = 0;
-  while (node = node.previousSibling) {
-    offset += 1;
+  function isLeftEdgePointOf(point, ancestor2) {
+    return isLeftEdgePoint(point) && isLeftEdgeOf(point.node, ancestor2);
   }
-  return offset;
-}
-function hasChildren(node) {
-  return !!(node && node.childNodes && node.childNodes.length);
-}
-
-/**
- * returns previous boundaryPoint
- *
- * @param {BoundaryPoint} point
- * @param {Boolean} isSkipInnerOffset
- * @return {BoundaryPoint}
- */
-function prevPoint(point, isSkipInnerOffset) {
-  var node;
-  var offset;
-  if (point.offset === 0) {
-    if (isEditable(point.node)) {
-      return null;
+  function isRightEdgePointOf(point, ancestor2) {
+    return isRightEdgePoint(point) && isRightEdgeOf(point.node, ancestor2);
+  }
+  function position(node) {
+    let offset = 0;
+    while (node = node.previousSibling) {
+      offset += 1;
     }
-    node = point.node.parentNode;
-    offset = position(point.node);
-  } else if (hasChildren(point.node)) {
-    node = point.node.childNodes[point.offset - 1];
-    offset = nodeLength(node);
-  } else {
-    node = point.node;
-    offset = isSkipInnerOffset ? 0 : point.offset - 1;
+    return offset;
   }
-  return {
-    node: node,
-    offset: offset
-  };
-}
-
-/**
- * returns next boundaryPoint
- *
- * @param {BoundaryPoint} point
- * @param {Boolean} isSkipInnerOffset
- * @return {BoundaryPoint}
- */
-function nextPoint(point, isSkipInnerOffset) {
-  var node, offset;
-  if (nodeLength(point.node) === point.offset) {
-    if (isEditable(point.node)) {
-      return null;
+  function hasChildren(node) {
+    return !!(node && node.childNodes && node.childNodes.length);
+  }
+  function prevPoint(point, isSkipInnerOffset) {
+    let node;
+    let offset;
+    if (point.offset === 0) {
+      if (isEditable(point.node)) {
+        return null;
+      }
+      node = point.node.parentNode;
+      offset = position(point.node);
+    } else if (hasChildren(point.node)) {
+      node = point.node.childNodes[point.offset - 1];
+      offset = nodeLength(node);
+    } else {
+      node = point.node;
+      offset = isSkipInnerOffset ? 0 : point.offset - 1;
     }
-    var nextTextNode = getNextTextNode(point.node);
-    if (nextTextNode) {
-      node = nextTextNode;
+    return {
+      node,
+      offset
+    };
+  }
+  function nextPoint(point, isSkipInnerOffset) {
+    let node, offset;
+    if (nodeLength(point.node) === point.offset) {
+      if (isEditable(point.node)) {
+        return null;
+      }
+      let nextTextNode = getNextTextNode(point.node);
+      if (nextTextNode) {
+        node = nextTextNode;
+        offset = 0;
+      } else {
+        node = point.node.parentNode;
+        offset = position(point.node) + 1;
+      }
+    } else if (hasChildren(point.node)) {
+      node = point.node.childNodes[point.offset];
       offset = 0;
     } else {
+      node = point.node;
+      offset = isSkipInnerOffset ? nodeLength(point.node) : point.offset + 1;
+    }
+    return {
+      node,
+      offset
+    };
+  }
+  function nextPointWithEmptyNode(point, isSkipInnerOffset) {
+    let node, offset = 0;
+    if (nodeLength(point.node) === point.offset) {
+      if (isEditable(point.node)) {
+        return null;
+      }
       node = point.node.parentNode;
       offset = position(point.node) + 1;
-    }
-  } else if (hasChildren(point.node)) {
-    node = point.node.childNodes[point.offset];
-    offset = 0;
-  } else {
-    node = point.node;
-    offset = isSkipInnerOffset ? nodeLength(point.node) : point.offset + 1;
-  }
-  return {
-    node: node,
-    offset: offset
-  };
-}
-
-/**
- * Find next boundaryPoint for preorder / depth first traversal of the DOM
- * returns next boundaryPoint with empty node
- *
- * @param {BoundaryPoint} point
- * @param {Boolean} isSkipInnerOffset
- * @return {BoundaryPoint}
- */
-function nextPointWithEmptyNode(point, isSkipInnerOffset) {
-  var node,
-    offset = 0;
-  if (nodeLength(point.node) === point.offset) {
-    if (isEditable(point.node)) {
-      return null;
-    }
-    node = point.node.parentNode;
-    offset = position(point.node) + 1;
-
-    // if parent node is editable,  return current node's sibling node.
-    if (isEditable(node)) {
-      node = point.node.nextSibling;
-      offset = 0;
-    }
-  } else if (hasChildren(point.node)) {
-    node = point.node.childNodes[point.offset];
-    offset = 0;
-  } else {
-    node = point.node;
-    offset = isSkipInnerOffset ? nodeLength(point.node) : point.offset + 1;
-  }
-  return {
-    node: node,
-    offset: offset
-  };
-}
-
-/*
-* returns the next Text node index or 0 if not found.
-*/
-function getNextTextNode(actual) {
-  if (!actual.nextSibling) return undefined;
-  if (actual.parent !== actual.nextSibling.parent) return undefined;
-  if (isText(actual.nextSibling)) return actual.nextSibling;else return getNextTextNode(actual.nextSibling);
-}
-
-/**
- * returns whether pointA and pointB is same or not.
- *
- * @param {BoundaryPoint} pointA
- * @param {BoundaryPoint} pointB
- * @return {Boolean}
- */
-function isSamePoint(pointA, pointB) {
-  return pointA.node === pointB.node && pointA.offset === pointB.offset;
-}
-
-/**
- * returns whether point is visible (can set cursor) or not.
- *
- * @param {BoundaryPoint} point
- * @return {Boolean}
- */
-function isVisiblePoint(point) {
-  if (isText(point.node) || !hasChildren(point.node) || dom_isEmpty(point.node)) {
-    return true;
-  }
-  var leftNode = point.node.childNodes[point.offset - 1];
-  var rightNode = point.node.childNodes[point.offset];
-  if ((!leftNode || isVoid(leftNode)) && (!rightNode || isVoid(rightNode)) || isTable(rightNode)) {
-    return true;
-  }
-  return false;
-}
-
-/**
- * @method prevPointUtil
- *
- * @param {BoundaryPoint} point
- * @param {Function} pred
- * @return {BoundaryPoint}
- */
-function prevPointUntil(point, pred) {
-  while (point) {
-    if (pred(point)) {
-      return point;
-    }
-    point = prevPoint(point);
-  }
-  return null;
-}
-
-/**
- * @method nextPointUntil
- *
- * @param {BoundaryPoint} point
- * @param {Function} pred
- * @return {BoundaryPoint}
- */
-function nextPointUntil(point, pred) {
-  while (point) {
-    if (pred(point)) {
-      return point;
-    }
-    point = nextPoint(point);
-  }
-  return null;
-}
-
-/**
- * returns whether point has character or not.
- *
- * @param {Point} point
- * @return {Boolean}
- */
-function isCharPoint(point) {
-  if (!isText(point.node)) {
-    return false;
-  }
-  var ch = point.node.nodeValue.charAt(point.offset - 1);
-  return ch && ch !== ' ' && ch !== NBSP_CHAR;
-}
-
-/**
- * returns whether point has space or not.
- *
- * @param {Point} point
- * @return {Boolean}
- */
-function isSpacePoint(point) {
-  if (!isText(point.node)) {
-    return false;
-  }
-  var ch = point.node.nodeValue.charAt(point.offset - 1);
-  return ch === ' ' || ch === NBSP_CHAR;
-}
-
-/**
- * @method walkPoint - preorder / depth first traversal of the DOM
- *
- * @param {BoundaryPoint} startPoint
- * @param {BoundaryPoint} endPoint
- * @param {Function} handler
- * @param {Boolean} isSkipInnerOffset
- */
-function walkPoint(startPoint, endPoint, handler, isSkipInnerOffset) {
-  var point = startPoint;
-  while (point && point.node) {
-    handler(point);
-    if (isSamePoint(point, endPoint)) {
-      break;
-    }
-    var isSkipOffset = isSkipInnerOffset && startPoint.node !== point.node && endPoint.node !== point.node;
-    point = nextPointWithEmptyNode(point, isSkipOffset);
-  }
-}
-
-/**
- * @method makeOffsetPath
- *
- * return offsetPath(array of offset) from ancestor
- *
- * @param {Node} ancestor - ancestor node
- * @param {Node} node
- */
-function makeOffsetPath(ancestor, node) {
-  var ancestors = listAncestor(node, func.eq(ancestor));
-  return ancestors.map(position).reverse();
-}
-
-/**
- * @method fromOffsetPath
- *
- * return element from offsetPath(array of offset)
- *
- * @param {Node} ancestor - ancestor node
- * @param {array} offsets - offsetPath
- */
-function fromOffsetPath(ancestor, offsets) {
-  var current = ancestor;
-  for (var i = 0, len = offsets.length; i < len; i++) {
-    if (current.childNodes.length <= offsets[i]) {
-      current = current.childNodes[current.childNodes.length - 1];
-    } else {
-      current = current.childNodes[offsets[i]];
-    }
-  }
-  return current;
-}
-
-/**
- * @method splitNode
- *
- * split element or #text
- *
- * @param {BoundaryPoint} point
- * @param {Object} [options]
- * @param {Boolean} [options.isSkipPaddingBlankHTML] - default: false
- * @param {Boolean} [options.isNotSplitEdgePoint] - default: false
- * @param {Boolean} [options.isDiscardEmptySplits] - default: false
- * @return {Node} right node of boundaryPoint
- */
-function splitNode(point, options) {
-  var isSkipPaddingBlankHTML = options && options.isSkipPaddingBlankHTML;
-  var isNotSplitEdgePoint = options && options.isNotSplitEdgePoint;
-  var isDiscardEmptySplits = options && options.isDiscardEmptySplits;
-  if (isDiscardEmptySplits) {
-    isSkipPaddingBlankHTML = true;
-  }
-
-  // edge case
-  if (isEdgePoint(point) && (isText(point.node) || isNotSplitEdgePoint)) {
-    if (isLeftEdgePoint(point)) {
-      return point.node;
-    } else if (isRightEdgePoint(point)) {
-      return point.node.nextSibling;
-    }
-  }
-
-  // split #text
-  if (isText(point.node)) {
-    return point.node.splitText(point.offset);
-  } else {
-    var childNode = point.node.childNodes[point.offset];
-    var childNodes = listNext(childNode);
-    var clone = insertAfter(point.node.cloneNode(false), point.node);
-    appendChildNodes(clone, childNodes);
-    if (!isSkipPaddingBlankHTML) {
-      paddingBlankHTML(point.node);
-      paddingBlankHTML(clone);
-    }
-    if (isDiscardEmptySplits) {
-      if (dom_isEmpty(point.node)) {
-        remove(point.node);
+      if (isEditable(node)) {
+        node = point.node.nextSibling;
+        offset = 0;
       }
-      if (dom_isEmpty(clone)) {
-        remove(clone);
+    } else if (hasChildren(point.node)) {
+      node = point.node.childNodes[point.offset];
+      offset = 0;
+    } else {
+      node = point.node;
+      offset = isSkipInnerOffset ? nodeLength(point.node) : point.offset + 1;
+    }
+    return {
+      node,
+      offset
+    };
+  }
+  function getNextTextNode(actual) {
+    if (!actual.nextSibling) return void 0;
+    if (actual.parent !== actual.nextSibling.parent) return void 0;
+    if (isText(actual.nextSibling)) return actual.nextSibling;
+    else return getNextTextNode(actual.nextSibling);
+  }
+  function isSamePoint(pointA, pointB) {
+    return pointA.node === pointB.node && pointA.offset === pointB.offset;
+  }
+  function isVisiblePoint(point) {
+    if (isText(point.node) || !hasChildren(point.node) || isEmpty(point.node)) {
+      return true;
+    }
+    const leftNode = point.node.childNodes[point.offset - 1];
+    const rightNode = point.node.childNodes[point.offset];
+    if ((!leftNode || isVoid(leftNode)) && (!rightNode || isVoid(rightNode)) || isTable(rightNode)) {
+      return true;
+    }
+    return false;
+  }
+  function prevPointUntil(point, pred) {
+    while (point) {
+      if (pred(point)) {
+        return point;
+      }
+      point = prevPoint(point);
+    }
+    return null;
+  }
+  function nextPointUntil(point, pred) {
+    while (point) {
+      if (pred(point)) {
+        return point;
+      }
+      point = nextPoint(point);
+    }
+    return null;
+  }
+  function isCharPoint(point) {
+    if (!isText(point.node)) {
+      return false;
+    }
+    const ch = point.node.nodeValue.charAt(point.offset - 1);
+    return ch && (ch !== " " && ch !== NBSP_CHAR);
+  }
+  function isSpacePoint(point) {
+    if (!isText(point.node)) {
+      return false;
+    }
+    const ch = point.node.nodeValue.charAt(point.offset - 1);
+    return ch === " " || ch === NBSP_CHAR;
+  }
+  function walkPoint(startPoint, endPoint, handler, isSkipInnerOffset) {
+    let point = startPoint;
+    while (point && point.node) {
+      handler(point);
+      if (isSamePoint(point, endPoint)) {
+        break;
+      }
+      const isSkipOffset = isSkipInnerOffset && startPoint.node !== point.node && endPoint.node !== point.node;
+      point = nextPointWithEmptyNode(point, isSkipOffset);
+    }
+  }
+  function makeOffsetPath(ancestor2, node) {
+    const ancestors = listAncestor(node, func.eq(ancestor2));
+    return ancestors.map(position).reverse();
+  }
+  function fromOffsetPath(ancestor2, offsets) {
+    let current = ancestor2;
+    for (let i = 0, len = offsets.length; i < len; i++) {
+      if (current.childNodes.length <= offsets[i]) {
+        current = current.childNodes[current.childNodes.length - 1];
+      } else {
+        current = current.childNodes[offsets[i]];
+      }
+    }
+    return current;
+  }
+  function splitNode(point, options) {
+    let isSkipPaddingBlankHTML = options && options.isSkipPaddingBlankHTML;
+    const isNotSplitEdgePoint = options && options.isNotSplitEdgePoint;
+    const isDiscardEmptySplits = options && options.isDiscardEmptySplits;
+    if (isDiscardEmptySplits) {
+      isSkipPaddingBlankHTML = true;
+    }
+    if (isEdgePoint(point) && (isText(point.node) || isNotSplitEdgePoint)) {
+      if (isLeftEdgePoint(point)) {
+        return point.node;
+      } else if (isRightEdgePoint(point)) {
         return point.node.nextSibling;
       }
     }
-    return clone;
+    if (isText(point.node)) {
+      return point.node.splitText(point.offset);
+    } else {
+      const childNode = point.node.childNodes[point.offset];
+      let childNodes = listNext(childNode);
+      const clone = insertAfter(point.node.cloneNode(false), point.node);
+      appendChildNodes(clone, childNodes);
+      if (!isSkipPaddingBlankHTML) {
+        paddingBlankHTML(point.node);
+        paddingBlankHTML(clone);
+      }
+      if (isDiscardEmptySplits) {
+        if (isEmpty(point.node)) {
+          remove(point.node);
+        }
+        if (isEmpty(clone)) {
+          remove(clone);
+          return point.node.nextSibling;
+        }
+      }
+      return clone;
+    }
   }
-}
-
-/**
- * @method splitTree
- *
- * split tree by point
- *
- * @param {Node} root - split root
- * @param {BoundaryPoint} point
- * @param {Object} [options]
- * @param {Boolean} [options.isSkipPaddingBlankHTML] - default: false
- * @param {Boolean} [options.isNotSplitEdgePoint] - default: false
- * @return {Node} right node of boundaryPoint
- */
-function splitTree(root, point, options) {
-  // ex) [#text, <span>, <p>]
-  var ancestors = listAncestor(point.node, func.eq(root));
-  if (!ancestors.length) {
-    return null;
-  } else if (ancestors.length === 1) {
-    return splitNode(point, options);
-  }
-  // Filter elements with sibling elements
-  if (ancestors.length > 2) {
-    var domList = ancestors.slice(0, ancestors.length - 1);
-    var ifHasNextSibling = domList.find(function (item) {
-      return item.nextSibling;
-    });
-    if (ifHasNextSibling && point.offset != 0 && isRightEdgePoint(point)) {
-      var nestSibling = ifHasNextSibling.nextSibling;
-      var textNode;
-      if (nestSibling.nodeType == 1) {
-        textNode = nestSibling.childNodes[0];
-        ancestors = listAncestor(textNode, func.eq(root));
-        point = {
-          node: textNode,
-          offset: 0
-        };
-      } else if (nestSibling.nodeType == 3 && !nestSibling.data.match(/[\n\r]/g)) {
-        textNode = nestSibling;
-        ancestors = listAncestor(textNode, func.eq(root));
-        point = {
-          node: textNode,
-          offset: 0
-        };
+  function splitTree(root, point, options) {
+    let ancestors = listAncestor(point.node, func.eq(root));
+    if (!ancestors.length) {
+      return null;
+    } else if (ancestors.length === 1) {
+      return splitNode(point, options);
+    }
+    if (ancestors.length > 2) {
+      let domList = ancestors.slice(0, ancestors.length - 1);
+      let ifHasNextSibling = domList.find((item) => item.nextSibling);
+      if (ifHasNextSibling && point.offset != 0 && isRightEdgePoint(point)) {
+        let nestSibling = ifHasNextSibling.nextSibling;
+        let textNode;
+        if (nestSibling.nodeType == 1) {
+          textNode = nestSibling.childNodes[0];
+          ancestors = listAncestor(textNode, func.eq(root));
+          point = {
+            node: textNode,
+            offset: 0
+          };
+        } else if (nestSibling.nodeType == 3 && !nestSibling.data.match(/[\n\r]/g)) {
+          textNode = nestSibling;
+          ancestors = listAncestor(textNode, func.eq(root));
+          point = {
+            node: textNode,
+            offset: 0
+          };
+        }
       }
     }
-  }
-  return ancestors.reduce(function (node, parent) {
-    if (node === point.node) {
-      node = splitNode(point, options);
-    }
-    return splitNode({
-      node: parent,
-      offset: node ? position(node) : nodeLength(parent)
-    }, options);
-  });
-}
-
-/**
- * split point
- *
- * @param {Point} point
- * @param {Boolean} isInline
- * @return {Object}
- */
-function splitPoint(point, isInline) {
-  // find splitRoot, container
-  //  - inline: splitRoot is a child of paragraph
-  //  - block: splitRoot is a child of bodyContainer
-  var pred = isInline ? isPara : isBodyContainer;
-  var ancestors = listAncestor(point.node, pred);
-  var topAncestor = lists.last(ancestors) || point.node;
-  var splitRoot, container;
-  if (pred(topAncestor)) {
-    splitRoot = ancestors[ancestors.length - 2];
-    container = topAncestor;
-  } else {
-    splitRoot = topAncestor;
-    container = splitRoot.parentNode;
-  }
-
-  // if splitRoot is exists, split with splitTree
-  var pivot = splitRoot && splitTree(splitRoot, point, {
-    isSkipPaddingBlankHTML: isInline,
-    isNotSplitEdgePoint: isInline
-  });
-
-  // if container is point.node, find pivot with point.offset
-  if (!pivot && container === point.node) {
-    pivot = point.node.childNodes[point.offset];
-  }
-  return {
-    rightNode: pivot,
-    container: container
-  };
-}
-function create(nodeName) {
-  return document.createElement(nodeName);
-}
-function createText(text) {
-  return document.createTextNode(text);
-}
-
-/**
- * @method remove
- *
- * remove node, (isRemoveChild: remove child or not)
- *
- * @param {Node} node
- * @param {Boolean} isRemoveChild
- */
-function remove(node, isRemoveChild) {
-  if (!node || !node.parentNode) {
-    return;
-  }
-  if (node.removeNode) {
-    return node.removeNode(isRemoveChild);
-  }
-  var parent = node.parentNode;
-  if (!isRemoveChild) {
-    var nodes = [];
-    for (var i = 0, len = node.childNodes.length; i < len; i++) {
-      nodes.push(node.childNodes[i]);
-    }
-    for (var _i = 0, _len = nodes.length; _i < _len; _i++) {
-      parent.insertBefore(nodes[_i], node);
-    }
-  }
-  parent.removeChild(node);
-}
-
-/**
- * @method removeWhile
- *
- * @param {Node} node
- * @param {Function} pred
- */
-function removeWhile(node, pred) {
-  while (node) {
-    if (isEditable(node) || !pred(node)) {
-      break;
-    }
-    var parent = node.parentNode;
-    remove(node);
-    node = parent;
-  }
-}
-
-/**
- * @method replace
- *
- * replace node with provided nodeName
- *
- * @param {Node} node
- * @param {String} nodeName
- * @return {Node} - new node
- */
-function replace(node, nodeName) {
-  if (node.nodeName.toUpperCase() === nodeName.toUpperCase()) {
-    return node;
-  }
-  var newNode = create(nodeName);
-  if (node.style.cssText) {
-    newNode.style.cssText = node.style.cssText;
-  }
-  appendChildNodes(newNode, lists.from(node.childNodes));
-  insertAfter(newNode, node);
-  remove(node);
-  return newNode;
-}
-var isTextarea = makePredByNodeName('TEXTAREA');
-
-/**
- * @param {jQuery} $node
- * @param {Boolean} [stripLinebreaks] - default: false
- */
-function value($node, stripLinebreaks) {
-  var val = isTextarea($node[0]) ? $node.val() : $node.html();
-  if (stripLinebreaks) {
-    return val.replace(/[\n\r]/g, '');
-  }
-  return val;
-}
-
-/**
- * @method html
- *
- * get the HTML contents of node
- *
- * @param {jQuery} $node
- * @param {Boolean} [isNewlineOnBlock]
- */
-function html($node, isNewlineOnBlock) {
-  var markup = value($node);
-  if (isNewlineOnBlock) {
-    var regexTag = /<(\/?)(\b(?!!)[^>\s]*)(.*?)(\s*\/?>)/g;
-    markup = markup.replace(regexTag, function (match, endSlash, name) {
-      name = name.toUpperCase();
-      var isEndOfInlineContainer = /^DIV|^TD|^TH|^P|^LI|^H[1-7]/.test(name) && !!endSlash;
-      var isBlockNode = /^BLOCKQUOTE|^TABLE|^TBODY|^TR|^HR|^UL|^OL/.test(name);
-      return match + (isEndOfInlineContainer || isBlockNode ? '\n' : '');
+    return ancestors.reduce(function(node, parent) {
+      if (node === point.node) {
+        node = splitNode(point, options);
+      }
+      return splitNode({
+        node: parent,
+        offset: node ? position(node) : nodeLength(parent)
+      }, options);
     });
-    markup = markup.trim();
   }
-  return markup;
-}
-function posFromPlaceholder(placeholder) {
-  var $placeholder = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(placeholder);
-  var pos = $placeholder.offset();
-  var height = $placeholder.outerHeight(true); // include margin
-
-  return {
-    left: pos.left,
-    top: pos.top + height
+  function splitPoint(point, isInline2) {
+    const pred = isInline2 ? isPara : isBodyContainer;
+    const ancestors = listAncestor(point.node, pred);
+    const topAncestor = lists.last(ancestors) || point.node;
+    let splitRoot, container;
+    if (pred(topAncestor)) {
+      splitRoot = ancestors[ancestors.length - 2];
+      container = topAncestor;
+    } else {
+      splitRoot = topAncestor;
+      container = splitRoot.parentNode;
+    }
+    let pivot = splitRoot && splitTree(splitRoot, point, {
+      isSkipPaddingBlankHTML: isInline2,
+      isNotSplitEdgePoint: isInline2
+    });
+    if (!pivot && container === point.node) {
+      pivot = point.node.childNodes[point.offset];
+    }
+    return {
+      rightNode: pivot,
+      container
+    };
+  }
+  function create(nodeName) {
+    return document.createElement(nodeName);
+  }
+  function createText(text) {
+    return document.createTextNode(text);
+  }
+  function remove(node, isRemoveChild) {
+    if (!node || !node.parentNode) {
+      return;
+    }
+    if (node.removeNode) {
+      return node.removeNode(isRemoveChild);
+    }
+    const parent = node.parentNode;
+    if (!isRemoveChild) {
+      const nodes = [];
+      for (let i = 0, len = node.childNodes.length; i < len; i++) {
+        nodes.push(node.childNodes[i]);
+      }
+      for (let i = 0, len = nodes.length; i < len; i++) {
+        parent.insertBefore(nodes[i], node);
+      }
+    }
+    parent.removeChild(node);
+  }
+  function removeWhile(node, pred) {
+    while (node) {
+      if (isEditable(node) || !pred(node)) {
+        break;
+      }
+      const parent = node.parentNode;
+      remove(node);
+      node = parent;
+    }
+  }
+  function replace(node, nodeName) {
+    if (node.nodeName.toUpperCase() === nodeName.toUpperCase()) {
+      return node;
+    }
+    const newNode = create(nodeName);
+    if (node.style.cssText) {
+      newNode.style.cssText = node.style.cssText;
+    }
+    appendChildNodes(newNode, lists.from(node.childNodes));
+    insertAfter(newNode, node);
+    remove(node);
+    return newNode;
+  }
+  const isTextarea = makePredByNodeName("TEXTAREA");
+  function value($node, stripLinebreaks) {
+    const val = isTextarea($node[0]) ? $node.val() : $node.html();
+    if (stripLinebreaks) {
+      return val.replace(/[\n\r]/g, "");
+    }
+    return val;
+  }
+  function html($node, isNewlineOnBlock) {
+    let markup = value($node);
+    if (isNewlineOnBlock) {
+      const regexTag = /<(\/?)(\b(?!!)[^>\s]*)(.*?)(\s*\/?>)/g;
+      markup = markup.replace(regexTag, function(match, endSlash, name) {
+        name = name.toUpperCase();
+        const isEndOfInlineContainer = /^DIV|^TD|^TH|^P|^LI|^H[1-7]/.test(name) && !!endSlash;
+        const isBlockNode = /^BLOCKQUOTE|^TABLE|^TBODY|^TR|^HR|^UL|^OL/.test(name);
+        return match + (isEndOfInlineContainer || isBlockNode ? "\n" : "");
+      });
+      markup = markup.trim();
+    }
+    return markup;
+  }
+  function posFromPlaceholder(placeholder) {
+    const $placeholder = $(placeholder);
+    const pos = $placeholder.offset();
+    const height = $placeholder.outerHeight(true);
+    return {
+      left: pos.left,
+      top: pos.top + height
+    };
+  }
+  function attachEvents($node, events) {
+    Object.keys(events).forEach(function(key2) {
+      $node.on(key2, events[key2]);
+    });
+  }
+  function detachEvents($node, events) {
+    Object.keys(events).forEach(function(key2) {
+      $node.off(key2, events[key2]);
+    });
+  }
+  function isCustomStyleTag(node) {
+    return node && !isText(node) && lists.contains(node.classList, "note-styletag");
+  }
+  const dom = {
+    /** @property {String} NBSP_CHAR */
+    NBSP_CHAR,
+    /** @property {String} ZERO_WIDTH_NBSP_CHAR */
+    ZERO_WIDTH_NBSP_CHAR,
+    /** @property {String} blank */
+    blank: blankHTML,
+    /** @property {String} emptyPara */
+    emptyPara: `<p>${blankHTML}</p>`,
+    makePredByNodeName,
+    isEditable,
+    isControlSizing,
+    isText,
+    isElement,
+    isVoid,
+    isPara,
+    isPurePara,
+    isHeading,
+    isInline,
+    isBlock: func.not(isInline),
+    isBodyInline,
+    isBody,
+    isParaInline,
+    isPre,
+    isList,
+    isTable,
+    isData,
+    isCell,
+    isBlockquote,
+    isBodyContainer,
+    isAnchor,
+    isDiv: makePredByNodeName("DIV"),
+    isLi,
+    isBR: makePredByNodeName("BR"),
+    isSpan: makePredByNodeName("SPAN"),
+    isB: makePredByNodeName("B"),
+    isU: makePredByNodeName("U"),
+    isS: makePredByNodeName("S"),
+    isI: makePredByNodeName("I"),
+    isImg: makePredByNodeName("IMG"),
+    isTextarea,
+    deepestChildIsEmpty,
+    isEmpty,
+    isEmptyAnchor: func.and(isAnchor, isEmpty),
+    isClosestSibling,
+    withClosestSiblings,
+    nodeLength,
+    isLeftEdgePoint,
+    isRightEdgePoint,
+    isEdgePoint,
+    isLeftEdgeOf,
+    isRightEdgeOf,
+    isLeftEdgePointOf,
+    isRightEdgePointOf,
+    prevPoint,
+    nextPoint,
+    nextPointWithEmptyNode,
+    isSamePoint,
+    isVisiblePoint,
+    prevPointUntil,
+    nextPointUntil,
+    isCharPoint,
+    isSpacePoint,
+    walkPoint,
+    ancestor,
+    singleChildAncestor,
+    listAncestor,
+    lastAncestor,
+    listNext,
+    listPrev,
+    listDescendant,
+    commonAncestor,
+    wrap,
+    insertAfter,
+    appendChildNodes,
+    position,
+    hasChildren,
+    makeOffsetPath,
+    fromOffsetPath,
+    splitTree,
+    splitPoint,
+    create,
+    createText,
+    remove,
+    removeWhile,
+    replace,
+    html,
+    value,
+    posFromPlaceholder,
+    attachEvents,
+    detachEvents,
+    isCustomStyleTag
   };
-}
-function attachEvents($node, events) {
-  Object.keys(events).forEach(function (key) {
-    $node.on(key, events[key]);
-  });
-}
-function detachEvents($node, events) {
-  Object.keys(events).forEach(function (key) {
-    $node.off(key, events[key]);
-  });
-}
-
-/**
- * @method isCustomStyleTag
- *
- * assert if a node contains a "note-styletag" class,
- * which implies that's a custom-made style tag node
- *
- * @param {Node} an HTML DOM node
- */
-function isCustomStyleTag(node) {
-  return node && !isText(node) && lists.contains(node.classList, 'note-styletag');
-}
-/* harmony default export */ const dom = ({
-  /** @property {String} NBSP_CHAR */
-  NBSP_CHAR: NBSP_CHAR,
-  /** @property {String} ZERO_WIDTH_NBSP_CHAR */
-  ZERO_WIDTH_NBSP_CHAR: ZERO_WIDTH_NBSP_CHAR,
-  /** @property {String} blank */
-  blank: blankHTML,
-  /** @property {String} emptyPara */
-  emptyPara: "<p>".concat(blankHTML, "</p>"),
-  makePredByNodeName: makePredByNodeName,
-  isEditable: isEditable,
-  isControlSizing: isControlSizing,
-  isText: isText,
-  isElement: isElement,
-  isVoid: isVoid,
-  isPara: isPara,
-  isPurePara: isPurePara,
-  isHeading: isHeading,
-  isInline: isInline,
-  isBlock: func.not(isInline),
-  isBodyInline: isBodyInline,
-  isBody: isBody,
-  isParaInline: isParaInline,
-  isPre: isPre,
-  isList: isList,
-  isTable: isTable,
-  isData: isData,
-  isCell: isCell,
-  isBlockquote: isBlockquote,
-  isBodyContainer: isBodyContainer,
-  isAnchor: isAnchor,
-  isDiv: makePredByNodeName('DIV'),
-  isLi: isLi,
-  isBR: makePredByNodeName('BR'),
-  isSpan: makePredByNodeName('SPAN'),
-  isB: makePredByNodeName('B'),
-  isU: makePredByNodeName('U'),
-  isS: makePredByNodeName('S'),
-  isI: makePredByNodeName('I'),
-  isImg: makePredByNodeName('IMG'),
-  isTextarea: isTextarea,
-  deepestChildIsEmpty: deepestChildIsEmpty,
-  isEmpty: dom_isEmpty,
-  isEmptyAnchor: func.and(isAnchor, dom_isEmpty),
-  isClosestSibling: isClosestSibling,
-  withClosestSiblings: withClosestSiblings,
-  nodeLength: nodeLength,
-  isLeftEdgePoint: isLeftEdgePoint,
-  isRightEdgePoint: isRightEdgePoint,
-  isEdgePoint: isEdgePoint,
-  isLeftEdgeOf: isLeftEdgeOf,
-  isRightEdgeOf: isRightEdgeOf,
-  isLeftEdgePointOf: isLeftEdgePointOf,
-  isRightEdgePointOf: isRightEdgePointOf,
-  prevPoint: prevPoint,
-  nextPoint: nextPoint,
-  nextPointWithEmptyNode: nextPointWithEmptyNode,
-  isSamePoint: isSamePoint,
-  isVisiblePoint: isVisiblePoint,
-  prevPointUntil: prevPointUntil,
-  nextPointUntil: nextPointUntil,
-  isCharPoint: isCharPoint,
-  isSpacePoint: isSpacePoint,
-  walkPoint: walkPoint,
-  ancestor: ancestor,
-  singleChildAncestor: singleChildAncestor,
-  listAncestor: listAncestor,
-  lastAncestor: lastAncestor,
-  listNext: listNext,
-  listPrev: listPrev,
-  listDescendant: listDescendant,
-  commonAncestor: commonAncestor,
-  wrap: wrap,
-  insertAfter: insertAfter,
-  appendChildNodes: appendChildNodes,
-  position: position,
-  hasChildren: hasChildren,
-  makeOffsetPath: makeOffsetPath,
-  fromOffsetPath: fromOffsetPath,
-  splitTree: splitTree,
-  splitPoint: splitPoint,
-  create: create,
-  createText: createText,
-  remove: remove,
-  removeWhile: removeWhile,
-  replace: replace,
-  html: html,
-  value: value,
-  posFromPlaceholder: posFromPlaceholder,
-  attachEvents: attachEvents,
-  detachEvents: detachEvents,
-  isCustomStyleTag: isCustomStyleTag
-});
-;// CONCATENATED MODULE: ./src/js/Context.js
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
-function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-
-var Context = /*#__PURE__*/function () {
-  /**
-   * @param {jQuery} $note
-   * @param {Object} options
-   */
-  function Context($note, options) {
-    _classCallCheck(this, Context);
-    this.$note = $note;
-    this.memos = {};
-    this.modules = {};
-    this.layoutInfo = {};
-    this.options = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().extend(true, {}, options);
-
-    // init ui with options
-    (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.ui = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().summernote.ui_template(this.options);
-    this.ui = (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.ui;
-    this.initialize();
-  }
-
-  /**
-   * create layout and initialize modules and other resources
-   */
-  return _createClass(Context, [{
-    key: "initialize",
-    value: function initialize() {
+  class Context {
+    /**
+     * @param {jQuery} $note
+     * @param {Object} options
+     */
+    constructor($note, options) {
+      this.$note = $note;
+      this.memos = {};
+      this.modules = {};
+      this.layoutInfo = {};
+      this.options = $.extend(true, {}, options);
+      $.summernote.ui = $.summernote.ui_template(this.options);
+      this.ui = $.summernote.ui;
+      this.initialize();
+    }
+    /**
+     * create layout and initialize modules and other resources
+     */
+    initialize() {
       this.layoutInfo = this.ui.createLayout(this.$note);
       this._initialize();
       this.$note.hide();
       return this;
     }
-
     /**
      * destroy modules and other resources and remove layout
      */
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this._destroy();
-      this.$note.removeData('summernote');
+      this.$note.removeData("summernote");
       this.ui.removeLayout(this.$note, this.layoutInfo);
     }
-
     /**
      * destory modules and other resources and initialize it again
      */
-  }, {
-    key: "reset",
-    value: function reset() {
-      var disabled = this.isDisabled();
+    reset() {
+      const disabled = this.isDisabled();
       this.code(dom.emptyPara);
       this._destroy();
       this._initialize();
@@ -1958,131 +1219,96 @@ var Context = /*#__PURE__*/function () {
         this.disable();
       }
     }
-  }, {
-    key: "_initialize",
-    value: function _initialize() {
-      var _this = this;
-      // set own id
-      this.options.id = func.uniqueId(external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().now());
-      // set default container for tooltips, popovers, and dialogs
+    _initialize() {
+      this.options.id = func.uniqueId($.now());
       this.options.container = this.options.container || this.layoutInfo.editor;
-
-      // add optional buttons
-      var buttons = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().extend({}, this.options.buttons);
-      Object.keys(buttons).forEach(function (key) {
-        _this.memo('button.' + key, buttons[key]);
+      const buttons = $.extend({}, this.options.buttons);
+      Object.keys(buttons).forEach((key2) => {
+        this.memo("button." + key2, buttons[key2]);
       });
-      var modules = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().extend({}, this.options.modules, (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.plugins || {});
-
-      // add and initialize modules
-      Object.keys(modules).forEach(function (key) {
-        _this.module(key, modules[key], true);
+      const modules = $.extend({}, this.options.modules, $.summernote.plugins || {});
+      Object.keys(modules).forEach((key2) => {
+        this.module(key2, modules[key2], true);
       });
-      Object.keys(this.modules).forEach(function (key) {
-        _this.initializeModule(key);
+      Object.keys(this.modules).forEach((key2) => {
+        this.initializeModule(key2);
       });
     }
-  }, {
-    key: "_destroy",
-    value: function _destroy() {
-      var _this2 = this;
-      // destroy modules with reversed order
-      Object.keys(this.modules).reverse().forEach(function (key) {
-        _this2.removeModule(key);
+    _destroy() {
+      Object.keys(this.modules).reverse().forEach((key2) => {
+        this.removeModule(key2);
       });
-      Object.keys(this.memos).forEach(function (key) {
-        _this2.removeMemo(key);
+      Object.keys(this.memos).forEach((key2) => {
+        this.removeMemo(key2);
       });
-      // trigger custom onDestroy callback
-      this.triggerEvent('destroy', this);
+      this.triggerEvent("destroy", this);
     }
-  }, {
-    key: "code",
-    value: function code(html) {
-      var isActivated = this.invoke('codeview.isActivated');
-      if (html === undefined) {
-        this.invoke('codeview.sync');
+    code(html2) {
+      const isActivated = this.invoke("codeview.isActivated");
+      if (html2 === void 0) {
+        this.invoke("codeview.sync");
         return isActivated ? this.layoutInfo.codable.val() : this.layoutInfo.editable.html();
       } else {
         if (isActivated) {
-          this.invoke('codeview.sync', html);
+          this.invoke("codeview.sync", html2);
         } else {
-          this.layoutInfo.editable.html(html);
+          this.layoutInfo.editable.html(html2);
         }
-        this.$note.val(html);
-        this.triggerEvent('change', html, this.layoutInfo.editable);
+        this.$note.val(html2);
+        this.triggerEvent("change", html2, this.layoutInfo.editable);
       }
     }
-  }, {
-    key: "isDisabled",
-    value: function isDisabled() {
-      return this.layoutInfo.editable.attr('contenteditable') === 'false';
+    isDisabled() {
+      return this.layoutInfo.editable.attr("contenteditable") === "false";
     }
-  }, {
-    key: "enable",
-    value: function enable() {
-      this.layoutInfo.editable.attr('contenteditable', true);
-      this.invoke('toolbar.activate', true);
-      this.triggerEvent('disable', false);
+    enable() {
+      this.layoutInfo.editable.attr("contenteditable", true);
+      this.invoke("toolbar.activate", true);
+      this.triggerEvent("disable", false);
       this.options.editing = true;
     }
-  }, {
-    key: "disable",
-    value: function disable() {
-      // close codeview if codeview is opend
-      if (this.invoke('codeview.isActivated')) {
-        this.invoke('codeview.deactivate');
+    disable() {
+      if (this.invoke("codeview.isActivated")) {
+        this.invoke("codeview.deactivate");
       }
-      this.layoutInfo.editable.attr('contenteditable', false);
+      this.layoutInfo.editable.attr("contenteditable", false);
       this.options.editing = false;
-      this.invoke('toolbar.deactivate', true);
-      this.triggerEvent('disable', true);
+      this.invoke("toolbar.deactivate", true);
+      this.triggerEvent("disable", true);
     }
-  }, {
-    key: "triggerEvent",
-    value: function triggerEvent() {
-      var namespace = lists.head(arguments);
-      var args = lists.tail(lists.from(arguments));
-      var callback = this.options.callbacks[func.namespaceToCamel(namespace, 'on')];
+    triggerEvent() {
+      const namespace = lists.head(arguments);
+      const args = lists.tail(lists.from(arguments));
+      const callback = this.options.callbacks[func.namespaceToCamel(namespace, "on")];
       if (callback) {
         callback.apply(this.$note[0], args);
       }
-      this.$note.trigger('summernote.' + namespace, args);
+      this.$note.trigger("summernote." + namespace, args);
     }
-  }, {
-    key: "initializeModule",
-    value: function initializeModule(key) {
-      var module = this.modules[key];
+    initializeModule(key2) {
+      const module = this.modules[key2];
       module.shouldInitialize = module.shouldInitialize || func.ok;
       if (!module.shouldInitialize()) {
         return;
       }
-
-      // initialize module
       if (module.initialize) {
         module.initialize();
       }
-
-      // attach events
       if (module.events) {
         dom.attachEvents(this.$note, module.events);
       }
     }
-  }, {
-    key: "module",
-    value: function module(key, ModuleClass, withoutIntialize) {
+    module(key2, ModuleClass, withoutIntialize) {
       if (arguments.length === 1) {
-        return this.modules[key];
+        return this.modules[key2];
       }
-      this.modules[key] = new ModuleClass(this);
+      this.modules[key2] = new ModuleClass(this);
       if (!withoutIntialize) {
-        this.initializeModule(key);
+        this.initializeModule(key2);
       }
     }
-  }, {
-    key: "removeModule",
-    value: function removeModule(key) {
-      var module = this.modules[key];
+    removeModule(key2) {
+      const module = this.modules[key2];
       if (module.shouldInitialize()) {
         if (module.events) {
           dom.detachEvents(this.$note, module.events);
@@ -2091,266 +1317,190 @@ var Context = /*#__PURE__*/function () {
           module.destroy();
         }
       }
-      delete this.modules[key];
+      delete this.modules[key2];
     }
-  }, {
-    key: "memo",
-    value: function memo(key, obj) {
+    memo(key2, obj) {
       if (arguments.length === 1) {
-        return this.memos[key];
+        return this.memos[key2];
       }
-      this.memos[key] = obj;
+      this.memos[key2] = obj;
     }
-  }, {
-    key: "removeMemo",
-    value: function removeMemo(key) {
-      if (this.memos[key] && this.memos[key].destroy) {
-        this.memos[key].destroy();
+    removeMemo(key2) {
+      if (this.memos[key2] && this.memos[key2].destroy) {
+        this.memos[key2].destroy();
       }
-      delete this.memos[key];
+      delete this.memos[key2];
     }
-
     /**
      * Some buttons need to change their visual style immediately once they get pressed
      */
-  }, {
-    key: "createInvokeHandlerAndUpdateState",
-    value: function createInvokeHandlerAndUpdateState(namespace, value) {
-      var _this3 = this;
-      return function (event) {
-        _this3.createInvokeHandler(namespace, value)(event);
-        _this3.invoke('buttons.updateCurrentStyle');
+    createInvokeHandlerAndUpdateState(namespace, value2) {
+      return (event) => {
+        this.createInvokeHandler(namespace, value2)(event);
+        this.invoke("buttons.updateCurrentStyle");
       };
     }
-  }, {
-    key: "createInvokeHandler",
-    value: function createInvokeHandler(namespace, value) {
-      var _this4 = this;
-      return function (event) {
+    createInvokeHandler(namespace, value2) {
+      return (event) => {
         event.preventDefault();
-        var $target = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(event.target);
-        _this4.invoke(namespace, value || $target.closest('[data-value]').data('value'), $target);
+        const $target = $(event.target);
+        this.invoke(namespace, value2 || $target.closest("[data-value]").data("value"), $target);
       };
     }
-  }, {
-    key: "invoke",
-    value: function invoke() {
-      var namespace = lists.head(arguments);
-      var args = lists.tail(lists.from(arguments));
-      var splits = namespace.split('.');
-      var hasSeparator = splits.length > 1;
-      var moduleName = hasSeparator && lists.head(splits);
-      var methodName = hasSeparator ? lists.last(splits) : lists.head(splits);
-      var module = this.modules[moduleName || 'editor'];
+    invoke() {
+      const namespace = lists.head(arguments);
+      const args = lists.tail(lists.from(arguments));
+      const splits = namespace.split(".");
+      const hasSeparator = splits.length > 1;
+      const moduleName = hasSeparator && lists.head(splits);
+      const methodName = hasSeparator ? lists.last(splits) : lists.head(splits);
+      const module = this.modules[moduleName || "editor"];
       if (!moduleName && this[methodName]) {
         return this[methodName].apply(this, args);
       } else if (module && module[methodName] && module.shouldInitialize()) {
         return module[methodName].apply(module, args);
       }
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/summernote.js
-function summernote_typeof(o) { "@babel/helpers - typeof"; return summernote_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, summernote_typeof(o); }
-
-
-
-
-external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().fn.extend({
-  /**
-   * Summernote API
-   *
-   * @param {Object|String}
-   * @return {this}
-   */
-  summernote: function summernote() {
-    var type = summernote_typeof(lists.head(arguments));
-    var isExternalAPICalled = type === 'string';
-    var hasInitOptions = type === 'object';
-    var options = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().extend({}, (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.options, hasInitOptions ? lists.head(arguments) : {});
-
-    // Update options
-    options.langInfo = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().extend(true, {}, (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.lang['en-US'], (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.lang[options.lang]);
-    options.icons = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().extend(true, {}, (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.options.icons, options.icons);
-    options.tooltip = options.tooltip === 'auto' ? !env.isSupportTouch : options.tooltip;
-    this.each(function (idx, note) {
-      var $note = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(note);
-      if (!$note.data('summernote')) {
-        var context = new Context($note, options);
-        $note.data('summernote', context);
-        $note.data('summernote').triggerEvent('init', context.layoutInfo);
-      }
-    });
-    var $note = this.first();
-    if ($note.length) {
-      var context = $note.data('summernote');
-      if (isExternalAPICalled) {
-        return context.invoke.apply(context, lists.from(arguments));
-      } else if (options.focus) {
-        context.invoke('editor.focus');
-      }
-    }
-    return this;
   }
-});
-;// CONCATENATED MODULE: ./src/js/core/range.js
-function range_typeof(o) { "@babel/helpers - typeof"; return range_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, range_typeof(o); }
-function range_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function range_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, range_toPropertyKey(o.key), o); } }
-function range_createClass(e, r, t) { return r && range_defineProperties(e.prototype, r), t && range_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function range_toPropertyKey(t) { var i = range_toPrimitive(t, "string"); return "symbol" == range_typeof(i) ? i : i + ""; }
-function range_toPrimitive(t, r) { if ("object" != range_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != range_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-
-
-
-/**
- * return boundaryPoint from TextRange, inspired by Andy Na's HuskyRange.js
- *
- * @param {TextRange} textRange
- * @param {Boolean} isStart
- * @return {BoundaryPoint}
- *
- * @see http://msdn.microsoft.com/en-us/library/ie/ms535872(v=vs.85).aspx
- */
-function textRangeToPoint(textRange, isStart) {
-  var container = textRange.parentElement();
-  var offset;
-  var tester = document.body.createTextRange();
-  var prevContainer;
-  var childNodes = lists.from(container.childNodes);
-  for (offset = 0; offset < childNodes.length; offset++) {
-    if (dom.isText(childNodes[offset])) {
-      continue;
-    }
-    tester.moveToElementText(childNodes[offset]);
-    if (tester.compareEndPoints('StartToStart', textRange) >= 0) {
-      break;
-    }
-    prevContainer = childNodes[offset];
-  }
-  if (offset !== 0 && dom.isText(childNodes[offset - 1])) {
-    var textRangeStart = document.body.createTextRange();
-    var curTextNode = null;
-    textRangeStart.moveToElementText(prevContainer || container);
-    textRangeStart.collapse(!prevContainer);
-    curTextNode = prevContainer ? prevContainer.nextSibling : container.firstChild;
-    var pointTester = textRange.duplicate();
-    pointTester.setEndPoint('StartToStart', textRangeStart);
-    var textCount = pointTester.text.replace(/[\r\n]/g, '').length;
-    while (textCount > curTextNode.nodeValue.length && curTextNode.nextSibling) {
-      textCount -= curTextNode.nodeValue.length;
-      curTextNode = curTextNode.nextSibling;
-    }
-
-    // [workaround] enforce IE to re-reference curTextNode, hack
-    var dummy = curTextNode.nodeValue; // eslint-disable-line
-
-    if (isStart && curTextNode.nextSibling && dom.isText(curTextNode.nextSibling) && textCount === curTextNode.nodeValue.length) {
-      textCount -= curTextNode.nodeValue.length;
-      curTextNode = curTextNode.nextSibling;
-    }
-    container = curTextNode;
-    offset = textCount;
-  }
-  return {
-    cont: container,
-    offset: offset
-  };
-}
-
-/**
- * return TextRange from boundary point (inspired by google closure-library)
- * @param {BoundaryPoint} point
- * @return {TextRange}
- */
-function pointToTextRange(point) {
-  var textRangeInfo = function textRangeInfo(container, offset) {
-    var node, isCollapseToStart;
-    if (dom.isText(container)) {
-      var prevTextNodes = dom.listPrev(container, func.not(dom.isText));
-      var prevContainer = lists.last(prevTextNodes).previousSibling;
-      node = prevContainer || container.parentNode;
-      offset += lists.sum(lists.tail(prevTextNodes), dom.nodeLength);
-      isCollapseToStart = !prevContainer;
-    } else {
-      node = container.childNodes[offset] || container;
-      if (dom.isText(node)) {
-        return textRangeInfo(node, 0);
+  $.fn.extend({
+    /**
+     * Summernote API
+     *
+     * @param {Object|String}
+     * @return {this}
+     */
+    summernote: function() {
+      const type = typeof lists.head(arguments);
+      const isExternalAPICalled = type === "string";
+      const hasInitOptions = type === "object";
+      const options = $.extend({}, $.summernote.options, hasInitOptions ? lists.head(arguments) : {});
+      options.langInfo = $.extend(true, {}, $.summernote.lang["en-US"], $.summernote.lang[options.lang]);
+      options.icons = $.extend(true, {}, $.summernote.options.icons, options.icons);
+      options.tooltip = options.tooltip === "auto" ? !env.isSupportTouch : options.tooltip;
+      this.each((idx, note) => {
+        const $note2 = $(note);
+        if (!$note2.data("summernote")) {
+          const context = new Context($note2, options);
+          $note2.data("summernote", context);
+          $note2.data("summernote").triggerEvent("init", context.layoutInfo);
+        }
+      });
+      const $note = this.first();
+      if ($note.length) {
+        const context = $note.data("summernote");
+        if (isExternalAPICalled) {
+          return context.invoke.apply(context, lists.from(arguments));
+        } else if (options.focus) {
+          context.invoke("editor.focus");
+        }
       }
-      offset = 0;
-      isCollapseToStart = false;
+      return this;
+    }
+  });
+  function textRangeToPoint(textRange, isStart) {
+    let container = textRange.parentElement();
+    let offset;
+    const tester = document.body.createTextRange();
+    let prevContainer;
+    const childNodes = lists.from(container.childNodes);
+    for (offset = 0; offset < childNodes.length; offset++) {
+      if (dom.isText(childNodes[offset])) {
+        continue;
+      }
+      tester.moveToElementText(childNodes[offset]);
+      if (tester.compareEndPoints("StartToStart", textRange) >= 0) {
+        break;
+      }
+      prevContainer = childNodes[offset];
+    }
+    if (offset !== 0 && dom.isText(childNodes[offset - 1])) {
+      const textRangeStart = document.body.createTextRange();
+      let curTextNode = null;
+      textRangeStart.moveToElementText(prevContainer || container);
+      textRangeStart.collapse(!prevContainer);
+      curTextNode = prevContainer ? prevContainer.nextSibling : container.firstChild;
+      const pointTester = textRange.duplicate();
+      pointTester.setEndPoint("StartToStart", textRangeStart);
+      let textCount = pointTester.text.replace(/[\r\n]/g, "").length;
+      while (textCount > curTextNode.nodeValue.length && curTextNode.nextSibling) {
+        textCount -= curTextNode.nodeValue.length;
+        curTextNode = curTextNode.nextSibling;
+      }
+      curTextNode.nodeValue;
+      if (isStart && curTextNode.nextSibling && dom.isText(curTextNode.nextSibling) && textCount === curTextNode.nodeValue.length) {
+        textCount -= curTextNode.nodeValue.length;
+        curTextNode = curTextNode.nextSibling;
+      }
+      container = curTextNode;
+      offset = textCount;
     }
     return {
-      node: node,
-      collapseToStart: isCollapseToStart,
-      offset: offset
+      cont: container,
+      offset
     };
-  };
-  var textRange = document.body.createTextRange();
-  var info = textRangeInfo(point.node, point.offset);
-  textRange.moveToElementText(info.node);
-  textRange.collapse(info.collapseToStart);
-  textRange.moveStart('character', info.offset);
-  return textRange;
-}
-
-/**
-   * Wrapped Range
-   *
-   * @constructor
-   * @param {Node} sc - start container
-   * @param {Number} so - start offset
-   * @param {Node} ec - end container
-   * @param {Number} eo - end offset
-   */
-var WrappedRange = /*#__PURE__*/function () {
-  function WrappedRange(sc, so, ec, eo) {
-    range_classCallCheck(this, WrappedRange);
-    this.sc = sc;
-    this.so = so;
-    this.ec = ec;
-    this.eo = eo;
-
-    // isOnEditable: judge whether range is on editable or not
-    this.isOnEditable = this.makeIsOn(dom.isEditable);
-    // isOnList: judge whether range is on list node or not
-    this.isOnList = this.makeIsOn(dom.isList);
-    // isOnAnchor: judge whether range is on anchor node or not
-    this.isOnAnchor = this.makeIsOn(dom.isAnchor);
-    // isOnCell: judge whether range is on cell node or not
-    this.isOnCell = this.makeIsOn(dom.isCell);
-    // isOnData: judge whether range is on data node or not
-    this.isOnData = this.makeIsOn(dom.isData);
   }
-
-  // nativeRange: get nativeRange from sc, so, ec, eo
-  return range_createClass(WrappedRange, [{
-    key: "nativeRange",
-    value: function nativeRange() {
+  function pointToTextRange(point) {
+    const textRangeInfo = function(container, offset) {
+      let node, isCollapseToStart;
+      if (dom.isText(container)) {
+        const prevTextNodes = dom.listPrev(container, func.not(dom.isText));
+        const prevContainer = lists.last(prevTextNodes).previousSibling;
+        node = prevContainer || container.parentNode;
+        offset += lists.sum(lists.tail(prevTextNodes), dom.nodeLength);
+        isCollapseToStart = !prevContainer;
+      } else {
+        node = container.childNodes[offset] || container;
+        if (dom.isText(node)) {
+          return textRangeInfo(node, 0);
+        }
+        offset = 0;
+        isCollapseToStart = false;
+      }
+      return {
+        node,
+        collapseToStart: isCollapseToStart,
+        offset
+      };
+    };
+    const textRange = document.body.createTextRange();
+    const info = textRangeInfo(point.node, point.offset);
+    textRange.moveToElementText(info.node);
+    textRange.collapse(info.collapseToStart);
+    textRange.moveStart("character", info.offset);
+    return textRange;
+  }
+  class WrappedRange {
+    constructor(sc, so, ec, eo) {
+      this.sc = sc;
+      this.so = so;
+      this.ec = ec;
+      this.eo = eo;
+      this.isOnEditable = this.makeIsOn(dom.isEditable);
+      this.isOnList = this.makeIsOn(dom.isList);
+      this.isOnAnchor = this.makeIsOn(dom.isAnchor);
+      this.isOnCell = this.makeIsOn(dom.isCell);
+      this.isOnData = this.makeIsOn(dom.isData);
+    }
+    // nativeRange: get nativeRange from sc, so, ec, eo
+    nativeRange() {
       if (env.isW3CRangeSupport) {
-        var w3cRange = document.createRange();
+        const w3cRange = document.createRange();
         w3cRange.setStart(this.sc, this.so);
-        w3cRange.setEnd(this.ec, this.eo);
+        w3cRange.setEnd(this.ec, this.ec.data ? Math.min(this.eo, this.ec.data.length) : this.eo);
         return w3cRange;
       } else {
-        var textRange = pointToTextRange({
+        const textRange = pointToTextRange({
           node: this.sc,
           offset: this.so
         });
-        textRange.setEndPoint('EndToEnd', pointToTextRange({
+        textRange.setEndPoint("EndToEnd", pointToTextRange({
           node: this.ec,
           offset: this.eo
         }));
         return textRange;
       }
     }
-  }, {
-    key: "getPoints",
-    value: function getPoints() {
+    getPoints() {
       return {
         sc: this.sc,
         so: this.so,
@@ -2358,32 +1508,25 @@ var WrappedRange = /*#__PURE__*/function () {
         eo: this.eo
       };
     }
-  }, {
-    key: "getStartPoint",
-    value: function getStartPoint() {
+    getStartPoint() {
       return {
         node: this.sc,
         offset: this.so
       };
     }
-  }, {
-    key: "getEndPoint",
-    value: function getEndPoint() {
+    getEndPoint() {
       return {
         node: this.ec,
         offset: this.eo
       };
     }
-
     /**
      * select update visible range
      */
-  }, {
-    key: "select",
-    value: function select() {
-      var nativeRng = this.nativeRange();
+    select() {
+      const nativeRng = this.nativeRange();
       if (env.isW3CRangeSupport) {
-        var selection = document.getSelection();
+        const selection = document.getSelection();
         if (selection.rangeCount > 0) {
           selection.removeAllRanges();
         }
@@ -2393,84 +1536,60 @@ var WrappedRange = /*#__PURE__*/function () {
       }
       return this;
     }
-
     /**
      * Moves the scrollbar to start container(sc) of current range
      *
      * @return {WrappedRange}
      */
-  }, {
-    key: "scrollIntoView",
-    value: function scrollIntoView(container) {
-      var height = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(container).height();
+    scrollIntoView(container) {
+      const height = $(container).height();
       if (container.scrollTop + height < this.sc.offsetTop) {
         container.scrollTop += Math.abs(container.scrollTop + height - this.sc.offsetTop);
       }
       return this;
     }
-
     /**
      * @return {WrappedRange}
      */
-  }, {
-    key: "normalize",
-    value: function normalize() {
-      /**
-       * @param {BoundaryPoint} point
-       * @param {Boolean} isLeftToRight - true: prefer to choose right node
-       *                                - false: prefer to choose left node
-       * @return {BoundaryPoint}
-       */
-      var getVisiblePoint = function getVisiblePoint(point, isLeftToRight) {
+    normalize() {
+      const getVisiblePoint = function(point, isLeftToRight) {
         if (!point) {
           return point;
         }
-
-        // Just use the given point [XXX:Adhoc]
-        //  - case 01. if the point is on the middle of the node
-        //  - case 02. if the point is on the right edge and prefer to choose left node
-        //  - case 03. if the point is on the left edge and prefer to choose right node
-        //  - case 04. if the point is on the right edge and prefer to choose right node but the node is void
-        //  - case 05. if the point is on the left edge and prefer to choose left node but the node is void
-        //  - case 06. if the point is on the block node and there is no children
         if (dom.isVisiblePoint(point)) {
           if (!dom.isEdgePoint(point) || dom.isRightEdgePoint(point) && !isLeftToRight || dom.isLeftEdgePoint(point) && isLeftToRight || dom.isRightEdgePoint(point) && isLeftToRight && dom.isVoid(point.node.nextSibling) || dom.isLeftEdgePoint(point) && !isLeftToRight && dom.isVoid(point.node.previousSibling) || dom.isBlock(point.node) && dom.isEmpty(point.node)) {
             return point;
           }
         }
-
-        // point on block's edge
-        var block = dom.ancestor(point.node, dom.isBlock);
-        var hasRightNode = false;
+        const block = dom.ancestor(point.node, dom.isBlock);
+        let hasRightNode = false;
         if (!hasRightNode) {
-          var prevPoint = dom.prevPoint(point) || {
-            node: null
-          };
-          hasRightNode = (dom.isLeftEdgePointOf(point, block) || dom.isVoid(prevPoint.node)) && !isLeftToRight;
+          const prevPoint2 = dom.prevPoint(point) || { node: null };
+          hasRightNode = (dom.isLeftEdgePointOf(point, block) || dom.isVoid(prevPoint2.node)) && !isLeftToRight;
         }
-        var hasLeftNode = false;
+        let hasLeftNode = false;
         if (!hasLeftNode) {
-          var _nextPoint = dom.nextPoint(point) || {
-            node: null
-          };
-          hasLeftNode = (dom.isRightEdgePointOf(point, block) || dom.isVoid(_nextPoint.node)) && isLeftToRight;
+          const nextPoint3 = dom.nextPoint(point) || { node: null };
+          hasLeftNode = (dom.isRightEdgePointOf(point, block) || dom.isVoid(nextPoint3.node)) && isLeftToRight;
         }
         if (hasRightNode || hasLeftNode) {
-          // returns point already on visible point
           if (dom.isVisiblePoint(point)) {
             return point;
           }
-          // reverse direction
           isLeftToRight = !isLeftToRight;
         }
-        var nextPoint = isLeftToRight ? dom.nextPointUntil(dom.nextPoint(point), dom.isVisiblePoint) : dom.prevPointUntil(dom.prevPoint(point), dom.isVisiblePoint);
-        return nextPoint || point;
+        const nextPoint2 = isLeftToRight ? dom.nextPointUntil(dom.nextPoint(point), dom.isVisiblePoint) : dom.prevPointUntil(dom.prevPoint(point), dom.isVisiblePoint);
+        return nextPoint2 || point;
       };
-      var endPoint = getVisiblePoint(this.getEndPoint(), false);
-      var startPoint = this.isCollapsed() ? endPoint : getVisiblePoint(this.getStartPoint(), true);
-      return new WrappedRange(startPoint.node, startPoint.offset, endPoint.node, endPoint.offset);
+      const endPoint = getVisiblePoint(this.getEndPoint(), false);
+      const startPoint = this.isCollapsed() ? endPoint : getVisiblePoint(this.getStartPoint(), true);
+      return new WrappedRange(
+        startPoint.node,
+        startPoint.offset,
+        endPoint.node,
+        endPoint.offset
+      );
     }
-
     /**
      * returns matched nodes on range
      *
@@ -2480,23 +1599,19 @@ var WrappedRange = /*#__PURE__*/function () {
      * @param {Boolean} [options.fullyContains]
      * @return {Node[]}
      */
-  }, {
-    key: "nodes",
-    value: function nodes(pred, options) {
+    nodes(pred, options) {
       pred = pred || func.ok;
-      var includeAncestor = options && options.includeAncestor;
-      var fullyContains = options && options.fullyContains;
-
-      // TODO compare points and sort
-      var startPoint = this.getStartPoint();
-      var endPoint = this.getEndPoint();
-      var nodes = [];
-      var leftEdgeNodes = [];
-      dom.walkPoint(startPoint, endPoint, function (point) {
+      const includeAncestor = options && options.includeAncestor;
+      const fullyContains = options && options.fullyContains;
+      const startPoint = this.getStartPoint();
+      const endPoint = this.getEndPoint();
+      const nodes = [];
+      const leftEdgeNodes = [];
+      dom.walkPoint(startPoint, endPoint, function(point) {
         if (dom.isEditable(point.node)) {
           return;
         }
-        var node;
+        let node;
         if (fullyContains) {
           if (dom.isLeftEdgePoint(point)) {
             leftEdgeNodes.push(point.node);
@@ -2515,32 +1630,26 @@ var WrappedRange = /*#__PURE__*/function () {
       }, true);
       return lists.unique(nodes);
     }
-
     /**
      * returns commonAncestor of range
      * @return {Element} - commonAncestor
      */
-  }, {
-    key: "commonAncestor",
-    value: function commonAncestor() {
+    commonAncestor() {
       return dom.commonAncestor(this.sc, this.ec);
     }
-
     /**
      * returns expanded range by pred
      *
      * @param {Function} pred - predicate function
      * @return {WrappedRange}
      */
-  }, {
-    key: "expand",
-    value: function expand(pred) {
-      var startAncestor = dom.ancestor(this.sc, pred);
-      var endAncestor = dom.ancestor(this.ec, pred);
+    expand(pred) {
+      const startAncestor = dom.ancestor(this.sc, pred);
+      const endAncestor = dom.ancestor(this.ec, pred);
       if (!startAncestor && !endAncestor) {
         return new WrappedRange(this.sc, this.so, this.ec, this.eo);
       }
-      var boundaryPoints = this.getPoints();
+      const boundaryPoints = this.getPoints();
       if (startAncestor) {
         boundaryPoints.sc = startAncestor;
         boundaryPoints.so = 0;
@@ -2549,31 +1658,30 @@ var WrappedRange = /*#__PURE__*/function () {
         boundaryPoints.ec = endAncestor;
         boundaryPoints.eo = dom.nodeLength(endAncestor);
       }
-      return new WrappedRange(boundaryPoints.sc, boundaryPoints.so, boundaryPoints.ec, boundaryPoints.eo);
+      return new WrappedRange(
+        boundaryPoints.sc,
+        boundaryPoints.so,
+        boundaryPoints.ec,
+        boundaryPoints.eo
+      );
     }
-
     /**
      * @param {Boolean} isCollapseToStart
      * @return {WrappedRange}
      */
-  }, {
-    key: "collapse",
-    value: function collapse(isCollapseToStart) {
+    collapse(isCollapseToStart) {
       if (isCollapseToStart) {
         return new WrappedRange(this.sc, this.so, this.sc, this.so);
       } else {
         return new WrappedRange(this.ec, this.eo, this.ec, this.eo);
       }
     }
-
     /**
      * splitText on range
      */
-  }, {
-    key: "splitText",
-    value: function splitText() {
-      var isSameContainer = this.sc === this.ec;
-      var boundaryPoints = this.getPoints();
+    splitText() {
+      const isSameContainer = this.sc === this.ec;
+      const boundaryPoints = this.getPoints();
       if (dom.isText(this.ec) && !dom.isEdgePoint(this.getEndPoint())) {
         this.ec.splitText(this.eo);
       }
@@ -2585,107 +1693,89 @@ var WrappedRange = /*#__PURE__*/function () {
           boundaryPoints.eo = this.eo - this.so;
         }
       }
-      return new WrappedRange(boundaryPoints.sc, boundaryPoints.so, boundaryPoints.ec, boundaryPoints.eo);
+      return new WrappedRange(
+        boundaryPoints.sc,
+        boundaryPoints.so,
+        boundaryPoints.ec,
+        boundaryPoints.eo
+      );
     }
-
     /**
      * delete contents on range
      * @return {WrappedRange}
      */
-  }, {
-    key: "deleteContents",
-    value: function deleteContents() {
+    deleteContents() {
       if (this.isCollapsed()) {
         return this;
       }
-      var rng = this.splitText();
-      var nodes = rng.nodes(null, {
+      const rng = this.splitText();
+      const nodes = rng.nodes(null, {
         fullyContains: true
       });
-
-      // find new cursor point
-      var point = dom.prevPointUntil(rng.getStartPoint(), function (point) {
-        return !lists.contains(nodes, point.node);
+      const point = dom.prevPointUntil(rng.getStartPoint(), function(point2) {
+        return !lists.contains(nodes, point2.node);
       });
-      var emptyParents = [];
-      external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(nodes, function (idx, node) {
-        // find empty parents
-        var parent = node.parentNode;
+      const emptyParents = [];
+      $.each(nodes, function(idx, node) {
+        const parent = node.parentNode;
         if (point.node !== parent && dom.nodeLength(parent) === 1) {
           emptyParents.push(parent);
         }
         dom.remove(node, false);
       });
-
-      // remove empty parents
-      external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(emptyParents, function (idx, node) {
+      $.each(emptyParents, function(idx, node) {
         dom.remove(node, false);
       });
-      return new WrappedRange(point.node, point.offset, point.node, point.offset).normalize();
+      return new WrappedRange(
+        point.node,
+        point.offset,
+        point.node,
+        point.offset
+      ).normalize();
     }
-
     /**
      * makeIsOn: return isOn(pred) function
      */
-  }, {
-    key: "makeIsOn",
-    value: function makeIsOn(pred) {
-      return function () {
-        var ancestor = dom.ancestor(this.sc, pred);
-        return !!ancestor && ancestor === dom.ancestor(this.ec, pred);
+    makeIsOn(pred) {
+      return function() {
+        const ancestor2 = dom.ancestor(this.sc, pred);
+        return !!ancestor2 && ancestor2 === dom.ancestor(this.ec, pred);
       };
     }
-
     /**
      * @param {Function} pred
      * @return {Boolean}
      */
-  }, {
-    key: "isLeftEdgeOf",
-    value: function isLeftEdgeOf(pred) {
+    isLeftEdgeOf(pred) {
       if (!dom.isLeftEdgePoint(this.getStartPoint())) {
         return false;
       }
-      var node = dom.ancestor(this.sc, pred);
+      const node = dom.ancestor(this.sc, pred);
       return node && dom.isLeftEdgeOf(this.sc, node);
     }
-
     /**
      * returns whether range was collapsed or not
      */
-  }, {
-    key: "isCollapsed",
-    value: function isCollapsed() {
+    isCollapsed() {
       return this.sc === this.ec && this.so === this.eo;
     }
-
     /**
      * wrap inline nodes which children of body with paragraph
      *
      * @return {WrappedRange}
      */
-  }, {
-    key: "wrapBodyInlineWithPara",
-    value: function wrapBodyInlineWithPara() {
+    wrapBodyInlineWithPara() {
       if (dom.isBodyContainer(this.sc) && dom.isEmpty(this.sc)) {
         this.sc.innerHTML = dom.emptyPara;
         return new WrappedRange(this.sc.firstChild, 0, this.sc.firstChild, 0);
       }
-
-      /**
-       * [workaround] firefox often create range on not visible point. so normalize here.
-       *  - firefox: |<p>text</p>|
-       *  - chrome: <p>|text|</p>
-       */
-      var rng = this.normalize();
+      const rng = this.normalize();
       if (dom.isParaInline(this.sc) || dom.isPara(this.sc)) {
         return rng;
       }
-
-      // find inline top ancestor
-      var topAncestor;
+      let topAncestor;
       if (dom.isInline(rng.sc)) {
-        var ancestors = dom.listAncestor(rng.sc, func.not(dom.isInline));
+        const ancestors = dom.listAncestor(rng.sc, func.not(dom.isInline));
         topAncestor = lists.last(ancestors);
         if (!dom.isInline(topAncestor)) {
           topAncestor = ancestors[ancestors.length - 2] || rng.sc.childNodes[rng.so];
@@ -2694,19 +1784,15 @@ var WrappedRange = /*#__PURE__*/function () {
         topAncestor = rng.sc.childNodes[rng.so > 0 ? rng.so - 1 : 0];
       }
       if (topAncestor) {
-        // siblings not in paragraph
-        var inlineSiblings = dom.listPrev(topAncestor, dom.isParaInline).reverse();
+        let inlineSiblings = dom.listPrev(topAncestor, dom.isParaInline).reverse();
         inlineSiblings = inlineSiblings.concat(dom.listNext(topAncestor.nextSibling, dom.isParaInline));
-
-        // wrap with paragraph
         if (inlineSiblings.length) {
-          var para = dom.wrap(lists.head(inlineSiblings), 'p');
+          const para = dom.wrap(lists.head(inlineSiblings), "p");
           dom.appendChildNodes(para, lists.tail(inlineSiblings));
         }
       }
       return this.normalize();
     }
-
     /**
      * insert node at current cursor
      *
@@ -2714,15 +1800,12 @@ var WrappedRange = /*#__PURE__*/function () {
      * @param {Boolean} doNotInsertPara - default is false, removes added <p> that's added if true
      * @return {Node}
      */
-  }, {
-    key: "insertNode",
-    value: function insertNode(node) {
-      var doNotInsertPara = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-      var rng = this;
+    insertNode(node, doNotInsertPara = false) {
+      let rng = this;
       if (dom.isText(node) || dom.isInline(node)) {
         rng = this.wrapBodyInlineWithPara().deleteContents();
       }
-      var info = dom.splitPoint(rng.getStartPoint(), dom.isInline(node));
+      const info = dom.splitPoint(rng.getStartPoint(), dom.isInline(node));
       if (info.rightNode) {
         info.rightNode.parentNode.insertBefore(node, info.rightNode);
         if (dom.isEmpty(info.rightNode) && (doNotInsertPara || dom.isPara(node))) {
@@ -2733,48 +1816,27 @@ var WrappedRange = /*#__PURE__*/function () {
       }
       return node;
     }
-
     /**
      * insert html at current cursor
      */
-  }, {
-    key: "pasteHTML",
-    value: function pasteHTML(markup) {
-      markup = ((markup || '') + '').trim(markup);
-
-      /**
-       * Begin custom code block
-       * 
-       * This code block added intentionally
-       * 
-       * Without it, summernote will paste html
-       * inside signature block
-       * 
-       * Original code leaved as is as a fallback
-       * if browser does not support W3C Range API
-       */
+    pasteHTML(markup) {
+      markup = ((markup || "") + "").trim();
       if (env.isW3CRangeSupport) {
-        var nativeRng = this.nativeRange();
-        var fragment = nativeRng.createContextualFragment(markup);
-        var insertedNodes = lists.from(fragment.childNodes);
-
+        const nativeRng = this.nativeRange();
+        const fragment = nativeRng.createContextualFragment(markup);
+        const insertedNodes = lists.from(fragment.childNodes);
         nativeRng.insertNode(fragment);
-
         return insertedNodes;
       }
-      // End custom code block
-
-      var contentsContainer = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<div></div>').html(markup)[0];
-      var childNodes = lists.from(contentsContainer.childNodes);
-
-      // const rng = this.wrapBodyInlineWithPara().deleteContents();
-      var rng = this;
-      var reversed = false;
+      const contentsContainer = $("<div></div>").html(markup)[0];
+      let childNodes = lists.from(contentsContainer.childNodes);
+      const rng = this;
+      let reversed = false;
       if (rng.so >= 0) {
         childNodes = childNodes.reverse();
         reversed = true;
       }
-      childNodes = childNodes.map(function (childNode) {
+      childNodes = childNodes.map(function(childNode) {
         return rng.insertNode(childNode, !dom.isInline(childNode));
       });
       if (reversed) {
@@ -2782,54 +1844,50 @@ var WrappedRange = /*#__PURE__*/function () {
       }
       return childNodes;
     }
-
     /**
      * returns text in range
      *
      * @return {String}
      */
-  }, {
-    key: "toString",
-    value: function toString() {
-      var nativeRng = this.nativeRange();
+    toString() {
+      const nativeRng = this.nativeRange();
       return env.isW3CRangeSupport ? nativeRng.toString() : nativeRng.text;
     }
-
     /**
      * returns range for word before cursor
      *
      * @param {Boolean} [findAfter] - find after cursor, default: false
      * @return {WrappedRange}
      */
-  }, {
-    key: "getWordRange",
-    value: function getWordRange(findAfter) {
-      var endPoint = this.getEndPoint();
+    getWordRange(findAfter) {
+      let endPoint = this.getEndPoint();
       if (!dom.isCharPoint(endPoint)) {
         return this;
       }
-      var startPoint = dom.prevPointUntil(endPoint, function (point) {
+      const startPoint = dom.prevPointUntil(endPoint, function(point) {
         return !dom.isCharPoint(point);
       });
       if (findAfter) {
-        endPoint = dom.nextPointUntil(endPoint, function (point) {
+        endPoint = dom.nextPointUntil(endPoint, function(point) {
           return !dom.isCharPoint(point);
         });
       }
-      return new WrappedRange(startPoint.node, startPoint.offset, endPoint.node, endPoint.offset);
+      return new WrappedRange(
+        startPoint.node,
+        startPoint.offset,
+        endPoint.node,
+        endPoint.offset
+      );
     }
-
     /**
      * returns range for words before cursor
      *
      * @param {Boolean} [findAfter] - find after cursor, default: false
      * @return {WrappedRange}
      */
-  }, {
-    key: "getWordsRange",
-    value: function getWordsRange(findAfter) {
+    getWordsRange(findAfter) {
       var endPoint = this.getEndPoint();
-      var isNotTextPoint = function isNotTextPoint(point) {
+      var isNotTextPoint = function(point) {
         return !dom.isCharPoint(point) && !dom.isSpacePoint(point);
       };
       if (isNotTextPoint(endPoint)) {
@@ -2839,9 +1897,13 @@ var WrappedRange = /*#__PURE__*/function () {
       if (findAfter) {
         endPoint = dom.nextPointUntil(endPoint, isNotTextPoint);
       }
-      return new WrappedRange(startPoint.node, startPoint.offset, endPoint.node, endPoint.offset);
+      return new WrappedRange(
+        startPoint.node,
+        startPoint.offset,
+        endPoint.node,
+        endPoint.offset
+      );
     }
-
     /**
      * returns range for words before cursor that match with a Regex
      *
@@ -2853,19 +1915,27 @@ var WrappedRange = /*#__PURE__*/function () {
      * @param {RegExp} [regex]
      * @return {WrappedRange|null}
      */
-  }, {
-    key: "getWordsMatchRange",
-    value: function getWordsMatchRange(regex) {
+    getWordsMatchRange(regex) {
       var endPoint = this.getEndPoint();
-      var startPoint = dom.prevPointUntil(endPoint, function (point) {
+      var startPoint = dom.prevPointUntil(endPoint, function(point) {
         if (!dom.isCharPoint(point) && !dom.isSpacePoint(point)) {
           return true;
         }
-        var rng = new WrappedRange(point.node, point.offset, endPoint.node, endPoint.offset);
-        var result = regex.exec(rng.toString());
-        return result && result.index === 0;
+        var rng2 = new WrappedRange(
+          point.node,
+          point.offset,
+          endPoint.node,
+          endPoint.offset
+        );
+        var result2 = regex.exec(rng2.toString());
+        return result2 && result2.index === 0;
       });
-      var rng = new WrappedRange(startPoint.node, startPoint.offset, endPoint.node, endPoint.offset);
+      var rng = new WrappedRange(
+        startPoint.node,
+        startPoint.offset,
+        endPoint.node,
+        endPoint.offset
+      );
       var text = rng.toString();
       var result = regex.exec(text);
       if (result && result[0].length === text.length) {
@@ -2874,35 +1944,29 @@ var WrappedRange = /*#__PURE__*/function () {
         return null;
       }
     }
-
     /**
      * create offsetPath bookmark
      *
      * @param {Node} editable
      */
-  }, {
-    key: "bookmark",
-    value: function bookmark(editable) {
+    bookmark(editable2) {
       return {
         s: {
-          path: dom.makeOffsetPath(editable, this.sc),
+          path: dom.makeOffsetPath(editable2, this.sc),
           offset: this.so
         },
         e: {
-          path: dom.makeOffsetPath(editable, this.ec),
+          path: dom.makeOffsetPath(editable2, this.ec),
           offset: this.eo
         }
       };
     }
-
     /**
      * create offsetPath bookmark base on paragraph
      *
      * @param {Node[]} paras
      */
-  }, {
-    key: "paraBookmark",
-    value: function paraBookmark(paras) {
+    paraBookmark(paras) {
       return {
         s: {
           path: lists.tail(dom.makeOffsetPath(lists.head(paras), this.sc)),
@@ -2914,365 +1978,309 @@ var WrappedRange = /*#__PURE__*/function () {
         }
       };
     }
-
     /**
      * getClientRects
      * @return {Rect[]}
      */
-  }, {
-    key: "getClientRects",
-    value: function getClientRects() {
-      var nativeRng = this.nativeRange();
+    getClientRects() {
+      const nativeRng = this.nativeRange();
       return nativeRng.getClientRects();
     }
-  }]);
-}();
-/**
- * Data structure
- *  * BoundaryPoint: a point of dom tree
- *  * BoundaryPoints: two boundaryPoints corresponding to the start and the end of the Range
- *
- * See to http://www.w3.org/TR/DOM-Level-2-Traversal-Range/ranges.html#Level-2-Range-Position
- */
-/* harmony default export */ const range = ({
-  /**
-   * create Range Object From arguments or Browser Selection
-   *
-   * @param {Node} sc - start container
-   * @param {Number} so - start offset
-   * @param {Node} ec - end container
-   * @param {Number} eo - end offset
-   * @return {WrappedRange}
-   */
-  create: function create(sc, so, ec, eo) {
-    if (arguments.length === 4) {
-      return new WrappedRange(sc, so, ec, eo);
-    } else if (arguments.length === 2) {
-      // collapsed
-      ec = sc;
-      eo = so;
-      return new WrappedRange(sc, so, ec, eo);
-    } else {
-      var wrappedRange = this.createFromSelection();
-      if (!wrappedRange && arguments.length === 1) {
-        var bodyElement = arguments[0];
-        if (dom.isEditable(bodyElement)) {
-          bodyElement = bodyElement.lastChild;
+  }
+  const range = {
+    /**
+     * create Range Object From arguments or Browser Selection
+     *
+     * @param {Node} sc - start container
+     * @param {Number} so - start offset
+     * @param {Node} ec - end container
+     * @param {Number} eo - end offset
+     * @return {WrappedRange}
+     */
+    create: function(sc, so, ec, eo) {
+      if (arguments.length === 4) {
+        return new WrappedRange(sc, so, ec, eo);
+      } else if (arguments.length === 2) {
+        ec = sc;
+        eo = so;
+        return new WrappedRange(sc, so, ec, eo);
+      } else {
+        let wrappedRange = this.createFromSelection();
+        if (!wrappedRange && arguments.length === 1) {
+          let bodyElement = arguments[0];
+          if (dom.isEditable(bodyElement)) {
+            bodyElement = bodyElement.lastChild;
+          }
+          return this.createFromBodyElement(bodyElement, dom.emptyPara === arguments[0].innerHTML);
         }
-        return this.createFromBodyElement(bodyElement, dom.emptyPara === arguments[0].innerHTML);
+        return wrappedRange;
       }
-      return wrappedRange;
-    }
-  },
-  createFromBodyElement: function createFromBodyElement(bodyElement) {
-    var isCollapseToStart = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-    var wrappedRange = this.createFromNode(bodyElement);
-    return wrappedRange.collapse(isCollapseToStart);
-  },
-  createFromSelection: function createFromSelection() {
-    var sc, so, ec, eo;
-    if (env.isW3CRangeSupport) {
-      var selection = document.getSelection();
-      if (!selection || selection.rangeCount === 0) {
-        return null;
-      } else if (dom.isBody(selection.anchorNode)) {
-        // Firefox: returns entire body as range on initialization.
-        // We won't never need it.
-        return null;
+    },
+    createFromBodyElement: function(bodyElement, isCollapseToStart = false) {
+      var wrappedRange = this.createFromNode(bodyElement);
+      return wrappedRange.collapse(isCollapseToStart);
+    },
+    createFromSelection: function() {
+      let sc, so, ec, eo;
+      if (env.isW3CRangeSupport) {
+        const selection = document.getSelection();
+        if (!selection || selection.rangeCount === 0) {
+          return null;
+        } else if (dom.isBody(selection.anchorNode)) {
+          return null;
+        }
+        const nativeRng = selection.getRangeAt(0);
+        sc = nativeRng.startContainer;
+        so = nativeRng.startOffset;
+        ec = nativeRng.endContainer;
+        eo = nativeRng.endOffset;
+      } else {
+        const textRange = document.selection.createRange();
+        const textRangeEnd = textRange.duplicate();
+        textRangeEnd.collapse(false);
+        const textRangeStart = textRange;
+        textRangeStart.collapse(true);
+        let startPoint = textRangeToPoint(textRangeStart, true);
+        let endPoint = textRangeToPoint(textRangeEnd, false);
+        if (dom.isText(startPoint.node) && dom.isLeftEdgePoint(startPoint) && dom.isTextNode(endPoint.node) && dom.isRightEdgePoint(endPoint) && endPoint.node.nextSibling === startPoint.node) {
+          startPoint = endPoint;
+        }
+        sc = startPoint.cont;
+        so = startPoint.offset;
+        ec = endPoint.cont;
+        eo = endPoint.offset;
       }
-      var nativeRng = selection.getRangeAt(0);
-      sc = nativeRng.startContainer;
-      so = nativeRng.startOffset;
-      ec = nativeRng.endContainer;
-      eo = nativeRng.endOffset;
-    } else {
-      // IE8: TextRange
-      var textRange = document.selection.createRange();
-      var textRangeEnd = textRange.duplicate();
-      textRangeEnd.collapse(false);
-      var textRangeStart = textRange;
-      textRangeStart.collapse(true);
-      var startPoint = textRangeToPoint(textRangeStart, true);
-      var endPoint = textRangeToPoint(textRangeEnd, false);
-
-      // same visible point case: range was collapsed.
-      if (dom.isText(startPoint.node) && dom.isLeftEdgePoint(startPoint) && dom.isTextNode(endPoint.node) && dom.isRightEdgePoint(endPoint) && endPoint.node.nextSibling === startPoint.node) {
-        startPoint = endPoint;
+      return new WrappedRange(sc, so, ec, eo);
+    },
+    /**
+     * @method
+     *
+     * create WrappedRange from node
+     *
+     * @param {Node} node
+     * @return {WrappedRange}
+     */
+    createFromNode: function(node) {
+      let sc = node;
+      let so = 0;
+      let ec = node;
+      let eo = dom.nodeLength(ec);
+      if (dom.isVoid(sc)) {
+        so = dom.listPrev(sc).length - 1;
+        sc = sc.parentNode;
       }
-      sc = startPoint.cont;
-      so = startPoint.offset;
-      ec = endPoint.cont;
-      eo = endPoint.offset;
-    }
-    return new WrappedRange(sc, so, ec, eo);
-  },
-  /**
-   * @method
-   *
-   * create WrappedRange from node
-   *
-   * @param {Node} node
-   * @return {WrappedRange}
-   */
-  createFromNode: function createFromNode(node) {
-    var sc = node;
-    var so = 0;
-    var ec = node;
-    var eo = dom.nodeLength(ec);
-
-    // browsers can't target a picture or void node
-    if (dom.isVoid(sc)) {
-      so = dom.listPrev(sc).length - 1;
-      sc = sc.parentNode;
-    }
-    if (dom.isBR(ec)) {
-      eo = dom.listPrev(ec).length - 1;
-      ec = ec.parentNode;
-    } else if (dom.isVoid(ec)) {
-      eo = dom.listPrev(ec).length;
-      ec = ec.parentNode;
-    }
-    return this.create(sc, so, ec, eo);
-  },
-  /**
-   * create WrappedRange from node after position
-   *
-   * @param {Node} node
-   * @return {WrappedRange}
-   */
-  createFromNodeBefore: function createFromNodeBefore(node) {
-    return this.createFromNode(node).collapse(true);
-  },
-  /**
-   * create WrappedRange from node after position
-   *
-   * @param {Node} node
-   * @return {WrappedRange}
-   */
-  createFromNodeAfter: function createFromNodeAfter(node) {
-    return this.createFromNode(node).collapse();
-  },
-  /**
-   * @method
-   *
-   * create WrappedRange from bookmark
-   *
-   * @param {Node} editable
-   * @param {Object} bookmark
-   * @return {WrappedRange}
-   */
-  createFromBookmark: function createFromBookmark(editable, bookmark) {
-    var sc = dom.fromOffsetPath(editable, bookmark.s.path);
-    var so = bookmark.s.offset;
-    var ec = dom.fromOffsetPath(editable, bookmark.e.path);
-    var eo = bookmark.e.offset;
-    return new WrappedRange(sc, so, ec, eo);
-  },
-  /**
-   * @method
-   *
-   * create WrappedRange from paraBookmark
-   *
-   * @param {Object} bookmark
-   * @param {Node[]} paras
-   * @return {WrappedRange}
-   */
-  createFromParaBookmark: function createFromParaBookmark(bookmark, paras) {
-    var so = bookmark.s.offset;
-    var eo = bookmark.e.offset;
-    var sc = dom.fromOffsetPath(lists.head(paras), bookmark.s.path);
-    var ec = dom.fromOffsetPath(lists.last(paras), bookmark.e.path);
-    return new WrappedRange(sc, so, ec, eo);
-  }
-});
-;// CONCATENATED MODULE: ./src/js/core/key.js
-
-
-var KEY_MAP = {
-  'BACKSPACE': 8,
-  'TAB': 9,
-  'ENTER': 13,
-  'ESCAPE': 27,
-  'SPACE': 32,
-  'DELETE': 46,
-  // Arrow
-  'LEFT': 37,
-  'UP': 38,
-  'RIGHT': 39,
-  'DOWN': 40,
-  // Number: 0-9
-  'NUM0': 48,
-  'NUM1': 49,
-  'NUM2': 50,
-  'NUM3': 51,
-  'NUM4': 52,
-  'NUM5': 53,
-  'NUM6': 54,
-  'NUM7': 55,
-  'NUM8': 56,
-  // Alphabet: a-z
-  'B': 66,
-  'E': 69,
-  'I': 73,
-  'J': 74,
-  'K': 75,
-  'L': 76,
-  'R': 82,
-  'S': 83,
-  'U': 85,
-  'V': 86,
-  'Y': 89,
-  'Z': 90,
-  'SLASH': 191,
-  'LEFTBRACKET': 219,
-  'BACKSLASH': 220,
-  'RIGHTBRACKET': 221,
-  // Navigation
-  'HOME': 36,
-  'END': 35,
-  'PAGEUP': 33,
-  'PAGEDOWN': 34
-};
-
-/**
- * @class core.key
- *
- * Object for keycodes.
- *
- * @singleton
- * @alternateClassName key
- */
-/* harmony default export */ const key = ({
-  /**
-   * @method isEdit
-   *
-   * @param {Number} keyCode
-   * @return {Boolean}
-   */
-  isEdit: function isEdit(keyCode) {
-    return lists.contains([KEY_MAP.BACKSPACE, KEY_MAP.TAB, KEY_MAP.ENTER, KEY_MAP.SPACE, KEY_MAP.DELETE], keyCode);
-  },
-  /**
-   * @method isRemove
-   *
-   * @param {Number} keyCode
-   * @return {Boolean}
-   */
-  isRemove: function isRemove(keyCode) {
-    // LB
-    return lists.contains([KEY_MAP.BACKSPACE, KEY_MAP.DELETE], keyCode);
-  },
-  /**
-   * @method isMove
-   *
-   * @param {Number} keyCode
-   * @return {Boolean}
-   */
-  isMove: function isMove(keyCode) {
-    return lists.contains([KEY_MAP.LEFT, KEY_MAP.UP, KEY_MAP.RIGHT, KEY_MAP.DOWN], keyCode);
-  },
-  /**
-   * @method isNavigation
-   *
-   * @param {Number} keyCode
-   * @return {Boolean}
-   */
-  isNavigation: function isNavigation(keyCode) {
-    return lists.contains([KEY_MAP.HOME, KEY_MAP.END, KEY_MAP.PAGEUP, KEY_MAP.PAGEDOWN], keyCode);
-  },
-  /**
-   * @property {Object} nameFromCode
-   * @property {String} nameFromCode.8 "BACKSPACE"
-   */
-  nameFromCode: func.invertObject(KEY_MAP),
-  code: KEY_MAP
-});
-;// CONCATENATED MODULE: ./src/js/core/async.js
-
-
-/**
- * @method readFileAsDataURL
- *
- * read contents of file as representing URL
- *
- * @param {File} file
- * @return {Promise} - then: dataUrl
- */
-function readFileAsDataURL(file) {
-  return external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().Deferred(function (deferred) {
-    external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().extend(new FileReader(), {
-      onload: function onload(event) {
-        var dataURL = event.target.result;
-        deferred.resolve(dataURL);
-      },
-      onerror: function onerror(err) {
-        deferred.reject(err);
+      if (dom.isBR(ec)) {
+        eo = dom.listPrev(ec).length - 1;
+        ec = ec.parentNode;
+      } else if (dom.isVoid(ec)) {
+        eo = dom.listPrev(ec).length;
+        ec = ec.parentNode;
       }
-    }).readAsDataURL(file);
-  }).promise();
-}
-
-/**
- * @method createImage
- *
- * create `<image>` from url string
- *
- * @param {String} url
- * @return {Promise} - then: $image
- */
-function createImage(url) {
-  return external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().Deferred(function (deferred) {
-    var $img = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<img>');
-    $img.one('load', function () {
-      $img.off('error abort');
-      deferred.resolve($img);
-    }).one('error abort', function () {
-      $img.off('load').detach();
-      deferred.reject($img);
-    }).css({
-      display: 'none'
-    }).appendTo(document.body).attr('src', url);
-  }).promise();
-}
-;// CONCATENATED MODULE: ./src/js/editing/History.js
-function History_typeof(o) { "@babel/helpers - typeof"; return History_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, History_typeof(o); }
-function History_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function History_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, History_toPropertyKey(o.key), o); } }
-function History_createClass(e, r, t) { return r && History_defineProperties(e.prototype, r), t && History_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function History_toPropertyKey(t) { var i = History_toPrimitive(t, "string"); return "symbol" == History_typeof(i) ? i : i + ""; }
-function History_toPrimitive(t, r) { if ("object" != History_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != History_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-var History = /*#__PURE__*/function () {
-  function History(context) {
-    History_classCallCheck(this, History);
-    this.stack = [];
-    this.stackOffset = -1;
-    this.context = context;
-    this.$editable = context.layoutInfo.editable;
-    this.editable = this.$editable[0];
-  }
-  return History_createClass(History, [{
-    key: "makeSnapshot",
-    value: function makeSnapshot() {
-      var rng = range.create(this.editable);
-      var emptyBookmark = {
-        s: {
-          path: [],
-          offset: 0
+      return this.create(sc, so, ec, eo);
+    },
+    /**
+     * create WrappedRange from node after position
+     *
+     * @param {Node} node
+     * @return {WrappedRange}
+     */
+    createFromNodeBefore: function(node) {
+      return this.createFromNode(node).collapse(true);
+    },
+    /**
+     * create WrappedRange from node after position
+     *
+     * @param {Node} node
+     * @return {WrappedRange}
+     */
+    createFromNodeAfter: function(node) {
+      return this.createFromNode(node).collapse();
+    },
+    /**
+     * @method
+     *
+     * create WrappedRange from bookmark
+     *
+     * @param {Node} editable
+     * @param {Object} bookmark
+     * @return {WrappedRange}
+     */
+    createFromBookmark: function(editable2, bookmark) {
+      const sc = dom.fromOffsetPath(editable2, bookmark.s.path);
+      const so = bookmark.s.offset;
+      const ec = dom.fromOffsetPath(editable2, bookmark.e.path);
+      const eo = bookmark.e.offset;
+      return new WrappedRange(sc, so, ec, eo);
+    },
+    /**
+     * @method
+     *
+     * create WrappedRange from paraBookmark
+     *
+     * @param {Object} bookmark
+     * @param {Node[]} paras
+     * @return {WrappedRange}
+     */
+    createFromParaBookmark: function(bookmark, paras) {
+      const so = bookmark.s.offset;
+      const eo = bookmark.e.offset;
+      const sc = dom.fromOffsetPath(lists.head(paras), bookmark.s.path);
+      const ec = dom.fromOffsetPath(lists.last(paras), bookmark.e.path);
+      return new WrappedRange(sc, so, ec, eo);
+    }
+  };
+  const KEY_MAP = {
+    "BACKSPACE": 8,
+    "TAB": 9,
+    "ENTER": 13,
+    "ESCAPE": 27,
+    "SPACE": 32,
+    "DELETE": 46,
+    // Arrow
+    "LEFT": 37,
+    "UP": 38,
+    "RIGHT": 39,
+    "DOWN": 40,
+    // Number: 0-9
+    "NUM0": 48,
+    "NUM1": 49,
+    "NUM2": 50,
+    "NUM3": 51,
+    "NUM4": 52,
+    "NUM5": 53,
+    "NUM6": 54,
+    "NUM7": 55,
+    "NUM8": 56,
+    // Alphabet: a-z
+    "B": 66,
+    "E": 69,
+    "I": 73,
+    "J": 74,
+    "K": 75,
+    "L": 76,
+    "R": 82,
+    "S": 83,
+    "U": 85,
+    "V": 86,
+    "Y": 89,
+    "Z": 90,
+    "SLASH": 191,
+    "LEFTBRACKET": 219,
+    "BACKSLASH": 220,
+    "RIGHTBRACKET": 221,
+    // Navigation
+    "HOME": 36,
+    "END": 35,
+    "PAGEUP": 33,
+    "PAGEDOWN": 34
+  };
+  const key = {
+    /**
+     * @method isEdit
+     *
+     * @param {Number} keyCode
+     * @return {Boolean}
+     */
+    isEdit: (keyCode) => {
+      return lists.contains([
+        KEY_MAP.BACKSPACE,
+        KEY_MAP.TAB,
+        KEY_MAP.ENTER,
+        KEY_MAP.SPACE,
+        KEY_MAP.DELETE
+      ], keyCode);
+    },
+    /**
+     * @method isRemove
+     *
+     * @param {Number} keyCode
+     * @return {Boolean}
+     */
+    isRemove: (keyCode) => {
+      return lists.contains([
+        KEY_MAP.BACKSPACE,
+        KEY_MAP.DELETE
+      ], keyCode);
+    },
+    /**
+     * @method isMove
+     *
+     * @param {Number} keyCode
+     * @return {Boolean}
+     */
+    isMove: (keyCode) => {
+      return lists.contains([
+        KEY_MAP.LEFT,
+        KEY_MAP.UP,
+        KEY_MAP.RIGHT,
+        KEY_MAP.DOWN
+      ], keyCode);
+    },
+    /**
+     * @method isNavigation
+     *
+     * @param {Number} keyCode
+     * @return {Boolean}
+     */
+    isNavigation: (keyCode) => {
+      return lists.contains([
+        KEY_MAP.HOME,
+        KEY_MAP.END,
+        KEY_MAP.PAGEUP,
+        KEY_MAP.PAGEDOWN
+      ], keyCode);
+    },
+    /**
+     * @property {Object} nameFromCode
+     * @property {String} nameFromCode.8 "BACKSPACE"
+     */
+    nameFromCode: func.invertObject(KEY_MAP),
+    code: KEY_MAP
+  };
+  function readFileAsDataURL(file) {
+    return $.Deferred((deferred) => {
+      $.extend(new FileReader(), {
+        onload: (event) => {
+          const dataURL = event.target.result;
+          deferred.resolve(dataURL);
         },
-        e: {
-          path: [],
-          offset: 0
+        onerror: (err) => {
+          deferred.reject(err);
         }
-      };
+      }).readAsDataURL(file);
+    }).promise();
+  }
+  function createImage(url) {
+    return $.Deferred((deferred) => {
+      const $img = $("<img>");
+      $img.one("load", () => {
+        $img.off("error abort");
+        deferred.resolve($img);
+      }).one("error abort", () => {
+        $img.off("load").detach();
+        deferred.reject($img);
+      }).css({
+        display: "none"
+      }).appendTo(document.body).attr("src", url);
+    }).promise();
+  }
+  class History {
+    constructor(context) {
+      this.stack = [];
+      this.stackOffset = -1;
+      this.context = context;
+      this.$editable = context.layoutInfo.editable;
+      this.editable = this.$editable[0];
+    }
+    makeSnapshot() {
+      const rng = range.create(this.editable);
+      const emptyBookmark = { s: { path: [], offset: 0 }, e: { path: [], offset: 0 } };
       return {
         contents: this.$editable.html(),
         bookmark: rng && rng.isOnEditable() ? rng.bookmark(this.editable) : emptyBookmark
       };
     }
-  }, {
-    key: "applySnapshot",
-    value: function applySnapshot(snapshot) {
+    applySnapshot(snapshot) {
       if (snapshot.contents !== null) {
         this.$editable.html(snapshot.contents);
       }
@@ -3280,71 +2288,41 @@ var History = /*#__PURE__*/function () {
         range.createFromBookmark(this.editable, snapshot.bookmark).select();
       }
     }
-
     /**
     * @method rewind
     * Rewinds the history stack back to the first snapshot taken.
     * Leaves the stack intact, so that "Redo" can still be used.
     */
-  }, {
-    key: "rewind",
-    value: function rewind() {
-      // Create snap shot if not yet recorded
+    rewind() {
       if (this.$editable.html() !== this.stack[this.stackOffset].contents) {
         this.recordUndo();
       }
-
-      // Return to the first available snapshot.
       this.stackOffset = 0;
-
-      // Apply that snapshot.
       this.applySnapshot(this.stack[this.stackOffset]);
     }
-
     /**
     *  @method commit
     *  Resets history stack, but keeps current editor's content.
     */
-  }, {
-    key: "commit",
-    value: function commit() {
-      // Clear the stack.
+    commit() {
       this.stack = [];
-
-      // Restore stackOffset to its original value.
       this.stackOffset = -1;
-
-      // Record our first snapshot (of nothing).
       this.recordUndo();
     }
-
     /**
     * @method reset
     * Resets the history stack completely; reverting to an empty editor.
     */
-  }, {
-    key: "reset",
-    value: function reset() {
-      // Clear the stack.
+    reset() {
       this.stack = [];
-
-      // Restore stackOffset to its original value.
       this.stackOffset = -1;
-
-      // Clear the editable area.
-      this.$editable.html('');
-
-      // Record our first snapshot (of nothing).
+      this.$editable.html("");
       this.recordUndo();
     }
-
     /**
      * undo
      */
-  }, {
-    key: "undo",
-    value: function undo() {
-      // Create snap shot if not yet recorded
+    undo() {
       if (this.$editable.html() !== this.stack[this.stackOffset].contents) {
         this.recordUndo();
       }
@@ -3353,62 +2331,31 @@ var History = /*#__PURE__*/function () {
         this.applySnapshot(this.stack[this.stackOffset]);
       }
     }
-
     /**
      * redo
      */
-  }, {
-    key: "redo",
-    value: function redo() {
+    redo() {
       if (this.stack.length - 1 > this.stackOffset) {
         this.stackOffset++;
         this.applySnapshot(this.stack[this.stackOffset]);
       }
     }
-
     /**
      * recorded undo
      */
-  }, {
-    key: "recordUndo",
-    value: function recordUndo() {
+    recordUndo() {
       this.stackOffset++;
-
-      // Wash out stack after stackOffset
       if (this.stack.length > this.stackOffset) {
         this.stack = this.stack.slice(0, this.stackOffset);
       }
-
-      // Create new snapshot and push it to the end
       this.stack.push(this.makeSnapshot());
-
-      // If the stack size reachs to the limit, then slice it
       if (this.stack.length > this.context.options.historyLimit) {
         this.stack.shift();
         this.stackOffset -= 1;
       }
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/editing/Style.js
-function Style_typeof(o) { "@babel/helpers - typeof"; return Style_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Style_typeof(o); }
-function Style_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function Style_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Style_toPropertyKey(o.key), o); } }
-function Style_createClass(e, r, t) { return r && Style_defineProperties(e.prototype, r), t && Style_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function Style_toPropertyKey(t) { var i = Style_toPrimitive(t, "string"); return "symbol" == Style_typeof(i) ? i : i + ""; }
-function Style_toPrimitive(t, r) { if ("object" != Style_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Style_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-
-var Style = /*#__PURE__*/function () {
-  function Style() {
-    Style_classCallCheck(this, Style);
   }
-  return Style_createClass(Style, [{
-    key: "jQueryCSS",
-    value:
+  class Style {
     /**
      * @method jQueryCSS
      *
@@ -3422,47 +2369,40 @@ var Style = /*#__PURE__*/function () {
      * @param  {Array} propertyNames - An array of one or more CSS properties.
      * @return {Object}
      */
-    function jQueryCSS($obj, propertyNames) {
-      var result = {};
-      external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(propertyNames, function (idx, propertyName) {
+    jQueryCSS($obj, propertyNames) {
+      const result = {};
+      $.each(propertyNames, (idx, propertyName) => {
         result[propertyName] = $obj.css(propertyName);
       });
       return result;
     }
-
     /**
      * returns style object from node
      *
      * @param {jQuery} $node
      * @return {Object}
      */
-  }, {
-    key: "fromNode",
-    value: function fromNode($node) {
-      var properties = ['font-family', 'font-size', 'text-align', 'list-style-type', 'line-height'];
-      var styleInfo = this.jQueryCSS($node, properties) || {};
-      var fontSize = $node[0].style.fontSize || styleInfo['font-size'];
-      styleInfo['font-size'] = parseInt(fontSize, 10);
-      styleInfo['font-size-unit'] = fontSize.match(/[a-z%]+$/);
+    fromNode($node) {
+      const properties = ["font-family", "font-size", "text-align", "list-style-type", "line-height"];
+      const styleInfo = this.jQueryCSS($node, properties) || {};
+      const fontSize = $node[0].style.fontSize || styleInfo["font-size"];
+      styleInfo["font-size"] = parseInt(fontSize, 10);
+      styleInfo["font-size-unit"] = fontSize.match(/[a-z%]+$/);
       return styleInfo;
     }
-
     /**
      * paragraph level style
      *
      * @param {WrappedRange} rng
      * @param {Object} styleInfo
      */
-  }, {
-    key: "stylePara",
-    value: function stylePara(rng, styleInfo) {
-      external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(rng.nodes(dom.isPara, {
+    stylePara(rng, styleInfo) {
+      $.each(rng.nodes(dom.isPara, {
         includeAncestor: true
-      }), function (idx, para) {
-        external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(para).css(styleInfo);
+      }), (idx, para) => {
+        $(para).css(styleInfo);
       });
     }
-
     /**
      * insert and returns styleNodes on range.
      *
@@ -3473,36 +2413,33 @@ var Style = /*#__PURE__*/function () {
      * @param {Boolean} [options.onlyPartialContains] - default: `false`
      * @return {Node[]}
      */
-  }, {
-    key: "styleNodes",
-    value: function styleNodes(rng, options) {
+    styleNodes(rng, options) {
       rng = rng.splitText();
-      var nodeName = options && options.nodeName || 'SPAN';
-      var expandClosestSibling = !!(options && options.expandClosestSibling);
-      var onlyPartialContains = !!(options && options.onlyPartialContains);
+      const nodeName = options && options.nodeName || "SPAN";
+      const expandClosestSibling = !!(options && options.expandClosestSibling);
+      const onlyPartialContains = !!(options && options.onlyPartialContains);
       if (rng.isCollapsed()) {
         return [rng.insertNode(dom.create(nodeName))];
       }
-      var pred = dom.makePredByNodeName(nodeName);
-      var nodes = rng.nodes(dom.isText, {
+      let pred = dom.makePredByNodeName(nodeName);
+      const nodes = rng.nodes(dom.isText, {
         fullyContains: true
-      }).map(function (text) {
+      }).map((text) => {
         return dom.singleChildAncestor(text, pred) || dom.wrap(text, nodeName);
       });
       if (expandClosestSibling) {
         if (onlyPartialContains) {
-          var nodesInRange = rng.nodes();
-          // compose with partial contains predication
-          pred = func.and(pred, function (node) {
+          const nodesInRange = rng.nodes();
+          pred = func.and(pred, (node) => {
             return lists.contains(nodesInRange, node);
           });
         }
-        return nodes.map(function (node) {
-          var siblings = dom.withClosestSiblings(node, pred);
-          var head = lists.head(siblings);
-          var tails = lists.tail(siblings);
-          external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(tails, function (idx, elem) {
-            dom.appendChildNodes(head, elem.childNodes);
+        return nodes.map((node) => {
+          const siblings = dom.withClosestSiblings(node, pred);
+          const head2 = lists.head(siblings);
+          const tails = lists.tail(siblings);
+          $.each(tails, (idx, elem) => {
+            dom.appendChildNodes(head2, elem.childNodes);
             dom.remove(elem);
           });
           return lists.head(siblings);
@@ -3511,124 +2448,80 @@ var Style = /*#__PURE__*/function () {
         return nodes;
       }
     }
-
     /**
      * get current style on cursor
      *
      * @param {WrappedRange} rng
      * @return {Object} - object contains style properties.
      */
-  }, {
-    key: "current",
-    value: function current(rng) {
-      var $cont = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(!dom.isElement(rng.sc) ? rng.sc.parentNode : rng.sc);
-      var styleInfo = this.fromNode($cont);
-
-      // document.queryCommandState for toggle state
-      // [workaround] prevent Firefox nsresult: "0x80004005 (NS_ERROR_FAILURE)"
+    current(rng) {
+      const $cont = $(!dom.isElement(rng.sc) ? rng.sc.parentNode : rng.sc);
+      let styleInfo = this.fromNode($cont);
       try {
-        styleInfo = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().extend(styleInfo, {
-          'font-bold': document.queryCommandState('bold') ? 'bold' : 'normal',
-          'font-italic': document.queryCommandState('italic') ? 'italic' : 'normal',
-          'font-underline': document.queryCommandState('underline') ? 'underline' : 'normal',
-          'font-subscript': document.queryCommandState('subscript') ? 'subscript' : 'normal',
-          'font-superscript': document.queryCommandState('superscript') ? 'superscript' : 'normal',
-          'font-strikethrough': document.queryCommandState('strikethrough') ? 'strikethrough' : 'normal',
-          'font-family': document.queryCommandValue('fontname') || styleInfo['font-family']
+        styleInfo = $.extend(styleInfo, {
+          "font-bold": document.queryCommandState("bold") ? "bold" : "normal",
+          "font-italic": document.queryCommandState("italic") ? "italic" : "normal",
+          "font-underline": document.queryCommandState("underline") ? "underline" : "normal",
+          "font-subscript": document.queryCommandState("subscript") ? "subscript" : "normal",
+          "font-superscript": document.queryCommandState("superscript") ? "superscript" : "normal",
+          "font-strikethrough": document.queryCommandState("strikethrough") ? "strikethrough" : "normal",
+          "font-family": document.queryCommandValue("fontname") || styleInfo["font-family"]
         });
       } catch (e) {
-        // eslint-disable-next-line
       }
-
-      // list-style-type to list-style(unordered, ordered)
       if (!rng.isOnList()) {
-        styleInfo['list-style'] = 'none';
+        styleInfo["list-style"] = "none";
       } else {
-        var orderedTypes = ['circle', 'disc', 'disc-leading-zero', 'square'];
-        var isUnordered = orderedTypes.indexOf(styleInfo['list-style-type']) > -1;
-        styleInfo['list-style'] = isUnordered ? 'unordered' : 'ordered';
+        const orderedTypes = ["circle", "disc", "disc-leading-zero", "square"];
+        const isUnordered = orderedTypes.indexOf(styleInfo["list-style-type"]) > -1;
+        styleInfo["list-style"] = isUnordered ? "unordered" : "ordered";
       }
-      var para = dom.ancestor(rng.sc, dom.isPara);
-      if (para && para.style['line-height']) {
-        styleInfo['line-height'] = para.style.lineHeight;
+      const para = dom.ancestor(rng.sc, dom.isPara);
+      if (para && para.style["line-height"]) {
+        styleInfo["line-height"] = para.style.lineHeight;
       } else {
-        var lineHeight = parseInt(styleInfo['line-height'], 10) / parseInt(styleInfo['font-size'], 10);
-        styleInfo['line-height'] = lineHeight.toFixed(1);
+        const lineHeight = parseInt(styleInfo["line-height"], 10) / parseInt(styleInfo["font-size"], 10);
+        styleInfo["line-height"] = lineHeight.toFixed(1);
       }
       styleInfo.anchor = rng.isOnAnchor() && dom.ancestor(rng.sc, dom.isAnchor);
       styleInfo.ancestors = dom.listAncestor(rng.sc, dom.isEditable);
       styleInfo.range = rng;
       return styleInfo;
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/editing/Bullet.js
-function Bullet_typeof(o) { "@babel/helpers - typeof"; return Bullet_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Bullet_typeof(o); }
-function Bullet_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function Bullet_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Bullet_toPropertyKey(o.key), o); } }
-function Bullet_createClass(e, r, t) { return r && Bullet_defineProperties(e.prototype, r), t && Bullet_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function Bullet_toPropertyKey(t) { var i = Bullet_toPrimitive(t, "string"); return "symbol" == Bullet_typeof(i) ? i : i + ""; }
-function Bullet_toPrimitive(t, r) { if ("object" != Bullet_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Bullet_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-
-
-var Bullet = /*#__PURE__*/function () {
-  function Bullet() {
-    Bullet_classCallCheck(this, Bullet);
   }
-  return Bullet_createClass(Bullet, [{
-    key: "insertOrderedList",
-    value:
+  class Bullet {
     /**
      * toggle ordered list
      */
-    function insertOrderedList(editable) {
-      this.toggleList('OL', editable);
+    insertOrderedList(editable2) {
+      this.toggleList("OL", editable2);
     }
-
     /**
      * toggle unordered list
      */
-  }, {
-    key: "insertUnorderedList",
-    value: function insertUnorderedList(editable) {
-      this.toggleList('UL', editable);
+    insertUnorderedList(editable2) {
+      this.toggleList("UL", editable2);
     }
-
     /**
      * indent
      */
-  }, {
-    key: "indent",
-    value: function indent(editable) {
-      var _this = this;
-      var rng = range.create(editable).wrapBodyInlineWithPara();
-      var paras = rng.nodes(dom.isPara, {
-        includeAncestor: true
-      });
-      var clustereds = lists.clusterBy(paras, func.peq2('parentNode'));
-      external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(clustereds, function (idx, paras) {
-        var head = lists.head(paras);
-        if (dom.isLi(head)) {
-          var previousList = _this.findList(head.previousSibling);
+    indent(editable2) {
+      const rng = range.create(editable2).wrapBodyInlineWithPara();
+      const paras = rng.nodes(dom.isPara, { includeAncestor: true });
+      const clustereds = lists.clusterBy(paras, func.peq2("parentNode"));
+      $.each(clustereds, (idx, paras2) => {
+        const head2 = lists.head(paras2);
+        if (dom.isLi(head2)) {
+          const previousList = this.findList(head2.previousSibling);
           if (previousList) {
-            paras.map(function (para) {
-              return previousList.appendChild(para);
-            });
+            paras2.map((para) => previousList.appendChild(para));
           } else {
-            _this.wrapList(paras, head.parentNode.nodeName);
-            paras.map(function (para) {
-              return para.parentNode;
-            }).map(function (para) {
-              return _this.appendToPrevious(para);
-            });
+            this.wrapList(paras2, head2.parentNode.nodeName);
+            paras2.map((para) => para.parentNode).map((para) => this.appendToPrevious(para));
           }
         } else {
-          external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(paras, function (idx, para) {
-            external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(para).css('marginLeft', function (idx, val) {
+          $.each(paras2, (idx2, para) => {
+            $(para).css("marginLeft", (idx3, val) => {
               return (parseInt(val, 10) || 0) + 25;
             });
           });
@@ -3636,67 +2529,52 @@ var Bullet = /*#__PURE__*/function () {
       });
       rng.select();
     }
-
     /**
      * outdent
      */
-  }, {
-    key: "outdent",
-    value: function outdent(editable) {
-      var _this2 = this;
-      var rng = range.create(editable).wrapBodyInlineWithPara();
-      var paras = rng.nodes(dom.isPara, {
-        includeAncestor: true
-      });
-      var clustereds = lists.clusterBy(paras, func.peq2('parentNode'));
-      external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(clustereds, function (idx, paras) {
-        var head = lists.head(paras);
-        if (dom.isLi(head)) {
-          _this2.releaseList([paras]);
+    outdent(editable2) {
+      const rng = range.create(editable2).wrapBodyInlineWithPara();
+      const paras = rng.nodes(dom.isPara, { includeAncestor: true });
+      const clustereds = lists.clusterBy(paras, func.peq2("parentNode"));
+      $.each(clustereds, (idx, paras2) => {
+        const head2 = lists.head(paras2);
+        if (dom.isLi(head2)) {
+          this.releaseList([paras2]);
         } else {
-          external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(paras, function (idx, para) {
-            external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(para).css('marginLeft', function (idx, val) {
+          $.each(paras2, (idx2, para) => {
+            $(para).css("marginLeft", (idx3, val) => {
               val = parseInt(val, 10) || 0;
-              return val > 25 ? val - 25 : '';
+              return val > 25 ? val - 25 : "";
             });
           });
         }
       });
       rng.select();
     }
-
     /**
      * toggle list
      *
      * @param {String} listName - OL or UL
      */
-  }, {
-    key: "toggleList",
-    value: function toggleList(listName, editable) {
-      var _this3 = this;
-      var rng = range.create(editable).wrapBodyInlineWithPara();
-      var paras = rng.nodes(dom.isPara, {
-        includeAncestor: true
-      });
-      var bookmark = rng.paraBookmark(paras);
-      var clustereds = lists.clusterBy(paras, func.peq2('parentNode'));
-
-      // paragraph to list
+    toggleList(listName, editable2) {
+      const rng = range.create(editable2).wrapBodyInlineWithPara();
+      let paras = rng.nodes(dom.isPara, { includeAncestor: true });
+      const bookmark = rng.paraBookmark(paras);
+      const clustereds = lists.clusterBy(paras, func.peq2("parentNode"));
       if (lists.find(paras, dom.isPurePara)) {
-        var wrappedParas = [];
-        external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(clustereds, function (idx, paras) {
-          wrappedParas = wrappedParas.concat(_this3.wrapList(paras, listName));
+        let wrappedParas = [];
+        $.each(clustereds, (idx, paras2) => {
+          wrappedParas = wrappedParas.concat(this.wrapList(paras2, listName));
         });
         paras = wrappedParas;
-        // list to paragraph or change list style
       } else {
-        var diffLists = rng.nodes(dom.isList, {
+        const diffLists = rng.nodes(dom.isList, {
           includeAncestor: true
-        }).filter(function (listNode) {
-          return !external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().nodeName(listNode, listName);
+        }).filter((listNode) => {
+          return listNode.nodeName !== listName;
         });
         if (diffLists.length) {
-          external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(diffLists, function (idx, listNode) {
+          $.each(diffLists, (idx, listNode) => {
             dom.replace(listNode, listName);
           });
         } else {
@@ -3705,27 +2583,20 @@ var Bullet = /*#__PURE__*/function () {
       }
       range.createFromParaBookmark(bookmark, paras).select();
     }
-
     /**
      * @param {Node[]} paras
      * @param {String} listName
      * @return {Node[]}
      */
-  }, {
-    key: "wrapList",
-    value: function wrapList(paras, listName) {
-      var head = lists.head(paras);
-      var last = lists.last(paras);
-      var prevList = dom.isList(head.previousSibling) && head.previousSibling;
-      var nextList = dom.isList(last.nextSibling) && last.nextSibling;
-      var listNode = prevList || dom.insertAfter(dom.create(listName || 'UL'), last);
-
-      // P to LI
-      paras = paras.map(function (para) {
-        return dom.isPurePara(para) ? dom.replace(para, 'LI') : para;
+    wrapList(paras, listName) {
+      const head2 = lists.head(paras);
+      const last2 = lists.last(paras);
+      const prevList = dom.isList(head2.previousSibling) && head2.previousSibling;
+      const nextList = dom.isList(last2.nextSibling) && last2.nextSibling;
+      const listNode = prevList || dom.insertAfter(dom.create(listName || "UL"), last2);
+      paras = paras.map((para) => {
+        return dom.isPurePara(para) ? dom.replace(para, "LI") : para;
       });
-
-      // append to list(<ul>, <ol>)
       dom.appendChildNodes(listNode, paras, true);
       if (nextList) {
         dom.appendChildNodes(listNode, lists.from(nextList.childNodes), true);
@@ -3733,7 +2604,6 @@ var Bullet = /*#__PURE__*/function () {
       }
       return paras;
     }
-
     /**
      * @method releaseList
      *
@@ -3741,26 +2611,23 @@ var Bullet = /*#__PURE__*/function () {
      * @param {Boolean} isEscapseToBody
      * @return {Node[]}
      */
-  }, {
-    key: "releaseList",
-    value: function releaseList(clustereds, isEscapseToBody) {
-      var _this4 = this;
-      var releasedParas = [];
-      external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(clustereds, function (idx, paras) {
-        var head = lists.head(paras);
-        var last = lists.last(paras);
-        var headList = isEscapseToBody ? dom.lastAncestor(head, dom.isList) : head.parentNode;
-        var parentItem = headList.parentNode;
-        if (headList.parentNode.nodeName === 'LI') {
-          paras.map(function (para) {
-            var newList = _this4.findNextSiblings(para);
+    releaseList(clustereds, isEscapseToBody) {
+      let releasedParas = [];
+      $.each(clustereds, (idx, paras) => {
+        const head2 = lists.head(paras);
+        const last2 = lists.last(paras);
+        const headList = isEscapseToBody ? dom.lastAncestor(head2, dom.isList) : head2.parentNode;
+        const parentItem = headList.parentNode;
+        if (headList.parentNode.nodeName === "LI") {
+          paras.map((para) => {
+            const newList = this.findNextSiblings(para);
             if (parentItem.nextSibling) {
               parentItem.parentNode.insertBefore(para, parentItem.nextSibling);
             } else {
               parentItem.parentNode.appendChild(para);
             }
             if (newList.length) {
-              _this4.wrapList(newList, headList.nodeName);
+              this.wrapList(newList, headList.nodeName);
               para.appendChild(newList[0].parentNode);
             }
           });
@@ -3771,35 +2638,39 @@ var Bullet = /*#__PURE__*/function () {
             parentItem.parentNode.removeChild(parentItem);
           }
         } else {
-          var lastList = headList.childNodes.length > 1 ? dom.splitTree(headList, {
-            node: last.parentNode,
-            offset: dom.position(last) + 1
-          }, {
-            isSkipPaddingBlankHTML: true
-          }) : null;
-          var middleList = dom.splitTree(headList, {
-            node: head.parentNode,
-            offset: dom.position(head)
-          }, {
-            isSkipPaddingBlankHTML: true
-          });
+          const lastList = headList.childNodes.length > 1 ? dom.splitTree(
+            headList,
+            {
+              node: last2.parentNode,
+              offset: dom.position(last2) + 1
+            },
+            {
+              isSkipPaddingBlankHTML: true
+            }
+          ) : null;
+          const middleList = dom.splitTree(
+            headList,
+            {
+              node: head2.parentNode,
+              offset: dom.position(head2)
+            },
+            {
+              isSkipPaddingBlankHTML: true
+            }
+          );
           paras = isEscapseToBody ? dom.listDescendant(middleList, dom.isLi) : lists.from(middleList.childNodes).filter(dom.isLi);
-
-          // LI to P
           if (isEscapseToBody || !dom.isList(headList.parentNode)) {
-            paras = paras.map(function (para) {
-              return dom.replace(para, 'P');
+            paras = paras.map((para) => {
+              return dom.replace(para, "P");
             });
           }
-          external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(lists.from(paras).reverse(), function (idx, para) {
+          $.each(lists.from(paras).reverse(), (idx2, para) => {
             dom.insertAfter(para, headList);
           });
-
-          // remove empty lists
-          var rootLists = lists.compact([headList, middleList, lastList]);
-          external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(rootLists, function (idx, rootList) {
-            var listNodes = [rootList].concat(dom.listDescendant(rootList, dom.isList));
-            external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(listNodes.reverse(), function (idx, listNode) {
+          const rootLists = lists.compact([headList, middleList, lastList]);
+          $.each(rootLists, (idx2, rootList) => {
+            const listNodes = [rootList].concat(dom.listDescendant(rootList, dom.isList));
+            $.each(listNodes.reverse(), (idx3, listNode) => {
               if (!dom.nodeLength(listNode)) {
                 dom.remove(listNode, true);
               }
@@ -3810,7 +2681,6 @@ var Bullet = /*#__PURE__*/function () {
       });
       return releasedParas;
     }
-
     /**
      * @method appendToPrevious
      *
@@ -3820,12 +2690,9 @@ var Bullet = /*#__PURE__*/function () {
      * @param {HTMLNode} ListItem
      * @return {HTMLNode}
      */
-  }, {
-    key: "appendToPrevious",
-    value: function appendToPrevious(node) {
-      return node.previousSibling ? dom.appendChildNodes(node.previousSibling, [node]) : this.wrapList([node], 'LI');
+    appendToPrevious(node) {
+      return node.previousSibling ? dom.appendChildNodes(node.previousSibling, [node]) : this.wrapList([node], "LI");
     }
-
     /**
      * @method findList
      *
@@ -3834,14 +2701,9 @@ var Bullet = /*#__PURE__*/function () {
      * @param {HTMLNode} ListItem
      * @return {Array[]}
      */
-  }, {
-    key: "findList",
-    value: function findList(node) {
-      return node ? lists.find(node.children, function (child) {
-        return ['OL', 'UL'].indexOf(child.nodeName) > -1;
-      }) : null;
+    findList(node) {
+      return node ? lists.find(node.children, (child) => ["OL", "UL"].indexOf(child.nodeName) > -1) : null;
     }
-
     /**
      * @method findNextSiblings
      *
@@ -3850,61 +2712,33 @@ var Bullet = /*#__PURE__*/function () {
      * @param {HTMLNode} ListItem
      * @return {HTMLNode}
      */
-  }, {
-    key: "findNextSiblings",
-    value: function findNextSiblings(node) {
-      var siblings = [];
+    findNextSiblings(node) {
+      const siblings = [];
       while (node.nextSibling) {
         siblings.push(node.nextSibling);
         node = node.nextSibling;
       }
       return siblings;
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/editing/Typing.js
-function Typing_typeof(o) { "@babel/helpers - typeof"; return Typing_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Typing_typeof(o); }
-function Typing_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function Typing_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Typing_toPropertyKey(o.key), o); } }
-function Typing_createClass(e, r, t) { return r && Typing_defineProperties(e.prototype, r), t && Typing_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function Typing_toPropertyKey(t) { var i = Typing_toPrimitive(t, "string"); return "symbol" == Typing_typeof(i) ? i : i + ""; }
-function Typing_toPrimitive(t, r) { if ("object" != Typing_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Typing_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-
-
-/**
- * @class editing.Typing
- *
- * Typing
- *
- */
-var Typing = /*#__PURE__*/function () {
-  function Typing(context) {
-    Typing_classCallCheck(this, Typing);
-    // a Bullet instance to toggle lists off
-    this.bullet = new Bullet();
-    this.options = context.options;
   }
-
-  /**
-   * insert tab
-   *
-   * @param {WrappedRange} rng
-   * @param {Number} tabsize
-   */
-  return Typing_createClass(Typing, [{
-    key: "insertTab",
-    value: function insertTab(rng, tabsize) {
-      var tab = dom.createText(new Array(tabsize + 1).join(dom.NBSP_CHAR));
+  class Typing {
+    constructor(context) {
+      this.bullet = new Bullet();
+      this.options = context.options;
+    }
+    /**
+     * insert tab
+     *
+     * @param {WrappedRange} rng
+     * @param {Number} tabsize
+     */
+    insertTab(rng, tabsize) {
+      const tab = dom.createText(new Array(tabsize + 1).join(dom.NBSP_CHAR));
       rng = rng.deleteContents();
       rng.insertNode(tab, true);
       rng = range.create(tab, tabsize);
       rng.select();
     }
-
     /**
      * insert paragraph
      *
@@ -3916,404 +2750,240 @@ var Typing = /*#__PURE__*/function () {
      *   1 - Break the first blockquote in the ancestors list
      *   2 - Break all blockquotes, so that the new paragraph is not quoted (this is the default)
      */
-  }, {
-    key: "insertParagraph",
-    value: function insertParagraph(editable, rng) {
-      rng = rng || range.create(editable);
-
-      // deleteContents on range.
+    insertParagraph(editable2, rng) {
+      rng = rng || range.create(editable2);
       rng = rng.deleteContents();
-
-      // Wrap range if it needs to be wrapped by paragraph
       rng = rng.wrapBodyInlineWithPara();
-
-      // finding paragraph
-      var splitRoot = dom.ancestor(rng.sc, dom.isPara);
-      var nextPara;
-      // on paragraph: split paragraph
+      const splitRoot = dom.ancestor(rng.sc, dom.isPara);
+      let nextPara;
       if (splitRoot) {
-        // if it is an empty line with li
         if (dom.isLi(splitRoot) && (dom.isEmpty(splitRoot) || dom.deepestChildIsEmpty(splitRoot))) {
-          // toggle UL/OL and escape
           this.bullet.toggleList(splitRoot.parentNode.nodeName);
           return;
         } else {
-          var blockquote = null;
+          let blockquote = null;
           if (this.options.blockquoteBreakingLevel === 1) {
             blockquote = dom.ancestor(splitRoot, dom.isBlockquote);
           } else if (this.options.blockquoteBreakingLevel === 2) {
             blockquote = dom.lastAncestor(splitRoot, dom.isBlockquote);
           }
           if (blockquote) {
-            // We're inside a blockquote and options ask us to break it
-            nextPara = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(dom.emptyPara)[0];
-            // If the split is right before a <br>, remove it so that there's no "empty line"
-            // after the split in the new blockquote created
+            nextPara = $(dom.emptyPara)[0];
             if (dom.isRightEdgePoint(rng.getStartPoint()) && dom.isBR(rng.sc.nextSibling)) {
-              external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(rng.sc.nextSibling).remove();
+              $(rng.sc.nextSibling).remove();
             }
-            var split = dom.splitTree(blockquote, rng.getStartPoint(), {
-              isDiscardEmptySplits: true
-            });
+            const split = dom.splitTree(blockquote, rng.getStartPoint(), { isDiscardEmptySplits: true });
             if (split) {
               split.parentNode.insertBefore(nextPara, split);
             } else {
-              dom.insertAfter(nextPara, blockquote); // There's no split if we were at the end of the blockquote
+              dom.insertAfter(nextPara, blockquote);
             }
           } else {
             nextPara = dom.splitTree(splitRoot, rng.getStartPoint());
-
-            // not a blockquote, just insert the paragraph
-            var emptyAnchors = dom.listDescendant(splitRoot, dom.isEmptyAnchor);
+            let emptyAnchors = dom.listDescendant(splitRoot, dom.isEmptyAnchor);
             emptyAnchors = emptyAnchors.concat(dom.listDescendant(nextPara, dom.isEmptyAnchor));
-            external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(emptyAnchors, function (idx, anchor) {
+            $.each(emptyAnchors, (idx, anchor) => {
               dom.remove(anchor);
             });
-
-            // replace empty heading, pre or custom-made styleTag with P tag
             if ((dom.isHeading(nextPara) || dom.isPre(nextPara) || dom.isCustomStyleTag(nextPara)) && dom.isEmpty(nextPara)) {
-              nextPara = dom.replace(nextPara, 'p');
+              nextPara = dom.replace(nextPara, "p");
             }
           }
         }
-        // no paragraph: insert empty paragraph
       } else {
-        var next = rng.sc.childNodes[rng.so];
-        nextPara = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(dom.emptyPara)[0];
-        if (next) {
-          rng.sc.insertBefore(nextPara, next);
+        const next2 = rng.sc.childNodes[rng.so];
+        nextPara = $(dom.emptyPara)[0];
+        if (next2) {
+          rng.sc.insertBefore(nextPara, next2);
         } else {
           rng.sc.appendChild(nextPara);
         }
       }
-      range.create(nextPara, 0).normalize().select().scrollIntoView(editable);
+      range.create(nextPara, 0).normalize().select().scrollIntoView(editable2);
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/editing/Table.js
-function Table_typeof(o) { "@babel/helpers - typeof"; return Table_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Table_typeof(o); }
-function Table_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function Table_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Table_toPropertyKey(o.key), o); } }
-function Table_createClass(e, r, t) { return r && Table_defineProperties(e.prototype, r), t && Table_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function Table_toPropertyKey(t) { var i = Table_toPrimitive(t, "string"); return "symbol" == Table_typeof(i) ? i : i + ""; }
-function Table_toPrimitive(t, r) { if ("object" != Table_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Table_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-
-
-/**
- * @class Create a virtual table to create what actions to do in change.
- * @param {object} startPoint Cell selected to apply change.
- * @param {enum} where  Where change will be applied Row or Col. Use enum: TableResultAction.where
- * @param {enum} action Action to be applied. Use enum: TableResultAction.requestAction
- * @param {object} domTable Dom element of table to make changes.
- */
-var TableResultAction = function TableResultAction(startPoint, where, action, domTable) {
-  var _startPoint = {
-    'colPos': 0,
-    'rowPos': 0
-  };
-  var _virtualTable = [];
-  var _actionCellList = [];
-
-  /// ///////////////////////////////////////////
-  // Private functions
-  /// ///////////////////////////////////////////
-
-  /**
-   * Set the startPoint of action.
-   */
-  function setStartPoint() {
-    if (!startPoint || !startPoint.tagName || startPoint.tagName.toLowerCase() !== 'td' && startPoint.tagName.toLowerCase() !== 'th') {
-      // Impossible to identify start Cell point
-      return;
-    }
-    _startPoint.colPos = startPoint.cellIndex;
-    if (!startPoint.parentElement || !startPoint.parentElement.tagName || startPoint.parentElement.tagName.toLowerCase() !== 'tr') {
-      // Impossible to identify start Row point
-      return;
-    }
-    _startPoint.rowPos = startPoint.parentElement.rowIndex;
   }
-
-  /**
-   * Define virtual table position info object.
-   *
-   * @param {int} rowIndex Index position in line of virtual table.
-   * @param {int} cellIndex Index position in column of virtual table.
-   * @param {object} baseRow Row affected by this position.
-   * @param {object} baseCell Cell affected by this position.
-   * @param {bool} isSpan Inform if it is an span cell/row.
-   */
-  function setVirtualTablePosition(rowIndex, cellIndex, baseRow, baseCell, isRowSpan, isColSpan, isVirtualCell) {
-    var objPosition = {
-      'baseRow': baseRow,
-      'baseCell': baseCell,
-      'isRowSpan': isRowSpan,
-      'isColSpan': isColSpan,
-      'isVirtual': isVirtualCell
-    };
-    if (!_virtualTable[rowIndex]) {
-      _virtualTable[rowIndex] = [];
-    }
-    _virtualTable[rowIndex][cellIndex] = objPosition;
-  }
-
-  /**
-   * Create action cell object.
-   *
-   * @param {object} virtualTableCellObj Object of specific position on virtual table.
-   * @param {enum} resultAction Action to be applied in that item.
-   */
-  function getActionCell(virtualTableCellObj, resultAction, virtualRowPosition, virtualColPosition) {
-    return {
-      'baseCell': virtualTableCellObj.baseCell,
-      'action': resultAction,
-      'virtualTable': {
-        'rowIndex': virtualRowPosition,
-        'cellIndex': virtualColPosition
+  const TableResultAction = function(startPoint, where, action, domTable) {
+    const _startPoint = { "colPos": 0, "rowPos": 0 };
+    const _virtualTable = [];
+    const _actionCellList = [];
+    function setStartPoint() {
+      if (!startPoint || !startPoint.tagName || startPoint.tagName.toLowerCase() !== "td" && startPoint.tagName.toLowerCase() !== "th") {
+        return;
       }
-    };
-  }
-
-  /**
-   * Recover free index of row to append Cell.
-   *
-   * @param {int} rowIndex Index of row to find free space.
-   * @param {int} cellIndex Index of cell to find free space in table.
-   */
-  function recoverCellIndex(rowIndex, cellIndex) {
-    if (!_virtualTable[rowIndex]) {
-      return cellIndex;
-    }
-    if (!_virtualTable[rowIndex][cellIndex]) {
-      return cellIndex;
-    }
-    var newCellIndex = cellIndex;
-    while (_virtualTable[rowIndex][newCellIndex]) {
-      newCellIndex++;
-      if (!_virtualTable[rowIndex][newCellIndex]) {
-        return newCellIndex;
+      _startPoint.colPos = startPoint.cellIndex;
+      if (!startPoint.parentElement || !startPoint.parentElement.tagName || startPoint.parentElement.tagName.toLowerCase() !== "tr") {
+        return;
       }
+      _startPoint.rowPos = startPoint.parentElement.rowIndex;
     }
-  }
-
-  /**
-   * Recover info about row and cell and add information to virtual table.
-   *
-   * @param {object} row Row to recover information.
-   * @param {object} cell Cell to recover information.
-   */
-  function addCellInfoToVirtual(row, cell) {
-    var cellIndex = recoverCellIndex(row.rowIndex, cell.cellIndex);
-    var cellHasColspan = cell.colSpan > 1;
-    var cellHasRowspan = cell.rowSpan > 1;
-    var isThisSelectedCell = row.rowIndex === _startPoint.rowPos && cell.cellIndex === _startPoint.colPos;
-    setVirtualTablePosition(row.rowIndex, cellIndex, row, cell, cellHasRowspan, cellHasColspan, false);
-
-    // Add span rows to virtual Table.
-    var rowspanNumber = cell.attributes.rowSpan ? parseInt(cell.attributes.rowSpan.value, 10) : 0;
-    if (rowspanNumber > 1) {
-      for (var rp = 1; rp < rowspanNumber; rp++) {
-        var rowspanIndex = row.rowIndex + rp;
-        adjustStartPoint(rowspanIndex, cellIndex, cell, isThisSelectedCell);
-        setVirtualTablePosition(rowspanIndex, cellIndex, row, cell, true, cellHasColspan, true);
+    function setVirtualTablePosition(rowIndex, cellIndex, baseRow, baseCell, isRowSpan, isColSpan, isVirtualCell) {
+      const objPosition = {
+        "baseRow": baseRow,
+        "baseCell": baseCell,
+        "isRowSpan": isRowSpan,
+        "isColSpan": isColSpan,
+        "isVirtual": isVirtualCell
+      };
+      if (!_virtualTable[rowIndex]) {
+        _virtualTable[rowIndex] = [];
       }
+      _virtualTable[rowIndex][cellIndex] = objPosition;
     }
-
-    // Add span cols to virtual table.
-    var colspanNumber = cell.attributes.colSpan ? parseInt(cell.attributes.colSpan.value, 10) : 0;
-    if (colspanNumber > 1) {
-      for (var cp = 1; cp < colspanNumber; cp++) {
-        var cellspanIndex = recoverCellIndex(row.rowIndex, cellIndex + cp);
-        adjustStartPoint(row.rowIndex, cellspanIndex, cell, isThisSelectedCell);
-        setVirtualTablePosition(row.rowIndex, cellspanIndex, row, cell, cellHasRowspan, true, true);
-      }
-    }
-  }
-
-  /**
-   * Process validation and adjust of start point if needed
-   *
-   * @param {int} rowIndex
-   * @param {int} cellIndex
-   * @param {object} cell
-   * @param {bool} isSelectedCell
-   */
-  function adjustStartPoint(rowIndex, cellIndex, cell, isSelectedCell) {
-    if (rowIndex === _startPoint.rowPos && _startPoint.colPos >= cell.cellIndex && cell.cellIndex <= cellIndex && !isSelectedCell) {
-      _startPoint.colPos++;
-    }
-  }
-
-  /**
-   * Create virtual table of cells with all cells, including span cells.
-   */
-  function createVirtualTable() {
-    var rows = domTable.rows;
-    for (var rowIndex = 0; rowIndex < rows.length; rowIndex++) {
-      var cells = rows[rowIndex].cells;
-      for (var cellIndex = 0; cellIndex < cells.length; cellIndex++) {
-        addCellInfoToVirtual(rows[rowIndex], cells[cellIndex]);
-      }
-    }
-  }
-
-  /**
-   * Get action to be applied on the cell.
-   *
-   * @param {object} cell virtual table cell to apply action
-   */
-  function getDeleteResultActionToCell(cell) {
-    switch (where) {
-      case TableResultAction.where.Column:
-        if (cell.isColSpan) {
-          return TableResultAction.resultAction.SubtractSpanCount;
+    function getActionCell(virtualTableCellObj, resultAction, virtualRowPosition, virtualColPosition) {
+      return {
+        "baseCell": virtualTableCellObj.baseCell,
+        "action": resultAction,
+        "virtualTable": {
+          "rowIndex": virtualRowPosition,
+          "cellIndex": virtualColPosition
         }
-        break;
-      case TableResultAction.where.Row:
-        if (!cell.isVirtual && cell.isRowSpan) {
-          return TableResultAction.resultAction.AddCell;
-        } else if (cell.isRowSpan) {
-          return TableResultAction.resultAction.SubtractSpanCount;
-        }
-        break;
+      };
     }
-    return TableResultAction.resultAction.RemoveCell;
-  }
-
-  /**
-   * Get action to be applied on the cell.
-   *
-   * @param {object} cell virtual table cell to apply action
-   */
-  function getAddResultActionToCell(cell) {
-    switch (where) {
-      case TableResultAction.where.Column:
-        if (cell.isColSpan) {
-          return TableResultAction.resultAction.SumSpanCount;
-        } else if (cell.isRowSpan && cell.isVirtual) {
-          return TableResultAction.resultAction.Ignore;
+    function recoverCellIndex(rowIndex, cellIndex) {
+      if (!_virtualTable[rowIndex]) {
+        return cellIndex;
+      }
+      if (!_virtualTable[rowIndex][cellIndex]) {
+        return cellIndex;
+      }
+      let newCellIndex = cellIndex;
+      while (_virtualTable[rowIndex][newCellIndex]) {
+        newCellIndex++;
+        if (!_virtualTable[rowIndex][newCellIndex]) {
+          return newCellIndex;
         }
-        break;
-      case TableResultAction.where.Row:
-        if (cell.isRowSpan) {
-          return TableResultAction.resultAction.SumSpanCount;
-        } else if (cell.isColSpan && cell.isVirtual) {
-          return TableResultAction.resultAction.Ignore;
-        }
-        break;
+      }
     }
-    return TableResultAction.resultAction.AddCell;
-  }
-  function init() {
-    setStartPoint();
-    createVirtualTable();
-  }
-
-  /// ///////////////////////////////////////////
-  // Public functions
-  /// ///////////////////////////////////////////
-
-  /**
-   * Recover array os what to do in table.
-   */
-  this.getActionList = function () {
-    var fixedRow = where === TableResultAction.where.Row ? _startPoint.rowPos : -1;
-    var fixedCol = where === TableResultAction.where.Column ? _startPoint.colPos : -1;
-    var actualPosition = 0;
-    var canContinue = true;
-    while (canContinue) {
-      var rowPosition = fixedRow >= 0 ? fixedRow : actualPosition;
-      var colPosition = fixedCol >= 0 ? fixedCol : actualPosition;
-      var row = _virtualTable[rowPosition];
-      if (!row) {
-        canContinue = false;
-        return _actionCellList;
+    function addCellInfoToVirtual(row, cell) {
+      const cellIndex = recoverCellIndex(row.rowIndex, cell.cellIndex);
+      const cellHasColspan = cell.colSpan > 1;
+      const cellHasRowspan = cell.rowSpan > 1;
+      const isThisSelectedCell = row.rowIndex === _startPoint.rowPos && cell.cellIndex === _startPoint.colPos;
+      setVirtualTablePosition(row.rowIndex, cellIndex, row, cell, cellHasRowspan, cellHasColspan, false);
+      const rowspanNumber = cell.attributes.rowSpan ? parseInt(cell.attributes.rowSpan.value, 10) : 0;
+      if (rowspanNumber > 1) {
+        for (let rp = 1; rp < rowspanNumber; rp++) {
+          const rowspanIndex = row.rowIndex + rp;
+          adjustStartPoint(rowspanIndex, cellIndex, cell, isThisSelectedCell);
+          setVirtualTablePosition(rowspanIndex, cellIndex, row, cell, true, cellHasColspan, true);
+        }
       }
-      var cell = row[colPosition];
-      if (!cell) {
-        canContinue = false;
-        return _actionCellList;
+      const colspanNumber = cell.attributes.colSpan ? parseInt(cell.attributes.colSpan.value, 10) : 0;
+      if (colspanNumber > 1) {
+        for (let cp = 1; cp < colspanNumber; cp++) {
+          const cellspanIndex = recoverCellIndex(row.rowIndex, cellIndex + cp);
+          adjustStartPoint(row.rowIndex, cellspanIndex, cell, isThisSelectedCell);
+          setVirtualTablePosition(row.rowIndex, cellspanIndex, row, cell, cellHasRowspan, true, true);
+        }
       }
-
-      // Define action to be applied in this cell
-      var resultAction = TableResultAction.resultAction.Ignore;
-      switch (action) {
-        case TableResultAction.requestAction.Add:
-          resultAction = getAddResultActionToCell(cell);
+    }
+    function adjustStartPoint(rowIndex, cellIndex, cell, isSelectedCell) {
+      if (rowIndex === _startPoint.rowPos && _startPoint.colPos >= cell.cellIndex && cell.cellIndex <= cellIndex && !isSelectedCell) {
+        _startPoint.colPos++;
+      }
+    }
+    function createVirtualTable() {
+      const rows = domTable.rows;
+      for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
+        const cells = rows[rowIndex].cells;
+        for (let cellIndex = 0; cellIndex < cells.length; cellIndex++) {
+          addCellInfoToVirtual(rows[rowIndex], cells[cellIndex]);
+        }
+      }
+    }
+    function getDeleteResultActionToCell(cell) {
+      switch (where) {
+        case TableResultAction.where.Column:
+          if (cell.isColSpan) {
+            return TableResultAction.resultAction.SubtractSpanCount;
+          }
           break;
-        case TableResultAction.requestAction.Delete:
-          resultAction = getDeleteResultActionToCell(cell);
+        case TableResultAction.where.Row:
+          if (!cell.isVirtual && cell.isRowSpan) {
+            return TableResultAction.resultAction.AddCell;
+          } else if (cell.isRowSpan) {
+            return TableResultAction.resultAction.SubtractSpanCount;
+          }
           break;
       }
-      _actionCellList.push(getActionCell(cell, resultAction, rowPosition, colPosition));
-      actualPosition++;
+      return TableResultAction.resultAction.RemoveCell;
     }
-    return _actionCellList;
+    function getAddResultActionToCell(cell) {
+      switch (where) {
+        case TableResultAction.where.Column:
+          if (cell.isColSpan) {
+            return TableResultAction.resultAction.SumSpanCount;
+          } else if (cell.isRowSpan && cell.isVirtual) {
+            return TableResultAction.resultAction.Ignore;
+          }
+          break;
+        case TableResultAction.where.Row:
+          if (cell.isRowSpan) {
+            return TableResultAction.resultAction.SumSpanCount;
+          } else if (cell.isColSpan && cell.isVirtual) {
+            return TableResultAction.resultAction.Ignore;
+          }
+          break;
+      }
+      return TableResultAction.resultAction.AddCell;
+    }
+    function init() {
+      setStartPoint();
+      createVirtualTable();
+    }
+    this.getActionList = function() {
+      const fixedRow = where === TableResultAction.where.Row ? _startPoint.rowPos : -1;
+      const fixedCol = where === TableResultAction.where.Column ? _startPoint.colPos : -1;
+      let actualPosition = 0;
+      let canContinue = true;
+      while (canContinue) {
+        const rowPosition = fixedRow >= 0 ? fixedRow : actualPosition;
+        const colPosition = fixedCol >= 0 ? fixedCol : actualPosition;
+        const row = _virtualTable[rowPosition];
+        if (!row) {
+          canContinue = false;
+          return _actionCellList;
+        }
+        const cell = row[colPosition];
+        if (!cell) {
+          canContinue = false;
+          return _actionCellList;
+        }
+        let resultAction = TableResultAction.resultAction.Ignore;
+        switch (action) {
+          case TableResultAction.requestAction.Add:
+            resultAction = getAddResultActionToCell(cell);
+            break;
+          case TableResultAction.requestAction.Delete:
+            resultAction = getDeleteResultActionToCell(cell);
+            break;
+        }
+        _actionCellList.push(getActionCell(cell, resultAction, rowPosition, colPosition));
+        actualPosition++;
+      }
+      return _actionCellList;
+    };
+    init();
   };
-  init();
-};
-/**
-*
-* Where action occours enum.
-*/
-TableResultAction.where = {
-  'Row': 0,
-  'Column': 1
-};
-/**
-*
-* Requested action to apply enum.
-*/
-TableResultAction.requestAction = {
-  'Add': 0,
-  'Delete': 1
-};
-/**
-*
-* Result action to be executed enum.
-*/
-TableResultAction.resultAction = {
-  'Ignore': 0,
-  'SubtractSpanCount': 1,
-  'RemoveCell': 2,
-  'AddCell': 3,
-  'SumSpanCount': 4
-};
-
-/**
- *
- * @class editing.Table
- *
- * Table
- *
- */
-var Table = /*#__PURE__*/function () {
-  function Table() {
-    Table_classCallCheck(this, Table);
-  }
-  return Table_createClass(Table, [{
-    key: "tab",
-    value:
+  TableResultAction.where = { "Row": 0, "Column": 1 };
+  TableResultAction.requestAction = { "Add": 0, "Delete": 1 };
+  TableResultAction.resultAction = { "Ignore": 0, "SubtractSpanCount": 1, "RemoveCell": 2, "AddCell": 3, "SumSpanCount": 4 };
+  class Table {
     /**
      * handle tab key
      *
      * @param {WrappedRange} rng
      * @param {Boolean} isShift
      */
-    function tab(rng, isShift) {
-      var cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
-      var table = dom.ancestor(cell, dom.isTable);
-      var cells = dom.listDescendant(table, dom.isCell);
-      var nextCell = lists[isShift ? 'prev' : 'next'](cells, cell);
+    tab(rng, isShift) {
+      const cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+      const table = dom.ancestor(cell, dom.isTable);
+      const cells = dom.listDescendant(table, dom.isCell);
+      const nextCell = lists[isShift ? "prev" : "next"](cells, cell);
       if (nextCell) {
         range.create(nextCell, 0).select();
       }
     }
-
     /**
      * Add a new row
      *
@@ -4321,53 +2991,55 @@ var Table = /*#__PURE__*/function () {
      * @param {String} position (top/bottom)
      * @return {Node}
      */
-  }, {
-    key: "addRow",
-    value: function addRow(rng, position) {
-      var cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
-      var currentTr = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(cell).closest('tr');
-      var trAttributes = this.recoverAttributes(currentTr);
-      var html = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<tr' + trAttributes + '></tr>');
-      var vTable = new TableResultAction(cell, TableResultAction.where.Row, TableResultAction.requestAction.Add, external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(currentTr).closest('table')[0]);
-      var actions = vTable.getActionList();
-      for (var idCell = 0; idCell < actions.length; idCell++) {
-        var currentCell = actions[idCell];
-        var tdAttributes = this.recoverAttributes(currentCell.baseCell);
+    addRow(rng, position2) {
+      const cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+      const currentTr = $(cell).closest("tr");
+      const trAttributes = this.recoverAttributes(currentTr);
+      const html2 = $("<tr" + trAttributes + "></tr>");
+      const vTable = new TableResultAction(
+        cell,
+        TableResultAction.where.Row,
+        TableResultAction.requestAction.Add,
+        $(currentTr).closest("table")[0]
+      );
+      const actions = vTable.getActionList();
+      for (let idCell = 0; idCell < actions.length; idCell++) {
+        const currentCell = actions[idCell];
+        const tdAttributes = this.recoverAttributes(currentCell.baseCell);
         switch (currentCell.action) {
           case TableResultAction.resultAction.AddCell:
-            html.append('<td' + tdAttributes + '>' + dom.blank + '</td>');
+            html2.append("<td" + tdAttributes + ">" + dom.blank + "</td>");
             break;
           case TableResultAction.resultAction.SumSpanCount:
             {
-              if (position === 'top') {
-                var baseCellTr = currentCell.baseCell.parent;
-                var isTopFromRowSpan = (!baseCellTr ? 0 : currentCell.baseCell.closest('tr').rowIndex) <= currentTr[0].rowIndex;
+              if (position2 === "top") {
+                const baseCellTr = currentCell.baseCell.parent;
+                const isTopFromRowSpan = (!baseCellTr ? 0 : currentCell.baseCell.closest("tr").rowIndex) <= currentTr[0].rowIndex;
                 if (isTopFromRowSpan) {
-                  var newTd = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<div></div>').append(external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<td' + tdAttributes + '>' + dom.blank + '</td>').removeAttr('rowspan')).html();
-                  html.append(newTd);
+                  const newTd = $("<div></div>").append($("<td" + tdAttributes + ">" + dom.blank + "</td>").removeAttr("rowspan")).html();
+                  html2.append(newTd);
                   break;
                 }
               }
-              var rowspanNumber = parseInt(currentCell.baseCell.rowSpan, 10);
+              let rowspanNumber = parseInt(currentCell.baseCell.rowSpan, 10);
               rowspanNumber++;
-              currentCell.baseCell.setAttribute('rowSpan', rowspanNumber);
+              currentCell.baseCell.setAttribute("rowSpan", rowspanNumber);
             }
             break;
         }
       }
-      if (position === 'top') {
-        currentTr.before(html);
+      if (position2 === "top") {
+        currentTr.before(html2);
       } else {
-        var cellHasRowspan = cell.rowSpan > 1;
+        const cellHasRowspan = cell.rowSpan > 1;
         if (cellHasRowspan) {
-          var lastTrIndex = currentTr[0].rowIndex + (cell.rowSpan - 2);
-          external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(currentTr).parent().find('tr')[lastTrIndex]).after(external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(html));
+          const lastTrIndex = currentTr[0].rowIndex + (cell.rowSpan - 2);
+          $($(currentTr).parent().find("tr")[lastTrIndex]).after($(html2));
           return;
         }
-        currentTr.after(html);
+        currentTr.after(html2);
       }
     }
-
     /**
      * Add a new col
      *
@@ -4375,107 +3047,109 @@ var Table = /*#__PURE__*/function () {
      * @param {String} position (left/right)
      * @return {Node}
      */
-  }, {
-    key: "addCol",
-    value: function addCol(rng, position) {
-      var cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
-      var row = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(cell).closest('tr');
-      var rowsGroup = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(row).siblings();
+    addCol(rng, position2) {
+      const cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+      const row = $(cell).closest("tr");
+      const rowsGroup = $(row).siblings();
       rowsGroup.push(row);
-      var vTable = new TableResultAction(cell, TableResultAction.where.Column, TableResultAction.requestAction.Add, external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(row).closest('table')[0]);
-      var actions = vTable.getActionList();
-      for (var actionIndex = 0; actionIndex < actions.length; actionIndex++) {
-        var currentCell = actions[actionIndex];
-        var tdAttributes = this.recoverAttributes(currentCell.baseCell);
+      const vTable = new TableResultAction(
+        cell,
+        TableResultAction.where.Column,
+        TableResultAction.requestAction.Add,
+        $(row).closest("table")[0]
+      );
+      const actions = vTable.getActionList();
+      for (let actionIndex = 0; actionIndex < actions.length; actionIndex++) {
+        const currentCell = actions[actionIndex];
+        const tdAttributes = this.recoverAttributes(currentCell.baseCell);
         switch (currentCell.action) {
           case TableResultAction.resultAction.AddCell:
-            if (position === 'right') {
-              external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(currentCell.baseCell).after('<td' + tdAttributes + '>' + dom.blank + '</td>');
+            if (position2 === "right") {
+              $(currentCell.baseCell).after("<td" + tdAttributes + ">" + dom.blank + "</td>");
             } else {
-              external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(currentCell.baseCell).before('<td' + tdAttributes + '>' + dom.blank + '</td>');
+              $(currentCell.baseCell).before("<td" + tdAttributes + ">" + dom.blank + "</td>");
             }
             break;
           case TableResultAction.resultAction.SumSpanCount:
-            if (position === 'right') {
-              var colspanNumber = parseInt(currentCell.baseCell.colSpan, 10);
+            if (position2 === "right") {
+              let colspanNumber = parseInt(currentCell.baseCell.colSpan, 10);
               colspanNumber++;
-              currentCell.baseCell.setAttribute('colSpan', colspanNumber);
+              currentCell.baseCell.setAttribute("colSpan", colspanNumber);
             } else {
-              external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(currentCell.baseCell).before('<td' + tdAttributes + '>' + dom.blank + '</td>');
+              $(currentCell.baseCell).before("<td" + tdAttributes + ">" + dom.blank + "</td>");
             }
             break;
         }
       }
     }
-
     /*
     * Copy attributes from element.
     *
     * @param {object} Element to recover attributes.
     * @return {string} Copied string elements.
     */
-  }, {
-    key: "recoverAttributes",
-    value: function recoverAttributes(el) {
-      var resultStr = '';
+    recoverAttributes(el) {
+      let resultStr = "";
       if (!el) {
         return resultStr;
       }
-      var attrList = el.attributes || [];
-      for (var i = 0; i < attrList.length; i++) {
-        if (attrList[i].name.toLowerCase() === 'id') {
+      const attrList = el.attributes || [];
+      for (let i = 0; i < attrList.length; i++) {
+        if (attrList[i].name.toLowerCase() === "id") {
           continue;
         }
         if (attrList[i].specified) {
-          resultStr += ' ' + attrList[i].name + '=\'' + attrList[i].value + '\'';
+          resultStr += " " + attrList[i].name + "='" + attrList[i].value + "'";
         }
       }
       return resultStr;
     }
-
     /**
      * Delete current row
      *
      * @param {WrappedRange} rng
      * @return {Node}
      */
-  }, {
-    key: "deleteRow",
-    value: function deleteRow(rng) {
-      var cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
-      var row = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(cell).closest('tr');
-      var cellPos = row.children('td, th').index(external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(cell));
-      var rowPos = row[0].rowIndex;
-      var vTable = new TableResultAction(cell, TableResultAction.where.Row, TableResultAction.requestAction.Delete, external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(row).closest('table')[0]);
-      var actions = vTable.getActionList();
-      for (var actionIndex = 0; actionIndex < actions.length; actionIndex++) {
+    deleteRow(rng) {
+      const cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+      const row = $(cell).closest("tr");
+      const cellPos = row.children("td, th").index($(cell));
+      const rowPos = row[0].rowIndex;
+      const vTable = new TableResultAction(
+        cell,
+        TableResultAction.where.Row,
+        TableResultAction.requestAction.Delete,
+        $(row).closest("table")[0]
+      );
+      const actions = vTable.getActionList();
+      for (let actionIndex = 0; actionIndex < actions.length; actionIndex++) {
         if (!actions[actionIndex]) {
           continue;
         }
-        var baseCell = actions[actionIndex].baseCell;
-        var virtualPosition = actions[actionIndex].virtualTable;
-        var hasRowspan = baseCell.rowSpan && baseCell.rowSpan > 1;
-        var rowspanNumber = hasRowspan ? parseInt(baseCell.rowSpan, 10) : 0;
+        const baseCell = actions[actionIndex].baseCell;
+        const virtualPosition = actions[actionIndex].virtualTable;
+        const hasRowspan = baseCell.rowSpan && baseCell.rowSpan > 1;
+        let rowspanNumber = hasRowspan ? parseInt(baseCell.rowSpan, 10) : 0;
         switch (actions[actionIndex].action) {
           case TableResultAction.resultAction.Ignore:
             continue;
           case TableResultAction.resultAction.AddCell:
             {
-              var nextRow = row.next('tr')[0];
+              const nextRow = row.next("tr")[0];
               if (!nextRow) {
                 continue;
               }
-              var cloneRow = row[0].cells[cellPos];
+              const cloneRow = row[0].cells[cellPos];
               if (hasRowspan) {
                 if (rowspanNumber > 2) {
                   rowspanNumber--;
                   nextRow.insertBefore(cloneRow, nextRow.cells[cellPos]);
-                  nextRow.cells[cellPos].setAttribute('rowSpan', rowspanNumber);
-                  nextRow.cells[cellPos].innerHTML = '';
+                  nextRow.cells[cellPos].setAttribute("rowSpan", rowspanNumber);
+                  nextRow.cells[cellPos].innerHTML = "";
                 } else if (rowspanNumber === 2) {
                   nextRow.insertBefore(cloneRow, nextRow.cells[cellPos]);
-                  nextRow.cells[cellPos].removeAttribute('rowSpan');
-                  nextRow.cells[cellPos].innerHTML = '';
+                  nextRow.cells[cellPos].removeAttribute("rowSpan");
+                  nextRow.cells[cellPos].innerHTML = "";
                 }
               }
             }
@@ -4484,41 +3158,42 @@ var Table = /*#__PURE__*/function () {
             if (hasRowspan) {
               if (rowspanNumber > 2) {
                 rowspanNumber--;
-                baseCell.setAttribute('rowSpan', rowspanNumber);
+                baseCell.setAttribute("rowSpan", rowspanNumber);
                 if (virtualPosition.rowIndex !== rowPos && baseCell.cellIndex === cellPos) {
-                  baseCell.innerHTML = '';
+                  baseCell.innerHTML = "";
                 }
               } else if (rowspanNumber === 2) {
-                baseCell.removeAttribute('rowSpan');
+                baseCell.removeAttribute("rowSpan");
                 if (virtualPosition.rowIndex !== rowPos && baseCell.cellIndex === cellPos) {
-                  baseCell.innerHTML = '';
+                  baseCell.innerHTML = "";
                 }
               }
             }
             continue;
           case TableResultAction.resultAction.RemoveCell:
-            // Do not need remove cell because row will be deleted.
             continue;
         }
       }
       row.remove();
     }
-
     /**
      * Delete current col
      *
      * @param {WrappedRange} rng
      * @return {Node}
      */
-  }, {
-    key: "deleteCol",
-    value: function deleteCol(rng) {
-      var cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
-      var row = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(cell).closest('tr');
-      var cellPos = row.children('td, th').index(external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(cell));
-      var vTable = new TableResultAction(cell, TableResultAction.where.Column, TableResultAction.requestAction.Delete, external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(row).closest('table')[0]);
-      var actions = vTable.getActionList();
-      for (var actionIndex = 0; actionIndex < actions.length; actionIndex++) {
+    deleteCol(rng) {
+      const cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+      const row = $(cell).closest("tr");
+      const cellPos = row.children("td, th").index($(cell));
+      const vTable = new TableResultAction(
+        cell,
+        TableResultAction.where.Column,
+        TableResultAction.requestAction.Delete,
+        $(row).closest("table")[0]
+      );
+      const actions = vTable.getActionList();
+      for (let actionIndex = 0; actionIndex < actions.length; actionIndex++) {
         if (!actions[actionIndex]) {
           continue;
         }
@@ -4527,20 +3202,20 @@ var Table = /*#__PURE__*/function () {
             continue;
           case TableResultAction.resultAction.SubtractSpanCount:
             {
-              var baseCell = actions[actionIndex].baseCell;
-              var hasColspan = baseCell.colSpan && baseCell.colSpan > 1;
+              const baseCell = actions[actionIndex].baseCell;
+              const hasColspan = baseCell.colSpan && baseCell.colSpan > 1;
               if (hasColspan) {
-                var colspanNumber = baseCell.colSpan ? parseInt(baseCell.colSpan, 10) : 0;
+                let colspanNumber = baseCell.colSpan ? parseInt(baseCell.colSpan, 10) : 0;
                 if (colspanNumber > 2) {
                   colspanNumber--;
-                  baseCell.setAttribute('colSpan', colspanNumber);
+                  baseCell.setAttribute("colSpan", colspanNumber);
                   if (baseCell.cellIndex === cellPos) {
-                    baseCell.innerHTML = '';
+                    baseCell.innerHTML = "";
                   }
                 } else if (colspanNumber === 2) {
-                  baseCell.removeAttribute('colSpan');
+                  baseCell.removeAttribute("colSpan");
                   if (baseCell.cellIndex === cellPos) {
-                    baseCell.innerHTML = '';
+                    baseCell.innerHTML = "";
                   }
                 }
               }
@@ -4552,7 +3227,6 @@ var Table = /*#__PURE__*/function () {
         }
       }
     }
-
     /**
      * create empty table element
      *
@@ -4560,453 +3234,349 @@ var Table = /*#__PURE__*/function () {
      * @param {Number} colCount
      * @return {Node}
      */
-  }, {
-    key: "createTable",
-    value: function createTable(colCount, rowCount, options) {
-      var tds = [];
-      var tdHTML;
-      for (var idxCol = 0; idxCol < colCount; idxCol++) {
-        tds.push('<td>' + dom.blank + '</td>');
+    createTable(colCount, rowCount, options) {
+      const tds = [];
+      let tdHTML;
+      for (let idxCol = 0; idxCol < colCount; idxCol++) {
+        tds.push("<td>" + dom.blank + "</td>");
       }
-      tdHTML = tds.join('');
-      var trs = [];
-      var trHTML;
-      for (var idxRow = 0; idxRow < rowCount; idxRow++) {
-        trs.push('<tr>' + tdHTML + '</tr>');
+      tdHTML = tds.join("");
+      const trs = [];
+      let trHTML;
+      for (let idxRow = 0; idxRow < rowCount; idxRow++) {
+        trs.push("<tr>" + tdHTML + "</tr>");
       }
-      trHTML = trs.join('');
-      var tableAttributes = options && options.tableAttributes ? ' ' + options.tableAttributes : '';
-      var $table = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<table' + tableAttributes + '>' + trHTML + '</table>');
+      trHTML = trs.join("");
+      const tableAttributes = options && options.tableAttributes ? " " + options.tableAttributes : "";
+      const $table = $("<table" + tableAttributes + ">" + trHTML + "</table>");
       if (options) {
         if (options.tableClassName) {
           $table.addClass(options.tableClassName);
         }
         if (options.tableAttrStyle) {
-          $table.attr('style', options.tableAttrStyle);
+          $table.attr("style", options.tableAttrStyle);
         }
       }
       return $table[0];
     }
-
     /**
      * Delete current table
      *
      * @param {WrappedRange} rng
      * @return {Node}
      */
-  }, {
-    key: "deleteTable",
-    value: function deleteTable(rng) {
-      var cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
-      external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(cell).closest('table').remove();
+    deleteTable(rng) {
+      const cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+      $(cell).closest("table").remove();
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/Editor.js
-function Editor_typeof(o) { "@babel/helpers - typeof"; return Editor_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Editor_typeof(o); }
-function Editor_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function Editor_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Editor_toPropertyKey(o.key), o); } }
-function Editor_createClass(e, r, t) { return r && Editor_defineProperties(e.prototype, r), t && Editor_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function Editor_toPropertyKey(t) { var i = Editor_toPrimitive(t, "string"); return "symbol" == Editor_typeof(i) ? i : i + ""; }
-function Editor_toPrimitive(t, r) { if ("object" != Editor_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Editor_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-
-
-
-
-
-
-
-
-
-
-var KEY_BOGUS = 'bogus';
-var MAILTO_PATTERN = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-var TEL_PATTERN = /^(\+?\d{1,3}[\s-]?)?(\d{1,4})[\s-]?(\d{1,4})[\s-]?(\d{1,4})$/;
-var URL_SCHEME_PATTERN = /^([A-Za-z][A-Za-z0-9+-.]*\:|#|\/)/;
-
-/**
- * @class Editor
- */
-var Editor = /*#__PURE__*/function () {
-  function Editor(context) {
-    var _this = this;
-    Editor_classCallCheck(this, Editor);
-    this.context = context;
-    this.$note = context.layoutInfo.note;
-    this.$editor = context.layoutInfo.editor;
-    this.$editable = context.layoutInfo.editable;
-    this.options = context.options;
-    this.lang = this.options.langInfo;
-    this.editable = this.$editable[0];
-    this.lastRange = null;
-    this.snapshot = null;
-    this.style = new Style();
-    this.table = new Table();
-    this.typing = new Typing(context);
-    this.bullet = new Bullet();
-    this.history = new History(context);
-    this.context.memo('help.escape', this.lang.help.escape);
-    this.context.memo('help.undo', this.lang.help.undo);
-    this.context.memo('help.redo', this.lang.help.redo);
-    this.context.memo('help.tab', this.lang.help.tab);
-    this.context.memo('help.untab', this.lang.help.untab);
-    this.context.memo('help.insertParagraph', this.lang.help.insertParagraph);
-    this.context.memo('help.insertOrderedList', this.lang.help.insertOrderedList);
-    this.context.memo('help.insertUnorderedList', this.lang.help.insertUnorderedList);
-    this.context.memo('help.indent', this.lang.help.indent);
-    this.context.memo('help.outdent', this.lang.help.outdent);
-    this.context.memo('help.formatPara', this.lang.help.formatPara);
-    this.context.memo('help.insertHorizontalRule', this.lang.help.insertHorizontalRule);
-    this.context.memo('help.fontName', this.lang.help.fontName);
-
-    // native commands(with execCommand), generate function for execCommand
-    var commands = ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'formatBlock', 'removeFormat', 'backColor'];
-    for (var idx = 0, len = commands.length; idx < len; idx++) {
-      this[commands[idx]] = function (sCmd) {
-        return function (value) {
-          _this.beforeCommand();
-          document.execCommand(sCmd, false, value);
-          _this.afterCommand(true);
-        };
-      }(commands[idx]);
-      this.context.memo('help.' + commands[idx], this.lang.help[commands[idx]]);
-    }
-    this.fontName = this.wrapCommand(function (value) {
-      return _this.fontStyling('font-family', env.validFontName(value));
-    });
-    this.fontSize = this.wrapCommand(function (value) {
-      var unit = _this.currentStyle()['font-size-unit'];
-      return _this.fontStyling('font-size', value + unit);
-    });
-    this.fontSizeUnit = this.wrapCommand(function (value) {
-      var size = _this.currentStyle()['font-size'];
-      return _this.fontStyling('font-size', size + value);
-    });
-    for (var _idx = 1; _idx <= 6; _idx++) {
-      this['formatH' + _idx] = function (idx) {
-        return function () {
-          _this.formatBlock('H' + idx);
-        };
-      }(_idx);
-      this.context.memo('help.formatH' + _idx, this.lang.help['formatH' + _idx]);
-    }
-    this.insertParagraph = this.wrapCommand(function () {
-      _this.typing.insertParagraph(_this.editable);
-    });
-    this.insertOrderedList = this.wrapCommand(function () {
-      _this.bullet.insertOrderedList(_this.editable);
-    });
-    this.insertUnorderedList = this.wrapCommand(function () {
-      _this.bullet.insertUnorderedList(_this.editable);
-    });
-    this.indent = this.wrapCommand(function () {
-      _this.bullet.indent(_this.editable);
-    });
-    this.outdent = this.wrapCommand(function () {
-      _this.bullet.outdent(_this.editable);
-    });
-
-    /**
-     * insertNode
-     * insert node
-     * @param {Node} node
-     */
-    this.insertNode = this.wrapCommand(function (node) {
-      if (_this.isLimited(external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(node).text().length)) {
-        return;
-      }
-      var rng = _this.getLastRange();
-      rng.insertNode(node);
-      _this.setLastRange(range.createFromNodeAfter(node).select());
-    });
-
-    /**
-     * insert text
-     * @param {String} text
-     */
-    this.insertText = this.wrapCommand(function (text) {
-      if (_this.isLimited(text.length)) {
-        return;
-      }
-      var rng = _this.getLastRange();
-      var textNode = rng.insertNode(dom.createText(text));
-      _this.setLastRange(range.create(textNode, dom.nodeLength(textNode)).select());
-    });
-
-    /**
-     * paste HTML
-     * @param {String} markup
-     */
-    this.pasteHTML = this.wrapCommand(function (markup) {
-      if (_this.isLimited(markup.length)) {
-        return;
-      }
-      markup = _this.context.invoke('codeview.purify', markup);
-      var contents = _this.getLastRange().pasteHTML(markup);
-      _this.setLastRange(range.createFromNodeAfter(lists.last(contents)).select());
-    });
-
-    /**
-     * formatBlock
-     *
-     * @param {String} tagName
-     */
-    this.formatBlock = this.wrapCommand(function (tagName, $target) {
-      var onApplyCustomStyle = _this.options.callbacks.onApplyCustomStyle;
-      if (onApplyCustomStyle) {
-        onApplyCustomStyle.call(_this, $target, _this.context, _this.onFormatBlock);
-      } else {
-        _this.onFormatBlock(tagName, $target);
-      }
-    });
-
-    /**
-     * insert horizontal rule
-     */
-    this.insertHorizontalRule = this.wrapCommand(function () {
-      var hrNode = _this.getLastRange().insertNode(dom.create('HR'));
-      if (hrNode.nextSibling) {
-        _this.setLastRange(range.create(hrNode.nextSibling, 0).normalize().select());
-      }
-    });
-
-    /**
-     * lineHeight
-     * @param {String} value
-     */
-    this.lineHeight = this.wrapCommand(function (value) {
-      _this.style.stylePara(_this.getLastRange(), {
-        lineHeight: value
-      });
-    });
-
-    /**
-     * create link (command)
-     *
-     * @param {Object} linkInfo
-     */
-    this.createLink = this.wrapCommand(function (linkInfo) {
-      var rel = [];
-      var linkUrl = linkInfo.url;
-      var linkText = linkInfo.text;
-      var isNewWindow = linkInfo.isNewWindow;
-      var addNoReferrer = _this.options.linkAddNoReferrer;
-      var addNoOpener = _this.options.linkAddNoOpener;
-      var rng = linkInfo.range || _this.getLastRange();
-      var additionalTextLength = linkText.length - rng.toString().length;
-      if (additionalTextLength > 0 && _this.isLimited(additionalTextLength)) {
-        return;
-      }
-      var isTextChanged = rng.toString() !== linkText;
-
-      // handle spaced urls from input
-      if (typeof linkUrl === 'string') {
-        linkUrl = linkUrl.trim();
-      }
-      if (_this.options.onCreateLink) {
-        linkUrl = _this.options.onCreateLink(linkUrl);
-      } else {
-        linkUrl = _this.checkLinkUrl(linkUrl);
-      }
-      var anchors = [];
-      if (isTextChanged) {
-        rng = rng.deleteContents();
-        var anchor = rng.insertNode(external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<A></A>').text(linkText)[0]);
-        anchors.push(anchor);
-      } else {
-        anchors = _this.style.styleNodes(rng, {
-          nodeName: 'A',
-          expandClosestSibling: true,
-          onlyPartialContains: true
-        });
-      }
-      external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(anchors, function (idx, anchor) {
-        external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(anchor).attr('href', linkUrl);
-        if (isNewWindow) {
-          external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(anchor).attr('target', '_blank');
-          if (addNoReferrer) {
-            rel.push('noreferrer');
-          }
-          if (addNoOpener) {
-            rel.push('noopener');
-          }
-          if (rel.length) {
-            external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(anchor).attr('rel', rel.join(' '));
-          }
-        } else {
-          external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(anchor).removeAttr('target');
-        }
-      });
-      _this.setLastRange(_this.createRangeFromList(anchors).select());
-    });
-
-    /**
-     * setting color
-     *
-     * @param {Object} sObjColor  color code
-     * @param {String} sObjColor.foreColor foreground color
-     * @param {String} sObjColor.backColor background color
-     */
-    this.color = this.wrapCommand(function (colorInfo) {
-      var foreColor = colorInfo.foreColor;
-      var backColor = colorInfo.backColor;
-      if (foreColor) {
-        document.execCommand('foreColor', false, foreColor);
-      }
-      if (backColor) {
-        document.execCommand('backColor', false, backColor);
-      }
-    });
-
-    /**
-     * Set foreground color
-     *
-     * @param {String} colorCode foreground color code
-     */
-    this.foreColor = this.wrapCommand(function (colorInfo) {
-      document.execCommand('foreColor', false, colorInfo);
-    });
-
-    /**
-     * insert Table
-     *
-     * @param {String} dimension of table (ex : "5x5")
-     */
-    this.insertTable = this.wrapCommand(function (dim) {
-      var dimension = dim.split('x');
-      var rng = _this.getLastRange().deleteContents();
-      rng.insertNode(_this.table.createTable(dimension[0], dimension[1], _this.options));
-    });
-
-    /**
-     * remove media object and Figure Elements if media object is img with Figure.
-     */
-    this.removeMedia = this.wrapCommand(function () {
-      var $target = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(_this.restoreTarget()).parent();
-      if ($target.closest('figure').length) {
-        $target.closest('figure').remove();
-      } else {
-        $target = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(_this.restoreTarget()).detach();
-      }
-      _this.setLastRange(range.createFromSelection($target).select());
-      _this.context.triggerEvent('media.delete', $target, _this.$editable);
-    });
-
-    /**
-     * float me
-     *
-     * @param {String} value
-     */
-    this.floatMe = this.wrapCommand(function (value) {
-      var $target = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(_this.restoreTarget());
-      $target.toggleClass('note-float-left', value === 'left');
-      $target.toggleClass('note-float-right', value === 'right');
-      $target.css('float', value === 'none' ? '' : value);
-    });
-
-    /**
-     * resize overlay element
-     * @param {String} value
-     */
-    this.resize = this.wrapCommand(function (value) {
-      var $target = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(_this.restoreTarget());
-      value = parseFloat(value);
-      if (value === 0) {
-        $target.css('width', '');
-      } else {
-        $target.css({
-          width: value * 100 + '%',
-          height: ''
-        });
-      }
-    });
   }
-  return Editor_createClass(Editor, [{
-    key: "initialize",
-    value: function initialize() {
-      var _this2 = this;
-      // bind custom events
-      this.$editable.on('keydown', function (event) {
-        if (event.keyCode === key.code.ENTER) {
-          _this2.context.triggerEvent('enter', event);
+  const KEY_BOGUS = "bogus";
+  const MAILTO_PATTERN$1 = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const TEL_PATTERN$1 = /^(\+?\d{1,3}[\s-]?)?(\d{1,4})[\s-]?(\d{1,4})[\s-]?(\d{1,4})$/;
+  const URL_SCHEME_PATTERN$1 = /^([A-Za-z][A-Za-z0-9+-.]*\:|#|\/)/;
+  class Editor {
+    constructor(context) {
+      this.context = context;
+      this.$note = context.layoutInfo.note;
+      this.$editor = context.layoutInfo.editor;
+      this.$editable = context.layoutInfo.editable;
+      this.options = context.options;
+      this.lang = this.options.langInfo;
+      this.editable = this.$editable[0];
+      this.lastRange = null;
+      this.snapshot = null;
+      this.style = new Style();
+      this.table = new Table();
+      this.typing = new Typing(context);
+      this.bullet = new Bullet();
+      this.history = new History(context);
+      this.context.memo("help.escape", this.lang.help.escape);
+      this.context.memo("help.undo", this.lang.help.undo);
+      this.context.memo("help.redo", this.lang.help.redo);
+      this.context.memo("help.tab", this.lang.help.tab);
+      this.context.memo("help.untab", this.lang.help.untab);
+      this.context.memo("help.insertParagraph", this.lang.help.insertParagraph);
+      this.context.memo("help.insertOrderedList", this.lang.help.insertOrderedList);
+      this.context.memo("help.insertUnorderedList", this.lang.help.insertUnorderedList);
+      this.context.memo("help.indent", this.lang.help.indent);
+      this.context.memo("help.outdent", this.lang.help.outdent);
+      this.context.memo("help.formatPara", this.lang.help.formatPara);
+      this.context.memo("help.insertHorizontalRule", this.lang.help.insertHorizontalRule);
+      this.context.memo("help.fontName", this.lang.help.fontName);
+      const commands = [
+        "bold",
+        "italic",
+        "underline",
+        "strikethrough",
+        "superscript",
+        "subscript",
+        "justifyLeft",
+        "justifyCenter",
+        "justifyRight",
+        "justifyFull",
+        "formatBlock",
+        "removeFormat",
+        "backColor"
+      ];
+      for (let idx = 0, len = commands.length; idx < len; idx++) {
+        this[commands[idx]] = /* @__PURE__ */ ((sCmd) => {
+          return (value2) => {
+            this.beforeCommand();
+            document.execCommand(sCmd, false, value2);
+            this.afterCommand(true);
+          };
+        })(commands[idx]);
+        this.context.memo("help." + commands[idx], this.lang.help[commands[idx]]);
+      }
+      this.fontName = this.wrapCommand((value2) => {
+        return this.fontStyling("font-family", env.validFontName(value2));
+      });
+      this.fontSize = this.wrapCommand((value2) => {
+        const unit = this.currentStyle()["font-size-unit"];
+        return this.fontStyling("font-size", value2 + unit);
+      });
+      this.fontSizeUnit = this.wrapCommand((value2) => {
+        const size = this.currentStyle()["font-size"];
+        return this.fontStyling("font-size", size + value2);
+      });
+      for (let idx = 1; idx <= 6; idx++) {
+        this["formatH" + idx] = /* @__PURE__ */ ((idx2) => {
+          return () => {
+            this.formatBlock("H" + idx2);
+          };
+        })(idx);
+        this.context.memo("help.formatH" + idx, this.lang.help["formatH" + idx]);
+      }
+      this.insertParagraph = this.wrapCommand(() => {
+        this.typing.insertParagraph(this.editable);
+      });
+      this.insertOrderedList = this.wrapCommand(() => {
+        this.bullet.insertOrderedList(this.editable);
+      });
+      this.insertUnorderedList = this.wrapCommand(() => {
+        this.bullet.insertUnorderedList(this.editable);
+      });
+      this.indent = this.wrapCommand(() => {
+        this.bullet.indent(this.editable);
+      });
+      this.outdent = this.wrapCommand(() => {
+        this.bullet.outdent(this.editable);
+      });
+      this.insertNode = this.wrapCommand((node) => {
+        if (this.isLimited($(node).text().length)) {
+          return;
         }
-        _this2.context.triggerEvent('keydown', event);
-
-        // keep a snapshot to limit text on input event
-        _this2.snapshot = _this2.history.makeSnapshot();
-        _this2.hasKeyShortCut = false;
-        if (!event.isDefaultPrevented()) {
-          if (_this2.options.shortcuts) {
-            _this2.hasKeyShortCut = _this2.handleKeyMap(event);
+        const rng = this.getLastRange();
+        rng.insertNode(node);
+        this.setLastRange(range.createFromNodeAfter(node).select());
+      });
+      this.insertText = this.wrapCommand((text) => {
+        if (this.isLimited(text.length)) {
+          return;
+        }
+        const rng = this.getLastRange();
+        const textNode = rng.insertNode(dom.createText(text));
+        this.setLastRange(range.create(textNode, dom.nodeLength(textNode)).select());
+      });
+      this.pasteHTML = this.wrapCommand((markup) => {
+        if (this.isLimited(markup.length)) {
+          return;
+        }
+        markup = this.context.invoke("codeview.purify", markup);
+        const contents = this.getLastRange().pasteHTML(markup);
+        this.setLastRange(range.createFromNodeAfter(lists.last(contents)).select());
+      });
+      this.formatBlock = this.wrapCommand((tagName, $target) => {
+        const onApplyCustomStyle = this.options.callbacks.onApplyCustomStyle;
+        if (onApplyCustomStyle) {
+          onApplyCustomStyle.call(this, $target, this.context, this.onFormatBlock);
+        } else {
+          this.onFormatBlock(tagName, $target);
+        }
+      });
+      this.insertHorizontalRule = this.wrapCommand(() => {
+        const hrNode = this.getLastRange().insertNode(dom.create("HR"));
+        if (hrNode.nextSibling) {
+          this.setLastRange(range.create(hrNode.nextSibling, 0).normalize().select());
+        }
+      });
+      this.lineHeight = this.wrapCommand((value2) => {
+        this.style.stylePara(this.getLastRange(), {
+          lineHeight: value2
+        });
+      });
+      this.createLink = this.wrapCommand((linkInfo) => {
+        let rel = [];
+        let linkUrl = linkInfo.url;
+        const linkText = linkInfo.text;
+        const isNewWindow = linkInfo.isNewWindow;
+        const addNoReferrer = this.options.linkAddNoReferrer;
+        const addNoOpener = this.options.linkAddNoOpener;
+        let rng = linkInfo.range || this.getLastRange();
+        const additionalTextLength = linkText.length - rng.toString().length;
+        if (additionalTextLength > 0 && this.isLimited(additionalTextLength)) {
+          return;
+        }
+        const isTextChanged = rng.toString() !== linkText;
+        if (typeof linkUrl === "string") {
+          linkUrl = linkUrl.trim();
+        }
+        if (this.options.onCreateLink) {
+          linkUrl = this.options.onCreateLink(linkUrl);
+        } else {
+          linkUrl = this.checkLinkUrl(linkUrl);
+        }
+        let anchors = [];
+        if (isTextChanged) {
+          rng = rng.deleteContents();
+          const anchor = rng.insertNode($("<A></A>").text(linkText)[0]);
+          anchors.push(anchor);
+        } else {
+          anchors = this.style.styleNodes(rng, {
+            nodeName: "A",
+            expandClosestSibling: true,
+            onlyPartialContains: true
+          });
+        }
+        $.each(anchors, (idx, anchor) => {
+          $(anchor).attr("href", linkUrl);
+          if (isNewWindow) {
+            $(anchor).attr("target", "_blank");
+            if (addNoReferrer) {
+              rel.push("noreferrer");
+            }
+            if (addNoOpener) {
+              rel.push("noopener");
+            }
+            if (rel.length) {
+              $(anchor).attr("rel", rel.join(" "));
+            }
           } else {
-            _this2.preventDefaultEditableShortCuts(event);
+            $(anchor).removeAttr("target");
+          }
+        });
+        this.setLastRange(
+          this.createRangeFromList(anchors).select()
+        );
+      });
+      this.color = this.wrapCommand((colorInfo) => {
+        const foreColor = colorInfo.foreColor;
+        const backColor = colorInfo.backColor;
+        if (foreColor) {
+          document.execCommand("foreColor", false, foreColor);
+        }
+        if (backColor) {
+          document.execCommand("backColor", false, backColor);
+        }
+      });
+      this.foreColor = this.wrapCommand((colorInfo) => {
+        document.execCommand("foreColor", false, colorInfo);
+      });
+      this.insertTable = this.wrapCommand((dim) => {
+        const dimension = dim.split("x");
+        const rng = this.getLastRange().deleteContents();
+        rng.insertNode(this.table.createTable(dimension[0], dimension[1], this.options));
+      });
+      this.removeMedia = this.wrapCommand(() => {
+        let $target = $(this.restoreTarget()).parent();
+        if ($target.closest("figure").length) {
+          $target.closest("figure").remove();
+        } else {
+          $target = $(this.restoreTarget()).detach();
+        }
+        this.setLastRange(range.createFromSelection($target).select());
+        this.context.triggerEvent("media.delete", $target, this.$editable);
+      });
+      this.floatMe = this.wrapCommand((value2) => {
+        const $target = $(this.restoreTarget());
+        $target.toggleClass("note-float-left", value2 === "left");
+        $target.toggleClass("note-float-right", value2 === "right");
+        $target.css("float", value2 === "none" ? "" : value2);
+      });
+      this.resize = this.wrapCommand((value2) => {
+        const $target = $(this.restoreTarget());
+        value2 = parseFloat(value2);
+        if (value2 === 0) {
+          $target.css("width", "");
+        } else {
+          $target.css({
+            width: value2 * 100 + "%",
+            height: ""
+          });
+        }
+      });
+    }
+    initialize() {
+      this.$editable.on("keydown", (event) => {
+        if (event.keyCode === key.code.ENTER) {
+          this.context.triggerEvent("enter", event);
+        }
+        this.context.triggerEvent("keydown", event);
+        this.snapshot = this.history.makeSnapshot();
+        this.hasKeyShortCut = false;
+        if (!event.isDefaultPrevented()) {
+          if (this.options.shortcuts) {
+            this.hasKeyShortCut = this.handleKeyMap(event);
+          } else {
+            this.preventDefaultEditableShortCuts(event);
           }
         }
-        if (_this2.isLimited(1, event)) {
-          var lastRange = _this2.getLastRange();
+        if (this.isLimited(1, event)) {
+          const lastRange = this.getLastRange();
           if (lastRange.eo - lastRange.so === 0) {
             return false;
           }
         }
-        _this2.setLastRange();
-
-        // record undo in the key event except keyMap.
-        if (_this2.options.recordEveryKeystroke) {
-          if (_this2.hasKeyShortCut === false) {
-            _this2.history.recordUndo();
+        this.setLastRange();
+        if (this.options.recordEveryKeystroke) {
+          if (this.hasKeyShortCut === false) {
+            this.history.recordUndo();
           }
         }
-      }).on('keyup', function (event) {
-        _this2.setLastRange();
-        _this2.context.triggerEvent('keyup', event);
-      }).on('focus', function (event) {
-        _this2.setLastRange();
-        _this2.context.triggerEvent('focus', event);
-      }).on('blur', function (event) {
-        _this2.context.triggerEvent('blur', event);
-      }).on('mousedown', function (event) {
-        _this2.context.triggerEvent('mousedown', event);
-      }).on('mouseup', function (event) {
-        _this2.setLastRange();
-        _this2.history.recordUndo();
-        _this2.context.triggerEvent('mouseup', event);
-      }).on('scroll', function (event) {
-        _this2.context.triggerEvent('scroll', event);
-      }).on('paste', function (event) {
-        _this2.setLastRange();
-        _this2.context.triggerEvent('paste', event);
-      }).on('copy', function (event) {
-        _this2.context.triggerEvent('copy', event);
-      }).on('input', function () {
-        // To limit composition characters (e.g. Korean)
-        if (_this2.isLimited(0) && _this2.snapshot) {
-          _this2.history.applySnapshot(_this2.snapshot);
+      }).on("keyup", (event) => {
+        this.setLastRange();
+        this.context.triggerEvent("keyup", event);
+      }).on("focus", (event) => {
+        this.setLastRange();
+        this.context.triggerEvent("focus", event);
+      }).on("blur", (event) => {
+        this.context.triggerEvent("blur", event);
+      }).on("mousedown", (event) => {
+        this.context.triggerEvent("mousedown", event);
+      }).on("mouseup", (event) => {
+        this.setLastRange();
+        this.history.recordUndo();
+        this.context.triggerEvent("mouseup", event);
+      }).on("scroll", (event) => {
+        this.context.triggerEvent("scroll", event);
+      }).on("paste", (event) => {
+        this.setLastRange();
+        this.context.triggerEvent("paste", event);
+      }).on("copy", (event) => {
+        this.context.triggerEvent("copy", event);
+      }).on("input", () => {
+        if (this.isLimited(0) && this.snapshot) {
+          this.history.applySnapshot(this.snapshot);
         }
       });
-      this.$editable.attr('spellcheck', this.options.spellCheck);
-      this.$editable.attr('autocorrect', this.options.spellCheck);
+      this.$editable.attr("spellcheck", this.options.spellCheck);
+      this.$editable.attr("autocorrect", this.options.spellCheck);
       if (this.options.disableGrammar) {
-        this.$editable.attr('data-gramm', false);
+        this.$editable.attr("data-gramm", false);
       }
-
-      // init content before set event
       this.$editable.html(dom.html(this.$note) || dom.emptyPara);
-      this.$editable.on(env.inputEventName, func.debounce(function () {
-        _this2.context.triggerEvent('change', _this2.$editable.html(), _this2.$editable);
+      this.$editable.on(env.inputEventName, func.debounce(() => {
+        this.context.triggerEvent("change", this.$editable.html(), this.$editable);
       }, 10));
-      this.$editable.on('focusin', function (event) {
-        _this2.context.triggerEvent('focusin', event);
-      }).on('focusout', function (event) {
-        _this2.context.triggerEvent('focusout', event);
+      this.$editable.on("focusin", (event) => {
+        this.context.triggerEvent("focusin", event);
+      }).on("focusout", (event) => {
+        this.context.triggerEvent("focusout", event);
       });
       if (this.options.airMode) {
         if (this.options.overrideContextMenu) {
-          this.$editor.on('contextmenu', function (event) {
-            _this2.context.triggerEvent('contextmenu', event);
+          this.$editor.on("contextmenu", (event) => {
+            this.context.triggerEvent("contextmenu", event);
             return false;
           });
         }
@@ -5018,40 +3588,36 @@ var Editor = /*#__PURE__*/function () {
           this.$editable.outerHeight(this.options.height);
         }
         if (this.options.maxHeight) {
-          this.$editable.css('max-height', this.options.maxHeight);
+          this.$editable.css("max-height", this.options.maxHeight);
         }
         if (this.options.minHeight) {
-          this.$editable.css('min-height', this.options.minHeight);
+          this.$editable.css("min-height", this.options.minHeight);
         }
       }
       this.history.recordUndo();
       this.setLastRange();
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.$editable.off();
     }
-  }, {
-    key: "handleKeyMap",
-    value: function handleKeyMap(event) {
-      var keyMap = this.options.keyMap[env.isMac ? 'mac' : 'pc'];
-      var keys = [];
+    handleKeyMap(event) {
+      const keyMap = this.options.keyMap[env.isMac ? "mac" : "pc"];
+      const keys = [];
       if (event.metaKey) {
-        keys.push('CMD');
+        keys.push("CMD");
       }
       if (event.ctrlKey && !event.altKey) {
-        keys.push('CTRL');
+        keys.push("CTRL");
       }
       if (event.shiftKey) {
-        keys.push('SHIFT');
+        keys.push("SHIFT");
       }
-      var keyName = key.nameFromCode[event.keyCode];
+      const keyName = key.nameFromCode[event.keyCode];
       if (keyName) {
         keys.push(keyName);
       }
-      var eventName = keyMap[keys.join('+')];
-      if (keyName === 'TAB' && !this.options.tabDisable) {
+      const eventName = keyMap[keys.join("+")];
+      if (keyName === "TAB" && !this.options.tabDisable) {
         this.afterCommand();
       } else if (eventName) {
         if (this.context.invoke(eventName) !== false) {
@@ -5060,26 +3626,21 @@ var Editor = /*#__PURE__*/function () {
         }
       } else if (key.isEdit(event.keyCode)) {
         if (key.isRemove(event.keyCode)) {
-          this.context.invoke('removed');
+          this.context.invoke("removed");
         }
         this.afterCommand();
       }
       return false;
     }
-  }, {
-    key: "preventDefaultEditableShortCuts",
-    value: function preventDefaultEditableShortCuts(event) {
-      // B(Bold, 66) / I(Italic, 73) / U(Underline, 85)
+    preventDefaultEditableShortCuts(event) {
       if ((event.ctrlKey || event.metaKey) && lists.contains([66, 73, 85], event.keyCode)) {
         event.preventDefault();
       }
     }
-  }, {
-    key: "isLimited",
-    value: function isLimited(pad, event) {
+    isLimited(pad, event) {
       pad = pad || 0;
-      if (typeof event !== 'undefined') {
-        if (key.isMove(event.keyCode) || key.isNavigation(event.keyCode) || event.ctrlKey || event.metaKey || lists.contains([key.code.BACKSPACE, key.code.DELETE], event.keyCode)) {
+      if (typeof event !== "undefined") {
+        if (key.isMove(event.keyCode) || key.isNavigation(event.keyCode) || (event.ctrlKey || event.metaKey) || lists.contains([key.code.BACKSPACE, key.code.DELETE], event.keyCode)) {
           return false;
         }
       }
@@ -5090,47 +3651,43 @@ var Editor = /*#__PURE__*/function () {
       }
       return false;
     }
-  }, {
-    key: "checkLinkUrl",
-    value: function checkLinkUrl(linkUrl) {
-      if (MAILTO_PATTERN.test(linkUrl)) {
-        return 'mailto://' + linkUrl;
-      } else if (TEL_PATTERN.test(linkUrl)) {
-        return 'tel://' + linkUrl;
-      } else if (!URL_SCHEME_PATTERN.test(linkUrl)) {
-        return 'http://' + linkUrl;
+    checkLinkUrl(linkUrl) {
+      if (MAILTO_PATTERN$1.test(linkUrl)) {
+        return "mailto:" + linkUrl;
+      } else if (TEL_PATTERN$1.test(linkUrl)) {
+        return "tel:" + linkUrl;
+      } else if (!URL_SCHEME_PATTERN$1.test(linkUrl)) {
+        return "http://" + linkUrl;
       }
       return linkUrl;
     }
-
     /**
      * create range
      * @return {WrappedRange}
      */
-  }, {
-    key: "createRange",
-    value: function createRange() {
+    createRange() {
       this.focus();
       this.setLastRange();
       return this.getLastRange();
     }
-
     /**
      * create a new range from the list of elements
      *
      * @param {list} dom element list
      * @return {WrappedRange}
      */
-  }, {
-    key: "createRangeFromList",
-    value: function createRangeFromList(lst) {
-      var startRange = range.createFromNodeBefore(lists.head(lst));
-      var startPoint = startRange.getStartPoint();
-      var endRange = range.createFromNodeAfter(lists.last(lst));
-      var endPoint = endRange.getEndPoint();
-      return range.create(startPoint.node, startPoint.offset, endPoint.node, endPoint.offset);
+    createRangeFromList(lst) {
+      const startRange = range.createFromNodeBefore(lists.head(lst));
+      const startPoint = startRange.getStartPoint();
+      const endRange = range.createFromNodeAfter(lists.last(lst));
+      const endPoint = endRange.getEndPoint();
+      return range.create(
+        startPoint.node,
+        startPoint.offset,
+        endPoint.node,
+        endPoint.offset
+      );
     }
-
     /**
      * set the last range
      *
@@ -5139,19 +3696,16 @@ var Editor = /*#__PURE__*/function () {
      *
      * @param {WrappedRange} rng
      */
-  }, {
-    key: "setLastRange",
-    value: function setLastRange(rng) {
+    setLastRange(rng) {
       if (rng) {
         this.lastRange = rng;
       } else {
         this.lastRange = range.create(this.editable);
-        if (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this.lastRange.sc).closest('.note-editable').length === 0) {
+        if ($(this.lastRange.sc).closest(".note-editable").length === 0) {
           this.lastRange = range.createFromBodyElement(this.editable);
         }
       }
     }
-
     /**
      * get the last range
      *
@@ -5160,15 +3714,12 @@ var Editor = /*#__PURE__*/function () {
      *
      * @return {WrappedRange}
      */
-  }, {
-    key: "getLastRange",
-    value: function getLastRange() {
+    getLastRange() {
       if (!this.lastRange) {
         this.setLastRange();
       }
       return this.lastRange;
     }
-
     /**
      * saveRange
      *
@@ -5176,140 +3727,101 @@ var Editor = /*#__PURE__*/function () {
      *
      * @param {Boolean} [thenCollapse=false]
      */
-  }, {
-    key: "saveRange",
-    value: function saveRange(thenCollapse) {
+    saveRange(thenCollapse) {
       if (thenCollapse) {
         this.getLastRange().collapse().select();
       }
     }
-
     /**
      * restoreRange
      *
      * restore lately range
      */
-  }, {
-    key: "restoreRange",
-    value: function restoreRange() {
+    restoreRange() {
       if (this.lastRange) {
         this.lastRange.select();
         this.focus();
       }
     }
-  }, {
-    key: "saveTarget",
-    value: function saveTarget(node) {
-      this.$editable.data('target', node);
+    saveTarget(node) {
+      this.$editable.data("target", node);
     }
-  }, {
-    key: "clearTarget",
-    value: function clearTarget() {
-      this.$editable.removeData('target');
+    clearTarget() {
+      this.$editable.removeData("target");
     }
-  }, {
-    key: "restoreTarget",
-    value: function restoreTarget() {
-      return this.$editable.data('target');
+    restoreTarget() {
+      return this.$editable.data("target");
     }
-
     /**
      * currentStyle
      *
      * current style
      * @return {Object|Boolean} unfocus
      */
-  }, {
-    key: "currentStyle",
-    value: function currentStyle() {
-      var rng = range.create();
+    currentStyle() {
+      let rng = range.create();
       if (rng) {
         rng = rng.normalize();
       }
       return rng ? this.style.current(rng) : this.style.fromNode(this.$editable);
     }
-
     /**
      * style from node
      *
      * @param {jQuery} $node
      * @return {Object}
      */
-  }, {
-    key: "styleFromNode",
-    value: function styleFromNode($node) {
+    styleFromNode($node) {
       return this.style.fromNode($node);
     }
-
     /**
      * undo
      */
-  }, {
-    key: "undo",
-    value: function undo() {
-      this.context.triggerEvent('before.command', this.$editable.html());
+    undo() {
+      this.context.triggerEvent("before.command", this.$editable.html());
       this.history.undo();
-      this.context.triggerEvent('change', this.$editable.html(), this.$editable);
+      this.context.triggerEvent("change", this.$editable.html(), this.$editable);
     }
-
     /*
     * commit
     */
-  }, {
-    key: "commit",
-    value: function commit() {
-      this.context.triggerEvent('before.command', this.$editable.html());
+    commit() {
+      this.context.triggerEvent("before.command", this.$editable.html());
       this.history.commit();
-      this.context.triggerEvent('change', this.$editable.html(), this.$editable);
+      this.context.triggerEvent("change", this.$editable.html(), this.$editable);
     }
-
     /**
      * redo
      */
-  }, {
-    key: "redo",
-    value: function redo() {
-      this.context.triggerEvent('before.command', this.$editable.html());
+    redo() {
+      this.context.triggerEvent("before.command", this.$editable.html());
       this.history.redo();
-      this.context.triggerEvent('change', this.$editable.html(), this.$editable);
+      this.context.triggerEvent("change", this.$editable.html(), this.$editable);
     }
-
     /**
      * before command
      */
-  }, {
-    key: "beforeCommand",
-    value: function beforeCommand() {
-      this.context.triggerEvent('before.command', this.$editable.html());
-
-      // Set styleWithCSS before run a command
-      document.execCommand('styleWithCSS', false, this.options.styleWithCSS);
-
-      // keep focus on editable before command execution
+    beforeCommand() {
+      this.context.triggerEvent("before.command", this.$editable.html());
+      document.execCommand("styleWithCSS", false, this.options.styleWithCSS);
       this.focus();
     }
-
     /**
      * after command
      * @param {Boolean} isPreventTrigger
      */
-  }, {
-    key: "afterCommand",
-    value: function afterCommand(isPreventTrigger) {
+    afterCommand(isPreventTrigger) {
       this.normalizeContent();
       this.history.recordUndo();
       if (!isPreventTrigger) {
-        this.context.triggerEvent('change', this.$editable.html(), this.$editable);
+        this.context.triggerEvent("change", this.$editable.html(), this.$editable);
       }
     }
-
     /**
      * handle tab key
      */
-  }, {
-    key: "tab",
-    value: function tab() {
-      var rng = this.getLastRange();
+    tab() {
+      const rng = this.getLastRange();
       if (rng.isCollapsed() && rng.isOnCell()) {
         this.table.tab(rng);
       } else {
@@ -5323,14 +3835,11 @@ var Editor = /*#__PURE__*/function () {
         }
       }
     }
-
     /**
      * handle shift+tab key
      */
-  }, {
-    key: "untab",
-    value: function untab() {
-      var rng = this.getLastRange();
+    untab() {
+      const rng = this.getLastRange();
       if (rng.isCollapsed() && rng.isOnCell()) {
         this.table.tab(rng, true);
       } else {
@@ -5339,14 +3848,11 @@ var Editor = /*#__PURE__*/function () {
         }
       }
     }
-
     /**
      * run given function between beforeCommand and afterCommand
      */
-  }, {
-    key: "wrapCommand",
-    value: function wrapCommand(fn) {
-      return function () {
+    wrapCommand(fn) {
+      return function() {
         this.beforeCommand();
         fn.apply(this, arguments);
         this.afterCommand();
@@ -5355,17 +3861,14 @@ var Editor = /*#__PURE__*/function () {
     /**
      * removed (function added by 1der1)
     */
-  }, {
-    key: "removed",
-    value: function removed(rng, node, tagName) {
-      // LB
+    removed(rng, node, tagName) {
       rng = range.create();
       if (rng.isCollapsed() && rng.isOnCell()) {
         node = rng.ec;
         if ((tagName = node.tagName) && node.childElementCount === 1 && node.childNodes[0].tagName === "BR") {
           if (tagName === "P") {
             node.remove();
-          } else if (['TH', 'TD'].indexOf(tagName) >= 0) {
+          } else if (["TH", "TD"].indexOf(tagName) >= 0) {
             node.firstChild.remove();
           }
         }
@@ -5378,125 +3881,94 @@ var Editor = /*#__PURE__*/function () {
      * @param {String|Function} param
      * @return {Promise}
      */
-  }, {
-    key: "insertImage",
-    value: function insertImage(src, param) {
-      var _this3 = this;
-      return createImage(src, param).then(function ($image) {
-        _this3.beforeCommand();
-        if (typeof param === 'function') {
+    insertImage(src, param) {
+      return createImage(src).then(($image) => {
+        this.beforeCommand();
+        if (typeof param === "function") {
           param($image);
         } else {
-          if (typeof param === 'string') {
-            $image.attr('data-filename', param);
+          if (typeof param === "string") {
+            $image.attr("data-filename", param);
           }
-          $image.css('width', Math.min(_this3.$editable.width(), $image.width()));
+          $image.css("width", Math.min(this.$editable.width(), $image.width()));
         }
         $image.show();
-        _this3.getLastRange().insertNode($image[0]);
-        _this3.setLastRange(range.createFromNodeAfter($image[0]).select());
-        _this3.afterCommand();
-      }).fail(function (e) {
-        _this3.context.triggerEvent('image.upload.error', e);
+        this.getLastRange().insertNode($image[0]);
+        this.setLastRange(range.createFromNodeAfter($image[0]).select());
+        this.afterCommand();
+      }).fail((e) => {
+        this.context.triggerEvent("image.upload.error", e);
       });
     }
-
     /**
      * insertImages
      * @param {File[]} files
      */
-  }, {
-    key: "insertImagesAsDataURL",
-    value: function insertImagesAsDataURL(files) {
-      var _this4 = this;
-      external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(files, function (idx, file) {
-        var filename = file.name;
-        if (_this4.options.maximumImageFileSize && _this4.options.maximumImageFileSize < file.size) {
-          _this4.context.triggerEvent('image.upload.error', _this4.lang.image.maximumFileSizeError);
+    insertImagesAsDataURL(files) {
+      $.each(files, (idx, file) => {
+        const filename = file.name;
+        if (this.options.maximumImageFileSize && this.options.maximumImageFileSize < file.size) {
+          this.context.triggerEvent("image.upload.error", this.lang.image.maximumFileSizeError);
         } else {
-          readFileAsDataURL(file).then(function (dataURL) {
-            return _this4.insertImage(dataURL, filename);
-          }).fail(function () {
-            _this4.context.triggerEvent('image.upload.error');
+          readFileAsDataURL(file).then((dataURL) => {
+            return this.insertImage(dataURL, filename);
+          }).fail(() => {
+            this.context.triggerEvent("image.upload.error");
           });
         }
       });
     }
-
     /**
      * insertImagesOrCallback
      * @param {File[]} files
      */
-  }, {
-    key: "insertImagesOrCallback",
-    value: function insertImagesOrCallback(files) {
-      var callbacks = this.options.callbacks;
-      // If onImageUpload set,
+    insertImagesOrCallback(files) {
+      const callbacks = this.options.callbacks;
       if (callbacks.onImageUpload) {
-        this.context.triggerEvent('image.upload', files);
-        // else insert Image as dataURL
+        this.context.triggerEvent("image.upload", files);
       } else {
         this.insertImagesAsDataURL(files);
       }
     }
-
     /**
      * return selected plain text
      * @return {String} text
      */
-  }, {
-    key: "getSelectedText",
-    value: function getSelectedText() {
-      var rng = this.getLastRange();
-
-      // if range on anchor, expand range with anchor
+    getSelectedText() {
+      let rng = this.getLastRange();
       if (rng.isOnAnchor()) {
         rng = range.createFromNode(dom.ancestor(rng.sc, dom.isAnchor));
       }
       return rng.toString();
     }
-  }, {
-    key: "onFormatBlock",
-    value: function onFormatBlock(tagName, $target) {
-      // [workaround] for MSIE, IE need `<`
-      document.execCommand('FormatBlock', false, env.isMSIE ? '<' + tagName + '>' : tagName);
-
-      // support custom class
+    onFormatBlock(tagName, $target) {
+      document.execCommand("FormatBlock", false, env.isMSIE ? "<" + tagName + ">" : tagName);
       if ($target && $target.length) {
-        // find the exact element has given tagName
         if ($target[0].tagName.toUpperCase() !== tagName.toUpperCase()) {
           $target = $target.find(tagName);
         }
         if ($target && $target.length) {
-          var currentRange = this.createRange();
-          var $parent = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()([currentRange.sc, currentRange.ec]).closest(tagName);
-          // remove class added for current block
+          const currentRange = this.createRange();
+          const $parent = $([currentRange.sc, currentRange.ec]).closest(tagName);
           $parent.removeClass();
-          var className = $target[0].className || '';
+          const className = $target[0].className || "";
           if (className) {
             $parent.addClass(className);
           }
         }
       }
     }
-  }, {
-    key: "formatPara",
-    value: function formatPara() {
-      this.formatBlock('P');
+    formatPara() {
+      this.formatBlock("P");
     }
-  }, {
-    key: "fontStyling",
-    value: function fontStyling(target, value) {
-      var rng = this.getLastRange();
-      if (rng !== '') {
-        var spans = this.style.styleNodes(rng);
-        this.$editor.find('.note-status-output').html('');
-        external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(spans).css(target, value);
-
-        // [workaround] added styled bogus span for style
-        //  - also bogus character needed for cursor position
+    fontStyling(target, value2) {
+      const rng = this.getLastRange();
+      if (rng !== "") {
+        const spans = this.style.styleNodes(rng);
+        this.$editor.find(".note-status-output").html("");
+        $(spans).css(target, value2);
         if (rng.isCollapsed()) {
-          var firstSpan = lists.head(spans);
+          const firstSpan = lists.head(spans);
           if (firstSpan && !dom.nodeLength(firstSpan)) {
             firstSpan.innerHTML = dom.ZERO_WIDTH_NBSP_CHAR;
             range.createFromNode(firstSpan.firstChild).select();
@@ -5507,34 +3979,30 @@ var Editor = /*#__PURE__*/function () {
           rng.select();
         }
       } else {
-        var noteStatusOutput = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().now();
-        this.$editor.find('.note-status-output').html('<div id="note-status-output-' + noteStatusOutput + '" class="alert alert-info">' + this.lang.output.noSelection + '</div>');
-        setTimeout(function () {
-          external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('#note-status-output-' + noteStatusOutput).remove();
-        }, 5000);
+        const noteStatusOutput = $.now();
+        this.$editor.find(".note-status-output").html('<div id="note-status-output-' + noteStatusOutput + '" class="alert alert-info">' + this.lang.output.noSelection + "</div>");
+        setTimeout(function() {
+          $("#note-status-output-" + noteStatusOutput).remove();
+        }, 5e3);
       }
     }
-
     /**
      * unlink
      *
      * @type command
      */
-  }, {
-    key: "unlink",
-    value: function unlink() {
-      var rng = this.getLastRange();
+    unlink() {
+      let rng = this.getLastRange();
       if (rng.isOnAnchor()) {
-        var anchor = dom.ancestor(rng.sc, dom.isAnchor);
+        const anchor = dom.ancestor(rng.sc, dom.isAnchor);
         rng = range.createFromNode(anchor);
         rng.select();
         this.setLastRange();
         this.beforeCommand();
-        document.execCommand('unlink');
+        document.execCommand("unlink");
         this.afterCommand();
       }
     }
-
     /**
      * returns link info
      *
@@ -5544,91 +4012,72 @@ var Editor = /*#__PURE__*/function () {
      * @return {Boolean} [return.isNewWindow=true]
      * @return {String} [return.url=""]
      */
-  }, {
-    key: "getLinkInfo",
-    value: function getLinkInfo() {
+    getLinkInfo() {
       if (!this.hasFocus()) {
         this.focus();
       }
-      var rng = this.getLastRange().expand(dom.isAnchor);
-      // Get the first anchor on range(for edit).
-      var $anchor = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(lists.head(rng.nodes(dom.isAnchor)));
-      var linkInfo = {
+      const rng = this.getLastRange().expand(dom.isAnchor);
+      const $anchor = $(lists.head(rng.nodes(dom.isAnchor)));
+      const linkInfo = {
         range: rng,
         text: rng.toString(),
-        url: $anchor.length ? $anchor.attr('href') : ''
+        url: $anchor.length ? $anchor.attr("href") : ""
       };
-
-      // When anchor exists,
       if ($anchor.length) {
-        // Set isNewWindow by checking its target.
-        linkInfo.isNewWindow = $anchor.attr('target') === '_blank';
+        linkInfo.isNewWindow = $anchor.attr("target") === "_blank";
       }
       return linkInfo;
     }
-  }, {
-    key: "addRow",
-    value: function addRow(position) {
-      var rng = this.getLastRange(this.$editable);
+    addRow(position2) {
+      const rng = this.getLastRange(this.$editable);
       if (rng.isCollapsed() && rng.isOnCell()) {
         this.beforeCommand();
-        this.table.addRow(rng, position);
+        this.table.addRow(rng, position2);
         this.afterCommand();
       }
     }
-  }, {
-    key: "addCol",
-    value: function addCol(position) {
-      var rng = this.getLastRange(this.$editable);
+    addCol(position2) {
+      const rng = this.getLastRange(this.$editable);
       if (rng.isCollapsed() && rng.isOnCell()) {
         this.beforeCommand();
-        this.table.addCol(rng, position);
+        this.table.addCol(rng, position2);
         this.afterCommand();
       }
     }
-  }, {
-    key: "deleteRow",
-    value: function deleteRow() {
-      var rng = this.getLastRange(this.$editable);
+    deleteRow() {
+      const rng = this.getLastRange(this.$editable);
       if (rng.isCollapsed() && rng.isOnCell()) {
         this.beforeCommand();
         this.table.deleteRow(rng);
         this.afterCommand();
       }
     }
-  }, {
-    key: "deleteCol",
-    value: function deleteCol() {
-      var rng = this.getLastRange(this.$editable);
+    deleteCol() {
+      const rng = this.getLastRange(this.$editable);
       if (rng.isCollapsed() && rng.isOnCell()) {
         this.beforeCommand();
         this.table.deleteCol(rng);
         this.afterCommand();
       }
     }
-  }, {
-    key: "deleteTable",
-    value: function deleteTable() {
-      var rng = this.getLastRange(this.$editable);
+    deleteTable() {
+      const rng = this.getLastRange(this.$editable);
       if (rng.isCollapsed() && rng.isOnCell()) {
         this.beforeCommand();
         this.table.deleteTable(rng);
         this.afterCommand();
       }
     }
-
     /**
      * @param {Position} pos
      * @param {jQuery} $target - target element
      * @param {Boolean} [bKeepRatio] - keep ratio
      */
-  }, {
-    key: "resizeTo",
-    value: function resizeTo(pos, $target, bKeepRatio) {
-      var imageSize;
+    resizeTo(pos, $target, bKeepRatio) {
+      let imageSize;
       if (bKeepRatio) {
-        var newRatio = pos.y / pos.x;
-        var ratio = $target.data('ratio');
+        const newRatio = pos.y / pos.x;
+        const ratio = $target.data("ratio");
         imageSize = {
           width: ratio > newRatio ? pos.x : pos.y / ratio,
           height: ratio > newRatio ? pos.x * ratio : pos.y
@@ -5641,962 +4090,687 @@ var Editor = /*#__PURE__*/function () {
       }
       $target.css(imageSize);
     }
-
     /**
      * returns whether editable area has focus or not.
      */
-  }, {
-    key: "hasFocus",
-    value: function hasFocus() {
-      return this.$editable.is(':focus');
+    hasFocus() {
+      return this.$editable.is(":focus");
     }
-
     /**
      * set focus
      */
-  }, {
-    key: "focus",
-    value: function focus() {
-      // [workaround] Screen will move when page is scolled in IE.
-      //  - do focus when not focused
+    focus() {
       if (!this.hasFocus()) {
-        this.$editable.trigger('focus');
+        this.$editable.trigger("focus");
       }
     }
-
     /**
      * returns whether contents is empty or not.
      * @return {Boolean}
      */
-  }, {
-    key: "isEmpty",
-    value: function isEmpty() {
+    isEmpty() {
       return dom.isEmpty(this.$editable[0]) || dom.emptyPara === this.$editable.html();
     }
-
     /**
      * Removes all contents and restores the editable instance to an _emptyPara_.
      */
-  }, {
-    key: "empty",
-    value: function empty() {
-      this.context.invoke('code', dom.emptyPara);
+    empty() {
+      this.context.invoke("code", dom.emptyPara);
     }
-
     /**
      * normalize content
      */
-  }, {
-    key: "normalizeContent",
-    value: function normalizeContent() {
+    normalizeContent() {
       this.$editable[0].normalize();
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/Clipboard.js
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function Clipboard_typeof(o) { "@babel/helpers - typeof"; return Clipboard_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Clipboard_typeof(o); }
-function Clipboard_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function Clipboard_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Clipboard_toPropertyKey(o.key), o); } }
-function Clipboard_createClass(e, r, t) { return r && Clipboard_defineProperties(e.prototype, r), t && Clipboard_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function Clipboard_toPropertyKey(t) { var i = Clipboard_toPrimitive(t, "string"); return "symbol" == Clipboard_typeof(i) ? i : i + ""; }
-function Clipboard_toPrimitive(t, r) { if ("object" != Clipboard_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Clipboard_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-var Clipboard = /*#__PURE__*/function () {
-  function Clipboard(context) {
-    Clipboard_classCallCheck(this, Clipboard);
-    this.context = context;
-    this.options = context.options;
-    this.$editable = context.layoutInfo.editable;
   }
-  return Clipboard_createClass(Clipboard, [{
-    key: "initialize",
-    value: function initialize() {
-      this.$editable.on('paste', this.pasteByEvent.bind(this));
+  class Clipboard {
+    constructor(context) {
+      this.context = context;
+      this.options = context.options;
+      this.$editable = context.layoutInfo.editable;
     }
-
+    initialize() {
+      this.$editable.on("paste", this.pasteByEvent.bind(this));
+    }
     /**
      * paste by clipboard event
      *
      * @param {Event} event
      */
-  }, {
-    key: "pasteByEvent",
-    value: function pasteByEvent(event) {
-      var _this = this;
+    pasteByEvent(event) {
       if (this.context.isDisabled()) {
         return;
       }
-      var clipboardData = event.originalEvent.clipboardData;
+      const clipboardData = event.originalEvent.clipboardData;
       if (clipboardData && clipboardData.items && clipboardData.items.length) {
-        var clipboardFiles = clipboardData.files;
-        var clipboardText = clipboardData.getData('Text');
-        var clipboardHtml = clipboardData.getData('text/html');
-
-        // paste img file
+        const clipboardFiles = clipboardData.files;
+        const clipboardText = clipboardData.getData("Text");
+        let clipboardHtml = clipboardData.getData("text/html");
         if (!clipboardHtml && clipboardFiles.length > 0 && this.options.allowClipboardImagePasting) {
-          this.context.invoke('editor.insertImagesOrCallback', clipboardFiles);
+          this.context.invoke("editor.insertImagesOrCallback", clipboardFiles);
           event.preventDefault();
         }
         if (clipboardHtml) {
           clipboardHtml = preparePastedHtml(clipboardHtml);
         }
-        if (clipboardHtml.length > 0 && !this.context.invoke('editor.isLimited', clipboardHtml.length)) {
+        if (clipboardHtml.length > 0 && !this.context.invoke("editor.isLimited", clipboardHtml.length)) {
           event.preventDefault();
-          this.context.invoke('editor.pasteHTML', clipboardHtml);
-        }
-        // abord pasting text if text length is over the limit option.maxTextLength
-        else if (clipboardText.length > 0 && this.context.invoke('editor.isLimited', clipboardText.length)) {
+          this.context.invoke("editor.pasteHTML", clipboardHtml);
+        } else if (clipboardText.length > 0 && this.context.invoke("editor.isLimited", clipboardText.length)) {
           event.preventDefault();
         }
       } else if (window.clipboardData) {
-        // for IE
-        var text = window.clipboardData.getData('text');
-        if (this.context.invoke('editor.isLimited', text.length)) {
+        let text = window.clipboardData.getData("text");
+        if (this.context.invoke("editor.isLimited", text.length)) {
           event.preventDefault();
         }
       }
-
-      // Call editor.afterCommand after proceeding default event handler
-      setTimeout(function () {
-        _this.context.invoke('editor.afterCommand');
+      setTimeout(() => {
+        this.context.invoke("editor.afterCommand");
       }, 10);
     }
-  }]);
-}();
-/**
- * Fragments pasted from MS Excel contain a bunch of styles in the style tag, the browser cuts them out.
- * This method finds the MS Excel class names in the fragment and, if found, places the styles from the classes as inline styles to the elements.
- */
-
-function preparePastedHtml(html) {
-  var fragment = $("<div>".concat(html, "</div>"));
-  var regex = /class=["']{0,1}(xl\d+)["']{0,1}/gm;
-  var matches = _toConsumableArray(html.matchAll(regex));
-  if (matches.length > 0) {
-    matches.forEach(function (group) {
-      var className = group[1];
-      var styles = getExelStyles(html, className);
-      if (styles) {
-        var elem = fragment.find(".".concat(className));
-        elem.css(styles);
-      }
-    });
   }
-
-  // adding default table border
-  fragment.find('table').attr('border', 1);
-  return fragment.html();
-}
-function getExelStyles(html, className) {
-  var re = new RegExp(".".concat(className, "\\s*{([^}]*)}"), 'gm');
-  var matches = _toConsumableArray(html.matchAll(re));
-  if (matches.length === 1 && matches[0].length === 2) {
-    var styles = matches[0][1].replaceAll('\r', '').replaceAll('\n', '').replaceAll('\t', '').split(';');
-    var stylesProperties = {};
-    styles.forEach(function (style) {
-      if (style) {
-        var styleParts = style.split(':');
-        stylesProperties[styleParts[0]] = styleParts[1];
-      }
-    });
-    return stylesProperties;
+  function preparePastedHtml(html2) {
+    const fragment = $(`<div>${html2}</div>`);
+    const regex = /class=["']{0,1}(xl\d+)["']{0,1}/gm;
+    const matches = [...html2.matchAll(regex)];
+    if (matches.length > 0) {
+      matches.forEach((group) => {
+        const className = group[1];
+        const styles = getExelStyles(html2, className);
+        if (styles) {
+          const elem = fragment.find(`.${className}`);
+          elem.css(styles);
+        }
+      });
+    }
+    fragment.find("table").attr("border", 1);
+    return fragment.html();
   }
-  return false;
-}
-;// CONCATENATED MODULE: ./src/js/module/Dropzone.js
-function Dropzone_typeof(o) { "@babel/helpers - typeof"; return Dropzone_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Dropzone_typeof(o); }
-function Dropzone_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function Dropzone_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Dropzone_toPropertyKey(o.key), o); } }
-function Dropzone_createClass(e, r, t) { return r && Dropzone_defineProperties(e.prototype, r), t && Dropzone_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function Dropzone_toPropertyKey(t) { var i = Dropzone_toPrimitive(t, "string"); return "symbol" == Dropzone_typeof(i) ? i : i + ""; }
-function Dropzone_toPrimitive(t, r) { if ("object" != Dropzone_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Dropzone_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-var Dropzone = /*#__PURE__*/function () {
-  function Dropzone(context) {
-    Dropzone_classCallCheck(this, Dropzone);
-    this.context = context;
-    this.$eventListener = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(document);
-    this.$editor = context.layoutInfo.editor;
-    this.$editable = context.layoutInfo.editable;
-    this.options = context.options;
-    this.lang = this.options.langInfo;
-    this.documentEventHandlers = {};
-    this.$dropzone = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(['<div class="note-dropzone">', '<div class="note-dropzone-message"></div>', '</div>'].join('')).prependTo(this.$editor);
+  function getExelStyles(html2, className) {
+    const re = new RegExp(`.${className}\\s*{([^}]*)}`, "gm");
+    const matches = [...html2.matchAll(re)];
+    if (matches.length === 1 && matches[0].length === 2) {
+      const styles = matches[0][1].replaceAll("\r", "").replaceAll("\n", "").replaceAll("	", "").split(";");
+      const stylesProperties = {};
+      styles.forEach((style) => {
+        if (style) {
+          const styleParts = style.split(":");
+          stylesProperties[styleParts[0]] = styleParts[1];
+        }
+      });
+      return stylesProperties;
+    }
+    return false;
   }
-
-  /**
-   * attach Drag and Drop Events
-   */
-  return Dropzone_createClass(Dropzone, [{
-    key: "initialize",
-    value: function initialize() {
+  class Dropzone {
+    constructor(context) {
+      this.context = context;
+      this.$eventListener = $(document);
+      this.$editor = context.layoutInfo.editor;
+      this.$editable = context.layoutInfo.editable;
+      this.options = context.options;
+      this.lang = this.options.langInfo;
+      this.documentEventHandlers = {};
+      this.$dropzone = $([
+        '<div class="note-dropzone">',
+        '<div class="note-dropzone-message"></div>',
+        "</div>"
+      ].join("")).prependTo(this.$editor);
+    }
+    /**
+     * attach Drag and Drop Events
+     */
+    initialize() {
       if (this.options.disableDragAndDrop) {
-        // prevent default drop event
-        this.documentEventHandlers.onDrop = function (e) {
+        this.documentEventHandlers.onDrop = (e) => {
           e.preventDefault();
         };
-        // do not consider outside of dropzone
         this.$eventListener = this.$dropzone;
-        this.$eventListener.on('drop', this.documentEventHandlers.onDrop);
+        this.$eventListener.on("drop", this.documentEventHandlers.onDrop);
       } else {
         this.attachDragAndDropEvent();
       }
     }
-
     /**
      * attach Drag and Drop Events
      */
-  }, {
-    key: "attachDragAndDropEvent",
-    value: function attachDragAndDropEvent() {
-      var _this = this;
-      var collection = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()();
-      var $dropzoneMessage = this.$dropzone.find('.note-dropzone-message');
-      this.documentEventHandlers.onDragenter = function (e) {
-        var isCodeview = _this.context.invoke('codeview.isActivated');
-        var hasEditorSize = _this.$editor.width() > 0 && _this.$editor.height() > 0;
+    attachDragAndDropEvent() {
+      let collection = $();
+      const $dropzoneMessage = this.$dropzone.find(".note-dropzone-message");
+      this.documentEventHandlers.onDragenter = (e) => {
+        const isCodeview = this.context.invoke("codeview.isActivated");
+        const hasEditorSize = this.$editor.width() > 0 && this.$editor.height() > 0;
         if (!isCodeview && !collection.length && hasEditorSize) {
-          _this.$editor.addClass('dragover');
-          _this.$dropzone.width(_this.$editor.width());
-          _this.$dropzone.height(_this.$editor.height());
-          $dropzoneMessage.text(_this.lang.image.dragImageHere);
+          this.$editor.addClass("dragover");
+          this.$dropzone.width(this.$editor.width());
+          this.$dropzone.height(this.$editor.height());
+          $dropzoneMessage.text(this.lang.image.dragImageHere);
         }
         collection = collection.add(e.target);
       };
-      this.documentEventHandlers.onDragleave = function (e) {
+      this.documentEventHandlers.onDragleave = (e) => {
         collection = collection.not(e.target);
-
-        // If nodeName is BODY, then just make it over (fix for IE)
-        if (!collection.length || e.target.nodeName === 'BODY') {
-          collection = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()();
-          _this.$editor.removeClass('dragover');
+        if (!collection.length || e.target.nodeName === "BODY") {
+          collection = $();
+          this.$editor.removeClass("dragover");
         }
       };
-      this.documentEventHandlers.onDrop = function () {
-        collection = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()();
-        _this.$editor.removeClass('dragover');
+      this.documentEventHandlers.onDrop = () => {
+        collection = $();
+        this.$editor.removeClass("dragover");
       };
-
-      // show dropzone on dragenter when dragging a object to document
-      // -but only if the editor is visible, i.e. has a positive width and height
-      this.$eventListener.on('dragenter', this.documentEventHandlers.onDragenter).on('dragleave', this.documentEventHandlers.onDragleave).on('drop', this.documentEventHandlers.onDrop);
-
-      // change dropzone's message on hover.
-      this.$dropzone.on('dragenter', function () {
-        _this.$dropzone.addClass('hover');
-        $dropzoneMessage.text(_this.lang.image.dropImage);
-      }).on('dragleave', function () {
-        _this.$dropzone.removeClass('hover');
-        $dropzoneMessage.text(_this.lang.image.dragImageHere);
+      this.$eventListener.on("dragenter", this.documentEventHandlers.onDragenter).on("dragleave", this.documentEventHandlers.onDragleave).on("drop", this.documentEventHandlers.onDrop);
+      this.$dropzone.on("dragenter", () => {
+        this.$dropzone.addClass("hover");
+        $dropzoneMessage.text(this.lang.image.dropImage);
+      }).on("dragleave", () => {
+        this.$dropzone.removeClass("hover");
+        $dropzoneMessage.text(this.lang.image.dragImageHere);
       });
-
-      // attach dropImage
-      this.$dropzone.on('drop', function (event) {
-        var dataTransfer = event.originalEvent.dataTransfer;
-
-        // stop the browser from opening the dropped content
+      this.$dropzone.on("drop", (event) => {
+        const dataTransfer = event.originalEvent.dataTransfer;
         event.preventDefault();
         if (dataTransfer && dataTransfer.files && dataTransfer.files.length) {
-          _this.$editable.trigger('focus');
-          _this.context.invoke('editor.insertImagesOrCallback', dataTransfer.files);
+          this.$editable.trigger("focus");
+          this.context.invoke("editor.insertImagesOrCallback", dataTransfer.files);
         } else {
-          external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(dataTransfer.types, function (idx, type) {
-            // skip moz-specific types
-            if (type.toLowerCase().indexOf('_moz_') > -1) {
+          $.each(dataTransfer.types, (idx, type) => {
+            if (type.toLowerCase().indexOf("_moz_") > -1) {
               return;
             }
-            var content = dataTransfer.getData(type);
-            if (type.toLowerCase().indexOf('text') > -1) {
-              _this.context.invoke('editor.pasteHTML', content);
+            const content = dataTransfer.getData(type);
+            if (type.toLowerCase().indexOf("text") > -1) {
+              this.context.invoke("editor.pasteHTML", content);
             } else {
-              external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(content).each(function (idx, item) {
-                _this.context.invoke('editor.insertNode', item);
+              $(content).each((idx2, item) => {
+                this.context.invoke("editor.insertNode", item);
               });
             }
           });
         }
-      }).on('dragover', false); // prevent default dragover event
+      }).on("dragover", false);
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
-      var _this2 = this;
-      Object.keys(this.documentEventHandlers).forEach(function (key) {
-        _this2.$eventListener.off(key.slice(2).toLowerCase(), _this2.documentEventHandlers[key]);
+    destroy() {
+      Object.keys(this.documentEventHandlers).forEach((key2) => {
+        this.$eventListener.off(key2.slice(2).toLowerCase(), this.documentEventHandlers[key2]);
       });
       this.documentEventHandlers = {};
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/Codeview.js
-function Codeview_typeof(o) { "@babel/helpers - typeof"; return Codeview_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Codeview_typeof(o); }
-function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = Codeview_unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
-function Codeview_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return Codeview_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? Codeview_arrayLikeToArray(r, a) : void 0; } }
-function Codeview_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function Codeview_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function Codeview_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Codeview_toPropertyKey(o.key), o); } }
-function Codeview_createClass(e, r, t) { return r && Codeview_defineProperties(e.prototype, r), t && Codeview_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function Codeview_toPropertyKey(t) { var i = Codeview_toPrimitive(t, "string"); return "symbol" == Codeview_typeof(i) ? i : i + ""; }
-function Codeview_toPrimitive(t, r) { if ("object" != Codeview_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Codeview_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-/**
- * @class Codeview
- */
-var CodeView = /*#__PURE__*/function () {
-  function CodeView(context) {
-    Codeview_classCallCheck(this, CodeView);
-    this.context = context;
-    this.$editor = context.layoutInfo.editor;
-    this.$editable = context.layoutInfo.editable;
-    this.$codable = context.layoutInfo.codable;
-    this.options = context.options;
-    this.CodeMirrorConstructor = window.CodeMirror;
-    if (this.options.codemirror.CodeMirrorConstructor) {
-      this.CodeMirrorConstructor = this.options.codemirror.CodeMirrorConstructor;
-    }
   }
-  return Codeview_createClass(CodeView, [{
-    key: "sync",
-    value: function sync(html) {
-      var isCodeview = this.isActivated();
-      var CodeMirror = this.CodeMirrorConstructor;
+  class CodeView {
+    constructor(context) {
+      this.context = context;
+      this.$editor = context.layoutInfo.editor;
+      this.$editable = context.layoutInfo.editable;
+      this.$codable = context.layoutInfo.codable;
+      this.options = context.options;
+      this.CodeMirrorConstructor = window.CodeMirror;
+      if (this.options.codemirror.CodeMirrorConstructor) {
+        this.CodeMirrorConstructor = this.options.codemirror.CodeMirrorConstructor;
+      }
+    }
+    sync(html2) {
+      const isCodeview = this.isActivated();
+      const CodeMirror = this.CodeMirrorConstructor;
       if (isCodeview) {
-        if (html) {
+        if (html2) {
           if (CodeMirror) {
-            this.$codable.data('cmEditor').getDoc().setValue(html);
+            this.$codable.data("cmEditor").getDoc().setValue(html2);
           } else {
-            this.$codable.val(html);
+            this.$codable.val(html2);
           }
         } else {
           if (CodeMirror) {
-            this.$codable.data('cmEditor').save();
+            this.$codable.data("cmEditor").save();
           }
         }
       }
     }
-  }, {
-    key: "initialize",
-    value: function initialize() {
-      var _this = this;
-      this.$codable.on('keyup', function (event) {
+    initialize() {
+      this.$codable.on("keyup", (event) => {
         if (event.keyCode === key.code.ESCAPE) {
-          _this.deactivate();
+          this.deactivate();
         }
       });
     }
-
     /**
      * @return {Boolean}
      */
-  }, {
-    key: "isActivated",
-    value: function isActivated() {
-      return this.$editor.hasClass('codeview');
+    isActivated() {
+      return this.$editor.hasClass("codeview");
     }
-
     /**
      * toggle codeview
      */
-  }, {
-    key: "toggle",
-    value: function toggle() {
+    toggle() {
       if (this.isActivated()) {
         this.deactivate();
       } else {
         this.activate();
       }
-      this.context.triggerEvent('codeview.toggled');
+      this.context.triggerEvent("codeview.toggled");
     }
-
     /**
      * purify input value
      * @param value
      * @returns {*}
      */
-  }, {
-    key: "purify",
-    value: function purify(value) {
+    purify(value2) {
       if (this.options.codeviewFilter) {
-        // filter code view regex
-
-        /**
-         * Begin custom code block
-         * 
-         * This comment removal code is added intentionally
-         * bc this is a new requirement
-         * 
-         * When updating summernote, don't forget to update this code
-         */
-        value = value.replace(/<!--[\s\S]*?-->/gmi, '');
-        // End custom code block
-
-        value = value.replace(this.options.codeviewFilterRegex, '');
-        // allow specific iframe tag
+        value2 = value2.replace(/<!--[\s\S]*?-->/gmi, "");
+        value2 = value2.replace(this.options.codeviewFilterRegex, "");
         if (this.options.codeviewIframeFilter) {
-          var whitelist = this.options.codeviewIframeWhitelistSrc.concat(this.options.codeviewIframeWhitelistSrcBase);
-          value = value.replace(/(<iframe.*?>.*?(?:<\/iframe>)?)/gi, function (tag) {
-            // remove if src attribute is duplicated
+          const whitelist = this.options.codeviewIframeWhitelistSrc.concat(this.options.codeviewIframeWhitelistSrcBase);
+          value2 = value2.replace(/(<iframe.*?>.*?(?:<\/iframe>)?)/gi, function(tag) {
             if (/<.+src(?==?('|"|\s)?)[\s\S]+src(?=('|"|\s)?)[^>]*?>/i.test(tag)) {
-              return '';
+              return "";
             }
-            var _iterator = _createForOfIteratorHelper(whitelist),
-              _step;
-            try {
-              for (_iterator.s(); !(_step = _iterator.n()).done;) {
-                var src = _step.value;
-                // pass if src is trusted
-                if (new RegExp('src="(https?:)?\/\/' + src.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') + '\/(.+)"').test(tag)) {
-                  return tag;
-                }
+            for (const src of whitelist) {
+              if (new RegExp('src="(https?:)?//' + src.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&") + '/(.+)"').test(tag)) {
+                return tag;
               }
-            } catch (err) {
-              _iterator.e(err);
-            } finally {
-              _iterator.f();
             }
-            return '';
+            return "";
           });
         }
       }
-      return value;
+      return value2;
     }
-
     /**
      * activate code view
      */
-  }, {
-    key: "activate",
-    value: function activate() {
-      var _this2 = this;
-      var CodeMirror = this.CodeMirrorConstructor;
+    activate() {
+      const CodeMirror = this.CodeMirrorConstructor;
       this.$codable.val(dom.html(this.$editable, this.options.prettifyHtml));
       this.$codable.height(this.$editable.height());
-      this.context.invoke('toolbar.updateCodeview', true);
-      this.context.invoke('airPopover.updateCodeview', true);
-      this.$editor.addClass('codeview');
-      this.$codable.trigger('focus');
-
-      // activate CodeMirror as codable
+      this.context.invoke("toolbar.updateCodeview", true);
+      this.context.invoke("airPopover.updateCodeview", true);
+      this.$editor.addClass("codeview");
+      this.$codable.trigger("focus");
       if (CodeMirror) {
-        var cmEditor = CodeMirror.fromTextArea(this.$codable[0], this.options.codemirror);
-
-        // CodeMirror TernServer
+        const cmEditor = CodeMirror.fromTextArea(this.$codable[0], this.options.codemirror);
         if (this.options.codemirror.tern) {
-          var server = new CodeMirror.TernServer(this.options.codemirror.tern);
+          const server = new CodeMirror.TernServer(this.options.codemirror.tern);
           cmEditor.ternServer = server;
-          cmEditor.on('cursorActivity', function (cm) {
+          cmEditor.on("cursorActivity", (cm) => {
             server.updateArgHints(cm);
           });
         }
-        cmEditor.on('blur', function (event) {
-          _this2.context.triggerEvent('blur.codeview', cmEditor.getValue(), event);
+        cmEditor.on("blur", (event) => {
+          this.context.triggerEvent("blur.codeview", cmEditor.getValue(), event);
         });
-        cmEditor.on('change', function () {
-          _this2.context.triggerEvent('change.codeview', cmEditor.getValue(), cmEditor);
+        cmEditor.on("change", () => {
+          this.context.triggerEvent("change.codeview", cmEditor.getValue(), cmEditor);
         });
-
-        // CodeMirror hasn't Padding.
         cmEditor.setSize(null, this.$editable.outerHeight());
-        this.$codable.data('cmEditor', cmEditor);
+        this.$codable.data("cmEditor", cmEditor);
       } else {
-        this.$codable.on('blur', function (event) {
-          _this2.context.triggerEvent('blur.codeview', _this2.$codable.val(), event);
+        this.$codable.on("blur", (event) => {
+          this.context.triggerEvent("blur.codeview", this.$codable.val(), event);
         });
-        this.$codable.on('input', function () {
-          _this2.context.triggerEvent('change.codeview', _this2.$codable.val(), _this2.$codable);
+        this.$codable.on("input", () => {
+          this.context.triggerEvent("change.codeview", this.$codable.val(), this.$codable);
         });
       }
     }
-
     /**
      * deactivate code view
      */
-  }, {
-    key: "deactivate",
-    value: function deactivate() {
-      var CodeMirror = this.CodeMirrorConstructor;
-      // deactivate CodeMirror as codable
+    deactivate() {
+      const CodeMirror = this.CodeMirrorConstructor;
       if (CodeMirror) {
-        var cmEditor = this.$codable.data('cmEditor');
+        const cmEditor = this.$codable.data("cmEditor");
         this.$codable.val(cmEditor.getValue());
         cmEditor.toTextArea();
       }
-      var value = this.purify(dom.value(this.$codable, this.options.prettifyHtml) || dom.emptyPara);
-      var isChange = this.$editable.html() !== value;
-      this.$editable.html(value);
-      this.$editable.height(this.options.height ? this.$codable.height() : 'auto');
-      this.$editor.removeClass('codeview');
+      const value2 = this.purify(dom.value(this.$codable, this.options.prettifyHtml) || dom.emptyPara);
+      const isChange = this.$editable.html() !== value2;
+      this.$editable.html(value2);
+      this.$editable.height(this.options.height ? this.$codable.height() : "auto");
+      this.$editor.removeClass("codeview");
       if (isChange) {
-        this.context.triggerEvent('change', this.$editable.html(), this.$editable);
+        this.context.triggerEvent("change", this.$editable.html(), this.$editable);
       }
-      this.$editable.trigger('focus');
-      this.context.invoke('toolbar.updateCodeview', false);
-      this.context.invoke('airPopover.updateCodeview', false);
+      this.$editable.trigger("focus");
+      this.context.invoke("toolbar.updateCodeview", false);
+      this.context.invoke("airPopover.updateCodeview", false);
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       if (this.isActivated()) {
         this.deactivate();
       }
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/Statusbar.js
-function Statusbar_typeof(o) { "@babel/helpers - typeof"; return Statusbar_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Statusbar_typeof(o); }
-function Statusbar_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function Statusbar_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Statusbar_toPropertyKey(o.key), o); } }
-function Statusbar_createClass(e, r, t) { return r && Statusbar_defineProperties(e.prototype, r), t && Statusbar_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function Statusbar_toPropertyKey(t) { var i = Statusbar_toPrimitive(t, "string"); return "symbol" == Statusbar_typeof(i) ? i : i + ""; }
-function Statusbar_toPrimitive(t, r) { if ("object" != Statusbar_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Statusbar_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-var EDITABLE_PADDING = 24;
-var Statusbar = /*#__PURE__*/function () {
-  function Statusbar(context) {
-    Statusbar_classCallCheck(this, Statusbar);
-    this.$document = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(document);
-    this.$statusbar = context.layoutInfo.statusbar;
-    this.$editable = context.layoutInfo.editable;
-    this.$codable = context.layoutInfo.codable;
-    this.options = context.options;
   }
-  return Statusbar_createClass(Statusbar, [{
-    key: "initialize",
-    value: function initialize() {
-      var _this = this;
+  const EDITABLE_PADDING = 24;
+  class Statusbar {
+    constructor(context) {
+      this.$document = $(document);
+      this.$statusbar = context.layoutInfo.statusbar;
+      this.$editable = context.layoutInfo.editable;
+      this.$codable = context.layoutInfo.codable;
+      this.options = context.options;
+    }
+    initialize() {
       if (this.options.airMode || this.options.disableResizeEditor) {
         this.destroy();
         return;
       }
-      this.$statusbar.on('mousedown touchstart', function (event) {
+      this.$statusbar.on("mousedown touchstart", (event) => {
         event.preventDefault();
         event.stopPropagation();
-        var editableTop = _this.$editable.offset().top - _this.$document.scrollTop();
-        var editableCodeTop = _this.$codable.offset().top - _this.$document.scrollTop();
-        var onStatusbarMove = function onStatusbarMove(event) {
-          var originalEvent = event.type == 'mousemove' ? event : event.originalEvent.touches[0];
-          var height = originalEvent.clientY - (editableTop + EDITABLE_PADDING);
-          var heightCode = originalEvent.clientY - (editableCodeTop + EDITABLE_PADDING);
-          height = _this.options.minheight > 0 ? Math.max(height, _this.options.minheight) : height;
-          height = _this.options.maxHeight > 0 ? Math.min(height, _this.options.maxHeight) : height;
-          heightCode = _this.options.minheight > 0 ? Math.max(heightCode, _this.options.minheight) : heightCode;
-          heightCode = _this.options.maxHeight > 0 ? Math.min(heightCode, _this.options.maxHeight) : heightCode;
-          _this.$editable.height(height);
-          _this.$codable.height(heightCode);
+        const editableTop = this.$editable.offset().top - this.$document.scrollTop();
+        const editableCodeTop = this.$codable.offset().top - this.$document.scrollTop();
+        const onStatusbarMove = (event2) => {
+          let originalEvent = event2.type == "mousemove" ? event2 : event2.originalEvent.touches[0];
+          let height = originalEvent.clientY - (editableTop + EDITABLE_PADDING);
+          let heightCode = originalEvent.clientY - (editableCodeTop + EDITABLE_PADDING);
+          height = this.options.minheight > 0 ? Math.max(height, this.options.minheight) : height;
+          height = this.options.maxHeight > 0 ? Math.min(height, this.options.maxHeight) : height;
+          heightCode = this.options.minheight > 0 ? Math.max(heightCode, this.options.minheight) : heightCode;
+          heightCode = this.options.maxHeight > 0 ? Math.min(heightCode, this.options.maxHeight) : heightCode;
+          this.$editable.height(height);
+          this.$codable.height(heightCode);
         };
-        _this.$document.on('mousemove touchmove', onStatusbarMove).one('mouseup touchend', function () {
-          _this.$document.off('mousemove touchmove', onStatusbarMove);
+        this.$document.on("mousemove touchmove", onStatusbarMove).one("mouseup touchend", () => {
+          this.$document.off("mousemove touchmove", onStatusbarMove);
         });
       });
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.$statusbar.off();
-      this.$statusbar.addClass('locked');
+      this.$statusbar.addClass("locked");
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/Fullscreen.js
-function Fullscreen_typeof(o) { "@babel/helpers - typeof"; return Fullscreen_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Fullscreen_typeof(o); }
-function Fullscreen_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function Fullscreen_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Fullscreen_toPropertyKey(o.key), o); } }
-function Fullscreen_createClass(e, r, t) { return r && Fullscreen_defineProperties(e.prototype, r), t && Fullscreen_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function Fullscreen_toPropertyKey(t) { var i = Fullscreen_toPrimitive(t, "string"); return "symbol" == Fullscreen_typeof(i) ? i : i + ""; }
-function Fullscreen_toPrimitive(t, r) { if ("object" != Fullscreen_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Fullscreen_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-var Fullscreen = /*#__PURE__*/function () {
-  function Fullscreen(context) {
-    var _this = this;
-    Fullscreen_classCallCheck(this, Fullscreen);
-    this.context = context;
-    this.$editor = context.layoutInfo.editor;
-    this.$toolbar = context.layoutInfo.toolbar;
-    this.$editable = context.layoutInfo.editable;
-    this.$codable = context.layoutInfo.codable;
-    this.$window = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(window);
-    this.$scrollbar = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('html, body');
-    this.scrollbarClassName = 'note-fullscreen-body';
-    this.onResize = function () {
-      _this.resizeTo({
-        h: _this.$window.height() - _this.$toolbar.outerHeight()
-      });
-    };
   }
-  return Fullscreen_createClass(Fullscreen, [{
-    key: "resizeTo",
-    value: function resizeTo(size) {
-      this.$editable.css('height', size.h);
-      this.$codable.css('height', size.h);
-      if (this.$codable.data('cmeditor')) {
-        this.$codable.data('cmeditor').setsize(null, size.h);
+  class Fullscreen {
+    constructor(context) {
+      this.context = context;
+      this.$editor = context.layoutInfo.editor;
+      this.$toolbar = context.layoutInfo.toolbar;
+      this.$editable = context.layoutInfo.editable;
+      this.$codable = context.layoutInfo.codable;
+      this.$window = $(window);
+      this.$scrollbar = $("html, body");
+      this.scrollbarClassName = "note-fullscreen-body";
+      this.onResize = () => {
+        this.resizeTo({
+          h: this.$window.height() - this.$toolbar.outerHeight()
+        });
+      };
+    }
+    resizeTo(size) {
+      this.$editable.css("height", size.h);
+      this.$codable.css("height", size.h);
+      if (this.$codable.data("cmeditor")) {
+        this.$codable.data("cmeditor").setsize(null, size.h);
       }
     }
-
     /**
      * toggle fullscreen
      */
-  }, {
-    key: "toggle",
-    value: function toggle() {
-      this.$editor.toggleClass('fullscreen');
-      var isFullscreen = this.isFullscreen();
+    toggle() {
+      this.$editor.toggleClass("fullscreen");
+      const isFullscreen = this.isFullscreen();
       this.$scrollbar.toggleClass(this.scrollbarClassName, isFullscreen);
       if (isFullscreen) {
-        this.$editable.data('orgHeight', this.$editable.css('height'));
-        this.$editable.data('orgMaxHeight', this.$editable.css('maxHeight'));
-        this.$editable.css('maxHeight', '');
-        this.$window.on('resize', this.onResize).trigger('resize');
+        this.$editable.data("orgHeight", this.$editable.css("height"));
+        this.$editable.data("orgMaxHeight", this.$editable.css("maxHeight"));
+        this.$editable.css("maxHeight", "");
+        this.$window.on("resize", this.onResize).trigger("resize");
       } else {
-        this.$window.off('resize', this.onResize);
-        this.resizeTo({
-          h: this.$editable.data('orgHeight')
-        });
-        this.$editable.css('maxHeight', this.$editable.css('orgMaxHeight'));
+        this.$window.off("resize", this.onResize);
+        this.resizeTo({ h: this.$editable.data("orgHeight") });
+        this.$editable.css("maxHeight", this.$editable.css("orgMaxHeight"));
       }
-      this.context.invoke('toolbar.updateFullscreen', isFullscreen);
+      this.context.invoke("toolbar.updateFullscreen", isFullscreen);
     }
-  }, {
-    key: "isFullscreen",
-    value: function isFullscreen() {
-      return this.$editor.hasClass('fullscreen');
+    isFullscreen() {
+      return this.$editor.hasClass("fullscreen");
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.$scrollbar.removeClass(this.scrollbarClassName);
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/Handle.js
-function Handle_typeof(o) { "@babel/helpers - typeof"; return Handle_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Handle_typeof(o); }
-function Handle_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function Handle_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Handle_toPropertyKey(o.key), o); } }
-function Handle_createClass(e, r, t) { return r && Handle_defineProperties(e.prototype, r), t && Handle_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function Handle_toPropertyKey(t) { var i = Handle_toPrimitive(t, "string"); return "symbol" == Handle_typeof(i) ? i : i + ""; }
-function Handle_toPrimitive(t, r) { if ("object" != Handle_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Handle_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-var Handle = /*#__PURE__*/function () {
-  function Handle(context) {
-    var _this = this;
-    Handle_classCallCheck(this, Handle);
-    this.context = context;
-    this.$document = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(document);
-    this.$editingArea = context.layoutInfo.editingArea;
-    this.options = context.options;
-    this.lang = this.options.langInfo;
-    this.events = {
-      'summernote.mousedown': function summernoteMousedown(we, e) {
-        if (_this.update(e.target, e)) {
-          e.preventDefault();
-        }
-      },
-      'summernote.keyup summernote.scroll summernote.change summernote.dialog.shown': function summernoteKeyupSummernoteScrollSummernoteChangeSummernoteDialogShown() {
-        _this.update();
-      },
-      'summernote.disable summernote.blur': function summernoteDisableSummernoteBlur() {
-        _this.hide();
-      },
-      'summernote.codeview.toggled': function summernoteCodeviewToggled() {
-        _this.update();
-      }
-    };
   }
-  return Handle_createClass(Handle, [{
-    key: "initialize",
-    value: function initialize() {
-      var _this2 = this;
-      this.$handle = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(['<div class="note-handle">', '<div class="note-control-selection">', '<div class="note-control-selection-bg"></div>', '<div class="note-control-holder note-control-nw"></div>', '<div class="note-control-holder note-control-ne"></div>', '<div class="note-control-holder note-control-sw"></div>', '<div class="', this.options.disableResizeImage ? 'note-control-holder' : 'note-control-sizing', ' note-control-se"></div>', this.options.disableResizeImage ? '' : '<div class="note-control-selection-info"></div>', '</div>', '</div>'].join('')).prependTo(this.$editingArea);
-      this.$handle.on('mousedown', function (event) {
+  class Handle {
+    constructor(context) {
+      this.context = context;
+      this.$document = $(document);
+      this.$editingArea = context.layoutInfo.editingArea;
+      this.options = context.options;
+      this.lang = this.options.langInfo;
+      this.events = {
+        "summernote.mousedown": (we, e) => {
+          if (this.update(e.target, e)) {
+            e.preventDefault();
+          }
+        },
+        "summernote.keyup summernote.scroll summernote.change summernote.dialog.shown": () => {
+          this.update();
+        },
+        "summernote.disable summernote.blur": () => {
+          this.hide();
+        },
+        "summernote.codeview.toggled": () => {
+          this.update();
+        }
+      };
+    }
+    initialize() {
+      this.$handle = $([
+        '<div class="note-handle">',
+        '<div class="note-control-selection">',
+        '<div class="note-control-selection-bg"></div>',
+        '<div class="note-control-holder note-control-nw"></div>',
+        '<div class="note-control-holder note-control-ne"></div>',
+        '<div class="note-control-holder note-control-sw"></div>',
+        '<div class="',
+        this.options.disableResizeImage ? "note-control-holder" : "note-control-sizing",
+        ' note-control-se"></div>',
+        this.options.disableResizeImage ? "" : '<div class="note-control-selection-info"></div>',
+        "</div>",
+        "</div>"
+      ].join("")).prependTo(this.$editingArea);
+      this.$handle.on("mousedown", (event) => {
         if (dom.isControlSizing(event.target)) {
           event.preventDefault();
           event.stopPropagation();
-          var $target = _this2.$handle.find('.note-control-selection').data('target');
-          var posStart = $target.offset();
-          var scrollTop = _this2.$document.scrollTop();
-          var onMouseMove = function onMouseMove(event) {
-            var isTable = dom.isTable($target[0]);
-            _this2.context.invoke('editor.resizeTo', {
-              x: event.clientX - posStart.left,
-              y: event.clientY - (posStart.top - scrollTop)
-            }, $target, isTable ? false : !event.shiftKey);
-            _this2.update($target[0], event);
+          const $target = this.$handle.find(".note-control-selection").data("target");
+          const posStart = $target.offset();
+          const scrollTop = this.$document.scrollTop();
+          const onMouseMove = (event2) => {
+            const isTable2 = dom.isTable($target[0]);
+            this.context.invoke("editor.resizeTo", {
+              x: event2.clientX - posStart.left,
+              y: event2.clientY - (posStart.top - scrollTop)
+            }, $target, isTable2 ? false : !event2.shiftKey);
+            this.update($target[0], event2);
           };
-          _this2.$document.on('mousemove', onMouseMove).one('mouseup', function (e) {
+          this.$document.on("mousemove", onMouseMove).one("mouseup", (e) => {
             e.preventDefault();
-            _this2.$document.off('mousemove', onMouseMove);
-            _this2.context.invoke('editor.afterCommand');
+            this.$document.off("mousemove", onMouseMove);
+            this.context.invoke("editor.afterCommand");
           });
-          if (!$target.data('ratio')) {
-            // original ratio.
-            $target.data('ratio', $target.height() / $target.width());
+          if (!$target.data("ratio")) {
+            $target.data("ratio", $target.height() / $target.width());
           }
         }
       });
-
-      // Listen for scrolling on the handle overlay.
-      this.$handle.on('wheel', function (event) {
+      this.$handle.on("wheel", (event) => {
         event.preventDefault();
-        _this2.update();
+        this.update();
       });
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.$handle.remove();
     }
-  }, {
-    key: "update",
-    value: function update(target, event) {
+    update(target, event) {
       if (this.context.isDisabled()) {
         return false;
       }
-      var isImage = dom.isImg(target);
-      var $selection = this.$handle.find('.note-control-selection');
-      this.context.invoke('imagePopover.update', target, event);
+      const isImage = dom.isImg(target);
+      const $selection = this.$handle.find(".note-control-selection");
+      this.context.invoke("imagePopover.update", target, event);
       if (isImage) {
-        var $image = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(target);
-        var areaRect = this.$editingArea[0].getBoundingClientRect();
-        var imageRect = target.getBoundingClientRect();
+        const $image = $(target);
+        const areaRect = this.$editingArea[0].getBoundingClientRect();
+        const imageRect = target.getBoundingClientRect();
         $selection.css({
-          display: 'block',
+          display: "block",
           left: imageRect.left - areaRect.left,
           top: imageRect.top - areaRect.top,
           width: imageRect.width,
           height: imageRect.height
-        }).data('target', $image); // save current image element.
-
-        var origImageObj = new Image();
-        origImageObj.src = $image.attr('src');
-        var sizingText = Math.ceil(imageRect.width) + 'px x ' + Math.ceil(imageRect.height) + 'px (' + this.lang.image.original + ': ' + origImageObj.width + 'px x ' + origImageObj.height + 'px)';
-        $selection.find('.note-control-selection-info').text(sizingText);
-        this.context.invoke('editor.saveTarget', target);
+        }).data("target", $image);
+        const origImageObj = new Image();
+        origImageObj.src = $image.attr("src");
+        const sizingText = Math.ceil(imageRect.width) + "px x " + Math.ceil(imageRect.height) + "px (" + this.lang.image.original + ": " + origImageObj.width + "px x " + origImageObj.height + "px)";
+        $selection.find(".note-control-selection-info").text(sizingText);
+        this.context.invoke("editor.saveTarget", target);
       } else if (dom.isTable(target) || dom.isCell(target)) {
-        var $element = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(target);
+        let $element = $(target);
         if (dom.isCell(target)) {
-          $element = $element.closest('table');
+          $element = $element.closest("table");
           target = $element[0];
         }
-        if (event.type !== 'mousedown') {
-          var _areaRect = this.$editingArea[0].getBoundingClientRect();
-          var elementRect = target.getBoundingClientRect();
+        if (event.type !== "mousedown") {
+          const areaRect = this.$editingArea[0].getBoundingClientRect();
+          const elementRect = target.getBoundingClientRect();
           $selection.css({
-            display: 'block',
-            left: Math.ceil(elementRect.left - _areaRect.left),
-            top: Math.ceil(elementRect.top - _areaRect.top),
+            display: "block",
+            left: Math.ceil(elementRect.left - areaRect.left),
+            top: Math.ceil(elementRect.top - areaRect.top),
             width: elementRect.width,
             height: elementRect.height
-          }).data('target', $element); // save current table element.
-          var _sizingText = Math.ceil(elementRect.width) + 'px x ' + Math.ceil(elementRect.height) + 'px';
-          $selection.find('.note-control-selection-info').text(_sizingText);
+          }).data("target", $element);
+          const sizingText = Math.ceil(elementRect.width) + "px x " + Math.ceil(elementRect.height) + "px";
+          $selection.find(".note-control-selection-info").text(sizingText);
         }
-        this.context.invoke('editor.saveTarget', target);
+        this.context.invoke("editor.saveTarget", target);
       } else {
         this.hide();
       }
       return isImage;
     }
-  }, {
-    key: "makeResizable",
-    value: function makeResizable() {
-      var target = this.context.invoke('editor.restoreTarget');
-      this.update(target, 'dblclick');
-      this.context.invoke('tablePopover.update', false); // second argument is falsy to close tablePopover
+    makeResizable() {
+      const target = this.context.invoke("editor.restoreTarget");
+      this.update(target, "dblclick");
+      this.context.invoke("tablePopover.update", false);
     }
-
     /**
      * hide
      *
      * @param {jQuery} $handle
      */
-  }, {
-    key: "hide",
-    value: function hide() {
-      this.context.invoke('editor.clearTarget');
+    hide() {
+      this.context.invoke("editor.clearTarget");
       this.$handle.children().hide();
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/AutoLink.js
-function AutoLink_typeof(o) { "@babel/helpers - typeof"; return AutoLink_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, AutoLink_typeof(o); }
-function AutoLink_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function AutoLink_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, AutoLink_toPropertyKey(o.key), o); } }
-function AutoLink_createClass(e, r, t) { return r && AutoLink_defineProperties(e.prototype, r), t && AutoLink_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function AutoLink_toPropertyKey(t) { var i = AutoLink_toPrimitive(t, "string"); return "symbol" == AutoLink_typeof(i) ? i : i + ""; }
-function AutoLink_toPrimitive(t, r) { if ("object" != AutoLink_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != AutoLink_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-var defaultScheme = 'http://';
-var linkPattern = /^([A-Za-z][A-Za-z0-9+-.]*\:[\/]{2}|tel:|mailto:[A-Z0-9._%+-]+@|xmpp:[A-Z0-9._%+-]+@)?(www\.)?(.+)$/i;
-var AutoLink = /*#__PURE__*/function () {
-  function AutoLink(context) {
-    var _this = this;
-    AutoLink_classCallCheck(this, AutoLink);
-    this.context = context;
-    this.options = context.options;
-    this.$editable = context.layoutInfo.editable;
-    this.events = {
-      'summernote.keyup': function summernoteKeyup(we, event) {
-        if (!event.isDefaultPrevented()) {
-          _this.handleKeyup(event);
-        }
-      },
-      'summernote.keydown': function summernoteKeydown(we, event) {
-        _this.handleKeydown(event);
-      }
-    };
   }
-  return AutoLink_createClass(AutoLink, [{
-    key: "initialize",
-    value: function initialize() {
+  const defaultScheme = "http://";
+  const linkPattern = /^([A-Za-z][A-Za-z0-9+-.]*\:[\/]{2}|tel:|mailto:[A-Z0-9._%+-]+@|xmpp:[A-Z0-9._%+-]+@)?(www\.)?(.+)$/i;
+  class AutoLink {
+    constructor(context) {
+      this.context = context;
+      this.options = context.options;
+      this.$editable = context.layoutInfo.editable;
+      this.events = {
+        "summernote.keyup": (we, event) => {
+          if (!event.isDefaultPrevented()) {
+            this.handleKeyup(event);
+          }
+        },
+        "summernote.keydown": (we, event) => {
+          this.handleKeydown(event);
+        }
+      };
+    }
+    initialize() {
       this.lastWordRange = null;
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.lastWordRange = null;
     }
-  }, {
-    key: "replace",
-    value: function replace() {
+    replace() {
       if (!this.lastWordRange) {
         return;
       }
-      var keyword = this.lastWordRange.toString();
-      var match = keyword.match(linkPattern);
+      const keyword = this.lastWordRange.toString();
+      const match = keyword.match(linkPattern);
       if (match && (match[1] || match[2])) {
-        var link = match[1] ? keyword : defaultScheme + keyword;
-        var urlText = this.options.showDomainOnlyForAutolink ? keyword.replace(/^(?:https?:\/\/)?(?:tel?:?)?(?:mailto?:?)?(?:xmpp?:?)?(?:www\.)?/i, '').split('/')[0] : keyword;
-        var node = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<a></a>').html(urlText).attr('href', link)[0];
+        const link = match[1] ? keyword : defaultScheme + keyword;
+        const urlText = this.options.showDomainOnlyForAutolink ? keyword.replace(/^(?:https?:\/\/)?(?:tel?:?)?(?:mailto?:?)?(?:xmpp?:?)?(?:www\.)?/i, "").split("/")[0] : keyword;
+        const node = $("<a></a>").html(urlText).attr("href", link)[0];
         if (this.context.options.linkTargetBlank) {
-          external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(node).attr('target', '_blank');
+          $(node).attr("target", "_blank");
         }
         this.lastWordRange.insertNode(node);
         this.lastWordRange = null;
-        this.context.invoke('editor.focus');
-        this.context.triggerEvent('change', this.$editable.html(), this.$editable);
+        this.context.invoke("editor.focus");
+        this.context.triggerEvent("change", this.$editable.html(), this.$editable);
       }
     }
-  }, {
-    key: "handleKeydown",
-    value: function handleKeydown(event) {
+    handleKeydown(event) {
       if (lists.contains([key.code.ENTER, key.code.SPACE], event.keyCode)) {
-        var wordRange = this.context.invoke('editor.createRange').getWordRange();
+        const wordRange = this.context.invoke("editor.createRange").getWordRange();
         this.lastWordRange = wordRange;
       }
     }
-  }, {
-    key: "handleKeyup",
-    value: function handleKeyup(event) {
+    handleKeyup(event) {
       if (key.code.SPACE === event.keyCode || key.code.ENTER === event.keyCode && !event.shiftKey) {
         this.replace();
       }
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/AutoSync.js
-function AutoSync_typeof(o) { "@babel/helpers - typeof"; return AutoSync_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, AutoSync_typeof(o); }
-function AutoSync_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function AutoSync_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, AutoSync_toPropertyKey(o.key), o); } }
-function AutoSync_createClass(e, r, t) { return r && AutoSync_defineProperties(e.prototype, r), t && AutoSync_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function AutoSync_toPropertyKey(t) { var i = AutoSync_toPrimitive(t, "string"); return "symbol" == AutoSync_typeof(i) ? i : i + ""; }
-function AutoSync_toPrimitive(t, r) { if ("object" != AutoSync_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != AutoSync_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-/**
- * textarea auto sync.
- */
-var AutoSync = /*#__PURE__*/function () {
-  function AutoSync(context) {
-    var _this = this;
-    AutoSync_classCallCheck(this, AutoSync);
-    this.$note = context.layoutInfo.note;
-    this.events = {
-      'summernote.change': function summernoteChange() {
-        _this.$note.val(context.invoke('code'));
-      }
-    };
   }
-  return AutoSync_createClass(AutoSync, [{
-    key: "shouldInitialize",
-    value: function shouldInitialize() {
+  class AutoSync {
+    constructor(context) {
+      this.$note = context.layoutInfo.note;
+      this.events = {
+        "summernote.change": () => {
+          this.$note.val(context.invoke("code"));
+        }
+      };
+    }
+    shouldInitialize() {
       return dom.isTextarea(this.$note[0]);
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/AutoReplace.js
-function AutoReplace_typeof(o) { "@babel/helpers - typeof"; return AutoReplace_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, AutoReplace_typeof(o); }
-function AutoReplace_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function AutoReplace_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, AutoReplace_toPropertyKey(o.key), o); } }
-function AutoReplace_createClass(e, r, t) { return r && AutoReplace_defineProperties(e.prototype, r), t && AutoReplace_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function AutoReplace_toPropertyKey(t) { var i = AutoReplace_toPrimitive(t, "string"); return "symbol" == AutoReplace_typeof(i) ? i : i + ""; }
-function AutoReplace_toPrimitive(t, r) { if ("object" != AutoReplace_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != AutoReplace_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-var AutoReplace = /*#__PURE__*/function () {
-  function AutoReplace(context) {
-    var _this = this;
-    AutoReplace_classCallCheck(this, AutoReplace);
-    this.context = context;
-    this.options = context.options.replace || {};
-    this.keys = [key.code.ENTER, key.code.SPACE, key.code.PERIOD, key.code.COMMA, key.code.SEMICOLON, key.code.SLASH];
-    this.previousKeydownCode = null;
-    this.events = {
-      'summernote.keyup': function summernoteKeyup(we, event) {
-        if (!event.isDefaultPrevented()) {
-          _this.handleKeyup(event);
-        }
-      },
-      'summernote.keydown': function summernoteKeydown(we, event) {
-        _this.handleKeydown(event);
-      }
-    };
   }
-  return AutoReplace_createClass(AutoReplace, [{
-    key: "shouldInitialize",
-    value: function shouldInitialize() {
+  class AutoReplace {
+    constructor(context) {
+      this.context = context;
+      this.options = context.options.replace || {};
+      this.keys = [key.code.ENTER, key.code.SPACE, key.code.PERIOD, key.code.COMMA, key.code.SEMICOLON, key.code.SLASH];
+      this.previousKeydownCode = null;
+      this.events = {
+        "summernote.keyup": (we, event) => {
+          if (!event.isDefaultPrevented()) {
+            this.handleKeyup(event);
+          }
+        },
+        "summernote.keydown": (we, event) => {
+          this.handleKeydown(event);
+        }
+      };
+    }
+    shouldInitialize() {
       return !!this.options.match;
     }
-  }, {
-    key: "initialize",
-    value: function initialize() {
+    initialize() {
       this.lastWord = null;
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.lastWord = null;
     }
-  }, {
-    key: "replace",
-    value: function replace() {
+    replace() {
       if (!this.lastWord) {
         return;
       }
-      var self = this;
-      var keyword = this.lastWord.toString();
-      this.options.match(keyword, function (match) {
+      const self2 = this;
+      const keyword = this.lastWord.toString();
+      this.options.match(keyword, function(match) {
         if (match) {
-          var node = '';
-          if (typeof match === 'string') {
+          let node = "";
+          if (typeof match === "string") {
             node = dom.createText(match);
           } else if (match instanceof jQuery) {
             node = match[0];
@@ -6604,625 +4778,632 @@ var AutoReplace = /*#__PURE__*/function () {
             node = match;
           }
           if (!node) return;
-          self.lastWord.insertNode(node);
-          self.lastWord = null;
-          self.context.invoke('editor.focus');
+          self2.lastWord.insertNode(node);
+          self2.lastWord = null;
+          self2.context.invoke("editor.focus");
         }
       });
     }
-  }, {
-    key: "handleKeydown",
-    value: function handleKeydown(event) {
-      // this forces it to remember the last whole word, even if multiple termination keys are pressed
-      // before the previous key is let go.
+    handleKeydown(event) {
       if (this.previousKeydownCode && lists.contains(this.keys, this.previousKeydownCode)) {
         this.previousKeydownCode = event.keyCode;
         return;
       }
       if (lists.contains(this.keys, event.keyCode)) {
-        var wordRange = this.context.invoke('editor.createRange').getWordRange();
+        const wordRange = this.context.invoke("editor.createRange").getWordRange();
         this.lastWord = wordRange;
       }
       this.previousKeydownCode = event.keyCode;
     }
-  }, {
-    key: "handleKeyup",
-    value: function handleKeyup(event) {
+    handleKeyup(event) {
       if (lists.contains(this.keys, event.keyCode)) {
         this.replace();
       }
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/Placeholder.js
-function Placeholder_typeof(o) { "@babel/helpers - typeof"; return Placeholder_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Placeholder_typeof(o); }
-function Placeholder_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function Placeholder_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Placeholder_toPropertyKey(o.key), o); } }
-function Placeholder_createClass(e, r, t) { return r && Placeholder_defineProperties(e.prototype, r), t && Placeholder_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function Placeholder_toPropertyKey(t) { var i = Placeholder_toPrimitive(t, "string"); return "symbol" == Placeholder_typeof(i) ? i : i + ""; }
-function Placeholder_toPrimitive(t, r) { if ("object" != Placeholder_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Placeholder_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-var Placeholder = /*#__PURE__*/function () {
-  function Placeholder(context) {
-    var _this = this;
-    Placeholder_classCallCheck(this, Placeholder);
-    this.context = context;
-    this.$editingArea = context.layoutInfo.editingArea;
-    this.options = context.options;
-    if (this.options.inheritPlaceholder === true) {
-      // get placeholder value from the original element
-      this.options.placeholder = this.context.$note.attr('placeholder') || this.options.placeholder;
-    }
-    this.events = {
-      'summernote.init summernote.change': function summernoteInitSummernoteChange() {
-        _this.update();
-      },
-      'summernote.codeview.toggled': function summernoteCodeviewToggled() {
-        _this.update();
-      }
-    };
   }
-  return Placeholder_createClass(Placeholder, [{
-    key: "shouldInitialize",
-    value: function shouldInitialize() {
+  class Placeholder {
+    constructor(context) {
+      this.context = context;
+      this.$editingArea = context.layoutInfo.editingArea;
+      this.options = context.options;
+      if (this.options.inheritPlaceholder === true) {
+        this.options.placeholder = this.context.$note.attr("placeholder") || this.options.placeholder;
+      }
+      this.events = {
+        "summernote.init summernote.change": () => {
+          this.update();
+        },
+        "summernote.codeview.toggled": () => {
+          this.update();
+        }
+      };
+    }
+    shouldInitialize() {
       return !!this.options.placeholder;
     }
-  }, {
-    key: "initialize",
-    value: function initialize() {
-      var _this2 = this;
-      this.$placeholder = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<div class="note-placeholder"></div>');
-      this.$placeholder.on('click', function () {
-        _this2.context.invoke('focus');
+    initialize() {
+      this.$placeholder = $('<div class="note-placeholder"></div>');
+      this.$placeholder.on("click", () => {
+        this.context.invoke("focus");
       }).html(this.options.placeholder).prependTo(this.$editingArea);
       this.update();
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.$placeholder.remove();
     }
-  }, {
-    key: "update",
-    value: function update() {
-      var isShow = !this.context.invoke('codeview.isActivated') && this.context.invoke('editor.isEmpty');
+    update() {
+      const isShow = !this.context.invoke("codeview.isActivated") && this.context.invoke("editor.isEmpty");
       this.$placeholder.toggle(isShow);
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/Buttons.js
-function Buttons_typeof(o) { "@babel/helpers - typeof"; return Buttons_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Buttons_typeof(o); }
-function Buttons_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function Buttons_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Buttons_toPropertyKey(o.key), o); } }
-function Buttons_createClass(e, r, t) { return r && Buttons_defineProperties(e.prototype, r), t && Buttons_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function Buttons_toPropertyKey(t) { var i = Buttons_toPrimitive(t, "string"); return "symbol" == Buttons_typeof(i) ? i : i + ""; }
-function Buttons_toPrimitive(t, r) { if ("object" != Buttons_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Buttons_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-
-var Buttons = /*#__PURE__*/function () {
-  function Buttons(context) {
-    Buttons_classCallCheck(this, Buttons);
-    this.ui = (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.ui;
-    this.context = context;
-    this.$toolbar = context.layoutInfo.toolbar;
-    this.options = context.options;
-    this.lang = this.options.langInfo;
-    this.invertedKeyMap = func.invertObject(this.options.keyMap[env.isMac ? 'mac' : 'pc']);
   }
-  return Buttons_createClass(Buttons, [{
-    key: "representShortcut",
-    value: function representShortcut(editorMethod) {
-      var shortcut = this.invertedKeyMap[editorMethod];
+  class Buttons {
+    constructor(context) {
+      this.ui = $.summernote.ui;
+      this.context = context;
+      this.$toolbar = context.layoutInfo.toolbar;
+      this.options = context.options;
+      this.lang = this.options.langInfo;
+      this.invertedKeyMap = func.invertObject(
+        this.options.keyMap[env.isMac ? "mac" : "pc"]
+      );
+    }
+    representShortcut(editorMethod) {
+      let shortcut = this.invertedKeyMap[editorMethod];
       if (!this.options.shortcuts || !shortcut) {
-        return '';
+        return "";
       }
       if (env.isMac) {
-        shortcut = shortcut.replace('CMD', '⌘').replace('SHIFT', '⇧');
+        shortcut = shortcut.replace("CMD", "⌘").replace("SHIFT", "⇧");
       }
-      shortcut = shortcut.replace('BACKSLASH', '\\').replace('SLASH', '/').replace('LEFTBRACKET', '[').replace('RIGHTBRACKET', ']');
-      return ' (' + shortcut + ')';
+      shortcut = shortcut.replace("BACKSLASH", "\\").replace("SLASH", "/").replace("LEFTBRACKET", "[").replace("RIGHTBRACKET", "]");
+      return " (" + shortcut + ")";
     }
-  }, {
-    key: "button",
-    value: function button(o) {
+    button(o) {
       if (!this.options.tooltip && o.tooltip) {
         delete o.tooltip;
       }
       o.container = this.options.container;
       return this.ui.button(o);
     }
-  }, {
-    key: "initialize",
-    value: function initialize() {
+    initialize() {
       this.addToolbarButtons();
       this.addImagePopoverButtons();
       this.addLinkPopoverButtons();
       this.addTablePopoverButtons();
       this.fontInstalledMap = {};
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       delete this.fontInstalledMap;
     }
-  }, {
-    key: "isFontInstalled",
-    value: function isFontInstalled(name) {
+    isFontInstalled(name) {
       if (!Object.prototype.hasOwnProperty.call(this.fontInstalledMap, name)) {
         this.fontInstalledMap[name] = env.isFontInstalled(name) || lists.contains(this.options.fontNamesIgnoreCheck, name);
       }
       return this.fontInstalledMap[name];
     }
-  }, {
-    key: "isFontDeservedToAdd",
-    value: function isFontDeservedToAdd(name) {
+    isFontDeservedToAdd(name) {
       name = name.toLowerCase();
-      return name !== '' && this.isFontInstalled(name) && env.genericFontFamilies.indexOf(name) === -1;
+      return name !== "" && this.isFontInstalled(name) && env.genericFontFamilies.indexOf(name) === -1;
     }
-  }, {
-    key: "colorPalette",
-    value: function colorPalette(className, tooltip, backColor, foreColor) {
-      var _this = this;
+    colorPalette(className, tooltip, backColor, foreColor) {
       return this.ui.buttonGroup({
-        className: 'note-color ' + className,
-        children: [this.button({
-          className: 'note-current-color-button',
-          contents: this.ui.icon(this.options.icons.font + ' note-recent-color'),
-          tooltip: tooltip,
-          click: function click(event) {
-            var $button = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(event.currentTarget);
-            if (backColor && foreColor) {
-              _this.context.invoke('editor.color', {
-                backColor: $button.attr('data-backColor'),
-                foreColor: $button.attr('data-foreColor')
-              });
-            } else if (backColor) {
-              _this.context.invoke('editor.color', {
-                backColor: $button.attr('data-backColor')
-              });
-            } else if (foreColor) {
-              _this.context.invoke('editor.color', {
-                foreColor: $button.attr('data-foreColor')
-              });
-            }
-          },
-          callback: function callback($button) {
-            var $recentColor = $button.find('.note-recent-color');
-            if (backColor) {
-              $recentColor.css('background-color', _this.options.colorButton.backColor);
-              $button.attr('data-backColor', _this.options.colorButton.backColor);
-            }
-            if (foreColor) {
-              $recentColor.css('color', _this.options.colorButton.foreColor);
-              $button.attr('data-foreColor', _this.options.colorButton.foreColor);
-            } else {
-              $recentColor.css('color', 'transparent');
-            }
-          }
-        }), this.button({
-          className: 'dropdown-toggle',
-          contents: this.ui.dropdownButtonContents('', this.options),
-          tooltip: this.lang.color.more,
-          data: {
-            toggle: 'dropdown'
-          }
-        }), this.ui.dropdown({
-          items: (backColor ? ['<div class="note-palette">', '<div class="note-palette-title">' + this.lang.color.background + '</div>', '<div>', '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="backColor" data-value="transparent">', this.lang.color.transparent, '</button>', '</div>', '<div class="note-holder" data-event="backColor"><!-- back colors --></div>', '<div>', '<button type="button" class="note-color-select btn btn-light btn-default" data-event="openPalette" data-value="backColorPicker-' + this.options.id + '">', this.lang.color.cpSelect, '</button>', '<input type="color" id="backColorPicker-' + this.options.id + '" class="note-btn note-color-select-btn" value="' + this.options.colorButton.backColor + '" data-event="backColorPalette-' + this.options.id + '">', '</div>', '<div class="note-holder-custom" id="backColorPalette-' + this.options.id + '" data-event="backColor"></div>', '</div>'].join('') : '') + (foreColor ? ['<div class="note-palette">', '<div class="note-palette-title">' + this.lang.color.foreground + '</div>', '<div>', '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="removeFormat" data-value="foreColor">', this.lang.color.resetToDefault, '</button>', '</div>', '<div class="note-holder" data-event="foreColor"><!-- fore colors --></div>', '<div>', '<button type="button" class="note-color-select btn btn-light btn-default" data-event="openPalette" data-value="foreColorPicker-' + this.options.id + '">', this.lang.color.cpSelect, '</button>', '<input type="color" id="foreColorPicker-' + this.options.id + '" class="note-btn note-color-select-btn" value="' + this.options.colorButton.foreColor + '" data-event="foreColorPalette-' + this.options.id + '">', '</div>',
-          // Fix missing Div, Commented to find easily if it's wrong
-          '<div class="note-holder-custom" id="foreColorPalette-' + this.options.id + '" data-event="foreColor"></div>', '</div>'].join('') : ''),
-          callback: function callback($dropdown) {
-            $dropdown.find('.note-holder').each(function (idx, item) {
-              var $holder = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(item);
-              $holder.append(_this.ui.palette({
-                colors: _this.options.colors,
-                colorsName: _this.options.colorsName,
-                eventName: $holder.data('event'),
-                container: _this.options.container,
-                tooltip: _this.options.tooltip
-              }).render());
-            });
-            /* TODO: do we have to record recent custom colors within cookies? */
-            var customColors = [['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF']];
-            $dropdown.find('.note-holder-custom').each(function (idx, item) {
-              var $holder = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(item);
-              $holder.append(_this.ui.palette({
-                colors: customColors,
-                colorsName: customColors,
-                eventName: $holder.data('event'),
-                container: _this.options.container,
-                tooltip: _this.options.tooltip
-              }).render());
-            });
-            $dropdown.find('input[type=color]').each(function (idx, item) {
-              external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(item).on("change", function () {
-                var $chip = $dropdown.find('#' + external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this).data('event')).find('.note-color-btn').first();
-                var color = this.value.toUpperCase();
-                $chip.css('background-color', color).attr('aria-label', color).attr('data-value', color).attr('data-original-title', color);
-                $chip.trigger('click');
-              });
-            });
-          },
-          click: function click(event) {
-            event.stopPropagation();
-            var $parent = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('.' + className).find('.note-dropdown-menu');
-            var $button = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(event.target);
-            var eventName = $button.data('event');
-            var value = $button.attr('data-value');
-            if (eventName === 'openPalette') {
-              var $picker = $parent.find('#' + value);
-              var $palette = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()($parent.find('#' + $picker.data('event')).find('.note-color-row')[0]);
-
-              // Shift palette chips
-              var $chip = $palette.find('.note-color-btn').last().detach();
-
-              // Set chip attributes
-              var color = $picker.val();
-              $chip.css('background-color', color).attr('aria-label', color).attr('data-value', color).attr('data-original-title', color);
-              $palette.prepend($chip);
-              $picker.trigger('click');
-            } else {
-              if (lists.contains(['backColor', 'foreColor'], eventName)) {
-                var key = eventName === 'backColor' ? 'background-color' : 'color';
-                var $color = $button.closest('.note-color').find('.note-recent-color');
-                var $currentButton = $button.closest('.note-color').find('.note-current-color-button');
-                $color.css(key, value);
-                $currentButton.attr('data-' + eventName, value);
+        className: "note-color " + className,
+        children: [
+          this.button({
+            className: "note-current-color-button",
+            contents: this.ui.icon(this.options.icons.font + " note-recent-color"),
+            tooltip,
+            click: (event) => {
+              const $button = $(event.currentTarget);
+              if (backColor && foreColor) {
+                this.context.invoke("editor.color", {
+                  backColor: $button.attr("data-backColor"),
+                  foreColor: $button.attr("data-foreColor")
+                });
+              } else if (backColor) {
+                this.context.invoke("editor.color", {
+                  backColor: $button.attr("data-backColor")
+                });
+              } else if (foreColor) {
+                this.context.invoke("editor.color", {
+                  foreColor: $button.attr("data-foreColor")
+                });
               }
-              _this.context.invoke('editor.' + eventName, value);
+            },
+            callback: ($button) => {
+              const $recentColor = $button.find(".note-recent-color");
+              if (backColor) {
+                $recentColor.css("background-color", this.options.colorButton.backColor);
+                $button.attr("data-backColor", this.options.colorButton.backColor);
+              }
+              if (foreColor) {
+                $recentColor.css("color", this.options.colorButton.foreColor);
+                $button.attr("data-foreColor", this.options.colorButton.foreColor);
+              } else {
+                $recentColor.css("color", "transparent");
+              }
             }
-          }
-        })]
+          }),
+          this.button({
+            className: "dropdown-toggle",
+            contents: this.ui.dropdownButtonContents("", this.options),
+            tooltip: this.lang.color.more,
+            data: {
+              toggle: "dropdown"
+            }
+          }),
+          this.ui.dropdown({
+            items: (backColor ? [
+              '<div class="note-palette">',
+              '<div class="note-palette-title">' + this.lang.color.background + "</div>",
+              "<div>",
+              '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="backColor" data-value="transparent">',
+              this.lang.color.transparent,
+              "</button>",
+              "</div>",
+              '<div class="note-holder" data-event="backColor"><!-- back colors --></div>',
+              "<div>",
+              '<button type="button" class="note-color-select btn btn-light btn-default" data-event="openPalette" data-value="backColorPicker-' + this.options.id + '">',
+              this.lang.color.cpSelect,
+              "</button>",
+              '<input type="color" id="backColorPicker-' + this.options.id + '" class="note-btn note-color-select-btn" value="' + this.options.colorButton.backColor + '" data-event="backColorPalette-' + this.options.id + '">',
+              "</div>",
+              '<div class="note-holder-custom" id="backColorPalette-' + this.options.id + '" data-event="backColor"></div>',
+              "</div>"
+            ].join("") : "") + (foreColor ? [
+              '<div class="note-palette">',
+              '<div class="note-palette-title">' + this.lang.color.foreground + "</div>",
+              "<div>",
+              '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="removeFormat" data-value="foreColor">',
+              this.lang.color.resetToDefault,
+              "</button>",
+              "</div>",
+              '<div class="note-holder" data-event="foreColor"><!-- fore colors --></div>',
+              "<div>",
+              '<button type="button" class="note-color-select btn btn-light btn-default" data-event="openPalette" data-value="foreColorPicker-' + this.options.id + '">',
+              this.lang.color.cpSelect,
+              "</button>",
+              '<input type="color" id="foreColorPicker-' + this.options.id + '" class="note-btn note-color-select-btn" value="' + this.options.colorButton.foreColor + '" data-event="foreColorPalette-' + this.options.id + '">',
+              "</div>",
+              // Fix missing Div, Commented to find easily if it's wrong
+              '<div class="note-holder-custom" id="foreColorPalette-' + this.options.id + '" data-event="foreColor"></div>',
+              "</div>"
+            ].join("") : ""),
+            callback: ($dropdown) => {
+              $dropdown.find(".note-holder").each((idx, item) => {
+                const $holder = $(item);
+                $holder.append(this.ui.palette({
+                  colors: this.options.colors,
+                  colorsName: this.options.colorsName,
+                  eventName: $holder.data("event"),
+                  container: this.options.container,
+                  tooltip: this.options.tooltip
+                }).render());
+              });
+              var customColors = [
+                ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"]
+              ];
+              $dropdown.find(".note-holder-custom").each((idx, item) => {
+                const $holder = $(item);
+                $holder.append(this.ui.palette({
+                  colors: customColors,
+                  colorsName: customColors,
+                  eventName: $holder.data("event"),
+                  container: this.options.container,
+                  tooltip: this.options.tooltip
+                }).render());
+              });
+              $dropdown.find("input[type=color]").each((idx, item) => {
+                $(item).on("change", function() {
+                  const $chip = $dropdown.find("#" + $(this).data("event")).find(".note-color-btn").first();
+                  const color = this.value.toUpperCase();
+                  $chip.css("background-color", color).attr("aria-label", color).attr("data-value", color).attr("data-original-title", color);
+                  $chip.trigger("click");
+                });
+              });
+            },
+            click: (event) => {
+              event.stopPropagation();
+              const $parent = $("." + className).find(".note-dropdown-menu");
+              const $button = $(event.target);
+              const eventName = $button.data("event");
+              const value2 = $button.attr("data-value");
+              if (eventName === "openPalette") {
+                const $picker = $parent.find("#" + value2);
+                const $palette = $($parent.find("#" + $picker.data("event")).find(".note-color-row")[0]);
+                const $chip = $palette.find(".note-color-btn").last().detach();
+                const color = $picker.val();
+                $chip.css("background-color", color).attr("aria-label", color).attr("data-value", color).attr("data-original-title", color);
+                $palette.prepend($chip);
+                $picker.trigger("click");
+              } else {
+                if (lists.contains(["backColor", "foreColor"], eventName)) {
+                  const key2 = eventName === "backColor" ? "background-color" : "color";
+                  const $color = $button.closest(".note-color").find(".note-recent-color");
+                  const $currentButton = $button.closest(".note-color").find(".note-current-color-button");
+                  $color.css(key2, value2);
+                  $currentButton.attr("data-" + eventName, value2);
+                }
+                this.context.invoke("editor." + eventName, value2);
+              }
+            }
+          })
+        ]
       }).render();
     }
-  }, {
-    key: "addToolbarButtons",
-    value: function addToolbarButtons() {
-      var _this2 = this;
-      this.context.memo('button.style', function () {
-        return _this2.ui.buttonGroup([_this2.button({
-          className: 'dropdown-toggle',
-          contents: _this2.ui.dropdownButtonContents(_this2.ui.icon(_this2.options.icons.magic), _this2.options),
-          tooltip: _this2.lang.style.style,
-          data: {
-            toggle: 'dropdown'
-          }
-        }), _this2.ui.dropdown({
-          className: 'dropdown-style',
-          items: _this2.options.styleTags,
-          title: _this2.lang.style.style,
-          template: function template(item) {
-            // TBD: need to be simplified
-            if (typeof item === 'string') {
-              item = {
-                tag: item,
-                title: Object.prototype.hasOwnProperty.call(_this2.lang.style, item) ? _this2.lang.style[item] : item
-              };
+    addToolbarButtons() {
+      this.context.memo("button.style", () => {
+        return this.ui.buttonGroup([
+          this.button({
+            className: "dropdown-toggle",
+            contents: this.ui.dropdownButtonContents(
+              this.ui.icon(this.options.icons.magic),
+              this.options
+            ),
+            tooltip: this.lang.style.style,
+            data: {
+              toggle: "dropdown"
             }
-            var tag = item.tag;
-            var title = item.title;
-            var style = item.style ? ' style="' + item.style + '" ' : '';
-            var className = item.className ? ' class="' + item.className + '"' : '';
-            return '<' + tag + style + className + '>' + title + '</' + tag + '>';
-          },
-          click: _this2.context.createInvokeHandler('editor.formatBlock')
-        })]).render();
+          }),
+          this.ui.dropdown({
+            className: "dropdown-style",
+            items: this.options.styleTags,
+            title: this.lang.style.style,
+            template: (item) => {
+              if (typeof item === "string") {
+                item = {
+                  tag: item,
+                  title: Object.prototype.hasOwnProperty.call(this.lang.style, item) ? this.lang.style[item] : item
+                };
+              }
+              const tag = item.tag;
+              const title = item.title;
+              const style = item.style ? ' style="' + item.style + '" ' : "";
+              const className = item.className ? ' class="' + item.className + '"' : "";
+              return "<" + tag + style + className + ">" + title + "</" + tag + ">";
+            },
+            click: this.context.createInvokeHandler("editor.formatBlock")
+          })
+        ]).render();
       });
-      var _loop = function _loop() {
-        var item = _this2.options.styleTags[styleIdx];
-        _this2.context.memo('button.style.' + item, function () {
-          return _this2.button({
-            className: 'note-btn-style-' + item,
-            contents: '<div data-value="' + item + '">' + item.toUpperCase() + '</div>',
-            tooltip: _this2.lang.style[item],
-            click: _this2.context.createInvokeHandler('editor.formatBlock')
+      for (let styleIdx = 0, styleLen = this.options.styleTags.length; styleIdx < styleLen; styleIdx++) {
+        const item = this.options.styleTags[styleIdx];
+        this.context.memo("button.style." + item, () => {
+          return this.button({
+            className: "note-btn-style-" + item,
+            contents: '<div data-value="' + item + '">' + item.toUpperCase() + "</div>",
+            tooltip: this.lang.style[item],
+            click: this.context.createInvokeHandler("editor.formatBlock")
           }).render();
         });
-      };
-      for (var styleIdx = 0, styleLen = this.options.styleTags.length; styleIdx < styleLen; styleIdx++) {
-        _loop();
       }
-      this.context.memo('button.bold', function () {
-        return _this2.button({
-          className: 'note-btn-bold',
-          contents: _this2.ui.icon(_this2.options.icons.bold),
-          tooltip: _this2.lang.font.bold + _this2.representShortcut('bold'),
-          click: _this2.context.createInvokeHandlerAndUpdateState('editor.bold')
+      this.context.memo("button.bold", () => {
+        return this.button({
+          className: "note-btn-bold",
+          contents: this.ui.icon(this.options.icons.bold),
+          tooltip: this.lang.font.bold + this.representShortcut("bold"),
+          click: this.context.createInvokeHandlerAndUpdateState("editor.bold")
         }).render();
       });
-      this.context.memo('button.italic', function () {
-        return _this2.button({
-          className: 'note-btn-italic',
-          contents: _this2.ui.icon(_this2.options.icons.italic),
-          tooltip: _this2.lang.font.italic + _this2.representShortcut('italic'),
-          click: _this2.context.createInvokeHandlerAndUpdateState('editor.italic')
+      this.context.memo("button.italic", () => {
+        return this.button({
+          className: "note-btn-italic",
+          contents: this.ui.icon(this.options.icons.italic),
+          tooltip: this.lang.font.italic + this.representShortcut("italic"),
+          click: this.context.createInvokeHandlerAndUpdateState("editor.italic")
         }).render();
       });
-      this.context.memo('button.underline', function () {
-        return _this2.button({
-          className: 'note-btn-underline',
-          contents: _this2.ui.icon(_this2.options.icons.underline),
-          tooltip: _this2.lang.font.underline + _this2.representShortcut('underline'),
-          click: _this2.context.createInvokeHandlerAndUpdateState('editor.underline')
+      this.context.memo("button.underline", () => {
+        return this.button({
+          className: "note-btn-underline",
+          contents: this.ui.icon(this.options.icons.underline),
+          tooltip: this.lang.font.underline + this.representShortcut("underline"),
+          click: this.context.createInvokeHandlerAndUpdateState("editor.underline")
         }).render();
       });
-      this.context.memo('button.clear', function () {
-        return _this2.button({
-          contents: _this2.ui.icon(_this2.options.icons.eraser),
-          tooltip: _this2.lang.font.clear + _this2.representShortcut('removeFormat'),
-          click: _this2.context.createInvokeHandler('editor.removeFormat')
+      this.context.memo("button.clear", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.eraser),
+          tooltip: this.lang.font.clear + this.representShortcut("removeFormat"),
+          click: this.context.createInvokeHandler("editor.removeFormat")
         }).render();
       });
-      this.context.memo('button.strikethrough', function () {
-        return _this2.button({
-          className: 'note-btn-strikethrough',
-          contents: _this2.ui.icon(_this2.options.icons.strikethrough),
-          tooltip: _this2.lang.font.strikethrough + _this2.representShortcut('strikethrough'),
-          click: _this2.context.createInvokeHandlerAndUpdateState('editor.strikethrough')
+      this.context.memo("button.strikethrough", () => {
+        return this.button({
+          className: "note-btn-strikethrough",
+          contents: this.ui.icon(this.options.icons.strikethrough),
+          tooltip: this.lang.font.strikethrough + this.representShortcut("strikethrough"),
+          click: this.context.createInvokeHandlerAndUpdateState("editor.strikethrough")
         }).render();
       });
-      this.context.memo('button.superscript', function () {
-        return _this2.button({
-          className: 'note-btn-superscript',
-          contents: _this2.ui.icon(_this2.options.icons.superscript),
-          tooltip: _this2.lang.font.superscript,
-          click: _this2.context.createInvokeHandlerAndUpdateState('editor.superscript')
+      this.context.memo("button.superscript", () => {
+        return this.button({
+          className: "note-btn-superscript",
+          contents: this.ui.icon(this.options.icons.superscript),
+          tooltip: this.lang.font.superscript,
+          click: this.context.createInvokeHandlerAndUpdateState("editor.superscript")
         }).render();
       });
-      this.context.memo('button.subscript', function () {
-        return _this2.button({
-          className: 'note-btn-subscript',
-          contents: _this2.ui.icon(_this2.options.icons.subscript),
-          tooltip: _this2.lang.font.subscript,
-          click: _this2.context.createInvokeHandlerAndUpdateState('editor.subscript')
+      this.context.memo("button.subscript", () => {
+        return this.button({
+          className: "note-btn-subscript",
+          contents: this.ui.icon(this.options.icons.subscript),
+          tooltip: this.lang.font.subscript,
+          click: this.context.createInvokeHandlerAndUpdateState("editor.subscript")
         }).render();
       });
-      this.context.memo('button.fontname', function () {
-        var styleInfo = _this2.context.invoke('editor.currentStyle');
-        if (_this2.options.addDefaultFonts) {
-          // Add 'default' fonts into the fontnames array if not exist
-          external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(styleInfo['font-family'].split(','), function (idx, fontname) {
-            fontname = fontname.trim().replace(/['"]+/g, '');
-            if (_this2.isFontDeservedToAdd(fontname)) {
-              if (_this2.options.fontNames.indexOf(fontname) === -1) {
-                _this2.options.fontNames.push(fontname);
+      this.context.memo("button.fontname", () => {
+        const styleInfo = this.context.invoke("editor.currentStyle");
+        if (this.options.addDefaultFonts) {
+          $.each(styleInfo["font-family"].split(","), (idx, fontname) => {
+            fontname = fontname.trim().replace(/['"]+/g, "");
+            if (this.isFontDeservedToAdd(fontname)) {
+              if (this.options.fontNames.indexOf(fontname) === -1) {
+                this.options.fontNames.push(fontname);
               }
             }
           });
         }
-        return _this2.ui.buttonGroup([_this2.button({
-          className: 'dropdown-toggle',
-          contents: _this2.ui.dropdownButtonContents('<span class="note-current-fontname"></span>', _this2.options),
-          tooltip: _this2.lang.font.name,
-          data: {
-            toggle: 'dropdown'
-          }
-        }), _this2.ui.dropdownCheck({
-          className: 'dropdown-fontname',
-          checkClassName: _this2.options.icons.menuCheck,
-          items: _this2.options.fontNames.filter(_this2.isFontInstalled.bind(_this2)),
-          title: _this2.lang.font.name,
-          template: function template(item) {
-            return '<span style="font-family: ' + env.validFontName(item) + '">' + item + '</span>';
-          },
-          click: _this2.context.createInvokeHandlerAndUpdateState('editor.fontName')
-        })]).render();
+        return this.ui.buttonGroup([
+          this.button({
+            className: "dropdown-toggle",
+            contents: this.ui.dropdownButtonContents(
+              '<span class="note-current-fontname"></span>',
+              this.options
+            ),
+            tooltip: this.lang.font.name,
+            data: {
+              toggle: "dropdown"
+            }
+          }),
+          this.ui.dropdownCheck({
+            className: "dropdown-fontname",
+            checkClassName: this.options.icons.menuCheck,
+            items: this.options.fontNames.filter(this.isFontInstalled.bind(this)),
+            title: this.lang.font.name,
+            template: (item) => {
+              return '<span style="font-family: ' + env.validFontName(item) + '">' + item + "</span>";
+            },
+            click: this.context.createInvokeHandlerAndUpdateState("editor.fontName")
+          })
+        ]).render();
       });
-      this.context.memo('button.fontsize', function () {
-        return _this2.ui.buttonGroup([_this2.button({
-          className: 'dropdown-toggle',
-          contents: _this2.ui.dropdownButtonContents('<span class="note-current-fontsize"></span>', _this2.options),
-          tooltip: _this2.lang.font.size,
-          data: {
-            toggle: 'dropdown'
-          }
-        }), _this2.ui.dropdownCheck({
-          className: 'dropdown-fontsize',
-          checkClassName: _this2.options.icons.menuCheck,
-          items: _this2.options.fontSizes,
-          title: _this2.lang.font.size,
-          click: _this2.context.createInvokeHandlerAndUpdateState('editor.fontSize')
-        })]).render();
+      this.context.memo("button.fontsize", () => {
+        return this.ui.buttonGroup([
+          this.button({
+            className: "dropdown-toggle",
+            contents: this.ui.dropdownButtonContents('<span class="note-current-fontsize"></span>', this.options),
+            tooltip: this.lang.font.size,
+            data: {
+              toggle: "dropdown"
+            }
+          }),
+          this.ui.dropdownCheck({
+            className: "dropdown-fontsize",
+            checkClassName: this.options.icons.menuCheck,
+            items: this.options.fontSizes,
+            title: this.lang.font.size,
+            click: this.context.createInvokeHandlerAndUpdateState("editor.fontSize")
+          })
+        ]).render();
       });
-      this.context.memo('button.fontsizeunit', function () {
-        return _this2.ui.buttonGroup([_this2.button({
-          className: 'dropdown-toggle',
-          contents: _this2.ui.dropdownButtonContents('<span class="note-current-fontsizeunit"></span>', _this2.options),
-          tooltip: _this2.lang.font.sizeunit,
-          data: {
-            toggle: 'dropdown'
-          }
-        }), _this2.ui.dropdownCheck({
-          className: 'dropdown-fontsizeunit',
-          checkClassName: _this2.options.icons.menuCheck,
-          items: _this2.options.fontSizeUnits,
-          title: _this2.lang.font.sizeunit,
-          click: _this2.context.createInvokeHandlerAndUpdateState('editor.fontSizeUnit')
-        })]).render();
+      this.context.memo("button.fontsizeunit", () => {
+        return this.ui.buttonGroup([
+          this.button({
+            className: "dropdown-toggle",
+            contents: this.ui.dropdownButtonContents('<span class="note-current-fontsizeunit"></span>', this.options),
+            tooltip: this.lang.font.sizeunit,
+            data: {
+              toggle: "dropdown"
+            }
+          }),
+          this.ui.dropdownCheck({
+            className: "dropdown-fontsizeunit",
+            checkClassName: this.options.icons.menuCheck,
+            items: this.options.fontSizeUnits,
+            title: this.lang.font.sizeunit,
+            click: this.context.createInvokeHandlerAndUpdateState("editor.fontSizeUnit")
+          })
+        ]).render();
       });
-      this.context.memo('button.color', function () {
-        return _this2.colorPalette('note-color-all', _this2.lang.color.recent, true, true);
+      this.context.memo("button.color", () => {
+        return this.colorPalette("note-color-all", this.lang.color.recent, true, true);
       });
-      this.context.memo('button.forecolor', function () {
-        return _this2.colorPalette('note-color-fore', _this2.lang.color.foreground, false, true);
+      this.context.memo("button.forecolor", () => {
+        return this.colorPalette("note-color-fore", this.lang.color.foreground, false, true);
       });
-      this.context.memo('button.backcolor', function () {
-        return _this2.colorPalette('note-color-back', _this2.lang.color.background, true, false);
+      this.context.memo("button.backcolor", () => {
+        return this.colorPalette("note-color-back", this.lang.color.background, true, false);
       });
-      this.context.memo('button.ul', function () {
-        return _this2.button({
-          contents: _this2.ui.icon(_this2.options.icons.unorderedlist),
-          tooltip: _this2.lang.lists.unordered + _this2.representShortcut('insertUnorderedList'),
-          click: _this2.context.createInvokeHandler('editor.insertUnorderedList')
+      this.context.memo("button.ul", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.unorderedlist),
+          tooltip: this.lang.lists.unordered + this.representShortcut("insertUnorderedList"),
+          click: this.context.createInvokeHandler("editor.insertUnorderedList")
         }).render();
       });
-      this.context.memo('button.ol', function () {
-        return _this2.button({
-          contents: _this2.ui.icon(_this2.options.icons.orderedlist),
-          tooltip: _this2.lang.lists.ordered + _this2.representShortcut('insertOrderedList'),
-          click: _this2.context.createInvokeHandler('editor.insertOrderedList')
+      this.context.memo("button.ol", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.orderedlist),
+          tooltip: this.lang.lists.ordered + this.representShortcut("insertOrderedList"),
+          click: this.context.createInvokeHandler("editor.insertOrderedList")
         }).render();
       });
-      var justifyLeft = this.button({
+      const justifyLeft = this.button({
         contents: this.ui.icon(this.options.icons.alignLeft),
-        tooltip: this.lang.paragraph.left + this.representShortcut('justifyLeft'),
-        click: this.context.createInvokeHandler('editor.justifyLeft')
+        tooltip: this.lang.paragraph.left + this.representShortcut("justifyLeft"),
+        click: this.context.createInvokeHandler("editor.justifyLeft")
       });
-      var justifyCenter = this.button({
+      const justifyCenter = this.button({
         contents: this.ui.icon(this.options.icons.alignCenter),
-        tooltip: this.lang.paragraph.center + this.representShortcut('justifyCenter'),
-        click: this.context.createInvokeHandler('editor.justifyCenter')
+        tooltip: this.lang.paragraph.center + this.representShortcut("justifyCenter"),
+        click: this.context.createInvokeHandler("editor.justifyCenter")
       });
-      var justifyRight = this.button({
+      const justifyRight = this.button({
         contents: this.ui.icon(this.options.icons.alignRight),
-        tooltip: this.lang.paragraph.right + this.representShortcut('justifyRight'),
-        click: this.context.createInvokeHandler('editor.justifyRight')
+        tooltip: this.lang.paragraph.right + this.representShortcut("justifyRight"),
+        click: this.context.createInvokeHandler("editor.justifyRight")
       });
-      var justifyFull = this.button({
+      const justifyFull = this.button({
         contents: this.ui.icon(this.options.icons.alignJustify),
-        tooltip: this.lang.paragraph.justify + this.representShortcut('justifyFull'),
-        click: this.context.createInvokeHandler('editor.justifyFull')
+        tooltip: this.lang.paragraph.justify + this.representShortcut("justifyFull"),
+        click: this.context.createInvokeHandler("editor.justifyFull")
       });
-      var outdent = this.button({
+      const outdent = this.button({
         contents: this.ui.icon(this.options.icons.outdent),
-        tooltip: this.lang.paragraph.outdent + this.representShortcut('outdent'),
-        click: this.context.createInvokeHandler('editor.outdent')
+        tooltip: this.lang.paragraph.outdent + this.representShortcut("outdent"),
+        click: this.context.createInvokeHandler("editor.outdent")
       });
-      var indent = this.button({
+      const indent = this.button({
         contents: this.ui.icon(this.options.icons.indent),
-        tooltip: this.lang.paragraph.indent + this.representShortcut('indent'),
-        click: this.context.createInvokeHandler('editor.indent')
+        tooltip: this.lang.paragraph.indent + this.representShortcut("indent"),
+        click: this.context.createInvokeHandler("editor.indent")
       });
-      this.context.memo('button.justifyLeft', func.invoke(justifyLeft, 'render'));
-      this.context.memo('button.justifyCenter', func.invoke(justifyCenter, 'render'));
-      this.context.memo('button.justifyRight', func.invoke(justifyRight, 'render'));
-      this.context.memo('button.justifyFull', func.invoke(justifyFull, 'render'));
-      this.context.memo('button.outdent', func.invoke(outdent, 'render'));
-      this.context.memo('button.indent', func.invoke(indent, 'render'));
-      this.context.memo('button.paragraph', function () {
-        return _this2.ui.buttonGroup([_this2.button({
-          className: 'dropdown-toggle',
-          contents: _this2.ui.dropdownButtonContents(_this2.ui.icon(_this2.options.icons.alignLeft), _this2.options),
-          tooltip: _this2.lang.paragraph.paragraph,
-          data: {
-            toggle: 'dropdown'
-          }
-        }), _this2.ui.dropdown([_this2.ui.buttonGroup({
-          className: 'note-align',
-          children: [justifyLeft, justifyCenter, justifyRight, justifyFull]
-        }), _this2.ui.buttonGroup({
-          className: 'note-list',
-          children: [outdent, indent]
-        })])]).render();
+      this.context.memo("button.justifyLeft", func.invoke(justifyLeft, "render"));
+      this.context.memo("button.justifyCenter", func.invoke(justifyCenter, "render"));
+      this.context.memo("button.justifyRight", func.invoke(justifyRight, "render"));
+      this.context.memo("button.justifyFull", func.invoke(justifyFull, "render"));
+      this.context.memo("button.outdent", func.invoke(outdent, "render"));
+      this.context.memo("button.indent", func.invoke(indent, "render"));
+      this.context.memo("button.paragraph", () => {
+        return this.ui.buttonGroup([
+          this.button({
+            className: "dropdown-toggle",
+            contents: this.ui.dropdownButtonContents(this.ui.icon(this.options.icons.alignLeft), this.options),
+            tooltip: this.lang.paragraph.paragraph,
+            data: {
+              toggle: "dropdown"
+            }
+          }),
+          this.ui.dropdown([
+            this.ui.buttonGroup({
+              className: "note-align",
+              children: [justifyLeft, justifyCenter, justifyRight, justifyFull]
+            }),
+            this.ui.buttonGroup({
+              className: "note-list",
+              children: [outdent, indent]
+            })
+          ])
+        ]).render();
       });
-      this.context.memo('button.height', function () {
-        return _this2.ui.buttonGroup([_this2.button({
-          className: 'dropdown-toggle',
-          contents: _this2.ui.dropdownButtonContents(_this2.ui.icon(_this2.options.icons.textHeight), _this2.options),
-          tooltip: _this2.lang.font.height,
-          data: {
-            toggle: 'dropdown'
-          }
-        }), _this2.ui.dropdownCheck({
-          items: _this2.options.lineHeights,
-          checkClassName: _this2.options.icons.menuCheck,
-          className: 'dropdown-line-height',
-          title: _this2.lang.font.height,
-          click: _this2.context.createInvokeHandler('editor.lineHeight')
-        })]).render();
+      this.context.memo("button.height", () => {
+        return this.ui.buttonGroup([
+          this.button({
+            className: "dropdown-toggle",
+            contents: this.ui.dropdownButtonContents(this.ui.icon(this.options.icons.textHeight), this.options),
+            tooltip: this.lang.font.height,
+            data: {
+              toggle: "dropdown"
+            }
+          }),
+          this.ui.dropdownCheck({
+            items: this.options.lineHeights,
+            checkClassName: this.options.icons.menuCheck,
+            className: "dropdown-line-height",
+            title: this.lang.font.height,
+            click: this.context.createInvokeHandler("editor.lineHeight")
+          })
+        ]).render();
       });
-      this.context.memo('button.table', function () {
-        return _this2.ui.buttonGroup([_this2.button({
-          className: 'dropdown-toggle',
-          contents: _this2.ui.dropdownButtonContents(_this2.ui.icon(_this2.options.icons.table), _this2.options),
-          tooltip: _this2.lang.table.table,
-          data: {
-            toggle: 'dropdown'
-          }
-        }), _this2.ui.dropdown({
-          title: _this2.lang.table.table,
-          className: 'note-table',
-          items: ['<div class="note-dimension-picker">', '<div class="note-dimension-picker-mousecatcher" data-event="insertTable" data-value="1x1"></div>', '<div class="note-dimension-picker-highlighted"></div>', '<div class="note-dimension-picker-unhighlighted"></div>', '</div>', '<div class="note-dimension-display">1 x 1</div>'].join('')
-        })], {
-          callback: function callback($node) {
-            var $catcher = $node.find('.note-dimension-picker-mousecatcher');
+      this.context.memo("button.table", () => {
+        return this.ui.buttonGroup([
+          this.button({
+            className: "dropdown-toggle",
+            contents: this.ui.dropdownButtonContents(this.ui.icon(this.options.icons.table), this.options),
+            tooltip: this.lang.table.table,
+            data: {
+              toggle: "dropdown"
+            }
+          }),
+          this.ui.dropdown({
+            title: this.lang.table.table,
+            className: "note-table",
+            items: [
+              '<div class="note-dimension-picker">',
+              '<div class="note-dimension-picker-mousecatcher" data-event="insertTable" data-value="1x1"></div>',
+              '<div class="note-dimension-picker-highlighted"></div>',
+              '<div class="note-dimension-picker-unhighlighted"></div>',
+              "</div>",
+              '<div class="note-dimension-display">1 x 1</div>'
+            ].join("")
+          })
+        ], {
+          callback: ($node) => {
+            const $catcher = $node.find(".note-dimension-picker-mousecatcher");
             $catcher.css({
-              width: _this2.options.insertTableMaxSize.col + 'em',
-              height: _this2.options.insertTableMaxSize.row + 'em'
-            }).on('mousedown', _this2.context.createInvokeHandler('editor.insertTable')).on('mousemove', _this2.tableMoveHandler.bind(_this2));
+              width: this.options.insertTableMaxSize.col + "em",
+              height: this.options.insertTableMaxSize.row + "em"
+            }).on("mouseup", this.context.createInvokeHandler("editor.insertTable")).on("mousemove", this.tableMoveHandler.bind(this));
           }
         }).render();
       });
-      this.context.memo('button.link', function () {
-        return _this2.button({
-          contents: _this2.ui.icon(_this2.options.icons.link),
-          tooltip: _this2.lang.link.link + _this2.representShortcut('linkDialog.show'),
-          click: _this2.context.createInvokeHandler('linkDialog.show')
+      this.context.memo("button.link", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.link),
+          tooltip: this.lang.link.link + this.representShortcut("linkDialog.show"),
+          click: this.context.createInvokeHandler("linkDialog.show")
         }).render();
       });
-      this.context.memo('button.picture', function () {
-        return _this2.button({
-          contents: _this2.ui.icon(_this2.options.icons.picture),
-          tooltip: _this2.lang.image.image,
-          click: _this2.context.createInvokeHandler('imageDialog.show')
+      this.context.memo("button.picture", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.picture),
+          tooltip: this.lang.image.image,
+          click: this.context.createInvokeHandler("imageDialog.show")
         }).render();
       });
-      this.context.memo('button.video', function () {
-        return _this2.button({
-          contents: _this2.ui.icon(_this2.options.icons.video),
-          tooltip: _this2.lang.video.video,
-          click: _this2.context.createInvokeHandler('videoDialog.show')
+      this.context.memo("button.video", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.video),
+          tooltip: this.lang.video.video,
+          click: this.context.createInvokeHandler("videoDialog.show")
         }).render();
       });
-      this.context.memo('button.hr', function () {
-        return _this2.button({
-          contents: _this2.ui.icon(_this2.options.icons.minus),
-          tooltip: _this2.lang.hr.insert + _this2.representShortcut('insertHorizontalRule'),
-          click: _this2.context.createInvokeHandler('editor.insertHorizontalRule')
+      this.context.memo("button.hr", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.minus),
+          tooltip: this.lang.hr.insert + this.representShortcut("insertHorizontalRule"),
+          click: this.context.createInvokeHandler("editor.insertHorizontalRule")
         }).render();
       });
-      this.context.memo('button.fullscreen', function () {
-        return _this2.button({
-          className: 'btn-fullscreen note-codeview-keep',
-          contents: _this2.ui.icon(_this2.options.icons.arrowsAlt),
-          tooltip: _this2.lang.options.fullscreen,
-          click: _this2.context.createInvokeHandler('fullscreen.toggle')
+      this.context.memo("button.fullscreen", () => {
+        return this.button({
+          className: "btn-fullscreen note-codeview-keep",
+          contents: this.ui.icon(this.options.icons.arrowsAlt),
+          tooltip: this.lang.options.fullscreen,
+          click: this.context.createInvokeHandler("fullscreen.toggle")
         }).render();
       });
-      this.context.memo('button.codeview', function () {
-        return _this2.button({
-          className: 'btn-codeview note-codeview-keep',
-          contents: _this2.ui.icon(_this2.options.icons.code),
-          tooltip: _this2.lang.options.codeview,
-          click: _this2.context.createInvokeHandler('codeview.toggle')
+      this.context.memo("button.codeview", () => {
+        return this.button({
+          className: "btn-codeview note-codeview-keep",
+          contents: this.ui.icon(this.options.icons.code),
+          tooltip: this.lang.options.codeview,
+          click: this.context.createInvokeHandler("codeview.toggle")
         }).render();
       });
-      this.context.memo('button.redo', function () {
-        return _this2.button({
-          contents: _this2.ui.icon(_this2.options.icons.redo),
-          tooltip: _this2.lang.history.redo + _this2.representShortcut('redo'),
-          click: _this2.context.createInvokeHandler('editor.redo')
+      this.context.memo("button.redo", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.redo),
+          tooltip: this.lang.history.redo + this.representShortcut("redo"),
+          click: this.context.createInvokeHandler("editor.redo")
         }).render();
       });
-      this.context.memo('button.undo', function () {
-        return _this2.button({
-          contents: _this2.ui.icon(_this2.options.icons.undo),
-          tooltip: _this2.lang.history.undo + _this2.representShortcut('undo'),
-          click: _this2.context.createInvokeHandler('editor.undo')
+      this.context.memo("button.undo", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.undo),
+          tooltip: this.lang.history.undo + this.representShortcut("undo"),
+          click: this.context.createInvokeHandler("editor.undo")
         }).render();
       });
-      this.context.memo('button.help', function () {
-        return _this2.button({
-          contents: _this2.ui.icon(_this2.options.icons.question),
-          tooltip: _this2.lang.options.help,
-          click: _this2.context.createInvokeHandler('helpDialog.show')
+      this.context.memo("button.help", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.question),
+          tooltip: this.lang.options.help,
+          click: this.context.createInvokeHandler("helpDialog.show")
         }).render();
       });
     }
-
     /**
      * image: [
      *   ['imageResize', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
@@ -7230,276 +5411,247 @@ var Buttons = /*#__PURE__*/function () {
      *   ['remove', ['removeMedia']],
      * ],
      */
-  }, {
-    key: "addImagePopoverButtons",
-    value: function addImagePopoverButtons() {
-      var _this3 = this;
-      // Image Size Buttons
-      this.context.memo('button.resizeFull', function () {
-        return _this3.button({
+    addImagePopoverButtons() {
+      this.context.memo("button.resizeFull", () => {
+        return this.button({
           contents: '<span class="note-fontsize-10">100%</span>',
-          tooltip: _this3.lang.image.resizeFull,
-          click: _this3.context.createInvokeHandler('editor.resize', '1')
+          tooltip: this.lang.image.resizeFull,
+          click: this.context.createInvokeHandler("editor.resize", "1")
         }).render();
       });
-      this.context.memo('button.resizeHalf', function () {
-        return _this3.button({
+      this.context.memo("button.resizeHalf", () => {
+        return this.button({
           contents: '<span class="note-fontsize-10">50%</span>',
-          tooltip: _this3.lang.image.resizeHalf,
-          click: _this3.context.createInvokeHandler('editor.resize', '0.5')
+          tooltip: this.lang.image.resizeHalf,
+          click: this.context.createInvokeHandler("editor.resize", "0.5")
         }).render();
       });
-      this.context.memo('button.resizeQuarter', function () {
-        return _this3.button({
+      this.context.memo("button.resizeQuarter", () => {
+        return this.button({
           contents: '<span class="note-fontsize-10">25%</span>',
-          tooltip: _this3.lang.image.resizeQuarter,
-          click: _this3.context.createInvokeHandler('editor.resize', '0.25')
+          tooltip: this.lang.image.resizeQuarter,
+          click: this.context.createInvokeHandler("editor.resize", "0.25")
         }).render();
       });
-      this.context.memo('button.resizeNone', function () {
-        return _this3.button({
-          contents: _this3.ui.icon(_this3.options.icons.rollback),
-          tooltip: _this3.lang.image.resizeNone,
-          click: _this3.context.createInvokeHandler('editor.resize', '0')
+      this.context.memo("button.resizeNone", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.rollback),
+          tooltip: this.lang.image.resizeNone,
+          click: this.context.createInvokeHandler("editor.resize", "0")
         }).render();
       });
-      this.context.memo('button.resizeManual', function () {
-        return _this3.button({
-          contents: _this3.ui.icon(_this3.options.icons.arrowsH),
-          tooltip: 'Resize manually',
-          click: _this3.context.createInvokeHandler('handle.makeResizable')
+      this.context.memo("button.resizeManual", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.arrowsH),
+          tooltip: "Resize manually",
+          click: this.context.createInvokeHandler("handle.makeResizable")
         }).render();
       });
-
-      // Float Buttons
-      this.context.memo('button.floatLeft', function () {
-        return _this3.button({
-          contents: _this3.ui.icon(_this3.options.icons.floatLeft),
-          tooltip: _this3.lang.image.floatLeft,
-          click: _this3.context.createInvokeHandler('editor.floatMe', 'left')
+      this.context.memo("button.floatLeft", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.floatLeft),
+          tooltip: this.lang.image.floatLeft,
+          click: this.context.createInvokeHandler("editor.floatMe", "left")
         }).render();
       });
-      this.context.memo('button.floatRight', function () {
-        return _this3.button({
-          contents: _this3.ui.icon(_this3.options.icons.floatRight),
-          tooltip: _this3.lang.image.floatRight,
-          click: _this3.context.createInvokeHandler('editor.floatMe', 'right')
+      this.context.memo("button.floatRight", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.floatRight),
+          tooltip: this.lang.image.floatRight,
+          click: this.context.createInvokeHandler("editor.floatMe", "right")
         }).render();
       });
-      this.context.memo('button.floatNone', function () {
-        return _this3.button({
-          contents: _this3.ui.icon(_this3.options.icons.rollback),
-          tooltip: _this3.lang.image.floatNone,
-          click: _this3.context.createInvokeHandler('editor.floatMe', 'none')
+      this.context.memo("button.floatNone", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.rollback),
+          tooltip: this.lang.image.floatNone,
+          click: this.context.createInvokeHandler("editor.floatMe", "none")
         }).render();
       });
-
-      // Remove Buttons
-      this.context.memo('button.removeMedia', function () {
-        return _this3.button({
-          contents: _this3.ui.icon(_this3.options.icons.trash),
-          tooltip: _this3.lang.image.remove,
-          click: _this3.context.createInvokeHandler('editor.removeMedia')
+      this.context.memo("button.removeMedia", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.trash),
+          tooltip: this.lang.image.remove,
+          click: this.context.createInvokeHandler("editor.removeMedia")
         }).render();
       });
     }
-  }, {
-    key: "addLinkPopoverButtons",
-    value: function addLinkPopoverButtons() {
-      var _this4 = this;
-      this.context.memo('button.linkDialogShow', function () {
-        return _this4.button({
-          contents: _this4.ui.icon(_this4.options.icons.link),
-          tooltip: _this4.lang.link.edit,
-          click: _this4.context.createInvokeHandler('linkDialog.show')
+    addLinkPopoverButtons() {
+      this.context.memo("button.linkDialogShow", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.link),
+          tooltip: this.lang.link.edit,
+          click: this.context.createInvokeHandler("linkDialog.show")
         }).render();
       });
-      this.context.memo('button.unlink', function () {
-        return _this4.button({
-          contents: _this4.ui.icon(_this4.options.icons.unlink),
-          tooltip: _this4.lang.link.unlink,
-          click: _this4.context.createInvokeHandler('editor.unlink')
+      this.context.memo("button.unlink", () => {
+        return this.button({
+          contents: this.ui.icon(this.options.icons.unlink),
+          tooltip: this.lang.link.unlink,
+          click: this.context.createInvokeHandler("editor.unlink")
         }).render();
       });
     }
-
     /**
      * table : [
      *  ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
      *  ['delete', ['deleteRow', 'deleteCol', 'deleteTable']]
      * ],
      */
-  }, {
-    key: "addTablePopoverButtons",
-    value: function addTablePopoverButtons() {
-      var _this5 = this;
-      this.context.memo('button.addRowUp', function () {
-        return _this5.button({
-          className: 'btn-md',
-          contents: _this5.ui.icon(_this5.options.icons.rowAbove),
-          tooltip: _this5.lang.table.addRowAbove,
-          click: _this5.context.createInvokeHandler('editor.addRow', 'top')
+    addTablePopoverButtons() {
+      this.context.memo("button.addRowUp", () => {
+        return this.button({
+          className: "btn-md",
+          contents: this.ui.icon(this.options.icons.rowAbove),
+          tooltip: this.lang.table.addRowAbove,
+          click: this.context.createInvokeHandler("editor.addRow", "top")
         }).render();
       });
-      this.context.memo('button.addRowDown', function () {
-        return _this5.button({
-          className: 'btn-md',
-          contents: _this5.ui.icon(_this5.options.icons.rowBelow),
-          tooltip: _this5.lang.table.addRowBelow,
-          click: _this5.context.createInvokeHandler('editor.addRow', 'bottom')
+      this.context.memo("button.addRowDown", () => {
+        return this.button({
+          className: "btn-md",
+          contents: this.ui.icon(this.options.icons.rowBelow),
+          tooltip: this.lang.table.addRowBelow,
+          click: this.context.createInvokeHandler("editor.addRow", "bottom")
         }).render();
       });
-      this.context.memo('button.addColLeft', function () {
-        return _this5.button({
-          className: 'btn-md',
-          contents: _this5.ui.icon(_this5.options.icons.colBefore),
-          tooltip: _this5.lang.table.addColLeft,
-          click: _this5.context.createInvokeHandler('editor.addCol', 'left')
+      this.context.memo("button.addColLeft", () => {
+        return this.button({
+          className: "btn-md",
+          contents: this.ui.icon(this.options.icons.colBefore),
+          tooltip: this.lang.table.addColLeft,
+          click: this.context.createInvokeHandler("editor.addCol", "left")
         }).render();
       });
-      this.context.memo('button.addColRight', function () {
-        return _this5.button({
-          className: 'btn-md',
-          contents: _this5.ui.icon(_this5.options.icons.colAfter),
-          tooltip: _this5.lang.table.addColRight,
-          click: _this5.context.createInvokeHandler('editor.addCol', 'right')
+      this.context.memo("button.addColRight", () => {
+        return this.button({
+          className: "btn-md",
+          contents: this.ui.icon(this.options.icons.colAfter),
+          tooltip: this.lang.table.addColRight,
+          click: this.context.createInvokeHandler("editor.addCol", "right")
         }).render();
       });
-      this.context.memo('button.deleteRow', function () {
-        return _this5.button({
-          className: 'btn-md',
-          contents: _this5.ui.icon(_this5.options.icons.rowRemove),
-          tooltip: _this5.lang.table.delRow,
-          click: _this5.context.createInvokeHandler('editor.deleteRow')
+      this.context.memo("button.deleteRow", () => {
+        return this.button({
+          className: "btn-md",
+          contents: this.ui.icon(this.options.icons.rowRemove),
+          tooltip: this.lang.table.delRow,
+          click: this.context.createInvokeHandler("editor.deleteRow")
         }).render();
       });
-      this.context.memo('button.deleteCol', function () {
-        return _this5.button({
-          className: 'btn-md',
-          contents: _this5.ui.icon(_this5.options.icons.colRemove),
-          tooltip: _this5.lang.table.delCol,
-          click: _this5.context.createInvokeHandler('editor.deleteCol')
+      this.context.memo("button.deleteCol", () => {
+        return this.button({
+          className: "btn-md",
+          contents: this.ui.icon(this.options.icons.colRemove),
+          tooltip: this.lang.table.delCol,
+          click: this.context.createInvokeHandler("editor.deleteCol")
         }).render();
       });
-      this.context.memo('button.deleteTable', function () {
-        return _this5.button({
-          className: 'btn-md',
-          contents: _this5.ui.icon(_this5.options.icons.trash),
-          tooltip: _this5.lang.table.delTable,
-          click: _this5.context.createInvokeHandler('editor.deleteTable')
+      this.context.memo("button.deleteTable", () => {
+        return this.button({
+          className: "btn-md",
+          contents: this.ui.icon(this.options.icons.trash),
+          tooltip: this.lang.table.delTable,
+          click: this.context.createInvokeHandler("editor.deleteTable")
         }).render();
       });
     }
-  }, {
-    key: "build",
-    value: function build($container, groups) {
-      for (var groupIdx = 0, groupLen = groups.length; groupIdx < groupLen; groupIdx++) {
-        var group = groups[groupIdx];
-        var groupName = Array.isArray(group) ? group[0] : group;
-        var buttons = Array.isArray(group) ? group.length === 1 ? [group[0]] : group[1] : [group];
-        var $group = this.ui.buttonGroup({
-          className: 'note-' + groupName
+    build($container, groups) {
+      for (let groupIdx = 0, groupLen = groups.length; groupIdx < groupLen; groupIdx++) {
+        const group = groups[groupIdx];
+        const groupName = Array.isArray(group) ? group[0] : group;
+        const buttons = Array.isArray(group) ? group.length === 1 ? [group[0]] : group[1] : [group];
+        const $group = this.ui.buttonGroup({
+          className: "note-" + groupName
         }).render();
-        for (var idx = 0, len = buttons.length; idx < len; idx++) {
-          var btn = this.context.memo('button.' + buttons[idx]);
+        for (let idx = 0, len = buttons.length; idx < len; idx++) {
+          const btn = this.context.memo("button." + buttons[idx]);
           if (btn) {
-            $group.append(typeof btn === 'function' ? btn(this.context) : btn);
+            $group.append(typeof btn === "function" ? btn(this.context) : btn);
           }
         }
         $group.appendTo($container);
       }
     }
-
     /**
      * @param {jQuery} [$container]
      */
-  }, {
-    key: "updateCurrentStyle",
-    value: function updateCurrentStyle($container) {
-      var $cont = $container || this.$toolbar;
-      var styleInfo = this.context.invoke('editor.currentStyle');
+    updateCurrentStyle($container) {
+      const $cont = $container || this.$toolbar;
+      const styleInfo = this.context.invoke("editor.currentStyle");
       this.updateBtnStates($cont, {
-        '.note-btn-bold': function noteBtnBold() {
-          return styleInfo['font-bold'] === 'bold';
+        ".note-btn-bold": () => {
+          return styleInfo["font-bold"] === "bold";
         },
-        '.note-btn-italic': function noteBtnItalic() {
-          return styleInfo['font-italic'] === 'italic';
+        ".note-btn-italic": () => {
+          return styleInfo["font-italic"] === "italic";
         },
-        '.note-btn-underline': function noteBtnUnderline() {
-          return styleInfo['font-underline'] === 'underline';
+        ".note-btn-underline": () => {
+          return styleInfo["font-underline"] === "underline";
         },
-        '.note-btn-subscript': function noteBtnSubscript() {
-          return styleInfo['font-subscript'] === 'subscript';
+        ".note-btn-subscript": () => {
+          return styleInfo["font-subscript"] === "subscript";
         },
-        '.note-btn-superscript': function noteBtnSuperscript() {
-          return styleInfo['font-superscript'] === 'superscript';
+        ".note-btn-superscript": () => {
+          return styleInfo["font-superscript"] === "superscript";
         },
-        '.note-btn-strikethrough': function noteBtnStrikethrough() {
-          return styleInfo['font-strikethrough'] === 'strikethrough';
+        ".note-btn-strikethrough": () => {
+          return styleInfo["font-strikethrough"] === "strikethrough";
         }
       });
-      if (styleInfo['font-family']) {
-        var fontNames = styleInfo['font-family'].split(',').map(function (name) {
-          return name.replace(/[\'\"]/g, '').replace(/\s+$/, '').replace(/^\s+/, '');
+      if (styleInfo["font-family"]) {
+        const fontNames = styleInfo["font-family"].split(",").map((name) => {
+          return name.replace(/[\'\"]/g, "").replace(/\s+$/, "").replace(/^\s+/, "");
         });
-        var fontName = lists.find(fontNames, this.isFontInstalled.bind(this));
-        $cont.find('.dropdown-fontname a').each(function (idx, item) {
-          var $item = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(item);
-          // always compare string to avoid creating another func.
-          var isChecked = $item.data('value') + '' === fontName + '';
-          $item.toggleClass('checked', isChecked);
+        const fontName = lists.find(fontNames, this.isFontInstalled.bind(this));
+        $cont.find(".dropdown-fontname a").each((idx, item) => {
+          const $item = $(item);
+          const isChecked = $item.data("value") + "" === fontName + "";
+          $item.toggleClass("checked", isChecked);
         });
-        $cont.find('.note-current-fontname').text(fontName).css('font-family', fontName);
+        $cont.find(".note-current-fontname").text(fontName).css("font-family", fontName);
       }
-      if (styleInfo['font-size']) {
-        var fontSize = styleInfo['font-size'];
-        $cont.find('.dropdown-fontsize a').each(function (idx, item) {
-          var $item = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(item);
-          // always compare with string to avoid creating another func.
-          var isChecked = $item.data('value') + '' === fontSize + '';
-          $item.toggleClass('checked', isChecked);
+      if (styleInfo["font-size"]) {
+        const fontSize = styleInfo["font-size"];
+        $cont.find(".dropdown-fontsize a").each((idx, item) => {
+          const $item = $(item);
+          const isChecked = $item.data("value") + "" === fontSize + "";
+          $item.toggleClass("checked", isChecked);
         });
-        $cont.find('.note-current-fontsize').text(fontSize);
-        var fontSizeUnit = styleInfo['font-size-unit'];
-        $cont.find('.dropdown-fontsizeunit a').each(function (idx, item) {
-          var $item = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(item);
-          var isChecked = $item.data('value') + '' === fontSizeUnit + '';
-          $item.toggleClass('checked', isChecked);
+        $cont.find(".note-current-fontsize").text(fontSize);
+        const fontSizeUnit = styleInfo["font-size-unit"];
+        $cont.find(".dropdown-fontsizeunit a").each((idx, item) => {
+          const $item = $(item);
+          const isChecked = $item.data("value") + "" === fontSizeUnit + "";
+          $item.toggleClass("checked", isChecked);
         });
-        $cont.find('.note-current-fontsizeunit').text(fontSizeUnit);
+        $cont.find(".note-current-fontsizeunit").text(fontSizeUnit);
       }
-      if (styleInfo['line-height']) {
-        var lineHeight = styleInfo['line-height'];
-        $cont.find('.dropdown-line-height a').each(function (idx, item) {
-          var $item = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(item);
-          // always compare with string to avoid creating another func.
-          var isChecked = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(item).data('value') + '' === lineHeight + '';
-          $item.toggleClass('checked', isChecked);
+      if (styleInfo["line-height"]) {
+        const lineHeight = styleInfo["line-height"];
+        $cont.find(".dropdown-line-height a").each((idx, item) => {
+          const $item = $(item);
+          const isChecked = $(item).data("value") + "" === lineHeight + "";
+          $item.toggleClass("checked", isChecked);
         });
-        $cont.find('.note-current-line-height').text(lineHeight);
+        $cont.find(".note-current-line-height").text(lineHeight);
       }
     }
-  }, {
-    key: "updateBtnStates",
-    value: function updateBtnStates($container, infos) {
-      var _this6 = this;
-      external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(infos, function (selector, pred) {
-        _this6.ui.toggleBtnActive($container.find(selector), pred());
+    updateBtnStates($container, infos) {
+      $.each(infos, (selector, pred) => {
+        this.ui.toggleBtnActive($container.find(selector), pred());
       });
     }
-  }, {
-    key: "tableMoveHandler",
-    value: function tableMoveHandler(event) {
-      var PX_PER_EM = 18;
-      var $picker = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(event.target.parentNode); // target is mousecatcher
-      var $dimensionDisplay = $picker.next();
-      var $catcher = $picker.find('.note-dimension-picker-mousecatcher');
-      var $highlighted = $picker.find('.note-dimension-picker-highlighted');
-      var $unhighlighted = $picker.find('.note-dimension-picker-unhighlighted');
-      var posOffset;
-      // HTML5 with jQuery - e.offsetX is undefined in Firefox
-      if (event.offsetX === undefined) {
-        var posCatcher = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(event.target).offset();
+    tableMoveHandler(event) {
+      const PX_PER_EM = 18;
+      const $picker = $(event.target.parentNode);
+      const $dimensionDisplay = $picker.next();
+      const $catcher = $picker.find(".note-dimension-picker-mousecatcher");
+      const $highlighted = $picker.find(".note-dimension-picker-highlighted");
+      const $unhighlighted = $picker.find(".note-dimension-picker-unhighlighted");
+      let posOffset;
+      if (event.offsetX === void 0) {
+        const posCatcher = $(event.target).offset();
         posOffset = {
           x: event.pageX - posCatcher.left,
           y: event.pageY - posCatcher.top
@@ -7510,137 +5662,106 @@ var Buttons = /*#__PURE__*/function () {
           y: event.offsetY
         };
       }
-      var dim = {
+      const dim = {
         c: Math.ceil(posOffset.x / PX_PER_EM) || 1,
         r: Math.ceil(posOffset.y / PX_PER_EM) || 1
       };
-      $highlighted.css({
-        width: dim.c + 'em',
-        height: dim.r + 'em'
-      });
-      $catcher.data('value', dim.c + 'x' + dim.r);
+      $highlighted.css({ width: dim.c + "em", height: dim.r + "em" });
+      $catcher.data("value", dim.c + "x" + dim.r);
       if (dim.c > 3 && dim.c < this.options.insertTableMaxSize.col) {
-        $unhighlighted.css({
-          width: dim.c + 1 + 'em'
-        });
+        $unhighlighted.css({ width: dim.c + 1 + "em" });
       }
       if (dim.r > 3 && dim.r < this.options.insertTableMaxSize.row) {
-        $unhighlighted.css({
-          height: dim.r + 1 + 'em'
-        });
+        $unhighlighted.css({ height: dim.r + 1 + "em" });
       }
-      $dimensionDisplay.html(dim.c + ' x ' + dim.r);
+      $dimensionDisplay.html(dim.c + " x " + dim.r);
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/Toolbar.js
-function Toolbar_typeof(o) { "@babel/helpers - typeof"; return Toolbar_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Toolbar_typeof(o); }
-function Toolbar_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function Toolbar_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Toolbar_toPropertyKey(o.key), o); } }
-function Toolbar_createClass(e, r, t) { return r && Toolbar_defineProperties(e.prototype, r), t && Toolbar_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function Toolbar_toPropertyKey(t) { var i = Toolbar_toPrimitive(t, "string"); return "symbol" == Toolbar_typeof(i) ? i : i + ""; }
-function Toolbar_toPrimitive(t, r) { if ("object" != Toolbar_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Toolbar_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-var Toolbar = /*#__PURE__*/function () {
-  function Toolbar(context) {
-    Toolbar_classCallCheck(this, Toolbar);
-    this.context = context;
-    this.$window = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(window);
-    this.$document = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(document);
-    this.ui = (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.ui;
-    this.$note = context.layoutInfo.note;
-    this.$editor = context.layoutInfo.editor;
-    this.$toolbar = context.layoutInfo.toolbar;
-    this.$editable = context.layoutInfo.editable;
-    this.$statusbar = context.layoutInfo.statusbar;
-    this.options = context.options;
-    this.isFollowing = false;
-    this.followScroll = this.followScroll.bind(this);
   }
-  return Toolbar_createClass(Toolbar, [{
-    key: "shouldInitialize",
-    value: function shouldInitialize() {
+  class Toolbar {
+    constructor(context) {
+      this.context = context;
+      this.$window = $(window);
+      this.$document = $(document);
+      this.ui = $.summernote.ui;
+      this.$note = context.layoutInfo.note;
+      this.$editor = context.layoutInfo.editor;
+      this.$toolbar = context.layoutInfo.toolbar;
+      this.$editable = context.layoutInfo.editable;
+      this.$statusbar = context.layoutInfo.statusbar;
+      this.options = context.options;
+      this.isFollowing = false;
+      this.followScroll = this.followScroll.bind(this);
+    }
+    shouldInitialize() {
       return !this.options.airMode;
     }
-  }, {
-    key: "initialize",
-    value: function initialize() {
-      var _this = this;
+    initialize() {
       this.options.toolbar = this.options.toolbar || [];
       if (!this.options.toolbar.length) {
         this.$toolbar.hide();
       } else {
-        this.context.invoke('buttons.build', this.$toolbar, this.options.toolbar);
+        this.context.invoke("buttons.build", this.$toolbar, this.options.toolbar);
       }
       if (this.options.toolbarContainer) {
         this.$toolbar.appendTo(this.options.toolbarContainer);
       }
       this.changeContainer(false);
-      this.$note.on('summernote.keyup summernote.mouseup summernote.change', function () {
-        _this.context.invoke('buttons.updateCurrentStyle');
+      this.$note.on("summernote.keyup summernote.mouseup summernote.change", () => {
+        this.context.invoke("buttons.updateCurrentStyle");
       });
-      this.context.invoke('buttons.updateCurrentStyle');
+      this.context.invoke("buttons.updateCurrentStyle");
       if (this.options.followingToolbar) {
-        this.$window.on('scroll resize', this.followScroll);
+        this.$window.on("scroll resize", this.followScroll);
       }
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.$toolbar.children().remove();
       if (this.options.followingToolbar) {
-        this.$window.off('scroll resize', this.followScroll);
+        this.$window.off("scroll resize", this.followScroll);
       }
     }
-  }, {
-    key: "followScroll",
-    value: function followScroll() {
-      if (this.$editor.hasClass('fullscreen')) {
+    followScroll() {
+      if (this.$editor.hasClass("fullscreen")) {
         return false;
       }
-      var editorHeight = this.$editor.outerHeight();
-      var editorWidth = this.$editor.width();
-      var toolbarHeight = this.$toolbar.height();
-      var statusbarHeight = this.$statusbar.height();
-
-      // check if the web app is currently using another static bar
-      var otherBarHeight = 0;
+      const editorHeight = this.$editor.outerHeight();
+      const editorWidth = this.$editor.width();
+      const toolbarHeight = this.$toolbar.height();
+      const statusbarHeight = this.$statusbar.height();
+      let otherBarHeight = 0;
       if (this.options.otherStaticBar) {
-        otherBarHeight = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this.options.otherStaticBar).outerHeight();
+        otherBarHeight = $(this.options.otherStaticBar).outerHeight();
       }
-      var currentOffset = this.$document.scrollTop();
-      var editorOffsetTop = this.$editor.offset().top;
-      var editorOffsetBottom = editorOffsetTop + editorHeight;
-      var activateOffset = editorOffsetTop - otherBarHeight;
-      var deactivateOffsetBottom = editorOffsetBottom - otherBarHeight - toolbarHeight - statusbarHeight;
+      const currentOffset = this.$document.scrollTop();
+      const editorOffsetTop = this.$editor.offset().top;
+      const editorOffsetBottom = editorOffsetTop + editorHeight;
+      const activateOffset = editorOffsetTop - otherBarHeight;
+      const deactivateOffsetBottom = editorOffsetBottom - otherBarHeight - toolbarHeight - statusbarHeight;
       if (!this.isFollowing && currentOffset > activateOffset && currentOffset < deactivateOffsetBottom - toolbarHeight) {
         this.isFollowing = true;
         this.$editable.css({
           marginTop: this.$toolbar.outerHeight()
         });
         this.$toolbar.css({
-          position: 'fixed',
+          position: "fixed",
           top: otherBarHeight,
           width: editorWidth,
-          zIndex: 1000
+          zIndex: 1e3
         });
       } else if (this.isFollowing && (currentOffset < activateOffset || currentOffset > deactivateOffsetBottom)) {
         this.isFollowing = false;
         this.$toolbar.css({
-          position: 'relative',
+          position: "relative",
           top: 0,
-          width: '100%',
-          zIndex: 'auto'
+          width: "100%",
+          zIndex: "auto"
         });
         this.$editable.css({
-          marginTop: ''
+          marginTop: ""
         });
       }
     }
-  }, {
-    key: "changeContainer",
-    value: function changeContainer(isFullscreen) {
+    changeContainer(isFullscreen) {
       if (isFullscreen) {
         this.$toolbar.prependTo(this.$editor);
       } else {
@@ -7652,305 +5773,244 @@ var Toolbar = /*#__PURE__*/function () {
         this.followScroll();
       }
     }
-  }, {
-    key: "updateFullscreen",
-    value: function updateFullscreen(isFullscreen) {
-      this.ui.toggleBtnActive(this.$toolbar.find('.btn-fullscreen'), isFullscreen);
+    updateFullscreen(isFullscreen) {
+      this.ui.toggleBtnActive(this.$toolbar.find(".btn-fullscreen"), isFullscreen);
       this.changeContainer(isFullscreen);
     }
-  }, {
-    key: "updateCodeview",
-    value: function updateCodeview(isCodeview) {
-      this.ui.toggleBtnActive(this.$toolbar.find('.btn-codeview'), isCodeview);
+    updateCodeview(isCodeview) {
+      this.ui.toggleBtnActive(this.$toolbar.find(".btn-codeview"), isCodeview);
       if (isCodeview) {
         this.deactivate();
       } else {
         this.activate();
       }
     }
-  }, {
-    key: "activate",
-    value: function activate(isIncludeCodeview) {
-      var $btn = this.$toolbar.find('button');
+    activate(isIncludeCodeview) {
+      let $btn = this.$toolbar.find("button");
       if (!isIncludeCodeview) {
-        $btn = $btn.not('.note-codeview-keep');
+        $btn = $btn.not(".note-codeview-keep");
       }
       this.ui.toggleBtn($btn, true);
     }
-  }, {
-    key: "deactivate",
-    value: function deactivate(isIncludeCodeview) {
-      var $btn = this.$toolbar.find('button');
+    deactivate(isIncludeCodeview) {
+      let $btn = this.$toolbar.find("button");
       if (!isIncludeCodeview) {
-        $btn = $btn.not('.note-codeview-keep');
+        $btn = $btn.not(".note-codeview-keep");
       }
       this.ui.toggleBtn($btn, false);
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/LinkDialog.js
-function LinkDialog_typeof(o) { "@babel/helpers - typeof"; return LinkDialog_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, LinkDialog_typeof(o); }
-function LinkDialog_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function LinkDialog_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, LinkDialog_toPropertyKey(o.key), o); } }
-function LinkDialog_createClass(e, r, t) { return r && LinkDialog_defineProperties(e.prototype, r), t && LinkDialog_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function LinkDialog_toPropertyKey(t) { var i = LinkDialog_toPrimitive(t, "string"); return "symbol" == LinkDialog_typeof(i) ? i : i + ""; }
-function LinkDialog_toPrimitive(t, r) { if ("object" != LinkDialog_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != LinkDialog_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-
-var LinkDialog_MAILTO_PATTERN = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-var LinkDialog_TEL_PATTERN = /^(\+?\d{1,3}[\s-]?)?(\d{1,4})[\s-]?(\d{1,4})[\s-]?(\d{1,4})$/;
-var LinkDialog_URL_SCHEME_PATTERN = /^([A-Za-z][A-Za-z0-9+-.]*\:|#|\/)/;
-var LinkDialog = /*#__PURE__*/function () {
-  function LinkDialog(context) {
-    LinkDialog_classCallCheck(this, LinkDialog);
-    this.context = context;
-    this.ui = (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.ui;
-    this.$body = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(document.body);
-    this.$editor = context.layoutInfo.editor;
-    this.options = context.options;
-    this.lang = this.options.langInfo;
-    context.memo('help.linkDialog.show', this.options.langInfo.help['linkDialog.show']);
   }
-  return LinkDialog_createClass(LinkDialog, [{
-    key: "initialize",
-    value: function initialize() {
-      var $container = this.options.dialogsInBody ? this.$body : this.options.container;
-      var body = ['<div class="form-group note-form-group">', "<label for=\"note-dialog-link-txt-".concat(this.options.id, "\" class=\"note-form-label\">").concat(this.lang.link.textToDisplay, "</label>"), "<input id=\"note-dialog-link-txt-".concat(this.options.id, "\" class=\"note-link-text form-control note-form-control note-input\" type=\"text\"/>"), '</div>', '<div class="form-group note-form-group">', "<label for=\"note-dialog-link-url-".concat(this.options.id, "\" class=\"note-form-label\">").concat(this.lang.link.url, "</label>"), "<input id=\"note-dialog-link-url-".concat(this.options.id, "\" class=\"note-link-url form-control note-form-control note-input\" type=\"text\" value=\"http://\"/>"), '</div>', !this.options.disableLinkTarget ? external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<div></div>').append(this.ui.checkbox({
-        className: 'sn-checkbox-open-in-new-window',
-        text: this.lang.link.openInNewWindow,
-        checked: true
-      }).render()).html() : ''].join('');
-      var buttonClass = 'btn btn-primary note-btn note-btn-primary note-link-btn';
-      var footer = "<input type=\"button\" href=\"#\" class=\"".concat(buttonClass, "\" value=\"").concat(this.lang.link.insert, "\" disabled>");
+  const MAILTO_PATTERN = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const TEL_PATTERN = /^(\+?\d{1,3}[\s-]?)?(\d{1,4})[\s-]?(\d{1,4})[\s-]?(\d{1,4})$/;
+  const URL_SCHEME_PATTERN = /^([A-Za-z][A-Za-z0-9+-.]*\:|#|\/)/;
+  class LinkDialog {
+    constructor(context) {
+      this.context = context;
+      this.ui = $.summernote.ui;
+      this.$body = $(document.body);
+      this.$editor = context.layoutInfo.editor;
+      this.options = context.options;
+      this.lang = this.options.langInfo;
+      context.memo("help.linkDialog.show", this.options.langInfo.help["linkDialog.show"]);
+    }
+    initialize() {
+      const $container = this.options.dialogsInBody ? this.$body : this.options.container;
+      const body = [
+        '<div class="form-group note-form-group">',
+        `<label for="note-dialog-link-txt-${this.options.id}" class="note-form-label">${this.lang.link.textToDisplay}</label>`,
+        `<input id="note-dialog-link-txt-${this.options.id}" class="note-link-text form-control note-form-control note-input" type="text"/>`,
+        "</div>",
+        '<div class="form-group note-form-group">',
+        `<label for="note-dialog-link-url-${this.options.id}" class="note-form-label">${this.lang.link.url}</label>`,
+        `<input id="note-dialog-link-url-${this.options.id}" class="note-link-url form-control note-form-control note-input" type="text" value="http://"/>`,
+        "</div>",
+        !this.options.disableLinkTarget ? $("<div></div>").append(this.ui.checkbox({
+          className: "sn-checkbox-open-in-new-window",
+          text: this.lang.link.openInNewWindow,
+          checked: true
+        }).render()).html() : ""
+      ].join("");
+      const buttonClass = "btn btn-primary note-btn note-btn-primary note-link-btn";
+      const footer = `<input type="button" href="#" class="${buttonClass}" value="${this.lang.link.insert}" disabled>`;
       this.$dialog = this.ui.dialog({
-        className: 'link-dialog',
+        className: "link-dialog",
         title: this.lang.link.insert,
         fade: this.options.dialogsFade,
-        body: body,
-        footer: footer
+        body,
+        footer
       }).render().appendTo($container);
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.ui.hideDialog(this.$dialog);
       this.$dialog.remove();
     }
-  }, {
-    key: "bindEnterKey",
-    value: function bindEnterKey($input, $btn) {
-      $input.on('keypress', function (event) {
+    bindEnterKey($input, $btn) {
+      $input.on("keypress", (event) => {
         if (event.keyCode === key.code.ENTER) {
           event.preventDefault();
-          $btn.trigger('click');
+          $btn.trigger("click");
         }
       });
     }
-  }, {
-    key: "checkLinkUrl",
-    value: function checkLinkUrl(linkUrl) {
-      if (LinkDialog_MAILTO_PATTERN.test(linkUrl)) {
-        return 'mailto://' + linkUrl;
-      } else if (LinkDialog_TEL_PATTERN.test(linkUrl)) {
-        return 'tel://' + linkUrl;
-      } else if (!LinkDialog_URL_SCHEME_PATTERN.test(linkUrl)) {
-        return 'http://' + linkUrl;
+    checkLinkUrl(linkUrl) {
+      if (this.options.onCreateLink) {
+        return this.options.onCreateLink(linkUrl);
+      }
+      if (MAILTO_PATTERN.test(linkUrl)) {
+        return "mailto:" + linkUrl;
+      } else if (TEL_PATTERN.test(linkUrl)) {
+        return "tel:" + linkUrl;
+      } else if (!URL_SCHEME_PATTERN.test(linkUrl)) {
+        return "http://" + linkUrl;
       }
       return linkUrl;
     }
-  }, {
-    key: "onCheckLinkUrl",
-    value: function onCheckLinkUrl($input) {
-      var _this = this;
-      $input.on('blur', function (event) {
-        event.target.value = event.target.value == '' ? '' : _this.checkLinkUrl(event.target.value);
+    onCheckLinkUrl($input) {
+      $input.on("blur", (event) => {
+        event.target.value = event.target.value == "" ? "" : this.checkLinkUrl(event.target.value);
       });
     }
-
     /**
      * toggle update button
      */
-  }, {
-    key: "toggleLinkBtn",
-    value: function toggleLinkBtn($linkBtn, $linkText, $linkUrl) {
+    toggleLinkBtn($linkBtn, $linkText, $linkUrl) {
       this.ui.toggleBtn($linkBtn, $linkText.val() && $linkUrl.val());
     }
-
     /**
      * Show link dialog and set event handlers on dialog controls.
      *
      * @param {Object} linkInfo
      * @return {Promise}
      */
-  }, {
-    key: "showLinkDialog",
-    value: function showLinkDialog(linkInfo) {
-      var _this2 = this;
-      return external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().Deferred(function (deferred) {
-        var $linkText = _this2.$dialog.find('.note-link-text');
-        var $linkUrl = _this2.$dialog.find('.note-link-url');
-        var $linkBtn = _this2.$dialog.find('.note-link-btn');
-        var $openInNewWindow = _this2.$dialog.find('.sn-checkbox-open-in-new-window input[type=checkbox]');
-        _this2.ui.onDialogShown(_this2.$dialog, function () {
-          _this2.context.triggerEvent('dialog.shown');
-
-          // If no url was given and given text is valid URL then copy that into URL Field
+    showLinkDialog(linkInfo) {
+      return $.Deferred((deferred) => {
+        const $linkText = this.$dialog.find(".note-link-text");
+        const $linkUrl = this.$dialog.find(".note-link-url");
+        const $linkBtn = this.$dialog.find(".note-link-btn");
+        const $openInNewWindow = this.$dialog.find(".sn-checkbox-open-in-new-window input[type=checkbox]");
+        this.ui.onDialogShown(this.$dialog, () => {
+          this.context.triggerEvent("dialog.shown");
           if (!linkInfo.url && func.isValidUrl(linkInfo.text)) {
-            linkInfo.url = _this2.checkLinkUrl(linkInfo.text);
+            linkInfo.url = this.checkLinkUrl(linkInfo.text);
           }
-          $linkText.on('input paste propertychange', function () {
-            // If linktext was modified by input events,
-            // cloning text from linkUrl will be stopped.
-            var text = $linkText.val();
-            var div = document.createElement('div');
+          $linkText.on("input paste propertychange", () => {
+            let text = $linkText.val();
+            let div = document.createElement("div");
             div.innerText = text;
             text = div.innerHTML;
             linkInfo.text = text;
-            _this2.toggleLinkBtn($linkBtn, $linkText, $linkUrl);
+            this.toggleLinkBtn($linkBtn, $linkText, $linkUrl);
           }).val(linkInfo.text);
-          $linkUrl.on('input paste propertychange', function () {
-            // Display same text on `Text to display` as default
-            // when linktext has no text
+          $linkUrl.on("input paste propertychange", () => {
             if (!linkInfo.text) {
               $linkText.val($linkUrl.val());
             }
-            _this2.toggleLinkBtn($linkBtn, $linkText, $linkUrl);
+            this.toggleLinkBtn($linkBtn, $linkText, $linkUrl);
           }).val(linkInfo.url);
           if (!env.isSupportTouch) {
-            $linkUrl.trigger('focus');
+            $linkUrl.trigger("focus");
           }
-          _this2.toggleLinkBtn($linkBtn, $linkText, $linkUrl);
-          _this2.bindEnterKey($linkUrl, $linkBtn);
-          _this2.bindEnterKey($linkText, $linkBtn);
-          _this2.onCheckLinkUrl($linkUrl);
-          var isNewWindowChecked = linkInfo.isNewWindow !== undefined ? linkInfo.isNewWindow : _this2.context.options.linkTargetBlank;
-          $openInNewWindow.prop('checked', isNewWindowChecked);
-          $linkBtn.one('click', function (event) {
+          this.toggleLinkBtn($linkBtn, $linkText, $linkUrl);
+          this.bindEnterKey($linkUrl, $linkBtn);
+          this.bindEnterKey($linkText, $linkBtn);
+          this.onCheckLinkUrl($linkUrl);
+          const isNewWindowChecked = linkInfo.isNewWindow !== void 0 ? linkInfo.isNewWindow : this.context.options.linkTargetBlank;
+          $openInNewWindow.prop("checked", isNewWindowChecked);
+          $linkBtn.one("click", (event) => {
             event.preventDefault();
             deferred.resolve({
               range: linkInfo.range,
               url: $linkUrl.val(),
               text: $linkText.val(),
-              isNewWindow: $openInNewWindow.is(':checked')
+              isNewWindow: $openInNewWindow.is(":checked")
             });
-            _this2.ui.hideDialog(_this2.$dialog);
+            this.ui.hideDialog(this.$dialog);
           });
         });
-        _this2.ui.onDialogHidden(_this2.$dialog, function () {
-          // detach events
+        this.ui.onDialogHidden(this.$dialog, () => {
           $linkText.off();
           $linkUrl.off();
           $linkBtn.off();
-          if (deferred.state() === 'pending') {
+          if (deferred.state() === "pending") {
             deferred.reject();
           }
         });
-        _this2.ui.showDialog(_this2.$dialog);
+        this.ui.showDialog(this.$dialog);
       }).promise();
     }
-
     /**
      * @param {Object} layoutInfo
      */
-  }, {
-    key: "show",
-    value: function show() {
-      var _this3 = this;
-      var linkInfo = this.context.invoke('editor.getLinkInfo');
-      this.context.invoke('editor.saveRange');
-      this.showLinkDialog(linkInfo).then(function (linkInfo) {
-        _this3.context.invoke('editor.restoreRange');
-        _this3.context.invoke('editor.createLink', linkInfo);
-      }).fail(function () {
-        _this3.context.invoke('editor.restoreRange');
+    show() {
+      const linkInfo = this.context.invoke("editor.getLinkInfo");
+      this.context.invoke("editor.saveRange");
+      this.showLinkDialog(linkInfo).then((linkInfo2) => {
+        this.context.invoke("editor.restoreRange");
+        this.context.invoke("editor.createLink", linkInfo2);
+      }).fail(() => {
+        this.context.invoke("editor.restoreRange");
       });
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/LinkPopover.js
-function LinkPopover_typeof(o) { "@babel/helpers - typeof"; return LinkPopover_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, LinkPopover_typeof(o); }
-function LinkPopover_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function LinkPopover_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, LinkPopover_toPropertyKey(o.key), o); } }
-function LinkPopover_createClass(e, r, t) { return r && LinkPopover_defineProperties(e.prototype, r), t && LinkPopover_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function LinkPopover_toPropertyKey(t) { var i = LinkPopover_toPrimitive(t, "string"); return "symbol" == LinkPopover_typeof(i) ? i : i + ""; }
-function LinkPopover_toPrimitive(t, r) { if ("object" != LinkPopover_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != LinkPopover_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-var LinkPopover = /*#__PURE__*/function () {
-  function LinkPopover(context) {
-    var _this = this;
-    LinkPopover_classCallCheck(this, LinkPopover);
-    this.context = context;
-    this.ui = (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.ui;
-    this.options = context.options;
-    this.events = {
-      'summernote.keyup summernote.mouseup summernote.change summernote.scroll': function summernoteKeyupSummernoteMouseupSummernoteChangeSummernoteScroll() {
-        _this.update();
-      },
-      'summernote.disable summernote.dialog.shown': function summernoteDisableSummernoteDialogShown() {
-        _this.hide();
-      },
-      'summernote.blur': function summernoteBlur(we, event) {
-        if (event.originalEvent && event.originalEvent.relatedTarget) {
-          if (!_this.$popover[0].contains(event.originalEvent.relatedTarget)) {
-            _this.hide();
-          }
-        } else {
-          _this.hide();
-        }
-      }
-    };
   }
-  return LinkPopover_createClass(LinkPopover, [{
-    key: "shouldInitialize",
-    value: function shouldInitialize() {
+  class LinkPopover {
+    constructor(context) {
+      this.context = context;
+      this.ui = $.summernote.ui;
+      this.options = context.options;
+      this.events = {
+        "summernote.keyup summernote.mouseup summernote.change summernote.scroll": () => {
+          this.update();
+        },
+        "summernote.disable summernote.dialog.shown": () => {
+          this.hide();
+        },
+        "summernote.blur": (we, event) => {
+          if (event.originalEvent && event.originalEvent.relatedTarget) {
+            if (!this.$popover[0].contains(event.originalEvent.relatedTarget)) {
+              this.hide();
+            }
+          } else {
+            this.hide();
+          }
+        }
+      };
+    }
+    shouldInitialize() {
       return !lists.isEmpty(this.options.popover.link);
     }
-  }, {
-    key: "initialize",
-    value: function initialize() {
+    initialize() {
       this.$popover = this.ui.popover({
-        className: 'note-link-popover',
-        callback: function callback($node) {
-          var $content = $node.find('.popover-content,.note-popover-content');
-          $content.prepend('<span><a target="_blank"></a>&nbsp;</span>');
+        className: "note-link-popover",
+        callback: ($node) => {
+          const $content2 = $node.find(".popover-content,.note-popover-content");
+          $content2.prepend('<span><a target="_blank"></a>&nbsp;</span>');
         }
       }).render().appendTo(this.options.container);
-      var $content = this.$popover.find('.popover-content,.note-popover-content');
-      this.context.invoke('buttons.build', $content, this.options.popover.link);
-      this.$popover.on('mousedown', function (event) {
+      const $content = this.$popover.find(".popover-content,.note-popover-content");
+      this.context.invoke("buttons.build", $content, this.options.popover.link);
+      this.$popover.on("mousedown", (event) => {
         event.preventDefault();
       });
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.$popover.remove();
     }
-  }, {
-    key: "update",
-    value: function update() {
-      // Prevent focusing on editable when invoke('code') is executed
-      if (!this.context.invoke('editor.hasFocus')) {
+    update() {
+      if (!this.context.invoke("editor.hasFocus")) {
         this.hide();
         return;
       }
-      var rng = this.context.invoke('editor.getLastRange');
+      const rng = this.context.invoke("editor.getLastRange");
       if (rng.isCollapsed() && rng.isOnAnchor()) {
-        var anchor = dom.ancestor(rng.sc, dom.isAnchor);
-        var href = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(anchor).attr('href');
-        this.$popover.find('a').attr('href', href).text(href);
-        var pos = dom.posFromPlaceholder(anchor);
-        var containerOffset = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this.options.container).offset();
+        const anchor = dom.ancestor(rng.sc, dom.isAnchor);
+        const href = $(anchor).attr("href");
+        this.$popover.find("a").attr("href", href).text(href);
+        const pos = dom.posFromPlaceholder(anchor);
+        const containerOffset = $(this.options.container).offset();
         pos.top -= containerOffset.top;
         pos.left -= containerOffset.left;
         this.$popover.css({
-          display: 'block',
+          display: "block",
           left: pos.left,
           top: pos.top
         });
@@ -7958,221 +6018,170 @@ var LinkPopover = /*#__PURE__*/function () {
         this.hide();
       }
     }
-  }, {
-    key: "hide",
-    value: function hide() {
+    hide() {
       this.$popover.hide();
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/ImageDialog.js
-function ImageDialog_typeof(o) { "@babel/helpers - typeof"; return ImageDialog_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, ImageDialog_typeof(o); }
-function ImageDialog_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function ImageDialog_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, ImageDialog_toPropertyKey(o.key), o); } }
-function ImageDialog_createClass(e, r, t) { return r && ImageDialog_defineProperties(e.prototype, r), t && ImageDialog_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function ImageDialog_toPropertyKey(t) { var i = ImageDialog_toPrimitive(t, "string"); return "symbol" == ImageDialog_typeof(i) ? i : i + ""; }
-function ImageDialog_toPrimitive(t, r) { if ("object" != ImageDialog_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != ImageDialog_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-var ImageDialog = /*#__PURE__*/function () {
-  function ImageDialog(context) {
-    ImageDialog_classCallCheck(this, ImageDialog);
-    this.context = context;
-    this.ui = (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.ui;
-    this.$body = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(document.body);
-    this.$editor = context.layoutInfo.editor;
-    this.options = context.options;
-    this.lang = this.options.langInfo;
   }
-  return ImageDialog_createClass(ImageDialog, [{
-    key: "initialize",
-    value: function initialize() {
-      var imageLimitation = '';
+  class ImageDialog {
+    constructor(context) {
+      this.context = context;
+      this.ui = $.summernote.ui;
+      this.$body = $(document.body);
+      this.$editor = context.layoutInfo.editor;
+      this.options = context.options;
+      this.lang = this.options.langInfo;
+    }
+    initialize() {
+      let imageLimitation = "";
       if (this.options.maximumImageFileSize) {
-        var unit = Math.floor(Math.log(this.options.maximumImageFileSize) / Math.log(1024));
-        var readableSize = (this.options.maximumImageFileSize / Math.pow(1024, unit)).toFixed(2) * 1 + ' ' + ' KMGTP'[unit] + 'B';
-        imageLimitation = "<small>".concat(this.lang.image.maximumFileSize + ' : ' + readableSize, "</small>");
+        const unit = Math.floor(Math.log(this.options.maximumImageFileSize) / Math.log(1024));
+        const readableSize = (this.options.maximumImageFileSize / Math.pow(1024, unit)).toFixed(2) * 1 + " " + " KMGTP"[unit] + "B";
+        imageLimitation = `<small>${this.lang.image.maximumFileSize + " : " + readableSize}</small>`;
       }
-      var $container = this.options.dialogsInBody ? this.$body : this.options.container;
-      var body = ['<div class="form-group note-form-group note-group-select-from-files">', '<label for="note-dialog-image-file-' + this.options.id + '" class="note-form-label">' + this.lang.image.selectFromFiles + '</label>', '<input id="note-dialog-image-file-' + this.options.id + '" class="note-image-input form-control-file note-form-control note-input" ', ' type="file" name="files" accept="' + this.options.acceptImageFileTypes + '" multiple="multiple"/>', imageLimitation, '</div>', '<div class="form-group note-group-image-url">', '<label for="note-dialog-image-url-' + this.options.id + '" class="note-form-label">' + this.lang.image.url + '</label>', '<input id="note-dialog-image-url-' + this.options.id + '" class="note-image-url form-control note-form-control note-input" type="text"/>', '</div>'].join('');
-      var buttonClass = 'btn btn-primary note-btn note-btn-primary note-image-btn';
-      var footer = "<input type=\"button\" href=\"#\" class=\"".concat(buttonClass, "\" value=\"").concat(this.lang.image.insert, "\" disabled>");
+      const $container = this.options.dialogsInBody ? this.$body : this.options.container;
+      const body = [
+        '<div class="form-group note-form-group note-group-select-from-files">',
+        '<label for="note-dialog-image-file-' + this.options.id + '" class="note-form-label">' + this.lang.image.selectFromFiles + "</label>",
+        '<input id="note-dialog-image-file-' + this.options.id + '" class="note-image-input form-control-file note-form-control note-input" ',
+        ' type="file" name="files" accept="' + this.options.acceptImageFileTypes + '" multiple="multiple"/>',
+        imageLimitation,
+        "</div>",
+        '<div class="form-group note-group-image-url">',
+        '<label for="note-dialog-image-url-' + this.options.id + '" class="note-form-label">' + this.lang.image.url + "</label>",
+        '<input id="note-dialog-image-url-' + this.options.id + '" class="note-image-url form-control note-form-control note-input" type="text"/>',
+        "</div>"
+      ].join("");
+      const buttonClass = "btn btn-primary note-btn note-btn-primary note-image-btn";
+      const footer = `<input type="button" href="#" class="${buttonClass}" value="${this.lang.image.insert}" disabled>`;
       this.$dialog = this.ui.dialog({
         title: this.lang.image.insert,
         fade: this.options.dialogsFade,
-        body: body,
-        footer: footer
+        body,
+        footer
       }).render().appendTo($container);
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.ui.hideDialog(this.$dialog);
       this.$dialog.remove();
     }
-  }, {
-    key: "bindEnterKey",
-    value: function bindEnterKey($input, $btn) {
-      $input.on('keypress', function (event) {
+    bindEnterKey($input, $btn) {
+      $input.on("keypress", (event) => {
         if (event.keyCode === key.code.ENTER) {
           event.preventDefault();
-          $btn.trigger('click');
+          $btn.trigger("click");
         }
       });
     }
-  }, {
-    key: "show",
-    value: function show() {
-      var _this = this;
-      this.context.invoke('editor.saveRange');
-      this.showImageDialog().then(function (data) {
-        // [workaround] hide dialog before restore range for IE range focus
-        _this.ui.hideDialog(_this.$dialog);
-        _this.context.invoke('editor.restoreRange');
-        if (typeof data === 'string') {
-          // image url
-          // If onImageLinkInsert set,
-          if (_this.options.callbacks.onImageLinkInsert) {
-            _this.context.triggerEvent('image.link.insert', data);
+    show() {
+      this.context.invoke("editor.saveRange");
+      this.showImageDialog().then((data) => {
+        this.ui.hideDialog(this.$dialog);
+        this.context.invoke("editor.restoreRange");
+        if (typeof data === "string") {
+          if (this.options.callbacks.onImageLinkInsert) {
+            this.context.triggerEvent("image.link.insert", data);
           } else {
-            _this.context.invoke('editor.insertImage', data);
+            this.context.invoke("editor.insertImage", data);
           }
         } else {
-          // array of files
-          _this.context.invoke('editor.insertImagesOrCallback', data);
+          this.context.invoke("editor.insertImagesOrCallback", data);
         }
-      }).fail(function () {
-        _this.context.invoke('editor.restoreRange');
+      }).fail(() => {
+        this.context.invoke("editor.restoreRange");
       });
     }
-
     /**
      * show image dialog
      *
      * @param {jQuery} $dialog
      * @return {Promise}
      */
-  }, {
-    key: "showImageDialog",
-    value: function showImageDialog() {
-      var _this2 = this;
-      return external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().Deferred(function (deferred) {
-        var $imageInput = _this2.$dialog.find('.note-image-input');
-        var $imageUrl = _this2.$dialog.find('.note-image-url');
-        var $imageBtn = _this2.$dialog.find('.note-image-btn');
-        _this2.ui.onDialogShown(_this2.$dialog, function () {
-          _this2.context.triggerEvent('dialog.shown');
-
-          // Cloning imageInput to clear element.
-          $imageInput.replaceWith($imageInput.clone().on('change', function (event) {
+    showImageDialog() {
+      return $.Deferred((deferred) => {
+        const $imageInput = this.$dialog.find(".note-image-input");
+        const $imageUrl = this.$dialog.find(".note-image-url");
+        const $imageBtn = this.$dialog.find(".note-image-btn");
+        this.ui.onDialogShown(this.$dialog, () => {
+          this.context.triggerEvent("dialog.shown");
+          $imageInput.replaceWith($imageInput.clone().on("change", (event) => {
             deferred.resolve(event.target.files || event.target.value);
-          }).val(''));
-          $imageUrl.on('input paste propertychange', function () {
-            _this2.ui.toggleBtn($imageBtn, $imageUrl.val());
-          }).val('');
+          }).val(""));
+          $imageUrl.on("input paste propertychange", () => {
+            this.ui.toggleBtn($imageBtn, $imageUrl.val());
+          }).val("");
           if (!env.isSupportTouch) {
-            $imageUrl.trigger('focus');
+            $imageUrl.trigger("focus");
           }
-          $imageBtn.on('click', function (event) {
+          $imageBtn.on("click", (event) => {
             event.preventDefault();
             deferred.resolve($imageUrl.val());
           });
-          _this2.bindEnterKey($imageUrl, $imageBtn);
+          this.bindEnterKey($imageUrl, $imageBtn);
         });
-        _this2.ui.onDialogHidden(_this2.$dialog, function () {
+        this.ui.onDialogHidden(this.$dialog, () => {
           $imageInput.off();
           $imageUrl.off();
           $imageBtn.off();
-          if (deferred.state() === 'pending') {
+          if (deferred.state() === "pending") {
             deferred.reject();
           }
         });
-        _this2.ui.showDialog(_this2.$dialog);
+        this.ui.showDialog(this.$dialog);
       });
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/ImagePopover.js
-function ImagePopover_typeof(o) { "@babel/helpers - typeof"; return ImagePopover_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, ImagePopover_typeof(o); }
-function ImagePopover_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function ImagePopover_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, ImagePopover_toPropertyKey(o.key), o); } }
-function ImagePopover_createClass(e, r, t) { return r && ImagePopover_defineProperties(e.prototype, r), t && ImagePopover_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function ImagePopover_toPropertyKey(t) { var i = ImagePopover_toPrimitive(t, "string"); return "symbol" == ImagePopover_typeof(i) ? i : i + ""; }
-function ImagePopover_toPrimitive(t, r) { if ("object" != ImagePopover_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != ImagePopover_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-
-/**
- * Image popover module
- *  mouse events that show/hide popover will be handled by Handle.js.
- *  Handle.js will receive the events and invoke 'imagePopover.update'.
- */
-var ImagePopover = /*#__PURE__*/function () {
-  function ImagePopover(context) {
-    var _this = this;
-    ImagePopover_classCallCheck(this, ImagePopover);
-    this.context = context;
-    this.ui = (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.ui;
-    this.editable = context.layoutInfo.editable[0];
-    this.options = context.options;
-    this.events = {
-      'summernote.disable summernote.dialog.shown': function summernoteDisableSummernoteDialogShown() {
-        _this.hide();
-      },
-      'summernote.blur': function summernoteBlur(we, event) {
-        if (event.originalEvent && event.originalEvent.relatedTarget) {
-          if (!_this.$popover[0].contains(event.originalEvent.relatedTarget)) {
-            _this.hide();
-          }
-        } else {
-          _this.hide();
-        }
-      }
-    };
   }
-  return ImagePopover_createClass(ImagePopover, [{
-    key: "shouldInitialize",
-    value: function shouldInitialize() {
+  class ImagePopover {
+    constructor(context) {
+      this.context = context;
+      this.ui = $.summernote.ui;
+      this.editable = context.layoutInfo.editable[0];
+      this.options = context.options;
+      this.events = {
+        "summernote.disable summernote.dialog.shown": () => {
+          this.hide();
+        },
+        "summernote.blur": (we, event) => {
+          if (event.originalEvent && event.originalEvent.relatedTarget) {
+            if (!this.$popover[0].contains(event.originalEvent.relatedTarget)) {
+              this.hide();
+            }
+          } else {
+            this.hide();
+          }
+        }
+      };
+    }
+    shouldInitialize() {
       return !lists.isEmpty(this.options.popover.image);
     }
-  }, {
-    key: "initialize",
-    value: function initialize() {
+    initialize() {
       this.$popover = this.ui.popover({
-        className: 'note-image-popover'
+        className: "note-image-popover"
       }).render().appendTo(this.options.container);
-      var $content = this.$popover.find('.popover-content,.note-popover-content');
-      this.context.invoke('buttons.build', $content, this.options.popover.image);
-      this.$popover.on('mousedown', function (event) {
+      const $content = this.$popover.find(".popover-content,.note-popover-content");
+      this.context.invoke("buttons.build", $content, this.options.popover.image);
+      this.$popover.on("mousedown", (event) => {
         event.preventDefault();
       });
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.$popover.remove();
     }
-  }, {
-    key: "update",
-    value: function update(target, event) {
+    update(target, event) {
       if (dom.isImg(target)) {
-        var position = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(target).offset();
-        var containerOffset = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this.options.container).offset();
-        var pos = {};
+        const position2 = $(target).offset();
+        const containerOffset = $(this.options.container).offset();
+        let pos = {};
         if (this.options.popatmouse) {
           pos.left = event.pageX - 20;
           pos.top = event.pageY;
         } else {
-          pos = position;
+          pos = position2;
         }
         pos.top -= containerOffset.top;
         pos.left -= containerOffset.left;
         this.$popover.css({
-          display: 'block',
+          display: "block",
           left: pos.left,
           top: pos.top
         });
@@ -8180,698 +6189,549 @@ var ImagePopover = /*#__PURE__*/function () {
         this.hide();
       }
     }
-  }, {
-    key: "hide",
-    value: function hide() {
+    hide() {
       this.$popover.hide();
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/TablePopover.js
-function TablePopover_typeof(o) { "@babel/helpers - typeof"; return TablePopover_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, TablePopover_typeof(o); }
-function TablePopover_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function TablePopover_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, TablePopover_toPropertyKey(o.key), o); } }
-function TablePopover_createClass(e, r, t) { return r && TablePopover_defineProperties(e.prototype, r), t && TablePopover_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function TablePopover_toPropertyKey(t) { var i = TablePopover_toPrimitive(t, "string"); return "symbol" == TablePopover_typeof(i) ? i : i + ""; }
-function TablePopover_toPrimitive(t, r) { if ("object" != TablePopover_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != TablePopover_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-
-var TablePopover = /*#__PURE__*/function () {
-  function TablePopover(context) {
-    var _this = this;
-    TablePopover_classCallCheck(this, TablePopover);
-    this.context = context;
-    this.ui = (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.ui;
-    this.options = context.options;
-    this.events = {
-      'summernote.mousedown': function summernoteMousedown(we, event) {
-        _this.update(event.target);
-      },
-      'summernote.keyup summernote.scroll summernote.change': function summernoteKeyupSummernoteScrollSummernoteChange() {
-        _this.update();
-      },
-      'summernote.disable summernote.dialog.shown': function summernoteDisableSummernoteDialogShown() {
-        _this.hide();
-      },
-      'summernote.blur': function summernoteBlur(we, event) {
-        if (event.originalEvent && event.originalEvent.relatedTarget) {
-          if (!_this.$popover[0].contains(event.originalEvent.relatedTarget)) {
-            _this.hide();
-          }
-        } else {
-          _this.hide();
-        }
-      }
-    };
   }
-  return TablePopover_createClass(TablePopover, [{
-    key: "shouldInitialize",
-    value: function shouldInitialize() {
+  class TablePopover {
+    constructor(context) {
+      this.context = context;
+      this.ui = $.summernote.ui;
+      this.options = context.options;
+      this.events = {
+        "summernote.mousedown": (we, event) => {
+          this.update(event.target);
+        },
+        "summernote.keyup summernote.scroll summernote.change": () => {
+          this.update();
+        },
+        "summernote.disable summernote.dialog.shown": () => {
+          this.hide();
+        },
+        "summernote.blur": (we, event) => {
+          if (event.originalEvent && event.originalEvent.relatedTarget) {
+            if (!this.$popover[0].contains(event.originalEvent.relatedTarget)) {
+              this.hide();
+            }
+          } else {
+            this.hide();
+          }
+        }
+      };
+    }
+    shouldInitialize() {
       return !lists.isEmpty(this.options.popover.table);
     }
-  }, {
-    key: "initialize",
-    value: function initialize() {
+    initialize() {
       this.$popover = this.ui.popover({
-        className: 'note-table-popover'
+        className: "note-table-popover"
       }).render().appendTo(this.options.container);
-      var $content = this.$popover.find('.popover-content,.note-popover-content');
-      this.context.invoke('buttons.build', $content, this.options.popover.table);
-
-      // [workaround] Disable Firefox's default table editor
+      const $content = this.$popover.find(".popover-content,.note-popover-content");
+      this.context.invoke("buttons.build", $content, this.options.popover.table);
       if (env.isFF) {
-        document.execCommand('enableInlineTableEditing', false, false);
+        document.execCommand("enableInlineTableEditing", false, false);
       }
-      this.$popover.on('mousedown', function (event) {
+      this.$popover.on("mousedown", (event) => {
         event.preventDefault();
       });
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.$popover.remove();
     }
-  }, {
-    key: "update",
-    value: function update(target) {
+    update(target) {
       if (this.context.isDisabled()) {
         return false;
       }
-      var isCell = dom.isCell(target) || dom.isCell(target === null || target === void 0 ? void 0 : target.parentElement);
-      if (isCell) {
-        var pos = dom.posFromPlaceholder(target);
-        var containerOffset = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this.options.container).offset();
+      const isCell2 = dom.isCell(target) || dom.isCell(target == null ? void 0 : target.parentElement);
+      if (isCell2) {
+        const pos = dom.posFromPlaceholder(target);
+        const containerOffset = $(this.options.container).offset();
         pos.top -= containerOffset.top;
         pos.left -= containerOffset.left;
         this.$popover.css({
-          display: 'block',
+          display: "block",
           left: pos.left,
           top: pos.top
         });
       } else {
         this.hide();
       }
-      return isCell;
+      return isCell2;
     }
-  }, {
-    key: "hide",
-    value: function hide() {
+    hide() {
       this.$popover.hide();
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/VideoDialog.js
-function VideoDialog_typeof(o) { "@babel/helpers - typeof"; return VideoDialog_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, VideoDialog_typeof(o); }
-function VideoDialog_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function VideoDialog_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, VideoDialog_toPropertyKey(o.key), o); } }
-function VideoDialog_createClass(e, r, t) { return r && VideoDialog_defineProperties(e.prototype, r), t && VideoDialog_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function VideoDialog_toPropertyKey(t) { var i = VideoDialog_toPrimitive(t, "string"); return "symbol" == VideoDialog_typeof(i) ? i : i + ""; }
-function VideoDialog_toPrimitive(t, r) { if ("object" != VideoDialog_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != VideoDialog_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-var VideoDialog = /*#__PURE__*/function () {
-  function VideoDialog(context) {
-    VideoDialog_classCallCheck(this, VideoDialog);
-    this.context = context;
-    this.ui = (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.ui;
-    this.$body = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(document.body);
-    this.$editor = context.layoutInfo.editor;
-    this.options = context.options;
-    this.lang = this.options.langInfo;
   }
-  return VideoDialog_createClass(VideoDialog, [{
-    key: "initialize",
-    value: function initialize() {
-      var $container = this.options.dialogsInBody ? this.$body : this.options.container;
-      var body = ['<div class="form-group note-form-group row-fluid">', "<label for=\"note-dialog-video-url-".concat(this.options.id, "\" class=\"note-form-label\">").concat(this.lang.video.url, " <small class=\"text-muted\">").concat(this.lang.video.providers, "</small></label>"), "<input id=\"note-dialog-video-url-".concat(this.options.id, "\" class=\"note-video-url form-control note-form-control note-input\" type=\"text\"/>"), '</div>'].join('');
-      var buttonClass = 'btn btn-primary note-btn note-btn-primary note-video-btn';
-      var footer = "<input type=\"button\" href=\"#\" class=\"".concat(buttonClass, "\" value=\"").concat(this.lang.video.insert, "\" disabled>");
+  class VideoDialog {
+    constructor(context) {
+      this.context = context;
+      this.ui = $.summernote.ui;
+      this.$body = $(document.body);
+      this.$editor = context.layoutInfo.editor;
+      this.options = context.options;
+      this.lang = this.options.langInfo;
+    }
+    initialize() {
+      const $container = this.options.dialogsInBody ? this.$body : this.options.container;
+      const body = [
+        '<div class="form-group note-form-group row-fluid">',
+        `<label for="note-dialog-video-url-${this.options.id}" class="note-form-label">${this.lang.video.url} <small class="text-muted">${this.lang.video.providers}</small></label>`,
+        `<input id="note-dialog-video-url-${this.options.id}" class="note-video-url form-control note-form-control note-input" type="text"/>`,
+        "</div>"
+      ].join("");
+      const buttonClass = "btn btn-primary note-btn note-btn-primary note-video-btn";
+      const footer = `<input type="button" href="#" class="${buttonClass}" value="${this.lang.video.insert}" disabled>`;
       this.$dialog = this.ui.dialog({
         title: this.lang.video.insert,
         fade: this.options.dialogsFade,
-        body: body,
-        footer: footer
+        body,
+        footer
       }).render().appendTo($container);
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.ui.hideDialog(this.$dialog);
       this.$dialog.remove();
     }
-  }, {
-    key: "bindEnterKey",
-    value: function bindEnterKey($input, $btn) {
-      $input.on('keypress', function (event) {
+    bindEnterKey($input, $btn) {
+      $input.on("keypress", (event) => {
         if (event.keyCode === key.code.ENTER) {
           event.preventDefault();
-          $btn.trigger('click');
+          $btn.trigger("click");
         }
       });
     }
-  }, {
-    key: "createVideoNode",
-    value: function createVideoNode(url) {
-      // video url patterns(youtube, instagram, vimeo, dailymotion, youku, peertube, mp4, ogg, webm)
-      var ytRegExp = /(?:youtu\.be\/|youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=|shorts\/|live\/))([^&\n?]+)(?:.*[?&]t=([^&\n]+))?.*/;
-      var ytRegExpForStart = /^(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?$/;
-      var ytMatch = url.match(ytRegExp);
-      var gdRegExp = /(?:\.|\/\/)drive\.google\.com\/file\/d\/(.[a-zA-Z0-9_-]*)\/view/;
-      var gdMatch = url.match(gdRegExp);
-      var igRegExp = /(?:www\.|\/\/)instagram\.com\/(reel|p)\/(.[a-zA-Z0-9_-]*)/;
-      var igMatch = url.match(igRegExp);
-      var vRegExp = /\/\/vine\.co\/v\/([a-zA-Z0-9]+)/;
-      var vMatch = url.match(vRegExp);
-      var vimRegExp = /\/\/(player\.)?vimeo\.com\/([a-z]*\/)*(\d+)[?]?.*/;
-      var vimMatch = url.match(vimRegExp);
-      var dmRegExp = /.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/;
-      var dmMatch = url.match(dmRegExp);
-      var youkuRegExp = /\/\/v\.youku\.com\/v_show\/id_(\w+)=*\.html/;
-      var youkuMatch = url.match(youkuRegExp);
-      var peerTubeRegExp = /\/\/(.*)\/videos\/watch\/([^?]*)(?:\?(?:start=(\w*))?(?:&stop=(\w*))?(?:&loop=([10]))?(?:&autoplay=([10]))?(?:&muted=([10]))?)?/;
-      var peerTubeMatch = url.match(peerTubeRegExp);
-      var qqRegExp = /\/\/v\.qq\.com.*?vid=(.+)/;
-      var qqMatch = url.match(qqRegExp);
-      var qqRegExp2 = /\/\/v\.qq\.com\/x?\/?(page|cover).*?\/([^\/]+)\.html\??.*/;
-      var qqMatch2 = url.match(qqRegExp2);
-      var mp4RegExp = /^.+.(mp4|m4v)$/;
-      var mp4Match = url.match(mp4RegExp);
-      var oggRegExp = /^.+.(ogg|ogv)$/;
-      var oggMatch = url.match(oggRegExp);
-      var webmRegExp = /^.+.(webm)$/;
-      var webmMatch = url.match(webmRegExp);
-      var fbRegExp = /(?:www\.|\/\/)facebook\.com\/([^\/]+)\/videos\/([0-9]+)/;
-      var fbMatch = url.match(fbRegExp);
-      var $video;
+    createVideoNode(url) {
+      const ytRegExp = /(?:youtu\.be\/|youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=|shorts\/|live\/))([^&\n?]+)(?:.*[?&]t=([^&\n]+))?.*/;
+      const ytRegExpForStart = /^(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?$/;
+      const ytMatch = url.match(ytRegExp);
+      const gdRegExp = /(?:\.|\/\/)drive\.google\.com\/file\/d\/(.[a-zA-Z0-9_-]*)\/view/;
+      const gdMatch = url.match(gdRegExp);
+      const igRegExp = /(?:www\.|\/\/)instagram\.com\/(reel|p)\/(.[a-zA-Z0-9_-]*)/;
+      const igMatch = url.match(igRegExp);
+      const vRegExp = /\/\/vine\.co\/v\/([a-zA-Z0-9]+)/;
+      const vMatch = url.match(vRegExp);
+      const vimRegExp = /\/\/(player\.)?vimeo\.com\/([a-z]*\/)*(\d+)[?]?.*/;
+      const vimMatch = url.match(vimRegExp);
+      const dmRegExp = /.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/;
+      const dmMatch = url.match(dmRegExp);
+      const youkuRegExp = /\/\/v\.youku\.com\/v_show\/id_(\w+)=*\.html/;
+      const youkuMatch = url.match(youkuRegExp);
+      const peerTubeRegExp = /\/\/(.*)\/videos\/watch\/([^?]*)(?:\?(?:start=(\w*))?(?:&stop=(\w*))?(?:&loop=([10]))?(?:&autoplay=([10]))?(?:&muted=([10]))?)?/;
+      const peerTubeMatch = url.match(peerTubeRegExp);
+      const qqRegExp = /\/\/v\.qq\.com.*?vid=(.+)/;
+      const qqMatch = url.match(qqRegExp);
+      const qqRegExp2 = /\/\/v\.qq\.com\/x?\/?(page|cover).*?\/([^\/]+)\.html\??.*/;
+      const qqMatch2 = url.match(qqRegExp2);
+      const mp4RegExp = /^.+.(mp4|m4v)$/;
+      const mp4Match = url.match(mp4RegExp);
+      const oggRegExp = /^.+.(ogg|ogv)$/;
+      const oggMatch = url.match(oggRegExp);
+      const webmRegExp = /^.+.(webm)$/;
+      const webmMatch = url.match(webmRegExp);
+      const fbRegExp = /(?:www\.|\/\/)facebook\.com\/([^\/]+)\/videos\/([0-9]+)/;
+      const fbMatch = url.match(fbRegExp);
+      let $video;
       if (ytMatch && ytMatch[1].length === 11) {
-        var youtubeId = ytMatch[1];
+        const youtubeId = ytMatch[1];
         var start = 0;
-        if (typeof ytMatch[2] !== 'undefined') {
-          var ytMatchForStart = ytMatch[2].match(ytRegExpForStart);
+        if (typeof ytMatch[2] !== "undefined") {
+          const ytMatchForStart = ytMatch[2].match(ytRegExpForStart);
           if (ytMatchForStart) {
             for (var n = [3600, 60, 1], i = 0, r = n.length; i < r; i++) {
-              start += typeof ytMatchForStart[i + 1] !== 'undefined' ? n[i] * parseInt(ytMatchForStart[i + 1], 10) : 0;
+              start += typeof ytMatchForStart[i + 1] !== "undefined" ? n[i] * parseInt(ytMatchForStart[i + 1], 10) : 0;
             }
           } else {
             start = parseInt(ytMatch[2], 10);
           }
         }
-        $video = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<iframe>').attr('frameborder', 0).attr('src', '//www.youtube.com/embed/' + youtubeId + (start > 0 ? '?start=' + start : '')).attr('width', '640').attr('height', '360');
+        $video = $("<iframe>").attr("frameborder", 0).attr("src", "//www.youtube.com/embed/" + youtubeId + (start > 0 ? "?start=" + start : "")).attr("width", "640").attr("height", "360");
       } else if (gdMatch && gdMatch[0].length) {
-        $video = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<iframe>').attr('frameborder', 0).attr('src', 'https://drive.google.com/file/d/' + gdMatch[1] + '/preview').attr('width', '640').attr('height', '480');
+        $video = $("<iframe>").attr("frameborder", 0).attr("src", "https://drive.google.com/file/d/" + gdMatch[1] + "/preview").attr("width", "640").attr("height", "480");
       } else if (igMatch && igMatch[0].length) {
-        $video = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<iframe>').attr('frameborder', 0).attr('src', 'https://instagram.com/p/' + igMatch[2] + '/embed/').attr('width', '612').attr('height', '710').attr('scrolling', 'no').attr('allowtransparency', 'true');
+        $video = $("<iframe>").attr("frameborder", 0).attr("src", "https://instagram.com/p/" + igMatch[2] + "/embed/").attr("width", "612").attr("height", "710").attr("scrolling", "no").attr("allowtransparency", "true");
       } else if (vMatch && vMatch[0].length) {
-        $video = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<iframe>').attr('frameborder', 0).attr('src', vMatch[0] + '/embed/simple').attr('width', '600').attr('height', '600').attr('class', 'vine-embed');
+        $video = $("<iframe>").attr("frameborder", 0).attr("src", vMatch[0] + "/embed/simple").attr("width", "600").attr("height", "600").attr("class", "vine-embed");
       } else if (vimMatch && vimMatch[3].length) {
-        $video = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>').attr('frameborder', 0).attr('src', '//player.vimeo.com/video/' + vimMatch[3]).attr('width', '640').attr('height', '360');
+        $video = $("<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>").attr("frameborder", 0).attr("src", "//player.vimeo.com/video/" + vimMatch[3]).attr("width", "640").attr("height", "360");
       } else if (dmMatch && dmMatch[2].length) {
-        $video = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<iframe>').attr('frameborder', 0).attr('src', '//www.dailymotion.com/embed/video/' + dmMatch[2]).attr('width', '640').attr('height', '360');
+        $video = $("<iframe>").attr("frameborder", 0).attr("src", "//www.dailymotion.com/embed/video/" + dmMatch[2]).attr("width", "640").attr("height", "360");
       } else if (youkuMatch && youkuMatch[1].length) {
-        $video = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>').attr('frameborder', 0).attr('height', '498').attr('width', '510').attr('src', '//player.youku.com/embed/' + youkuMatch[1]);
+        $video = $("<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>").attr("frameborder", 0).attr("height", "498").attr("width", "510").attr("src", "//player.youku.com/embed/" + youkuMatch[1]);
       } else if (peerTubeMatch && peerTubeMatch[0].length) {
         var begin = 0;
-        if (peerTubeMatch[2] !== 'undefined') begin = peerTubeMatch[2];
+        if (peerTubeMatch[2] !== "undefined") begin = peerTubeMatch[2];
         var end = 0;
-        if (peerTubeMatch[3] !== 'undefined') end = peerTubeMatch[3];
+        if (peerTubeMatch[3] !== "undefined") end = peerTubeMatch[3];
         var loop = 0;
-        if (peerTubeMatch[4] !== 'undefined') loop = peerTubeMatch[4];
+        if (peerTubeMatch[4] !== "undefined") loop = peerTubeMatch[4];
         var autoplay = 0;
-        if (peerTubeMatch[5] !== 'undefined') autoplay = peerTubeMatch[5];
+        if (peerTubeMatch[5] !== "undefined") autoplay = peerTubeMatch[5];
         var muted = 0;
-        if (peerTubeMatch[6] !== 'undefined') muted = peerTubeMatch[6];
-        $video = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<iframe allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups">').attr('frameborder', 0).attr('src', '//' + peerTubeMatch[1] + '/videos/embed/' + peerTubeMatch[2] + "?loop=" + loop + "&autoplay=" + autoplay + "&muted=" + muted + (begin > 0 ? '&start=' + begin : '') + (end > 0 ? '&end=' + start : '')).attr('width', '560').attr('height', '315');
+        if (peerTubeMatch[6] !== "undefined") muted = peerTubeMatch[6];
+        $video = $('<iframe allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups">').attr("frameborder", 0).attr("src", "//" + peerTubeMatch[1] + "/videos/embed/" + peerTubeMatch[2] + "?loop=" + loop + "&autoplay=" + autoplay + "&muted=" + muted + (begin > 0 ? "&start=" + begin : "") + (end > 0 ? "&end=" + start : "")).attr("width", "560").attr("height", "315");
       } else if (qqMatch && qqMatch[1].length || qqMatch2 && qqMatch2[2].length) {
-        var vid = qqMatch && qqMatch[1].length ? qqMatch[1] : qqMatch2[2];
-        $video = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>').attr('frameborder', 0).attr('height', '310').attr('width', '500').attr('src', 'https://v.qq.com/txp/iframe/player.html?vid=' + vid + '&amp;auto=0');
+        const vid = qqMatch && qqMatch[1].length ? qqMatch[1] : qqMatch2[2];
+        $video = $("<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>").attr("frameborder", 0).attr("height", "310").attr("width", "500").attr("src", "https://v.qq.com/txp/iframe/player.html?vid=" + vid + "&amp;auto=0");
       } else if (mp4Match || oggMatch || webmMatch) {
-        $video = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<video controls>').attr('src', url).attr('width', '640').attr('height', '360');
+        $video = $("<video controls>").attr("src", url).attr("width", "640").attr("height", "360");
       } else if (fbMatch && fbMatch[0].length) {
-        $video = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<iframe>').attr('frameborder', 0).attr('src', 'https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(fbMatch[0]) + '&show_text=0&width=560').attr('width', '560').attr('height', '301').attr('scrolling', 'no').attr('allowtransparency', 'true');
+        $video = $("<iframe>").attr("frameborder", 0).attr("src", "https://www.facebook.com/plugins/video.php?href=" + encodeURIComponent(fbMatch[0]) + "&show_text=0&width=560").attr("width", "560").attr("height", "301").attr("scrolling", "no").attr("allowtransparency", "true");
       } else {
-        // this is not a known video link. Now what, Cat? Now what?
         return false;
       }
-      $video.addClass('note-video-clip');
+      $video.addClass("note-video-clip");
       return $video[0];
     }
-  }, {
-    key: "show",
-    value: function show() {
-      var _this = this;
-      var text = this.context.invoke('editor.getSelectedText');
-      this.context.invoke('editor.saveRange');
-      this.showVideoDialog(text).then(function (url) {
-        // [workaround] hide dialog before restore range for IE range focus
-        _this.ui.hideDialog(_this.$dialog);
-        _this.context.invoke('editor.restoreRange');
-
-        // build node
-        var $node = _this.createVideoNode(url);
+    show() {
+      const text = this.context.invoke("editor.getSelectedText");
+      this.context.invoke("editor.saveRange");
+      this.showVideoDialog(text).then((url) => {
+        this.ui.hideDialog(this.$dialog);
+        this.context.invoke("editor.restoreRange");
+        const $node = this.createVideoNode(url);
         if ($node) {
-          // insert video node
-          _this.context.invoke('editor.insertNode', $node);
+          this.context.invoke("editor.insertNode", $node);
         }
-      }).fail(function () {
-        _this.context.invoke('editor.restoreRange');
+      }).fail(() => {
+        this.context.invoke("editor.restoreRange");
       });
     }
-
     /**
      * show video dialog
      *
      * @param {jQuery} $dialog
      * @return {Promise}
      */
-  }, {
-    key: "showVideoDialog",
-    value: function showVideoDialog( /* text */
-    ) {
-      var _this2 = this;
-      return external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().Deferred(function (deferred) {
-        var $videoUrl = _this2.$dialog.find('.note-video-url');
-        var $videoBtn = _this2.$dialog.find('.note-video-btn');
-        _this2.ui.onDialogShown(_this2.$dialog, function () {
-          _this2.context.triggerEvent('dialog.shown');
-          $videoUrl.on('input paste propertychange', function () {
-            _this2.ui.toggleBtn($videoBtn, $videoUrl.val());
+    showVideoDialog() {
+      return $.Deferred((deferred) => {
+        const $videoUrl = this.$dialog.find(".note-video-url");
+        const $videoBtn = this.$dialog.find(".note-video-btn");
+        this.ui.onDialogShown(this.$dialog, () => {
+          this.context.triggerEvent("dialog.shown");
+          $videoUrl.on("input paste propertychange", () => {
+            this.ui.toggleBtn($videoBtn, $videoUrl.val());
           });
           if (!env.isSupportTouch) {
-            $videoUrl.trigger('focus');
+            $videoUrl.trigger("focus");
           }
-          $videoBtn.on('click', function (event) {
+          $videoBtn.on("click", (event) => {
             event.preventDefault();
             deferred.resolve($videoUrl.val());
           });
-          _this2.bindEnterKey($videoUrl, $videoBtn);
+          this.bindEnterKey($videoUrl, $videoBtn);
         });
-        _this2.ui.onDialogHidden(_this2.$dialog, function () {
+        this.ui.onDialogHidden(this.$dialog, () => {
           $videoUrl.off();
           $videoBtn.off();
-          if (deferred.state() === 'pending') {
+          if (deferred.state() === "pending") {
             deferred.reject();
           }
         });
-        _this2.ui.showDialog(_this2.$dialog);
+        this.ui.showDialog(this.$dialog);
       });
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/HelpDialog.js
-function HelpDialog_typeof(o) { "@babel/helpers - typeof"; return HelpDialog_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, HelpDialog_typeof(o); }
-function HelpDialog_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function HelpDialog_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, HelpDialog_toPropertyKey(o.key), o); } }
-function HelpDialog_createClass(e, r, t) { return r && HelpDialog_defineProperties(e.prototype, r), t && HelpDialog_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function HelpDialog_toPropertyKey(t) { var i = HelpDialog_toPrimitive(t, "string"); return "symbol" == HelpDialog_typeof(i) ? i : i + ""; }
-function HelpDialog_toPrimitive(t, r) { if ("object" != HelpDialog_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != HelpDialog_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-var HelpDialog = /*#__PURE__*/function () {
-  function HelpDialog(context) {
-    HelpDialog_classCallCheck(this, HelpDialog);
-    this.context = context;
-    this.ui = (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.ui;
-    this.$body = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(document.body);
-    this.$editor = context.layoutInfo.editor;
-    this.options = context.options;
-    this.lang = this.options.langInfo;
   }
-  return HelpDialog_createClass(HelpDialog, [{
-    key: "initialize",
-    value: function initialize() {
-      var $container = this.options.dialogsInBody ? this.$body : this.options.container;
-      var body = ['<p class="text-center">', '<a href="http://summernote.org/" target="_blank" rel="noopener noreferrer">Summernote 0.9.1</a> · ', '<a href="https://github.com/summernote/summernote" target="_blank" rel="noopener noreferrer">Project</a> · ', '<a href="https://github.com/summernote/summernote/issues" target="_blank" rel="noopener noreferrer">Issues</a>', '</p>'].join('');
+  class HelpDialog {
+    constructor(context) {
+      this.context = context;
+      this.ui = $.summernote.ui;
+      this.$body = $(document.body);
+      this.$editor = context.layoutInfo.editor;
+      this.options = context.options;
+      this.lang = this.options.langInfo;
+    }
+    initialize() {
+      const $container = this.options.dialogsInBody ? this.$body : this.options.container;
+      const body = [
+        '<p class="text-center">',
+        '<a href="http://summernote.org/" target="_blank" rel="noopener noreferrer">Summernote 0.9.1</a> · ',
+        '<a href="https://github.com/summernote/summernote" target="_blank" rel="noopener noreferrer">Project</a> · ',
+        '<a href="https://github.com/summernote/summernote/issues" target="_blank" rel="noopener noreferrer">Issues</a>',
+        "</p>"
+      ].join("");
       this.$dialog = this.ui.dialog({
         title: this.lang.options.help,
         fade: this.options.dialogsFade,
         body: this.createShortcutList(),
         footer: body,
-        callback: function callback($node) {
-          $node.find('.modal-body,.note-modal-body').css({
-            'max-height': 300,
-            'overflow': 'scroll'
+        callback: ($node) => {
+          $node.find(".modal-body,.note-modal-body").css({
+            "max-height": 300,
+            "overflow": "scroll"
           });
         }
       }).render().appendTo($container);
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.ui.hideDialog(this.$dialog);
       this.$dialog.remove();
     }
-  }, {
-    key: "createShortcutList",
-    value: function createShortcutList() {
-      var _this = this;
-      var keyMap = this.options.keyMap[env.isMac ? 'mac' : 'pc'];
-      return Object.keys(keyMap).map(function (key) {
-        var command = keyMap[key];
-        var $row = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<div><div class="help-list-item"></div></div>');
-        $row.append(external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<label><kbd>' + key + '</kdb></label>').css({
-          'width': 180,
-          'margin-right': 10
-        })).append(external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<span></span>').html(_this.context.memo('help.' + command) || command));
+    createShortcutList() {
+      const keyMap = this.options.keyMap[env.isMac ? "mac" : "pc"];
+      return Object.keys(keyMap).map((key2) => {
+        const command = keyMap[key2];
+        const $row = $('<div><div class="help-list-item"></div></div>');
+        $row.append($("<label><kbd>" + key2 + "</kdb></label>").css({
+          "width": 180,
+          "margin-right": 10
+        })).append($("<span></span>").html(this.context.memo("help." + command) || command));
         return $row.html();
-      }).join('');
+      }).join("");
     }
-
     /**
      * show help dialog
      *
      * @return {Promise}
      */
-  }, {
-    key: "showHelpDialog",
-    value: function showHelpDialog() {
-      var _this2 = this;
-      return external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().Deferred(function (deferred) {
-        _this2.ui.onDialogShown(_this2.$dialog, function () {
-          _this2.context.triggerEvent('dialog.shown');
+    showHelpDialog() {
+      return $.Deferred((deferred) => {
+        this.ui.onDialogShown(this.$dialog, () => {
+          this.context.triggerEvent("dialog.shown");
           deferred.resolve();
         });
-        _this2.ui.showDialog(_this2.$dialog);
+        this.ui.showDialog(this.$dialog);
       }).promise();
     }
-  }, {
-    key: "show",
-    value: function show() {
-      var _this3 = this;
-      this.context.invoke('editor.saveRange');
-      this.showHelpDialog().then(function () {
-        _this3.context.invoke('editor.restoreRange');
+    show() {
+      this.context.invoke("editor.saveRange");
+      this.showHelpDialog().then(() => {
+        this.context.invoke("editor.restoreRange");
       });
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/AirPopover.js
-function AirPopover_typeof(o) { "@babel/helpers - typeof"; return AirPopover_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, AirPopover_typeof(o); }
-function AirPopover_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function AirPopover_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, AirPopover_toPropertyKey(o.key), o); } }
-function AirPopover_createClass(e, r, t) { return r && AirPopover_defineProperties(e.prototype, r), t && AirPopover_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function AirPopover_toPropertyKey(t) { var i = AirPopover_toPrimitive(t, "string"); return "symbol" == AirPopover_typeof(i) ? i : i + ""; }
-function AirPopover_toPrimitive(t, r) { if ("object" != AirPopover_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != AirPopover_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-var AIRMODE_POPOVER_X_OFFSET = -5;
-var AIRMODE_POPOVER_Y_OFFSET = 5;
-var AirPopover = /*#__PURE__*/function () {
-  function AirPopover(context) {
-    var _this = this;
-    AirPopover_classCallCheck(this, AirPopover);
-    this.context = context;
-    this.ui = (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.ui;
-    this.options = context.options;
-    this.hidable = true;
-    this.onContextmenu = false;
-    this.pageX = null;
-    this.pageY = null;
-    this.events = {
-      'summernote.contextmenu': function summernoteContextmenu(event) {
-        if (_this.options.editing) {
-          event.preventDefault();
-          event.stopPropagation();
-          _this.onContextmenu = true;
-          _this.update(true);
-        }
-      },
-      'summernote.mousedown': function summernoteMousedown(we, event) {
-        _this.pageX = event.pageX;
-        _this.pageY = event.pageY;
-      },
-      'summernote.keyup summernote.mouseup summernote.scroll': function summernoteKeyupSummernoteMouseupSummernoteScroll(we, event) {
-        if (_this.options.editing && !_this.onContextmenu) {
-          if (event.type == 'keyup') {
-            var range = _this.context.invoke('editor.getLastRange');
-            var wordRange = range.getWordRange();
-            var bnd = func.rect2bnd(lists.last(wordRange.getClientRects()));
-            _this.pageX = bnd.left;
-            _this.pageY = bnd.top;
-          } else {
-            _this.pageX = event.pageX;
-            _this.pageY = event.pageY;
-          }
-          _this.update();
-        }
-        _this.onContextmenu = false;
-      },
-      'summernote.disable summernote.change summernote.dialog.shown summernote.blur': function summernoteDisableSummernoteChangeSummernoteDialogShownSummernoteBlur() {
-        _this.hide();
-      },
-      'summernote.focusout': function summernoteFocusout() {
-        if (!_this.$popover.is(':active,:focus')) {
-          _this.hide();
-        }
-      }
-    };
   }
-  return AirPopover_createClass(AirPopover, [{
-    key: "shouldInitialize",
-    value: function shouldInitialize() {
+  const AIRMODE_POPOVER_X_OFFSET = -5;
+  const AIRMODE_POPOVER_Y_OFFSET = 5;
+  class AirPopover {
+    constructor(context) {
+      this.context = context;
+      this.ui = $.summernote.ui;
+      this.options = context.options;
+      this.hidable = true;
+      this.onContextmenu = false;
+      this.pageX = null;
+      this.pageY = null;
+      this.events = {
+        "summernote.contextmenu": (event) => {
+          if (this.options.editing) {
+            event.preventDefault();
+            event.stopPropagation();
+            this.onContextmenu = true;
+            this.update(true);
+          }
+        },
+        "summernote.mousedown": (we, event) => {
+          this.pageX = event.pageX;
+          this.pageY = event.pageY;
+        },
+        "summernote.keyup summernote.mouseup summernote.scroll": (we, event) => {
+          if (this.options.editing && !this.onContextmenu) {
+            if (event.type == "keyup") {
+              let range2 = this.context.invoke("editor.getLastRange");
+              let wordRange = range2.getWordRange();
+              const bnd = func.rect2bnd(lists.last(wordRange.getClientRects()));
+              this.pageX = bnd.left;
+              this.pageY = bnd.top;
+            } else {
+              this.pageX = event.pageX;
+              this.pageY = event.pageY;
+            }
+            this.update();
+          }
+          this.onContextmenu = false;
+        },
+        "summernote.disable summernote.change summernote.dialog.shown summernote.blur": () => {
+          this.hide();
+        },
+        "summernote.focusout": () => {
+          if (!this.$popover.is(":active,:focus")) {
+            this.hide();
+          }
+        }
+      };
+    }
+    shouldInitialize() {
       return this.options.airMode && !lists.isEmpty(this.options.popover.air);
     }
-  }, {
-    key: "initialize",
-    value: function initialize() {
-      var _this2 = this;
+    initialize() {
       this.$popover = this.ui.popover({
-        className: 'note-air-popover'
+        className: "note-air-popover"
       }).render().appendTo(this.options.container);
-      var $content = this.$popover.find('.popover-content');
-      this.context.invoke('buttons.build', $content, this.options.popover.air);
-
-      // disable hiding this popover preemptively by 'summernote.blur' event.
-      this.$popover.on('mousedown', function () {
-        _this2.hidable = false;
+      const $content = this.$popover.find(".popover-content,.note-popover-content");
+      this.context.invoke("buttons.build", $content, this.options.popover.air);
+      this.$popover.on("mousedown", () => {
+        this.hidable = false;
       });
-      // (re-)enable hiding after 'summernote.blur' has been handled (aka. ignored).
-      this.$popover.on('mouseup', function () {
-        _this2.hidable = true;
+      this.$popover.on("mouseup", () => {
+        this.hidable = true;
       });
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.$popover.remove();
     }
-  }, {
-    key: "update",
-    value: function update(forcelyOpen) {
-      var styleInfo = this.context.invoke('editor.currentStyle');
+    update(forcelyOpen) {
+      const styleInfo = this.context.invoke("editor.currentStyle");
       if (styleInfo.range && (!styleInfo.range.isCollapsed() || forcelyOpen)) {
-        var rect = {
+        let rect = {
           left: this.pageX,
           top: this.pageY
         };
-        var containerOffset = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this.options.container).offset();
+        const containerOffset = $(this.options.container).offset();
         rect.top -= containerOffset.top;
         rect.left -= containerOffset.left;
         this.$popover.css({
-          display: 'block',
+          display: "block",
           left: Math.max(rect.left, 0) + AIRMODE_POPOVER_X_OFFSET,
           top: rect.top + AIRMODE_POPOVER_Y_OFFSET
         });
-        this.context.invoke('buttons.updateCurrentStyle', this.$popover);
+        this.context.invoke("buttons.updateCurrentStyle", this.$popover);
       } else {
         this.hide();
       }
     }
-  }, {
-    key: "updateCodeview",
-    value: function updateCodeview(isCodeview) {
-      this.ui.toggleBtnActive(this.$popover.find('.btn-codeview'), isCodeview);
+    updateCodeview(isCodeview) {
+      this.ui.toggleBtnActive(this.$popover.find(".btn-codeview"), isCodeview);
       if (isCodeview) {
         this.hide();
       }
     }
-  }, {
-    key: "hide",
-    value: function hide() {
+    hide() {
       if (this.hidable) {
         this.$popover.hide();
       }
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/module/HintPopover.js
-function HintPopover_typeof(o) { "@babel/helpers - typeof"; return HintPopover_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, HintPopover_typeof(o); }
-function HintPopover_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function HintPopover_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, HintPopover_toPropertyKey(o.key), o); } }
-function HintPopover_createClass(e, r, t) { return r && HintPopover_defineProperties(e.prototype, r), t && HintPopover_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function HintPopover_toPropertyKey(t) { var i = HintPopover_toPrimitive(t, "string"); return "symbol" == HintPopover_typeof(i) ? i : i + ""; }
-function HintPopover_toPrimitive(t, r) { if ("object" != HintPopover_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != HintPopover_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-
-
-
-
-var POPOVER_DIST = 5;
-var HintPopover = /*#__PURE__*/function () {
-  function HintPopover(context) {
-    var _this = this;
-    HintPopover_classCallCheck(this, HintPopover);
-    this.context = context;
-    this.ui = (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.ui;
-    this.$editable = context.layoutInfo.editable;
-    this.options = context.options;
-    this.hint = this.options.hint || [];
-    this.direction = this.options.hintDirection || 'bottom';
-    this.hints = Array.isArray(this.hint) ? this.hint : [this.hint];
-    this.events = {
-      'summernote.keyup': function summernoteKeyup(we, event) {
-        if (!event.isDefaultPrevented()) {
-          _this.handleKeyup(event);
-        }
-      },
-      'summernote.keydown': function summernoteKeydown(we, event) {
-        _this.handleKeydown(event);
-      },
-      'summernote.disable summernote.dialog.shown summernote.blur': function summernoteDisableSummernoteDialogShownSummernoteBlur() {
-        _this.hide();
-      }
-    };
   }
-  return HintPopover_createClass(HintPopover, [{
-    key: "shouldInitialize",
-    value: function shouldInitialize() {
+  const POPOVER_DIST = 5;
+  class HintPopover {
+    constructor(context) {
+      this.context = context;
+      this.ui = $.summernote.ui;
+      this.$editable = context.layoutInfo.editable;
+      this.options = context.options;
+      this.hint = this.options.hint || [];
+      this.direction = this.options.hintDirection || "bottom";
+      this.hints = Array.isArray(this.hint) ? this.hint : [this.hint];
+      this.events = {
+        "summernote.keyup": (we, event) => {
+          if (!event.isDefaultPrevented()) {
+            this.handleKeyup(event);
+          }
+        },
+        "summernote.keydown": (we, event) => {
+          this.handleKeydown(event);
+        },
+        "summernote.disable summernote.dialog.shown summernote.blur": () => {
+          this.hide();
+        }
+      };
+    }
+    shouldInitialize() {
       return this.hints.length > 0;
     }
-  }, {
-    key: "initialize",
-    value: function initialize() {
-      var _this2 = this;
+    initialize() {
       this.lastWordRange = null;
       this.matchingWord = null;
       this.$popover = this.ui.popover({
-        className: 'note-hint-popover',
+        className: "note-hint-popover",
         hideArrow: true,
-        direction: ''
+        direction: ""
       }).render().appendTo(this.options.container);
       this.$popover.hide();
-      this.$content = this.$popover.find('.popover-content,.note-popover-content');
-      this.$content.on('click', '.note-hint-item', function (event) {
-        _this2.$content.find('.active').removeClass('active');
-        external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(event.currentTarget).addClass('active');
-        _this2.replace();
+      this.$content = this.$popover.find(".popover-content,.note-popover-content");
+      this.$content.on("click", ".note-hint-item", (event) => {
+        this.$content.find(".active").removeClass("active");
+        $(event.currentTarget).addClass("active");
+        this.replace();
       });
-      this.$popover.on('mousedown', function (event) {
+      this.$popover.on("mousedown", (event) => {
         event.preventDefault();
       });
     }
-  }, {
-    key: "destroy",
-    value: function destroy() {
+    destroy() {
       this.$popover.remove();
     }
-  }, {
-    key: "selectItem",
-    value: function selectItem($item) {
-      this.$content.find('.active').removeClass('active');
-      $item.addClass('active');
+    selectItem($item) {
+      this.$content.find(".active").removeClass("active");
+      $item.addClass("active");
       this.$content[0].scrollTop = $item[0].offsetTop - this.$content.innerHeight() / 2;
     }
-  }, {
-    key: "moveDown",
-    value: function moveDown() {
-      var $current = this.$content.find('.note-hint-item.active');
-      var $next = $current.next();
+    moveDown() {
+      const $current = this.$content.find(".note-hint-item.active");
+      const $next = $current.next();
       if ($next.length) {
         this.selectItem($next);
       } else {
-        var $nextGroup = $current.parent().next();
+        let $nextGroup = $current.parent().next();
         if (!$nextGroup.length) {
-          $nextGroup = this.$content.find('.note-hint-group').first();
+          $nextGroup = this.$content.find(".note-hint-group").first();
         }
-        this.selectItem($nextGroup.find('.note-hint-item').first());
+        this.selectItem($nextGroup.find(".note-hint-item").first());
       }
     }
-  }, {
-    key: "moveUp",
-    value: function moveUp() {
-      var $current = this.$content.find('.note-hint-item.active');
-      var $prev = $current.prev();
+    moveUp() {
+      const $current = this.$content.find(".note-hint-item.active");
+      const $prev = $current.prev();
       if ($prev.length) {
         this.selectItem($prev);
       } else {
-        var $prevGroup = $current.parent().prev();
+        let $prevGroup = $current.parent().prev();
         if (!$prevGroup.length) {
-          $prevGroup = this.$content.find('.note-hint-group').last();
+          $prevGroup = this.$content.find(".note-hint-group").last();
         }
-        this.selectItem($prevGroup.find('.note-hint-item').last());
+        this.selectItem($prevGroup.find(".note-hint-item").last());
       }
     }
-  }, {
-    key: "replace",
-    value: function replace() {
-      var $item = this.$content.find('.note-hint-item.active');
+    replace() {
+      const $item = this.$content.find(".note-hint-item.active");
       if ($item.length) {
         var node = this.nodeFromItem($item);
-        // If matchingWord length = 0 -> capture OK / open hint / but as mention capture "" (\w*)
         if (this.matchingWord !== null && this.matchingWord.length === 0) {
           this.lastWordRange.so = this.lastWordRange.eo;
-          // Else si > 0 and normal case -> adjust range "before" for correct position of insertion
         } else if (this.matchingWord !== null && this.matchingWord.length > 0 && !this.lastWordRange.isCollapsed()) {
-          var rangeCompute = this.lastWordRange.eo - this.lastWordRange.so - this.matchingWord.length;
+          let rangeCompute = this.lastWordRange.eo - this.lastWordRange.so - this.matchingWord.length;
           if (rangeCompute > 0) {
             this.lastWordRange.so += rangeCompute;
           }
         }
         this.lastWordRange.insertNode(node);
-        if (this.options.hintSelect === 'next') {
-          var blank = document.createTextNode('');
-          external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(node).after(blank);
+        if (this.options.hintSelect === "next") {
+          var blank = document.createTextNode("");
+          $(node).after(blank);
           range.createFromNodeBefore(blank).select();
         } else {
           range.createFromNodeAfter(node).select();
         }
         this.lastWordRange = null;
         this.hide();
-        this.context.invoke('editor.focus');
-        this.context.triggerEvent('change', this.$editable.html(), this.$editable);
+        this.context.invoke("editor.focus");
+        this.context.triggerEvent("change", this.$editable.html(), this.$editable);
       }
     }
-  }, {
-    key: "nodeFromItem",
-    value: function nodeFromItem($item) {
-      var hint = this.hints[$item.data('index')];
-      var item = $item.data('item');
-      var node = hint.content ? hint.content(item) : item;
-      if (typeof node === 'string') {
+    nodeFromItem($item) {
+      const hint = this.hints[$item.data("index")];
+      const item = $item.data("item");
+      let node = hint.content ? hint.content(item) : item;
+      if (typeof node === "string") {
         node = dom.createText(node);
       }
       return node;
     }
-  }, {
-    key: "createItemTemplates",
-    value: function createItemTemplates(hintIdx, items) {
-      var hint = this.hints[hintIdx];
-      return items.map(function (item, idx) {
-        var $item = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<div class="note-hint-item"></div>');
-        $item.append(hint.template ? hint.template(item) : item + '');
+    createItemTemplates(hintIdx, items) {
+      const hint = this.hints[hintIdx];
+      return items.map((item, idx) => {
+        const $item = $('<div class="note-hint-item"></div>');
+        $item.append(hint.template ? hint.template(item) : item + "");
         $item.data({
-          'index': hintIdx,
-          'item': item
+          "index": hintIdx,
+          "item": item
         });
         if (hintIdx === 0 && idx === 0) {
-          $item.addClass('active');
+          $item.addClass("active");
         }
         return $item;
       });
     }
-  }, {
-    key: "handleKeydown",
-    value: function handleKeydown(event) {
-      if (!this.$popover.is(':visible')) {
+    handleKeydown(event) {
+      if (!this.$popover.is(":visible")) {
         return;
       }
       if (event.keyCode === key.code.ENTER) {
@@ -8885,45 +6745,37 @@ var HintPopover = /*#__PURE__*/function () {
         this.moveDown();
       }
     }
-  }, {
-    key: "searchKeyword",
-    value: function searchKeyword(index, keyword, callback) {
-      var hint = this.hints[index];
+    searchKeyword(index, keyword, callback) {
+      const hint = this.hints[index];
       if (hint && hint.match.test(keyword) && hint.search) {
-        var matches = hint.match.exec(keyword);
+        const matches = hint.match.exec(keyword);
         this.matchingWord = matches[0];
         hint.search(matches[1], callback);
       } else {
         callback();
       }
     }
-  }, {
-    key: "createGroup",
-    value: function createGroup(idx, keyword) {
-      var _this3 = this;
-      var $group = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<div class="note-hint-group note-hint-group-' + idx + '"></div>');
-      this.searchKeyword(idx, keyword, function (items) {
+    createGroup(idx, keyword) {
+      const $group = $('<div class="note-hint-group note-hint-group-' + idx + '"></div>');
+      this.searchKeyword(idx, keyword, (items) => {
         items = items || [];
         if (items.length) {
-          $group.html(_this3.createItemTemplates(idx, items));
-          _this3.show();
+          $group.html(this.createItemTemplates(idx, items));
+          this.show();
         }
       });
       return $group;
     }
-  }, {
-    key: "handleKeyup",
-    value: function handleKeyup(event) {
-      var _this4 = this;
+    handleKeyup(event) {
       if (!lists.contains([key.code.ENTER, key.code.UP, key.code.DOWN], event.keyCode)) {
-        var _range = this.context.invoke('editor.getLastRange');
-        var wordRange, keyword;
-        if (this.options.hintMode === 'words') {
-          wordRange = _range.getWordsRange(_range);
+        let range2 = this.context.invoke("editor.getLastRange");
+        let wordRange, keyword;
+        if (this.options.hintMode === "words") {
+          wordRange = range2.getWordsRange(range2);
           keyword = wordRange.toString();
-          this.hints.forEach(function (hint) {
+          this.hints.forEach((hint) => {
             if (hint.match.test(keyword)) {
-              wordRange = _range.getWordsMatchRange(hint.match);
+              wordRange = range2.getWordsMatchRange(hint.match);
               return false;
             }
           });
@@ -8933,28 +6785,25 @@ var HintPopover = /*#__PURE__*/function () {
           }
           keyword = wordRange.toString();
         } else {
-          wordRange = _range.getWordRange();
+          wordRange = range2.getWordRange();
           keyword = wordRange.toString();
         }
         if (this.hints.length && keyword) {
           this.$content.empty();
-          var bnd = func.rect2bnd(lists.last(wordRange.getClientRects()));
-          var containerOffset = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this.options.container).offset();
+          const bnd = func.rect2bnd(lists.last(wordRange.getClientRects()));
+          const containerOffset = $(this.options.container).offset();
           if (bnd) {
             bnd.top -= containerOffset.top;
             bnd.left -= containerOffset.left;
             this.$popover.hide();
             this.lastWordRange = wordRange;
-            this.hints.forEach(function (hint, idx) {
+            this.hints.forEach((hint, idx) => {
               if (hint.match.test(keyword)) {
-                _this4.createGroup(idx, keyword).appendTo(_this4.$content);
+                this.createGroup(idx, keyword).appendTo(this.$content);
               }
             });
-            // select first .note-hint-item
-            this.$content.find('.note-hint-item').first().addClass('active');
-
-            // set position for popover after group is created
-            if (this.direction === 'top') {
+            this.$content.find(".note-hint-item").first().addClass("active");
+            if (this.direction === "top") {
               this.$popover.css({
                 left: bnd.left,
                 top: bnd.top - this.$popover.outerHeight() - POPOVER_DIST
@@ -8971,325 +6820,344 @@ var HintPopover = /*#__PURE__*/function () {
         }
       }
     }
-  }, {
-    key: "show",
-    value: function show() {
+    show() {
       this.$popover.show();
     }
-  }, {
-    key: "hide",
-    value: function hide() {
+    hide() {
       this.$popover.hide();
     }
-  }]);
-}();
-
-;// CONCATENATED MODULE: ./src/js/settings.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().extend((external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote, {
-  version: '0.9.1',
-  plugins: {},
-  dom: dom,
-  range: range,
-  lists: lists,
-  options: {
-    langInfo: (external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote.lang['en-US'],
-    editing: true,
-    modules: {
-      'editor': Editor,
-      'clipboard': Clipboard,
-      'dropzone': Dropzone,
-      'codeview': CodeView,
-      'statusbar': Statusbar,
-      'fullscreen': Fullscreen,
-      'handle': Handle,
-      // FIXME: HintPopover must be front of autolink
-      //  - Script error about range when Enter key is pressed on hint popover
-      'hintPopover': HintPopover,
-      'autoLink': AutoLink,
-      'autoSync': AutoSync,
-      'autoReplace': AutoReplace,
-      'placeholder': Placeholder,
-      'buttons': Buttons,
-      'toolbar': Toolbar,
-      'linkDialog': LinkDialog,
-      'linkPopover': LinkPopover,
-      'imageDialog': ImageDialog,
-      'imagePopover': ImagePopover,
-      'tablePopover': TablePopover,
-      'videoDialog': VideoDialog,
-      'helpDialog': HelpDialog,
-      'airPopover': AirPopover
-    },
-    buttons: {},
-    lang: 'en-US',
-    followingToolbar: false,
-    toolbarPosition: 'top',
-    otherStaticBar: '',
-    // toolbar
-    codeviewKeepButton: false,
-    toolbar: [['style', ['style']], ['font', ['bold', 'underline', 'clear']], ['fontname', ['fontname']], ['color', ['color']], ['para', ['ul', 'ol', 'paragraph']], ['table', ['table']], ['insert', ['link', 'picture', 'video']], ['view', ['fullscreen', 'codeview', 'help']]],
-    // popover
-    popatmouse: true,
-    popover: {
-      image: [['resize', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']], ['float', ['floatLeft', 'floatRight', 'floatNone']], ['remove', ['removeMedia']]],
-      link: [['link', ['linkDialogShow', 'unlink']]],
-      table: [['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']], ['delete', ['deleteRow', 'deleteCol', 'deleteTable']]],
-      air: [['color', ['color']], ['font', ['bold', 'underline', 'clear']], ['para', ['ul', 'paragraph']], ['table', ['table']], ['insert', ['link', 'picture']], ['view', ['fullscreen', 'codeview']]]
-    },
-    // link options
-    linkAddNoReferrer: false,
-    addLinkNoOpener: false,
-    // air mode: inline editor
-    airMode: false,
-    overrideContextMenu: false,
-    // TBD
-
-    width: null,
-    height: null,
-    linkTargetBlank: true,
-    focus: false,
-    tabDisable: false,
-    tabSize: 4,
-    styleWithCSS: false,
-    shortcuts: true,
-    textareaAutoSync: true,
-    tooltip: 'auto',
-    container: null,
-    maxTextLength: 0,
-    blockquoteBreakingLevel: 2,
-    spellCheck: true,
-    disableGrammar: false,
-    placeholder: null,
-    inheritPlaceholder: false,
-    // TODO: need to be documented
-    recordEveryKeystroke: false,
-    historyLimit: 200,
-    // TODO: need to be documented
-    showDomainOnlyForAutolink: false,
-    // TODO: need to be documented
-    hintMode: 'word',
-    hintSelect: 'after',
-    hintDirection: 'bottom',
-    styleTags: ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-    fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica Neue', 'Helvetica', 'Impact', 'Lucida Grande', 'Tahoma', 'Times New Roman', 'Verdana'],
-    fontNamesIgnoreCheck: [],
-    addDefaultFonts: true,
-    fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36'],
-    fontSizeUnits: ['px', 'pt'],
-    // pallete colors(n x n)
-    colors: [['#000000', '#424242', '#636363', '#9C9C94', '#CEC6CE', '#EFEFEF', '#F7F7F7', '#FFFFFF'], ['#FF0000', '#FF9C00', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF', '#9C00FF', '#FF00FF'], ['#F7C6CE', '#FFE7CE', '#FFEFC6', '#D6EFD6', '#CEDEE7', '#CEE7F7', '#D6D6E7', '#E7D6DE'], ['#E79C9C', '#FFC69C', '#FFE79C', '#B5D6A5', '#A5C6CE', '#9CC6EF', '#B5A5D6', '#D6A5BD'], ['#E76363', '#F7AD6B', '#FFD663', '#94BD7B', '#73A5AD', '#6BADDE', '#8C7BC6', '#C67BA5'], ['#CE0000', '#E79439', '#EFC631', '#6BA54A', '#4A7B8C', '#3984C6', '#634AA5', '#A54A7B'], ['#9C0000', '#B56308', '#BD9400', '#397B21', '#104A5A', '#085294', '#311873', '#731842'], ['#630000', '#7B3900', '#846300', '#295218', '#083139', '#003163', '#21104A', '#4A1031']],
-    // http://chir.ag/projects/name-that-color/
-    colorsName: [['Black', 'Tundora', 'Dove Gray', 'Star Dust', 'Pale Slate', 'Gallery', 'Alabaster', 'White'], ['Red', 'Orange Peel', 'Yellow', 'Green', 'Cyan', 'Blue', 'Electric Violet', 'Magenta'], ['Azalea', 'Karry', 'Egg White', 'Zanah', 'Botticelli', 'Tropical Blue', 'Mischka', 'Twilight'], ['Tonys Pink', 'Peach Orange', 'Cream Brulee', 'Sprout', 'Casper', 'Perano', 'Cold Purple', 'Careys Pink'], ['Mandy', 'Rajah', 'Dandelion', 'Olivine', 'Gulf Stream', 'Viking', 'Blue Marguerite', 'Puce'], ['Guardsman Red', 'Fire Bush', 'Golden Dream', 'Chelsea Cucumber', 'Smalt Blue', 'Boston Blue', 'Butterfly Bush', 'Cadillac'], ['Sangria', 'Mai Tai', 'Buddha Gold', 'Forest Green', 'Eden', 'Venice Blue', 'Meteorite', 'Claret'], ['Rosewood', 'Cinnamon', 'Olive', 'Parsley', 'Tiber', 'Midnight Blue', 'Valentino', 'Loulou']],
-    colorButton: {
-      foreColor: '#000000',
-      backColor: '#FFFF00'
-    },
-    lineHeights: ['1.0', '1.2', '1.4', '1.5', '1.6', '1.8', '2.0', '3.0'],
-    tableClassName: 'table table-bordered',
-    tableAttributes: 'border="1" cellpadding="0" cellspacing="0"',
-    tableAttrStyle: '',
-    insertTableMaxSize: {
-      col: 10,
-      row: 10
-    },
-    // By default, dialogs are attached in container.
-    dialogsInBody: false,
-    dialogsFade: false,
-    maximumImageFileSize: null,
-    acceptImageFileTypes: "image/*",
-    allowClipboardImagePasting: true,
-    callbacks: {
-      onBeforeCommand: null,
-      onBlur: null,
-      onBlurCodeview: null,
-      onChange: null,
-      onChangeCodeview: null,
-      onDialogShown: null,
-      onEnter: null,
-      onFocus: null,
-      onImageLinkInsert: null,
-      onImageUpload: null,
-      onImageUploadError: null,
-      onInit: null,
-      onKeydown: null,
-      onKeyup: null,
-      onMousedown: null,
-      onMouseup: null,
-      onPaste: null,
-      onScroll: null
-    },
-    codemirror: {
-      mode: 'text/html',
-      htmlMode: true,
-      lineNumbers: true
-    },
-    codeviewFilter: true,
-    codeviewFilterRegex: /<\/*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|ilayer|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|t(?:itle|extarea)|xml)[^>]*?>/gi,
-    codeviewIframeFilter: true,
-    codeviewIframeWhitelistSrc: [],
-    codeviewIframeWhitelistSrcBase: ['www.youtube.com', 'www.youtube-nocookie.com', 'www.facebook.com', 'vine.co', 'instagram.com', 'player.vimeo.com', 'www.dailymotion.com', 'player.youku.com', 'jumpingbean.tv', 'v.qq.com'],
-    keyMap: {
-      pc: {
-        'ESC': 'escape',
-        'ENTER': 'insertParagraph',
-        'CTRL+Z': 'undo',
-        'CTRL+Y': 'redo',
-        'TAB': 'tab',
-        'SHIFT+TAB': 'untab',
-        'CTRL+B': 'bold',
-        'CTRL+I': 'italic',
-        'CTRL+U': 'underline',
-        'CTRL+SHIFT+S': 'strikethrough',
-        'CTRL+BACKSLASH': 'removeFormat',
-        'CTRL+SHIFT+L': 'justifyLeft',
-        'CTRL+SHIFT+E': 'justifyCenter',
-        'CTRL+SHIFT+R': 'justifyRight',
-        'CTRL+SHIFT+J': 'justifyFull',
-        'CTRL+SHIFT+NUM7': 'insertUnorderedList',
-        'CTRL+SHIFT+NUM8': 'insertOrderedList',
-        'CTRL+LEFTBRACKET': 'outdent',
-        'CTRL+RIGHTBRACKET': 'indent',
-        'CTRL+NUM0': 'formatPara',
-        'CTRL+NUM1': 'formatH1',
-        'CTRL+NUM2': 'formatH2',
-        'CTRL+NUM3': 'formatH3',
-        'CTRL+NUM4': 'formatH4',
-        'CTRL+NUM5': 'formatH5',
-        'CTRL+NUM6': 'formatH6',
-        'CTRL+ENTER': 'insertHorizontalRule',
-        'CTRL+K': 'linkDialog.show'
+  }
+  $.summernote = $.extend($.summernote, {
+    version: "0.9.1",
+    plugins: {},
+    dom,
+    range,
+    lists,
+    options: {
+      langInfo: $.summernote.lang["en-US"],
+      editing: true,
+      modules: {
+        "editor": Editor,
+        "clipboard": Clipboard,
+        "dropzone": Dropzone,
+        "codeview": CodeView,
+        "statusbar": Statusbar,
+        "fullscreen": Fullscreen,
+        "handle": Handle,
+        // FIXME: HintPopover must be front of autolink
+        //  - Script error about range when Enter key is pressed on hint popover
+        "hintPopover": HintPopover,
+        "autoLink": AutoLink,
+        "autoSync": AutoSync,
+        "autoReplace": AutoReplace,
+        "placeholder": Placeholder,
+        "buttons": Buttons,
+        "toolbar": Toolbar,
+        "linkDialog": LinkDialog,
+        "linkPopover": LinkPopover,
+        "imageDialog": ImageDialog,
+        "imagePopover": ImagePopover,
+        "tablePopover": TablePopover,
+        "videoDialog": VideoDialog,
+        "helpDialog": HelpDialog,
+        "airPopover": AirPopover
       },
-      mac: {
-        'ESC': 'escape',
-        'ENTER': 'insertParagraph',
-        'CMD+Z': 'undo',
-        'CMD+SHIFT+Z': 'redo',
-        'TAB': 'tab',
-        'SHIFT+TAB': 'untab',
-        'CMD+B': 'bold',
-        'CMD+I': 'italic',
-        'CMD+U': 'underline',
-        'CMD+SHIFT+S': 'strikethrough',
-        'CMD+BACKSLASH': 'removeFormat',
-        'CMD+SHIFT+L': 'justifyLeft',
-        'CMD+SHIFT+E': 'justifyCenter',
-        'CMD+SHIFT+R': 'justifyRight',
-        'CMD+SHIFT+J': 'justifyFull',
-        'CMD+SHIFT+NUM7': 'insertUnorderedList',
-        'CMD+SHIFT+NUM8': 'insertOrderedList',
-        'CMD+LEFTBRACKET': 'outdent',
-        'CMD+RIGHTBRACKET': 'indent',
-        'CMD+NUM0': 'formatPara',
-        'CMD+NUM1': 'formatH1',
-        'CMD+NUM2': 'formatH2',
-        'CMD+NUM3': 'formatH3',
-        'CMD+NUM4': 'formatH4',
-        'CMD+NUM5': 'formatH5',
-        'CMD+NUM6': 'formatH6',
-        'CMD+ENTER': 'insertHorizontalRule',
-        'CMD+K': 'linkDialog.show'
+      buttons: {},
+      lang: "en-US",
+      followingToolbar: false,
+      toolbarPosition: "top",
+      otherStaticBar: "",
+      // toolbar
+      codeviewKeepButton: false,
+      toolbar: [
+        ["style", ["style"]],
+        ["font", ["bold", "underline", "clear"]],
+        ["fontname", ["fontname"]],
+        ["color", ["color"]],
+        ["para", ["ul", "ol", "paragraph"]],
+        ["table", ["table"]],
+        ["insert", ["link", "picture", "video"]],
+        ["view", ["fullscreen", "codeview", "help"]]
+      ],
+      // popover
+      popatmouse: true,
+      popover: {
+        image: [
+          ["resize", ["resizeFull", "resizeHalf", "resizeQuarter", "resizeNone"]],
+          ["float", ["floatLeft", "floatRight", "floatNone"]],
+          ["remove", ["removeMedia"]]
+        ],
+        link: [
+          ["link", ["linkDialogShow", "unlink"]]
+        ],
+        table: [
+          ["add", ["addRowDown", "addRowUp", "addColLeft", "addColRight"]],
+          ["delete", ["deleteRow", "deleteCol", "deleteTable"]]
+        ],
+        air: [
+          ["color", ["color"]],
+          ["font", ["bold", "underline", "clear"]],
+          ["para", ["ul", "paragraph"]],
+          ["table", ["table"]],
+          ["insert", ["link", "picture"]],
+          ["view", ["fullscreen", "codeview"]]
+        ]
+      },
+      // link options
+      linkAddNoReferrer: false,
+      addLinkNoOpener: false,
+      // air mode: inline editor
+      airMode: false,
+      overrideContextMenu: false,
+      // TBD
+      width: null,
+      height: null,
+      linkTargetBlank: true,
+      focus: false,
+      tabDisable: false,
+      tabSize: 4,
+      styleWithCSS: false,
+      shortcuts: true,
+      textareaAutoSync: true,
+      tooltip: "auto",
+      container: null,
+      maxTextLength: 0,
+      blockquoteBreakingLevel: 2,
+      spellCheck: true,
+      disableGrammar: false,
+      placeholder: null,
+      inheritPlaceholder: false,
+      // TODO: need to be documented
+      recordEveryKeystroke: false,
+      historyLimit: 200,
+      // TODO: need to be documented
+      showDomainOnlyForAutolink: false,
+      // TODO: need to be documented
+      hintMode: "word",
+      hintSelect: "after",
+      hintDirection: "bottom",
+      styleTags: ["p", "blockquote", "pre", "h1", "h2", "h3", "h4", "h5", "h6"],
+      fontNames: [
+        "Arial",
+        "Arial Black",
+        "Comic Sans MS",
+        "Courier New",
+        "Helvetica Neue",
+        "Helvetica",
+        "Impact",
+        "Lucida Grande",
+        "Tahoma",
+        "Times New Roman",
+        "Verdana"
+      ],
+      fontNamesIgnoreCheck: [],
+      addDefaultFonts: true,
+      fontSizes: ["8", "9", "10", "11", "12", "14", "18", "24", "36"],
+      fontSizeUnits: ["px", "pt"],
+      // pallete colors(n x n)
+      colors: [
+        ["#000000", "#424242", "#636363", "#9C9C94", "#CEC6CE", "#EFEFEF", "#F7F7F7", "#FFFFFF"],
+        ["#FF0000", "#FF9C00", "#FFFF00", "#00FF00", "#00FFFF", "#0000FF", "#9C00FF", "#FF00FF"],
+        ["#F7C6CE", "#FFE7CE", "#FFEFC6", "#D6EFD6", "#CEDEE7", "#CEE7F7", "#D6D6E7", "#E7D6DE"],
+        ["#E79C9C", "#FFC69C", "#FFE79C", "#B5D6A5", "#A5C6CE", "#9CC6EF", "#B5A5D6", "#D6A5BD"],
+        ["#E76363", "#F7AD6B", "#FFD663", "#94BD7B", "#73A5AD", "#6BADDE", "#8C7BC6", "#C67BA5"],
+        ["#CE0000", "#E79439", "#EFC631", "#6BA54A", "#4A7B8C", "#3984C6", "#634AA5", "#A54A7B"],
+        ["#9C0000", "#B56308", "#BD9400", "#397B21", "#104A5A", "#085294", "#311873", "#731842"],
+        ["#630000", "#7B3900", "#846300", "#295218", "#083139", "#003163", "#21104A", "#4A1031"]
+      ],
+      // http://chir.ag/projects/name-that-color/
+      colorsName: [
+        ["Black", "Tundora", "Dove Gray", "Star Dust", "Pale Slate", "Gallery", "Alabaster", "White"],
+        ["Red", "Orange Peel", "Yellow", "Green", "Cyan", "Blue", "Electric Violet", "Magenta"],
+        ["Azalea", "Karry", "Egg White", "Zanah", "Botticelli", "Tropical Blue", "Mischka", "Twilight"],
+        ["Tonys Pink", "Peach Orange", "Cream Brulee", "Sprout", "Casper", "Perano", "Cold Purple", "Careys Pink"],
+        ["Mandy", "Rajah", "Dandelion", "Olivine", "Gulf Stream", "Viking", "Blue Marguerite", "Puce"],
+        ["Guardsman Red", "Fire Bush", "Golden Dream", "Chelsea Cucumber", "Smalt Blue", "Boston Blue", "Butterfly Bush", "Cadillac"],
+        ["Sangria", "Mai Tai", "Buddha Gold", "Forest Green", "Eden", "Venice Blue", "Meteorite", "Claret"],
+        ["Rosewood", "Cinnamon", "Olive", "Parsley", "Tiber", "Midnight Blue", "Valentino", "Loulou"]
+      ],
+      colorButton: {
+        foreColor: "#000000",
+        backColor: "#FFFF00"
+      },
+      lineHeights: ["1.0", "1.2", "1.4", "1.5", "1.6", "1.8", "2.0", "3.0"],
+      tableClassName: "table table-bordered",
+      tableAttributes: 'border="1" cellpadding="0" cellspacing="0"',
+      tableAttrStyle: "",
+      insertTableMaxSize: {
+        col: 10,
+        row: 10
+      },
+      // By default, dialogs are attached in container.
+      dialogsInBody: false,
+      dialogsFade: false,
+      maximumImageFileSize: null,
+      acceptImageFileTypes: "image/*",
+      allowClipboardImagePasting: true,
+      callbacks: {
+        onBeforeCommand: null,
+        onBlur: null,
+        onBlurCodeview: null,
+        onChange: null,
+        onChangeCodeview: null,
+        onDialogShown: null,
+        onEnter: null,
+        onFocus: null,
+        onImageLinkInsert: null,
+        onImageUpload: null,
+        onImageUploadError: null,
+        onInit: null,
+        onKeydown: null,
+        onKeyup: null,
+        onMousedown: null,
+        onMouseup: null,
+        onPaste: null,
+        onScroll: null
+      },
+      codemirror: {
+        mode: "text/html",
+        htmlMode: true,
+        lineNumbers: true
+      },
+      codeviewFilter: true,
+      codeviewFilterRegex: /<\/*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|ilayer|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|t(?:itle|extarea)|xml)[^>]*?>/gi,
+      codeviewIframeFilter: true,
+      codeviewIframeWhitelistSrc: [],
+      codeviewIframeWhitelistSrcBase: [
+        "www.youtube.com",
+        "www.youtube-nocookie.com",
+        "www.facebook.com",
+        "vine.co",
+        "instagram.com",
+        "player.vimeo.com",
+        "www.dailymotion.com",
+        "player.youku.com",
+        "jumpingbean.tv",
+        "v.qq.com"
+      ],
+      keyMap: {
+        pc: {
+          "ESC": "escape",
+          "ENTER": "insertParagraph",
+          "CTRL+Z": "undo",
+          "CTRL+Y": "redo",
+          "TAB": "tab",
+          "SHIFT+TAB": "untab",
+          "CTRL+B": "bold",
+          "CTRL+I": "italic",
+          "CTRL+U": "underline",
+          "CTRL+SHIFT+S": "strikethrough",
+          "CTRL+BACKSLASH": "removeFormat",
+          "CTRL+SHIFT+L": "justifyLeft",
+          "CTRL+SHIFT+E": "justifyCenter",
+          "CTRL+SHIFT+R": "justifyRight",
+          "CTRL+SHIFT+J": "justifyFull",
+          "CTRL+SHIFT+NUM7": "insertUnorderedList",
+          "CTRL+SHIFT+NUM8": "insertOrderedList",
+          "CTRL+LEFTBRACKET": "outdent",
+          "CTRL+RIGHTBRACKET": "indent",
+          "CTRL+NUM0": "formatPara",
+          "CTRL+NUM1": "formatH1",
+          "CTRL+NUM2": "formatH2",
+          "CTRL+NUM3": "formatH3",
+          "CTRL+NUM4": "formatH4",
+          "CTRL+NUM5": "formatH5",
+          "CTRL+NUM6": "formatH6",
+          "CTRL+ENTER": "insertHorizontalRule",
+          "CTRL+K": "linkDialog.show"
+        },
+        mac: {
+          "ESC": "escape",
+          "ENTER": "insertParagraph",
+          "CMD+Z": "undo",
+          "CMD+SHIFT+Z": "redo",
+          "TAB": "tab",
+          "SHIFT+TAB": "untab",
+          "CMD+B": "bold",
+          "CMD+I": "italic",
+          "CMD+U": "underline",
+          "CMD+SHIFT+S": "strikethrough",
+          "CMD+BACKSLASH": "removeFormat",
+          "CMD+SHIFT+L": "justifyLeft",
+          "CMD+SHIFT+E": "justifyCenter",
+          "CMD+SHIFT+R": "justifyRight",
+          "CMD+SHIFT+J": "justifyFull",
+          "CMD+SHIFT+NUM7": "insertUnorderedList",
+          "CMD+SHIFT+NUM8": "insertOrderedList",
+          "CMD+LEFTBRACKET": "outdent",
+          "CMD+RIGHTBRACKET": "indent",
+          "CMD+NUM0": "formatPara",
+          "CMD+NUM1": "formatH1",
+          "CMD+NUM2": "formatH2",
+          "CMD+NUM3": "formatH3",
+          "CMD+NUM4": "formatH4",
+          "CMD+NUM5": "formatH5",
+          "CMD+NUM6": "formatH6",
+          "CMD+ENTER": "insertHorizontalRule",
+          "CMD+K": "linkDialog.show"
+        }
+      },
+      icons: {
+        "align": "note-icon-align",
+        "alignCenter": "note-icon-align-center",
+        "alignJustify": "note-icon-align-justify",
+        "alignLeft": "note-icon-align-left",
+        "alignRight": "note-icon-align-right",
+        "rowBelow": "note-icon-row-below",
+        "colBefore": "note-icon-col-before",
+        "colAfter": "note-icon-col-after",
+        "rowAbove": "note-icon-row-above",
+        "rowRemove": "note-icon-row-remove",
+        "colRemove": "note-icon-col-remove",
+        "indent": "note-icon-align-indent",
+        "outdent": "note-icon-align-outdent",
+        "arrowsAlt": "note-icon-arrows-alt",
+        "arrowsH": "note-icon-arrows-h",
+        "bold": "note-icon-bold",
+        "caret": "note-icon-caret",
+        "circle": "note-icon-circle",
+        "close": "note-icon-close",
+        "code": "note-icon-code",
+        "eraser": "note-icon-eraser",
+        "floatLeft": "note-icon-float-left",
+        "floatRight": "note-icon-float-right",
+        "font": "note-icon-font",
+        "frame": "note-icon-frame",
+        "italic": "note-icon-italic",
+        "link": "note-icon-link",
+        "unlink": "note-icon-chain-broken",
+        "magic": "note-icon-magic",
+        "menuCheck": "note-icon-menu-check",
+        "minus": "note-icon-minus",
+        "orderedlist": "note-icon-orderedlist",
+        "pencil": "note-icon-pencil",
+        "picture": "note-icon-picture",
+        "question": "note-icon-question",
+        "redo": "note-icon-redo",
+        "rollback": "note-icon-rollback",
+        "square": "note-icon-square",
+        "strikethrough": "note-icon-strikethrough",
+        "subscript": "note-icon-subscript",
+        "superscript": "note-icon-superscript",
+        "table": "note-icon-table",
+        "textHeight": "note-icon-text-height",
+        "trash": "note-icon-trash",
+        "underline": "note-icon-underline",
+        "undo": "note-icon-undo",
+        "unorderedlist": "note-icon-unorderedlist",
+        "video": "note-icon-video"
       }
-    },
-    icons: {
-      'align': 'note-icon-align',
-      'alignCenter': 'note-icon-align-center',
-      'alignJustify': 'note-icon-align-justify',
-      'alignLeft': 'note-icon-align-left',
-      'alignRight': 'note-icon-align-right',
-      'rowBelow': 'note-icon-row-below',
-      'colBefore': 'note-icon-col-before',
-      'colAfter': 'note-icon-col-after',
-      'rowAbove': 'note-icon-row-above',
-      'rowRemove': 'note-icon-row-remove',
-      'colRemove': 'note-icon-col-remove',
-      'indent': 'note-icon-align-indent',
-      'outdent': 'note-icon-align-outdent',
-      'arrowsAlt': 'note-icon-arrows-alt',
-      'arrowsH': 'note-icon-arrows-h',
-      'bold': 'note-icon-bold',
-      'caret': 'note-icon-caret',
-      'circle': 'note-icon-circle',
-      'close': 'note-icon-close',
-      'code': 'note-icon-code',
-      'eraser': 'note-icon-eraser',
-      'floatLeft': 'note-icon-float-left',
-      'floatRight': 'note-icon-float-right',
-      'font': 'note-icon-font',
-      'frame': 'note-icon-frame',
-      'italic': 'note-icon-italic',
-      'link': 'note-icon-link',
-      'unlink': 'note-icon-chain-broken',
-      'magic': 'note-icon-magic',
-      'menuCheck': 'note-icon-menu-check',
-      'minus': 'note-icon-minus',
-      'orderedlist': 'note-icon-orderedlist',
-      'pencil': 'note-icon-pencil',
-      'picture': 'note-icon-picture',
-      'question': 'note-icon-question',
-      'redo': 'note-icon-redo',
-      'rollback': 'note-icon-rollback',
-      'square': 'note-icon-square',
-      'strikethrough': 'note-icon-strikethrough',
-      'subscript': 'note-icon-subscript',
-      'superscript': 'note-icon-superscript',
-      'table': 'note-icon-table',
-      'textHeight': 'note-icon-text-height',
-      'trash': 'note-icon-trash',
-      'underline': 'note-icon-underline',
-      'undo': 'note-icon-undo',
-      'unorderedlist': 'note-icon-unorderedlist',
-      'video': 'note-icon-video'
     }
-  }
-});
-;// CONCATENATED MODULE: ./src/js/renderer.js
-function renderer_typeof(o) { "@babel/helpers - typeof"; return renderer_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, renderer_typeof(o); }
-function renderer_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function renderer_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, renderer_toPropertyKey(o.key), o); } }
-function renderer_createClass(e, r, t) { return r && renderer_defineProperties(e.prototype, r), t && renderer_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function renderer_toPropertyKey(t) { var i = renderer_toPrimitive(t, "string"); return "symbol" == renderer_typeof(i) ? i : i + ""; }
-function renderer_toPrimitive(t, r) { if ("object" != renderer_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != renderer_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-var Renderer = /*#__PURE__*/function () {
-  function Renderer(markup, children, options, callback) {
-    renderer_classCallCheck(this, Renderer);
-    this.markup = markup;
-    this.children = children;
-    this.options = options;
-    this.callback = callback;
-  }
-  return renderer_createClass(Renderer, [{
-    key: "render",
-    value: function render($parent) {
-      var $node = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this.markup);
+  });
+  class Renderer {
+    constructor(markup, children, options, callback) {
+      this.markup = markup;
+      this.children = children;
+      this.options = options;
+      this.callback = callback;
+    }
+    render($parent) {
+      const $node = $(this.markup);
       if (this.options && this.options.contents) {
         $node.html(this.options.contents);
       }
@@ -9297,16 +7165,16 @@ var Renderer = /*#__PURE__*/function () {
         $node.addClass(this.options.className);
       }
       if (this.options && this.options.data) {
-        external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().each(this.options.data, function (k, v) {
-          $node.attr('data-' + k, v);
+        $.each(this.options.data, (k, v) => {
+          $node.attr("data-" + k, v);
         });
       }
       if (this.options && this.options.click) {
-        $node.on('click', this.options.click);
+        $node.on("click", this.options.click);
       }
       if (this.children) {
-        var $container = $node.find('.note-children-container');
-        this.children.forEach(function (child) {
+        const $container = $node.find(".note-children-container");
+        this.children.forEach((child) => {
           child.render($container.length ? $container : $node);
         });
       }
@@ -9321,180 +7189,142 @@ var Renderer = /*#__PURE__*/function () {
       }
       return $node;
     }
-  }]);
-}();
-/* harmony default export */ const renderer = ({
-  create: function create(markup, callback) {
-    return function () {
-      var options = renderer_typeof(arguments[1]) === 'object' ? arguments[1] : arguments[0];
-      var children = Array.isArray(arguments[0]) ? arguments[0] : [];
-      if (options && options.children) {
-        children = options.children;
-      }
-      return new Renderer(markup, children, options, callback);
-    };
   }
-});
-;// CONCATENATED MODULE: ./src/styles/lite/js/TooltipUI.js
-function TooltipUI_typeof(o) { "@babel/helpers - typeof"; return TooltipUI_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, TooltipUI_typeof(o); }
-function TooltipUI_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function TooltipUI_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, TooltipUI_toPropertyKey(o.key), o); } }
-function TooltipUI_createClass(e, r, t) { return r && TooltipUI_defineProperties(e.prototype, r), t && TooltipUI_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function TooltipUI_toPropertyKey(t) { var i = TooltipUI_toPrimitive(t, "string"); return "symbol" == TooltipUI_typeof(i) ? i : i + ""; }
-function TooltipUI_toPrimitive(t, r) { if ("object" != TooltipUI_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != TooltipUI_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-var TooltipUI = /*#__PURE__*/function () {
-  function TooltipUI($node, options) {
-    TooltipUI_classCallCheck(this, TooltipUI);
-    this.$node = $node;
-    this.options = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().extend({}, {
-      title: '',
-      target: options.container,
-      trigger: 'hover focus',
-      placement: 'bottom'
-    }, options);
-
-    // create tooltip node
-    this.$tooltip = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(['<div class="note-tooltip">', '<div class="note-tooltip-arrow"></div>', '<div class="note-tooltip-content"></div>', '</div>'].join(''));
-
-    // define event
-    if (this.options.trigger !== 'manual') {
-      var showCallback = this.show.bind(this);
-      var hideCallback = this.hide.bind(this);
-      var toggleCallback = this.toggle.bind(this);
-      this.options.trigger.split(' ').forEach(function (eventName) {
-        if (eventName === 'hover') {
-          $node.off('mouseenter mouseleave');
-          $node.on('mouseenter', showCallback).on('mouseleave', hideCallback);
-        } else if (eventName === 'click') {
-          $node.on('click', toggleCallback);
-        } else if (eventName === 'focus') {
-          $node.on('focus', showCallback).on('blur', hideCallback);
+  const renderer = {
+    create: (markup, callback) => {
+      return function() {
+        const options = typeof arguments[1] === "object" ? arguments[1] : arguments[0];
+        let children = Array.isArray(arguments[0]) ? arguments[0] : [];
+        if (options && options.children) {
+          children = options.children;
         }
-      });
+        return new Renderer(markup, children, options, callback);
+      };
     }
-  }
-  return TooltipUI_createClass(TooltipUI, [{
-    key: "show",
-    value: function show() {
-      var $node = this.$node;
-      var offset = $node.offset();
-      var targetOffset = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this.options.target).offset();
+  };
+  class TooltipUI {
+    constructor($node, options) {
+      this.$node = $node;
+      this.options = $.extend({}, {
+        title: "",
+        target: options.container,
+        trigger: "hover focus",
+        placement: "bottom"
+      }, options);
+      this.$tooltip = $([
+        '<div class="note-tooltip">',
+        '<div class="note-tooltip-arrow"></div>',
+        '<div class="note-tooltip-content"></div>',
+        "</div>"
+      ].join(""));
+      if (this.options.trigger !== "manual") {
+        const showCallback = this.show.bind(this);
+        const hideCallback = this.hide.bind(this);
+        const toggleCallback = this.toggle.bind(this);
+        this.options.trigger.split(" ").forEach(function(eventName) {
+          if (eventName === "hover") {
+            $node.off("mouseenter mouseleave");
+            $node.on("mouseenter", showCallback).on("mouseleave", hideCallback);
+          } else if (eventName === "click") {
+            $node.on("click", toggleCallback);
+          } else if (eventName === "focus") {
+            $node.on("focus", showCallback).on("blur", hideCallback);
+          }
+        });
+      }
+    }
+    show() {
+      const $node = this.$node;
+      const offset = $node.offset();
+      const targetOffset = $(this.options.target).offset();
       offset.top -= targetOffset.top;
       offset.left -= targetOffset.left;
-      var $tooltip = this.$tooltip;
-      var title = this.options.title || $node.attr('title') || $node.data('title');
-      var placement = this.options.placement || $node.data('placement');
+      const $tooltip = this.$tooltip;
+      const title = this.options.title || $node.attr("title") || $node.data("title");
+      const placement = this.options.placement || $node.data("placement");
       $tooltip.addClass(placement);
-      $tooltip.find('.note-tooltip-content').text(title);
+      $tooltip.find(".note-tooltip-content").text(title);
       $tooltip.appendTo(this.options.target);
-      var nodeWidth = $node.outerWidth();
-      var nodeHeight = $node.outerHeight();
-      var tooltipWidth = $tooltip.outerWidth();
-      var tooltipHeight = $tooltip.outerHeight();
-      if (placement === 'bottom') {
+      const nodeWidth = $node.outerWidth();
+      const nodeHeight = $node.outerHeight();
+      const tooltipWidth = $tooltip.outerWidth();
+      const tooltipHeight = $tooltip.outerHeight();
+      if (placement === "bottom") {
         $tooltip.css({
           top: offset.top + nodeHeight,
           left: offset.left + (nodeWidth / 2 - tooltipWidth / 2)
         });
-      } else if (placement === 'top') {
+      } else if (placement === "top") {
         $tooltip.css({
           top: offset.top - tooltipHeight,
           left: offset.left + (nodeWidth / 2 - tooltipWidth / 2)
         });
-      } else if (placement === 'left') {
+      } else if (placement === "left") {
         $tooltip.css({
           top: offset.top + (nodeHeight / 2 - tooltipHeight / 2),
           left: offset.left - tooltipWidth
         });
-      } else if (placement === 'right') {
+      } else if (placement === "right") {
         $tooltip.css({
           top: offset.top + (nodeHeight / 2 - tooltipHeight / 2),
           left: offset.left + nodeWidth
         });
       }
-      $tooltip.addClass('in');
+      $tooltip.addClass("in");
     }
-  }, {
-    key: "hide",
-    value: function hide() {
-      var _this = this;
-      this.$tooltip.removeClass('in');
-      setTimeout(function () {
-        _this.$tooltip.remove();
+    hide() {
+      this.$tooltip.removeClass("in");
+      setTimeout(() => {
+        this.$tooltip.remove();
       }, 200);
     }
-  }, {
-    key: "toggle",
-    value: function toggle() {
-      if (this.$tooltip.hasClass('in')) {
+    toggle() {
+      if (this.$tooltip.hasClass("in")) {
         this.hide();
       } else {
         this.show();
       }
     }
-  }]);
-}();
-/* harmony default export */ const js_TooltipUI = (TooltipUI);
-;// CONCATENATED MODULE: ./src/styles/lite/js/DropdownUI.js
-function DropdownUI_typeof(o) { "@babel/helpers - typeof"; return DropdownUI_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, DropdownUI_typeof(o); }
-function DropdownUI_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function DropdownUI_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, DropdownUI_toPropertyKey(o.key), o); } }
-function DropdownUI_createClass(e, r, t) { return r && DropdownUI_defineProperties(e.prototype, r), t && DropdownUI_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function DropdownUI_toPropertyKey(t) { var i = DropdownUI_toPrimitive(t, "string"); return "symbol" == DropdownUI_typeof(i) ? i : i + ""; }
-function DropdownUI_toPrimitive(t, r) { if ("object" != DropdownUI_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != DropdownUI_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-var DropdownUI = /*#__PURE__*/function () {
-  function DropdownUI($node, options) {
-    DropdownUI_classCallCheck(this, DropdownUI);
-    this.$button = $node;
-    this.options = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().extend({}, {
-      target: options.container
-    }, options);
-    this.setEvent();
   }
-  return DropdownUI_createClass(DropdownUI, [{
-    key: "setEvent",
-    value: function setEvent() {
-      var _this = this;
-      this.$button.on('click', function (e) {
-        _this.toggle();
+  class DropdownUI {
+    constructor($node, options) {
+      this.$button = $node;
+      this.options = $.extend({}, {
+        target: options.container
+      }, options);
+      this.setEvent();
+    }
+    setEvent() {
+      this.$button.on("click", (e) => {
+        this.toggle();
         e.stopImmediatePropagation();
       });
     }
-  }, {
-    key: "clear",
-    value: function clear() {
-      var $parent = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('.note-btn-group.open');
-      $parent.find('.note-btn.active').removeClass('active');
-      $parent.removeClass('open');
+    clear() {
+      var $parent = $(".note-btn-group.open");
+      $parent.find(".note-btn.active").removeClass("active");
+      $parent.removeClass("open");
     }
-  }, {
-    key: "show",
-    value: function show() {
-      this.$button.addClass('active');
-      this.$button.parent().addClass('open');
+    show() {
+      this.$button.addClass("active");
+      this.$button.parent().addClass("open");
       var $dropdown = this.$button.next();
       var offset = $dropdown.offset();
       var width = $dropdown.outerWidth();
-      var windowWidth = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(window).width();
-      var targetMarginRight = parseFloat(external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this.options.target).css('margin-right'));
+      var windowWidth = $(window).width();
+      var targetMarginRight = parseFloat($(this.options.target).css("margin-right"));
       if (offset.left + width > windowWidth - targetMarginRight) {
-        $dropdown.css('margin-left', windowWidth - targetMarginRight - (offset.left + width));
+        $dropdown.css("margin-left", windowWidth - targetMarginRight - (offset.left + width));
       } else {
-        $dropdown.css('margin-left', '');
+        $dropdown.css("margin-left", "");
       }
     }
-  }, {
-    key: "hide",
-    value: function hide() {
-      this.$button.removeClass('active');
-      this.$button.parent().removeClass('open');
+    hide() {
+      this.$button.removeClass("active");
+      this.$button.parent().removeClass("open");
     }
-  }, {
-    key: "toggle",
-    value: function toggle() {
-      var isOpened = this.$button.parent().hasClass('open');
+    toggle() {
+      var isOpened = this.$button.parent().hasClass("open");
       this.clear();
       if (isOpened) {
         this.hide();
@@ -9502,521 +7332,652 @@ var DropdownUI = /*#__PURE__*/function () {
         this.show();
       }
     }
-  }]);
-}();
-external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(document).on('click.note-dropdown-menu', function (e) {
-  if (!external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(e.target).closest('.note-btn-group').length) {
-    external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('.note-btn-group.open .note-btn.active').removeClass('active');
-    external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('.note-btn-group.open').removeClass('open');
   }
-});
-external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(document).on('click.note-dropdown-menu', function (e) {
-  external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(e.target).closest('.note-dropdown-menu').parent().removeClass('open');
-  external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(e.target).closest('.note-dropdown-menu').parent().find('.note-btn.active').removeClass('active');
-});
-/* harmony default export */ const js_DropdownUI = (DropdownUI);
-;// CONCATENATED MODULE: ./src/styles/lite/js/ModalUI.js
-function ModalUI_typeof(o) { "@babel/helpers - typeof"; return ModalUI_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, ModalUI_typeof(o); }
-function ModalUI_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function ModalUI_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, ModalUI_toPropertyKey(o.key), o); } }
-function ModalUI_createClass(e, r, t) { return r && ModalUI_defineProperties(e.prototype, r), t && ModalUI_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function ModalUI_toPropertyKey(t) { var i = ModalUI_toPrimitive(t, "string"); return "symbol" == ModalUI_typeof(i) ? i : i + ""; }
-function ModalUI_toPrimitive(t, r) { if ("object" != ModalUI_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != ModalUI_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-var ModalUI = /*#__PURE__*/function () {
-  function ModalUI($node /*, options */) {
-    ModalUI_classCallCheck(this, ModalUI);
-    this.$modal = $node;
-    this.$backdrop = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<div class="note-modal-backdrop"></div>');
-  }
-  return ModalUI_createClass(ModalUI, [{
-    key: "show",
-    value: function show() {
-      var _this = this;
+  $(document).on("click.note-dropdown-menu", function(e) {
+    if (!$(e.target).closest(".note-btn-group").length) {
+      $(".note-btn-group.open .note-btn.active").removeClass("active");
+      $(".note-btn-group.open").removeClass("open");
+    }
+  });
+  $(document).on("click.note-dropdown-menu", function(e) {
+    $(e.target).closest(".note-dropdown-menu").parent().removeClass("open");
+    $(e.target).closest(".note-dropdown-menu").parent().find(".note-btn.active").removeClass("active");
+  });
+  class ModalUI {
+    constructor($node) {
+      this.$modal = $node;
+      this.$backdrop = $('<div class="note-modal-backdrop"></div>');
+    }
+    show() {
       this.$backdrop.appendTo(document.body).show();
-      this.$modal.addClass('open').show();
-      this.$modal.trigger('note.modal.show');
-      this.$modal.off('click', '.note-close').on('click', '.note-close', this.hide.bind(this));
-      this.$modal.on('keydown', function (event) {
+      this.$modal.addClass("open").show();
+      this.$modal.trigger("note.modal.show");
+      this.$modal.off("click", ".note-close").on("click", ".note-close", this.hide.bind(this));
+      this.$modal.on("keydown", (event) => {
         if (event.which === 27) {
           event.preventDefault();
-          _this.hide();
+          this.hide();
         }
       });
     }
-  }, {
-    key: "hide",
-    value: function hide() {
-      this.$modal.removeClass('open').hide();
+    hide() {
+      this.$modal.removeClass("open").hide();
       this.$backdrop.hide();
-      this.$modal.trigger('note.modal.hide');
-      this.$modal.off('keydown');
+      this.$modal.trigger("note.modal.hide");
+      this.$modal.off("keydown");
     }
-  }]);
-}();
-/* harmony default export */ const js_ModalUI = (ModalUI);
-;// CONCATENATED MODULE: ./src/styles/lite/summernote-lite.js
-
-
-
-
-
-
-
-var editor = renderer.create('<div class="note-editor note-frame"></div>');
-var toolbar = renderer.create('<div class="note-toolbar" role="toolbar"></div>');
-var editingArea = renderer.create('<div class="note-editing-area"></div>');
-var codable = renderer.create('<textarea class="note-codable" aria-multiline="true"></textarea>');
-var editable = renderer.create('<div class="note-editable" contentEditable="true" role="textbox" aria-multiline="true"></div>');
-var statusbar = renderer.create(['<output class="note-status-output" role="status" aria-live="polite"></output>', '<div class="note-statusbar" role="status">', '<div class="note-resizebar" aria-label="resize">', '<div class="note-icon-bar"></div>', '<div class="note-icon-bar"></div>', '<div class="note-icon-bar"></div>', '</div>', '</div>'].join(''));
-var airEditor = renderer.create('<div class="note-editor note-airframe"></div>');
-var airEditable = renderer.create(['<div class="note-editable" contentEditable="true" role="textbox" aria-multiline="true"></div>', '<output class="note-status-output" role="status" aria-live="polite"></output>'].join(''));
-var buttonGroup = renderer.create('<div class="note-btn-group"></div>');
-var summernote_lite_button = renderer.create('<button type="button" class="note-btn" tabindex="-1"></button>', function ($node, options) {
-  // set button type
-  if (options && options.tooltip) {
-    $node.attr({
-      'aria-label': options.tooltip
-    });
-    $node.data('_lite_tooltip', new js_TooltipUI($node, {
-      title: options.tooltip,
-      container: options.container
-    })).on('click', function (e) {
-      external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(e.currentTarget).data('_lite_tooltip').hide();
-    });
   }
-  if (options.contents) {
-    $node.html(options.contents);
-  }
-  if (options && options.data && options.data.toggle === 'dropdown') {
-    $node.data('_lite_dropdown', new js_DropdownUI($node, {
-      container: options.container
-    }));
-  }
-  if (options && options.codeviewKeepButton) {
-    $node.addClass('note-codeview-keep');
-  }
-});
-var dropdown = renderer.create('<div class="note-dropdown-menu" role="list"></div>', function ($node, options) {
-  var markup = Array.isArray(options.items) ? options.items.map(function (item) {
-    var value = typeof item === 'string' ? item : item.value || '';
-    var content = options.template ? options.template(item) : item;
-    var $temp = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<a class="note-dropdown-item" href="#" data-value="' + value + '" role="listitem" aria-label="' + value + '"></a>');
-    $temp.html(content).data('item', item);
-    return $temp;
-  }) : options.items;
-  $node.html(markup).attr({
-    'aria-label': options.title
-  });
-  $node.on('click', '> .note-dropdown-item', function (e) {
-    var $a = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this);
-    var item = $a.data('item');
-    var value = $a.data('value');
-    if (item.click) {
-      item.click($a);
-    } else if (options.itemClick) {
-      options.itemClick(e, item, value);
-    }
-  });
-  if (options && options.codeviewKeepButton) {
-    $node.addClass('note-codeview-keep');
-  }
-});
-var dropdownCheck = renderer.create('<div class="note-dropdown-menu note-check" role="list"></div>', function ($node, options) {
-  var markup = Array.isArray(options.items) ? options.items.map(function (item) {
-    var value = typeof item === 'string' ? item : item.value || '';
-    var content = options.template ? options.template(item) : item;
-    var $temp = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()('<a class="note-dropdown-item" href="#" data-value="' + value + '" role="listitem" aria-label="' + item + '"></a>');
-    $temp.html([icon(options.checkClassName), ' ', content]).data('item', item);
-    return $temp;
-  }) : options.items;
-  $node.html(markup).attr({
-    'aria-label': options.title
-  });
-  $node.on('click', '> .note-dropdown-item', function (e) {
-    var $a = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this);
-    var item = $a.data('item');
-    var value = $a.data('value');
-    if (item.click) {
-      item.click($a);
-    } else if (options.itemClick) {
-      options.itemClick(e, item, value);
-    }
-  });
-  if (options && options.codeviewKeepButton) {
-    $node.addClass('note-codeview-keep');
-  }
-});
-var dropdownButtonContents = function dropdownButtonContents(contents, options) {
-  return contents + ' ' + icon(options.icons.caret, 'span');
-};
-var dropdownButton = function dropdownButton(opt, callback) {
-  return buttonGroup([summernote_lite_button({
-    className: 'dropdown-toggle',
-    contents: opt.title + ' ' + icon('note-icon-caret'),
-    tooltip: opt.tooltip,
-    data: {
-      toggle: 'dropdown'
-    }
-  }), dropdown({
-    className: opt.className,
-    items: opt.items,
-    template: opt.template,
-    itemClick: opt.itemClick
-  })], {
-    callback: callback
-  }).render();
-};
-var dropdownCheckButton = function dropdownCheckButton(opt, callback) {
-  return buttonGroup([summernote_lite_button({
-    className: 'dropdown-toggle',
-    contents: opt.title + ' ' + icon('note-icon-caret'),
-    tooltip: opt.tooltip,
-    data: {
-      toggle: 'dropdown'
-    }
-  }), dropdownCheck({
-    className: opt.className,
-    checkClassName: opt.checkClassName,
-    items: opt.items,
-    template: opt.template,
-    itemClick: opt.itemClick
-  })], {
-    callback: callback
-  }).render();
-};
-var paragraphDropdownButton = function paragraphDropdownButton(opt) {
-  return buttonGroup([summernote_lite_button({
-    className: 'dropdown-toggle',
-    contents: opt.title + ' ' + icon('note-icon-caret'),
-    tooltip: opt.tooltip,
-    data: {
-      toggle: 'dropdown'
-    }
-  }), dropdown([buttonGroup({
-    className: 'note-align',
-    children: opt.items[0]
-  }), buttonGroup({
-    className: 'note-list',
-    children: opt.items[1]
-  })])]).render();
-};
-var tableMoveHandler = function tableMoveHandler(event, col, row) {
-  var PX_PER_EM = 18;
-  var $picker = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(event.target.parentNode); // target is mousecatcher
-  var $dimensionDisplay = $picker.next();
-  var $catcher = $picker.find('.note-dimension-picker-mousecatcher');
-  var $highlighted = $picker.find('.note-dimension-picker-highlighted');
-  var $unhighlighted = $picker.find('.note-dimension-picker-unhighlighted');
-  var posOffset;
-  // HTML5 with jQuery - e.offsetX is undefined in Firefox
-  if (event.offsetX === undefined) {
-    var posCatcher = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(event.target).offset();
-    posOffset = {
-      x: event.pageX - posCatcher.left,
-      y: event.pageY - posCatcher.top
-    };
-  } else {
-    posOffset = {
-      x: event.offsetX,
-      y: event.offsetY
-    };
-  }
-  var dim = {
-    c: Math.ceil(posOffset.x / PX_PER_EM) || 1,
-    r: Math.ceil(posOffset.y / PX_PER_EM) || 1
-  };
-  $highlighted.css({
-    width: dim.c + 'em',
-    height: dim.r + 'em'
-  });
-  $catcher.data('value', dim.c + 'x' + dim.r);
-  if (dim.c > 3 && dim.c < col) {
-    $unhighlighted.css({
-      width: dim.c + 1 + 'em'
-    });
-  }
-  if (dim.r > 3 && dim.r < row) {
-    $unhighlighted.css({
-      height: dim.r + 1 + 'em'
-    });
-  }
-  $dimensionDisplay.html(dim.c + ' x ' + dim.r);
-};
-var tableDropdownButton = function tableDropdownButton(opt) {
-  return buttonGroup([summernote_lite_button({
-    className: 'dropdown-toggle',
-    contents: opt.title + ' ' + icon('note-icon-caret'),
-    tooltip: opt.tooltip,
-    data: {
-      toggle: 'dropdown'
-    }
-  }), dropdown({
-    className: 'note-table',
-    items: ['<div class="note-dimension-picker">', '<div class="note-dimension-picker-mousecatcher" data-event="insertTable" data-value="1x1"></div>', '<div class="note-dimension-picker-highlighted"></div>', '<div class="note-dimension-picker-unhighlighted"></div>', '</div>', '<div class="note-dimension-display">1 x 1</div>'].join('')
-  })], {
-    callback: function callback($node) {
-      var $catcher = $node.find('.note-dimension-picker-mousecatcher');
-      $catcher.css({
-        width: opt.col + 'em',
-        height: opt.row + 'em'
-      }).on('mouseup', opt.itemClick).on('mousemove', function (e) {
-        tableMoveHandler(e, opt.col, opt.row);
-      });
-    }
-  }).render();
-};
-var palette = renderer.create('<div class="note-color-palette"></div>', function ($node, options) {
-  var contents = [];
-  for (var row = 0, rowSize = options.colors.length; row < rowSize; row++) {
-    var eventName = options.eventName;
-    var colors = options.colors[row];
-    var colorsName = options.colorsName[row];
-    var buttons = [];
-    for (var col = 0, colSize = colors.length; col < colSize; col++) {
-      var color = colors[col];
-      var colorName = colorsName[col];
-      buttons.push(['<button type="button" class="note-btn note-color-btn"', 'style="background-color:', color, '" ', 'data-event="', eventName, '" ', 'data-value="', color, '" ', 'data-title="', colorName, '" ', 'aria-label="', colorName, '" ', 'data-toggle="button" tabindex="-1"></button>'].join(''));
-    }
-    contents.push('<div class="note-color-row">' + buttons.join('') + '</div>');
-  }
-  $node.html(contents.join(''));
-  $node.find('.note-color-btn').each(function () {
-    external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this).data('_lite_tooltip', new js_TooltipUI(external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this), {
-      container: options.container
-    }));
-  });
-});
-var colorDropdownButton = function colorDropdownButton(opt, type) {
-  return buttonGroup({
-    className: 'note-color',
-    children: [summernote_lite_button({
-      className: 'note-current-color-button',
-      contents: opt.title,
-      tooltip: opt.lang.color.recent,
-      click: opt.currentClick,
-      callback: function callback($button) {
-        var $recentColor = $button.find('.note-recent-color');
-        if (type !== 'foreColor') {
-          $recentColor.css('background-color', '#FFFF00');
-          $button.attr('data-backColor', '#FFFF00');
-        }
-      }
-    }), summernote_lite_button({
-      className: 'dropdown-toggle',
-      contents: icon('note-icon-caret'),
-      tooltip: opt.lang.color.more,
-      data: {
-        toggle: 'dropdown'
-      }
-    }), dropdown({
-      items: ['<div>', '<div class="note-btn-group btn-background-color">', '<div class="note-palette-title">' + opt.lang.color.background + '</div>', '<div>', '<button type="button" class="note-color-reset note-btn note-btn-block" data-event="backColor" data-value="transparent">', opt.lang.color.transparent, '</button>', '</div>', '<div class="note-holder" data-event="backColor"></div>', '<div class="btn-sm">', '<input type="color" id="html5bcp" class="note-btn btn-default" value="#21104A" style="width:100%;" data-value="cp">', '<button type="button" class="note-color-reset btn" data-event="backColor" data-value="cpbackColor">', opt.lang.color.cpSelect, '</button>', '</div>', '</div>', '<div class="note-btn-group btn-foreground-color">', '<div class="note-palette-title">' + opt.lang.color.foreground + '</div>', '<div>', '<button type="button" class="note-color-reset note-btn note-btn-block" data-event="removeFormat" data-value="foreColor">', opt.lang.color.resetToDefault, '</button>', '</div>', '<div class="note-holder" data-event="foreColor"></div>', '<div class="btn-sm">', '<input type="color" id="html5fcp" class="note-btn btn-default" value="#21104A" style="width:100%;" data-value="cp">', '<button type="button" class="note-color-reset btn" data-event="foreColor" data-value="cpforeColor">', opt.lang.color.cpSelect, '</button>', '</div>', '</div>', '</div>'].join(''),
-      callback: function callback($dropdown) {
-        $dropdown.find('.note-holder').each(function () {
-          var $holder = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(this);
-          $holder.append(palette({
-            colors: opt.colors,
-            eventName: $holder.data('event')
-          }).render());
+  const editor = renderer.create('<div class="note-editor note-frame"></div>');
+  const toolbar = renderer.create('<div class="note-toolbar" role="toolbar"></div>');
+  const editingArea = renderer.create('<div class="note-editing-area"></div>');
+  const codable = renderer.create('<textarea class="note-codable" aria-multiline="true"></textarea>');
+  const editable = renderer.create(
+    '<div class="note-editable" contentEditable="true" role="textbox" aria-multiline="true"></div>'
+  );
+  const statusbar = renderer.create(
+    [
+      '<output class="note-status-output" role="status" aria-live="polite"></output>',
+      '<div class="note-statusbar" role="status">',
+      '<div class="note-resizebar" aria-label="resize">',
+      '<div class="note-icon-bar"></div>',
+      '<div class="note-icon-bar"></div>',
+      '<div class="note-icon-bar"></div>',
+      "</div>",
+      "</div>"
+    ].join("")
+  );
+  const airEditor = renderer.create('<div class="note-editor note-airframe"></div>');
+  const airEditable = renderer.create(
+    [
+      '<div class="note-editable" contentEditable="true" role="textbox" aria-multiline="true"></div>',
+      '<output class="note-status-output" role="status" aria-live="polite"></output>'
+    ].join("")
+  );
+  const buttonGroup = renderer.create('<div class="note-btn-group"></div>');
+  const button = renderer.create(
+    '<button type="button" class="note-btn" tabindex="-1"></button>',
+    function($node, options) {
+      if (options && options.tooltip) {
+        const container = options.container;
+        $node.attr({
+          "aria-label": options.tooltip
         });
-        if (type === 'fore') {
-          $dropdown.find('.btn-background-color').hide();
-          $dropdown.css({
-            'min-width': '210px'
+        if (container && $(container).length) {
+          $node.data(
+            "_lite_tooltip",
+            new TooltipUI($node, {
+              title: options.tooltip,
+              container
+            })
+          ).on("click", (e) => {
+            $(e.currentTarget).data("_lite_tooltip").hide();
           });
-        } else if (type === 'back') {
-          $dropdown.find('.btn-foreground-color').hide();
-          $dropdown.css({
-            'min-width': '210px'
-          });
-        }
-      },
-      click: function click(event) {
-        var $button = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()(event.target);
-        var eventName = $button.data('event');
-        var value = $button.data('value');
-        var foreinput = document.getElementById('html5fcp').value;
-        var backinput = document.getElementById('html5bcp').value;
-        if (value === 'cp') {
-          event.stopPropagation();
-        } else if (value === 'cpbackColor') {
-          value = backinput;
-        } else if (value === 'cpforeColor') {
-          value = foreinput;
-        }
-        if (eventName && value) {
-          var key = eventName === 'backColor' ? 'background-color' : 'color';
-          var $color = $button.closest('.note-color').find('.note-recent-color');
-          var $currentButton = $button.closest('.note-color').find('.note-current-color-button');
-          $color.css(key, value);
-          $currentButton.attr('data-' + eventName, value);
-          if (type === 'fore') {
-            opt.itemClick('foreColor', value);
-          } else if (type === 'back') {
-            opt.itemClick('backColor', value);
-          } else {
-            opt.itemClick(eventName, value);
-          }
+        } else {
+          console.warn("Summernote: Tooltip container not found, please set the container property for the Summernote Config, skipping tooltip initialization");
         }
       }
-    })]
-  }).render();
-};
-var dialog = renderer.create('<div class="note-modal" aria-hidden="false" tabindex="-1" role="dialog"></div>', function ($node, options) {
-  if (options.fade) {
-    $node.addClass('fade');
-  }
-  $node.attr({
-    'aria-label': options.title
-  });
-  $node.html(['<div class="note-modal-content">', options.title ? '<div class="note-modal-header"><button type="button" class="note-close" aria-label="Close" aria-hidden="true"><i class="note-icon-close"></i></button><h4 class="note-modal-title">' + options.title + '</h4></div>' : '', '<div class="note-modal-body">' + options.body + '</div>', options.footer ? '<div class="note-modal-footer">' + options.footer + '</div>' : '', '</div>'].join(''));
-  $node.data('modal', new js_ModalUI($node, options));
-});
-var videoDialog = function videoDialog(opt) {
-  var body = '<div class="note-form-group">' + '<label for="note-dialog-video-url-' + opt.id + '" class="note-form-label">' + opt.lang.video.url + ' <small class="text-muted">' + opt.lang.video.providers + '</small></label>' + '<input id="note-dialog-video-url-' + opt.id + '" class="note-video-url note-input" type="text"/>' + '</div>';
-  var footer = ['<button type="button" href="#" class="note-btn note-btn-primary note-video-btn disabled" disabled>', opt.lang.video.insert, '</button>'].join('');
-  return dialog({
-    title: opt.lang.video.insert,
-    fade: opt.fade,
-    body: body,
-    footer: footer
-  }).render();
-};
-var imageDialog = function imageDialog(opt) {
-  var body = '<div class="note-form-group note-group-select-from-files">' + '<label for="note-dialog-image-file-' + opt.id + '" class="note-form-label">' + opt.lang.image.selectFromFiles + '</label>' + '<input id="note-dialog-image-file-' + opt.id + '" class="note-note-image-input note-input" type="file" name="files" accept="image/*" multiple="multiple"/>' + opt.imageLimitation + '</div>' + '<div class="note-form-group">' + '<label for="note-dialog-image-url-' + opt.id + '" class="note-form-label">' + opt.lang.image.url + '</label>' + '<input id="note-dialog-image-url-' + opt.id + '" class="note-image-url note-input" type="text"/>' + '</div>';
-  var footer = ['<button href="#" type="button" class="note-btn note-btn-primary note-btn-large note-image-btn disabled" disabled>', opt.lang.image.insert, '</button>'].join('');
-  return dialog({
-    title: opt.lang.image.insert,
-    fade: opt.fade,
-    body: body,
-    footer: footer
-  }).render();
-};
-var linkDialog = function linkDialog(opt) {
-  var body = '<div class="note-form-group">' + '<label for="note-dialog-link-txt-' + opt.id + '" class="note-form-label">' + opt.lang.link.textToDisplay + '</label>' + '<input id="note-dialog-link-txt-' + opt.id + '" class="note-link-text note-input" type="text"/>' + '</div>' + '<div class="note-form-group">' + '<label for="note-dialog-link-url-' + opt.id + '" class="note-form-label">' + opt.lang.link.url + '</label>' + '<input id="note-dialog-link-url-' + opt.id + '" class="note-link-url note-input" type="text" value="http://"/>' + '</div>' + (!opt.disableLinkTarget ? '<div class="checkbox"><label for="note-dialog-link-nw-' + opt.id + '"><input id="note-dialog-link-nw-' + opt.id + '" type="checkbox" checked> ' + opt.lang.link.openInNewWindow + '</label></div>' : '');
-  var footer = ['<button href="#" type="button" class="note-btn note-btn-primary note-link-btn disabled" disabled>', opt.lang.link.insert, '</button>'].join('');
-  return dialog({
-    className: 'link-dialog',
-    title: opt.lang.link.insert,
-    fade: opt.fade,
-    body: body,
-    footer: footer
-  }).render();
-};
-var popover = renderer.create(['<div class="note-popover bottom">', '<div class="note-popover-arrow"></div>', '<div class="popover-content note-children-container"></div>', '</div>'].join(''), function ($node, options) {
-  var direction = typeof options.direction !== 'undefined' ? options.direction : 'bottom';
-  $node.addClass(direction).hide();
-  if (options.hideArrow) {
-    $node.find('.note-popover-arrow').hide();
-  }
-});
-var summernote_lite_checkbox = renderer.create('<div class="checkbox"></div>', function ($node, options) {
-  $node.html(['<label' + (options.id ? ' for="note-' + options.id + '"' : '') + '>', '<input role="checkbox" type="checkbox"' + (options.id ? ' id="note-' + options.id + '"' : ''), options.checked ? ' checked' : '', ' aria-checked="' + (options.checked ? 'true' : 'false') + '"/>', options.text ? options.text : '', '</label>'].join(''));
-});
-var icon = function icon(iconClassName, tagName) {
-  if (iconClassName.match(/^</)) {
-    return iconClassName;
-  }
-  tagName = tagName || 'i';
-  return '<' + tagName + ' class="' + iconClassName + '"></' + tagName + '>';
-};
-var ui = function ui(editorOptions) {
-  return {
-    editor: editor,
-    toolbar: toolbar,
-    editingArea: editingArea,
-    codable: codable,
-    editable: editable,
-    statusbar: statusbar,
-    airEditor: airEditor,
-    airEditable: airEditable,
-    buttonGroup: buttonGroup,
-    button: summernote_lite_button,
-    dropdown: dropdown,
-    dropdownCheck: dropdownCheck,
-    dropdownButton: dropdownButton,
-    dropdownButtonContents: dropdownButtonContents,
-    dropdownCheckButton: dropdownCheckButton,
-    paragraphDropdownButton: paragraphDropdownButton,
-    tableDropdownButton: tableDropdownButton,
-    colorDropdownButton: colorDropdownButton,
-    palette: palette,
-    dialog: dialog,
-    videoDialog: videoDialog,
-    imageDialog: imageDialog,
-    linkDialog: linkDialog,
-    popover: popover,
-    checkbox: summernote_lite_checkbox,
-    icon: icon,
-    options: editorOptions,
-    toggleBtn: function toggleBtn($btn, isEnable) {
-      $btn.toggleClass('disabled', !isEnable);
-      $btn.attr('disabled', !isEnable);
-    },
-    toggleBtnActive: function toggleBtnActive($btn, isActive) {
-      $btn.toggleClass('active', isActive);
-    },
-    check: function check($dom, value) {
-      $dom.find('.checked').removeClass('checked');
-      $dom.find('[data-value="' + value + '"]').addClass('checked');
-    },
-    onDialogShown: function onDialogShown($dialog, handler) {
-      $dialog.one('note.modal.show', handler);
-    },
-    onDialogHidden: function onDialogHidden($dialog, handler) {
-      $dialog.one('note.modal.hide', handler);
-    },
-    showDialog: function showDialog($dialog) {
-      $dialog.data('modal').show();
-    },
-    hideDialog: function hideDialog($dialog) {
-      $dialog.data('modal').hide();
-    },
-    /**
-     * get popover content area
-     *
-     * @param $popover
-     * @returns {*}
-     */
-    getPopoverContent: function getPopoverContent($popover) {
-      return $popover.find('.note-popover-content');
-    },
-    /**
-     * get dialog's body area
-     *
-     * @param $dialog
-     * @returns {*}
-     */
-    getDialogBody: function getDialogBody($dialog) {
-      return $dialog.find('.note-modal-body');
-    },
-    createLayout: function createLayout($note) {
-      var $editor = (editorOptions.airMode ? airEditor([editingArea([codable(), airEditable()])]) : editorOptions.toolbarPosition === 'bottom' ? editor([editingArea([codable(), editable()]), toolbar(), statusbar()]) : editor([toolbar(), editingArea([codable(), editable()]), statusbar()])).render();
-      $editor.insertAfter($note);
-      return {
-        note: $note,
-        editor: $editor,
-        toolbar: $editor.find('.note-toolbar'),
-        editingArea: $editor.find('.note-editing-area'),
-        editable: $editor.find('.note-editable'),
-        codable: $editor.find('.note-codable'),
-        statusbar: $editor.find('.note-statusbar')
-      };
-    },
-    removeLayout: function removeLayout($note, layoutInfo) {
-      $note.html(layoutInfo.editable.html());
-      layoutInfo.editor.remove();
-      $note.off('summernote'); // remove summernote custom event
-      $note.show();
+      if (options.contents) {
+        $node.html(options.contents);
+      }
+      if (options && options.data && options.data.toggle === "dropdown") {
+        $node.data(
+          "_lite_dropdown",
+          new DropdownUI($node, {
+            container: options.container
+          })
+        );
+      }
+      if (options && options.codeviewKeepButton) {
+        $node.addClass("note-codeview-keep");
+      }
     }
+  );
+  const dropdown = renderer.create('<div class="note-dropdown-menu" role="list"></div>', function($node, options) {
+    const markup = Array.isArray(options.items) ? options.items.map(function(item) {
+      const value2 = typeof item === "string" ? item : item.value || "";
+      const content = options.template ? options.template(item) : item;
+      const $temp = $(
+        '<a class="note-dropdown-item" href="#" data-value="' + value2 + '" role="listitem" aria-label="' + value2 + '"></a>'
+      );
+      $temp.html(content).data("item", item);
+      return $temp;
+    }) : options.items;
+    $node.html(markup).attr({ "aria-label": options.title });
+    $node.on("click", "> .note-dropdown-item", function(e) {
+      const $a = $(this);
+      const item = $a.data("item");
+      const value2 = $a.data("value");
+      if (item.click) {
+        item.click($a);
+      } else if (options.itemClick) {
+        options.itemClick(e, item, value2);
+      }
+    });
+    if (options && options.codeviewKeepButton) {
+      $node.addClass("note-codeview-keep");
+    }
+  });
+  const dropdownCheck = renderer.create(
+    '<div class="note-dropdown-menu note-check" role="list"></div>',
+    function($node, options) {
+      const markup = Array.isArray(options.items) ? options.items.map(function(item) {
+        const value2 = typeof item === "string" ? item : item.value || "";
+        const content = options.template ? options.template(item) : item;
+        const $temp = $(
+          '<a class="note-dropdown-item" href="#" data-value="' + value2 + '" role="listitem" aria-label="' + item + '"></a>'
+        );
+        $temp.html([icon(options.checkClassName), " ", content]).data("item", item);
+        return $temp;
+      }) : options.items;
+      $node.html(markup).attr({ "aria-label": options.title });
+      $node.on("click", "> .note-dropdown-item", function(e) {
+        const $a = $(this);
+        const item = $a.data("item");
+        const value2 = $a.data("value");
+        if (item.click) {
+          item.click($a);
+        } else if (options.itemClick) {
+          options.itemClick(e, item, value2);
+        }
+      });
+      if (options && options.codeviewKeepButton) {
+        $node.addClass("note-codeview-keep");
+      }
+    }
+  );
+  const dropdownButtonContents = function(contents, options) {
+    return contents + " " + icon(options.icons.caret, "span");
   };
-};
-(external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote = external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default().extend((external_root_jQuery_commonjs_jquery_commonjs2_jquery_amd_jquery_default()).summernote, {
-  ui_template: ui,
-  "interface": 'lite'
-});
-/******/ 	return __webpack_exports__;
-/******/ })()
-;
-});
+  const dropdownButton = function(opt, callback) {
+    return buttonGroup(
+      [
+        button({
+          className: "dropdown-toggle",
+          contents: opt.title + " " + icon("note-icon-caret"),
+          tooltip: opt.tooltip,
+          data: {
+            toggle: "dropdown"
+          }
+        }),
+        dropdown({
+          className: opt.className,
+          items: opt.items,
+          template: opt.template,
+          itemClick: opt.itemClick
+        })
+      ],
+      { callback }
+    ).render();
+  };
+  const dropdownCheckButton = function(opt, callback) {
+    return buttonGroup(
+      [
+        button({
+          className: "dropdown-toggle",
+          contents: opt.title + " " + icon("note-icon-caret"),
+          tooltip: opt.tooltip,
+          data: {
+            toggle: "dropdown"
+          }
+        }),
+        dropdownCheck({
+          className: opt.className,
+          checkClassName: opt.checkClassName,
+          items: opt.items,
+          template: opt.template,
+          itemClick: opt.itemClick
+        })
+      ],
+      { callback }
+    ).render();
+  };
+  const paragraphDropdownButton = function(opt) {
+    return buttonGroup([
+      button({
+        className: "dropdown-toggle",
+        contents: opt.title + " " + icon("note-icon-caret"),
+        tooltip: opt.tooltip,
+        data: {
+          toggle: "dropdown"
+        }
+      }),
+      dropdown([
+        buttonGroup({
+          className: "note-align",
+          children: opt.items[0]
+        }),
+        buttonGroup({
+          className: "note-list",
+          children: opt.items[1]
+        })
+      ])
+    ]).render();
+  };
+  const tableMoveHandler = function(event, col, row) {
+    const PX_PER_EM = 18;
+    const $picker = $(event.target.parentNode);
+    const $dimensionDisplay = $picker.next();
+    const $catcher = $picker.find(".note-dimension-picker-mousecatcher");
+    const $highlighted = $picker.find(".note-dimension-picker-highlighted");
+    const $unhighlighted = $picker.find(".note-dimension-picker-unhighlighted");
+    let posOffset;
+    if (event.offsetX === void 0) {
+      const posCatcher = $(event.target).offset();
+      posOffset = {
+        x: event.pageX - posCatcher.left,
+        y: event.pageY - posCatcher.top
+      };
+    } else {
+      posOffset = {
+        x: event.offsetX,
+        y: event.offsetY
+      };
+    }
+    const dim = {
+      c: Math.ceil(posOffset.x / PX_PER_EM) || 1,
+      r: Math.ceil(posOffset.y / PX_PER_EM) || 1
+    };
+    $highlighted.css({ width: dim.c + "em", height: dim.r + "em" });
+    $catcher.data("value", dim.c + "x" + dim.r);
+    if (dim.c > 3 && dim.c < col) {
+      $unhighlighted.css({ width: dim.c + 1 + "em" });
+    }
+    if (dim.r > 3 && dim.r < row) {
+      $unhighlighted.css({ height: dim.r + 1 + "em" });
+    }
+    $dimensionDisplay.html(dim.c + " x " + dim.r);
+  };
+  const tableDropdownButton = function(opt) {
+    return buttonGroup(
+      [
+        button({
+          className: "dropdown-toggle",
+          contents: opt.title + " " + icon("note-icon-caret"),
+          tooltip: opt.tooltip,
+          data: {
+            toggle: "dropdown"
+          }
+        }),
+        dropdown({
+          className: "note-table",
+          items: [
+            '<div class="note-dimension-picker">',
+            '<div class="note-dimension-picker-mousecatcher" data-event="insertTable" data-value="1x1"></div>',
+            '<div class="note-dimension-picker-highlighted"></div>',
+            '<div class="note-dimension-picker-unhighlighted"></div>',
+            "</div>",
+            '<div class="note-dimension-display">1 x 1</div>'
+          ].join("")
+        })
+      ],
+      {
+        callback: function($node) {
+          const $catcher = $node.find(".note-dimension-picker-mousecatcher");
+          $catcher.css({
+            width: opt.col + "em",
+            height: opt.row + "em"
+          }).on("mouseup", opt.itemClick).on("mousemove", function(e) {
+            tableMoveHandler(e, opt.col, opt.row);
+          });
+        }
+      }
+    ).render();
+  };
+  const palette = renderer.create('<div class="note-color-palette"></div>', function($node, options) {
+    const contents = [];
+    for (let row = 0, rowSize = options.colors.length; row < rowSize; row++) {
+      const eventName = options.eventName;
+      const colors = options.colors[row];
+      const colorsName = options.colorsName[row];
+      const buttons = [];
+      for (let col = 0, colSize = colors.length; col < colSize; col++) {
+        const color = colors[col];
+        const colorName = colorsName[col];
+        buttons.push(
+          [
+            '<button type="button" class="note-btn note-color-btn"',
+            'style="background-color:',
+            color,
+            '" ',
+            'data-event="',
+            eventName,
+            '" ',
+            'data-value="',
+            color,
+            '" ',
+            'data-title="',
+            colorName,
+            '" ',
+            'aria-label="',
+            colorName,
+            '" ',
+            'data-toggle="button" tabindex="-1"></button>'
+          ].join("")
+        );
+      }
+      contents.push('<div class="note-color-row">' + buttons.join("") + "</div>");
+    }
+    $node.html(contents.join(""));
+    $node.find(".note-color-btn").each(function() {
+      if (options.container && $(options.container).length) {
+        $(this).data(
+          "_lite_tooltip",
+          new TooltipUI($(this), {
+            container: options.container
+          })
+        );
+      } else {
+        console.warn("Summernote: Tooltip container not found, skipping tooltip initialization for color buttons");
+      }
+    });
+  });
+  const colorDropdownButton = function(opt, type) {
+    return buttonGroup({
+      className: "note-color",
+      children: [
+        button({
+          className: "note-current-color-button",
+          contents: opt.title,
+          tooltip: opt.lang.color.recent,
+          click: opt.currentClick,
+          callback: function($button) {
+            const $recentColor = $button.find(".note-recent-color");
+            if (type !== "foreColor") {
+              $recentColor.css("background-color", "#FFFF00");
+              $button.attr("data-backColor", "#FFFF00");
+            }
+          }
+        }),
+        button({
+          className: "dropdown-toggle",
+          contents: icon("note-icon-caret"),
+          tooltip: opt.lang.color.more,
+          data: {
+            toggle: "dropdown"
+          }
+        }),
+        dropdown({
+          items: [
+            "<div>",
+            '<div class="note-btn-group btn-background-color">',
+            '<div class="note-palette-title">' + opt.lang.color.background + "</div>",
+            "<div>",
+            '<button type="button" class="note-color-reset note-btn note-btn-block" data-event="backColor" data-value="transparent">',
+            opt.lang.color.transparent,
+            "</button>",
+            "</div>",
+            '<div class="note-holder" data-event="backColor"></div>',
+            '<div class="btn-sm">',
+            '<input type="color" id="html5bcp" class="note-btn btn-default" value="#21104A" style="width:100%;" data-value="cp">',
+            '<button type="button" class="note-color-reset btn" data-event="backColor" data-value="cpbackColor">',
+            opt.lang.color.cpSelect,
+            "</button>",
+            "</div>",
+            "</div>",
+            '<div class="note-btn-group btn-foreground-color">',
+            '<div class="note-palette-title">' + opt.lang.color.foreground + "</div>",
+            "<div>",
+            '<button type="button" class="note-color-reset note-btn note-btn-block" data-event="removeFormat" data-value="foreColor">',
+            opt.lang.color.resetToDefault,
+            "</button>",
+            "</div>",
+            '<div class="note-holder" data-event="foreColor"></div>',
+            '<div class="btn-sm">',
+            '<input type="color" id="html5fcp" class="note-btn btn-default" value="#21104A" style="width:100%;" data-value="cp">',
+            '<button type="button" class="note-color-reset btn" data-event="foreColor" data-value="cpforeColor">',
+            opt.lang.color.cpSelect,
+            "</button>",
+            "</div>",
+            "</div>",
+            "</div>"
+          ].join(""),
+          callback: function($dropdown) {
+            $dropdown.find(".note-holder").each(function() {
+              const $holder = $(this);
+              $holder.append(
+                palette({
+                  colors: opt.colors,
+                  eventName: $holder.data("event")
+                }).render()
+              );
+            });
+            if (type === "fore") {
+              $dropdown.find(".btn-background-color").hide();
+              $dropdown.css({ "min-width": "210px" });
+            } else if (type === "back") {
+              $dropdown.find(".btn-foreground-color").hide();
+              $dropdown.css({ "min-width": "210px" });
+            }
+          },
+          click: function(event) {
+            const $button = $(event.target);
+            const eventName = $button.data("event");
+            let value2 = $button.data("value");
+            const foreinput = document.getElementById("html5fcp").value;
+            const backinput = document.getElementById("html5bcp").value;
+            if (value2 === "cp") {
+              event.stopPropagation();
+            } else if (value2 === "cpbackColor") {
+              value2 = backinput;
+            } else if (value2 === "cpforeColor") {
+              value2 = foreinput;
+            }
+            if (eventName && value2) {
+              const key2 = eventName === "backColor" ? "background-color" : "color";
+              const $color = $button.closest(".note-color").find(".note-recent-color");
+              const $currentButton = $button.closest(".note-color").find(".note-current-color-button");
+              $color.css(key2, value2);
+              $currentButton.attr("data-" + eventName, value2);
+              if (type === "fore") {
+                opt.itemClick("foreColor", value2);
+              } else if (type === "back") {
+                opt.itemClick("backColor", value2);
+              } else {
+                opt.itemClick(eventName, value2);
+              }
+            }
+          }
+        })
+      ]
+    }).render();
+  };
+  const dialog = renderer.create(
+    '<div class="note-modal" aria-hidden="false" tabindex="-1" role="dialog"></div>',
+    function($node, options) {
+      if (options.fade) {
+        $node.addClass("fade");
+      }
+      $node.attr({
+        "aria-label": options.title
+      });
+      $node.html(
+        [
+          '<div class="note-modal-content">',
+          options.title ? '<div class="note-modal-header"><button type="button" class="note-close" aria-label="Close" aria-hidden="true"><i class="note-icon-close"></i></button><h4 class="note-modal-title">' + options.title + "</h4></div>" : "",
+          '<div class="note-modal-body">' + options.body + "</div>",
+          options.footer ? '<div class="note-modal-footer">' + options.footer + "</div>" : "",
+          "</div>"
+        ].join("")
+      );
+      $node.data("modal", new ModalUI($node, options));
+    }
+  );
+  const videoDialog = function(opt) {
+    const body = '<div class="note-form-group"><label for="note-dialog-video-url-' + opt.id + '" class="note-form-label">' + opt.lang.video.url + ' <small class="text-muted">' + opt.lang.video.providers + '</small></label><input id="note-dialog-video-url-' + opt.id + '" class="note-video-url note-input" type="text"/></div>';
+    const footer = [
+      '<button type="button" href="#" class="note-btn note-btn-primary note-video-btn disabled" disabled>',
+      opt.lang.video.insert,
+      "</button>"
+    ].join("");
+    return dialog({
+      title: opt.lang.video.insert,
+      fade: opt.fade,
+      body,
+      footer
+    }).render();
+  };
+  const imageDialog = function(opt) {
+    const body = '<div class="note-form-group note-group-select-from-files"><label for="note-dialog-image-file-' + opt.id + '" class="note-form-label">' + opt.lang.image.selectFromFiles + '</label><input id="note-dialog-image-file-' + opt.id + '" class="note-note-image-input note-input" type="file" name="files" accept="image/*" multiple="multiple"/>' + opt.imageLimitation + '</div><div class="note-form-group"><label for="note-dialog-image-url-' + opt.id + '" class="note-form-label">' + opt.lang.image.url + '</label><input id="note-dialog-image-url-' + opt.id + '" class="note-image-url note-input" type="text"/></div>';
+    const footer = [
+      '<button href="#" type="button" class="note-btn note-btn-primary note-btn-large note-image-btn disabled" disabled>',
+      opt.lang.image.insert,
+      "</button>"
+    ].join("");
+    return dialog({
+      title: opt.lang.image.insert,
+      fade: opt.fade,
+      body,
+      footer
+    }).render();
+  };
+  const linkDialog = function(opt) {
+    const body = '<div class="note-form-group"><label for="note-dialog-link-txt-' + opt.id + '" class="note-form-label">' + opt.lang.link.textToDisplay + '</label><input id="note-dialog-link-txt-' + opt.id + '" class="note-link-text note-input" type="text"/></div><div class="note-form-group"><label for="note-dialog-link-url-' + opt.id + '" class="note-form-label">' + opt.lang.link.url + '</label><input id="note-dialog-link-url-' + opt.id + '" class="note-link-url note-input" type="text" value="http://"/></div>' + (!opt.disableLinkTarget ? '<div class="checkbox"><label for="note-dialog-link-nw-' + opt.id + '"><input id="note-dialog-link-nw-' + opt.id + '" type="checkbox" checked> ' + opt.lang.link.openInNewWindow + "</label></div>" : "");
+    const footer = [
+      '<button href="#" type="button" class="note-btn note-btn-primary note-link-btn disabled" disabled>',
+      opt.lang.link.insert,
+      "</button>"
+    ].join("");
+    return dialog({
+      className: "link-dialog",
+      title: opt.lang.link.insert,
+      fade: opt.fade,
+      body,
+      footer
+    }).render();
+  };
+  const popover = renderer.create(
+    [
+      '<div class="note-popover bottom">',
+      '<div class="note-popover-arrow"></div>',
+      '<div class="popover-content note-children-container"></div>',
+      "</div>"
+    ].join(""),
+    function($node, options) {
+      const direction = typeof options.direction !== "undefined" ? options.direction : "bottom";
+      $node.addClass(direction).hide();
+      if (options.hideArrow) {
+        $node.find(".note-popover-arrow").hide();
+      }
+    }
+  );
+  const checkbox = renderer.create('<div class="checkbox"></div>', function($node, options) {
+    $node.html(
+      [
+        "<label" + (options.id ? ' for="note-' + options.id + '"' : "") + ">",
+        '<input role="checkbox" type="checkbox"' + (options.id ? ' id="note-' + options.id + '"' : ""),
+        options.checked ? " checked" : "",
+        ' aria-checked="' + (options.checked ? "true" : "false") + '"/>',
+        options.text ? options.text : "",
+        "</label>"
+      ].join("")
+    );
+  });
+  const icon = function(iconClassName, tagName) {
+    if (iconClassName.match(/^</)) {
+      return iconClassName;
+    }
+    tagName = tagName || "i";
+    return "<" + tagName + ' class="' + iconClassName + '"></' + tagName + ">";
+  };
+  const ui = function(editorOptions) {
+    return {
+      editor,
+      toolbar,
+      editingArea,
+      codable,
+      editable,
+      statusbar,
+      airEditor,
+      airEditable,
+      buttonGroup,
+      button: (options) => {
+        return button({
+          ...options,
+          container: options.container || editorOptions.container
+        });
+      },
+      dropdown,
+      dropdownCheck,
+      dropdownButton,
+      dropdownButtonContents,
+      dropdownCheckButton,
+      paragraphDropdownButton,
+      tableDropdownButton,
+      colorDropdownButton,
+      palette,
+      dialog,
+      videoDialog,
+      imageDialog,
+      linkDialog,
+      popover,
+      checkbox,
+      icon,
+      options: editorOptions,
+      toggleBtn: function($btn, isEnable) {
+        $btn.toggleClass("disabled", !isEnable);
+        $btn.attr("disabled", !isEnable);
+      },
+      toggleBtnActive: function($btn, isActive) {
+        $btn.toggleClass("active", isActive);
+      },
+      check: function($dom, value2) {
+        $dom.find(".checked").removeClass("checked");
+        $dom.find('[data-value="' + value2 + '"]').addClass("checked");
+      },
+      onDialogShown: function($dialog, handler) {
+        $dialog.one("note.modal.show", handler);
+      },
+      onDialogHidden: function($dialog, handler) {
+        $dialog.one("note.modal.hide", handler);
+      },
+      showDialog: function($dialog) {
+        $dialog.data("modal").show();
+      },
+      hideDialog: function($dialog) {
+        $dialog.data("modal").hide();
+      },
+      /**
+       * get popover content area
+       *
+       * @param $popover
+       * @returns {*}
+       */
+      getPopoverContent: function($popover) {
+        return $popover.find(".note-popover-content");
+      },
+      /**
+       * get dialog's body area
+       *
+       * @param $dialog
+       * @returns {*}
+       */
+      getDialogBody: function($dialog) {
+        return $dialog.find(".note-modal-body");
+      },
+      createLayout: function($note) {
+        const $editor = (editorOptions.airMode ? airEditor([editingArea([codable(), airEditable()])]) : editorOptions.toolbarPosition === "bottom" ? editor([editingArea([codable(), editable()]), toolbar(), statusbar()]) : editor([toolbar(), editingArea([codable(), editable()]), statusbar()])).render();
+        $editor.insertAfter($note);
+        return {
+          note: $note,
+          editor: $editor,
+          toolbar: $editor.find(".note-toolbar"),
+          editingArea: $editor.find(".note-editing-area"),
+          editable: $editor.find(".note-editable"),
+          codable: $editor.find(".note-codable"),
+          statusbar: $editor.find(".note-statusbar")
+        };
+      },
+      removeLayout: function($note, layoutInfo) {
+        $note.html(layoutInfo.editable.html());
+        layoutInfo.editor.remove();
+        $note.off("summernote");
+        $note.show();
+      }
+    };
+  };
+  $.summernote = $.extend($.summernote, {
+    ui_template: ui,
+    interface: "lite"
+  });
+})();
 //# sourceMappingURL=summernote-lite.js.map
