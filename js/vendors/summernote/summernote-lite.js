@@ -5,7 +5,7 @@ https://summernote.org
 Copyright 2013- Hackerwins and contributors
 Summernote may be freely distributed under the MIT license.
 
-Date: 2026-09-10T13:57Z
+Date: 2026-09-10T17:26Z
  */
 (function() {
   "use strict";
@@ -1823,6 +1823,9 @@ Date: 2026-09-10T13:57Z
       markup = ((markup || "") + "").trim();
       if (env.isW3CRangeSupport) {
         const nativeRng = this.nativeRange();
+        if (!nativeRng.collapsed) {
+          nativeRng.deleteContents();
+        }
         const fragment = nativeRng.createContextualFragment(markup);
         const insertedNodes = lists.from(fragment.childNodes);
         nativeRng.insertNode(fragment);
