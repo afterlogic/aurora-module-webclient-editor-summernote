@@ -5,7 +5,7 @@ https://summernote.org
 Copyright 2013- Hackerwins and contributors
 Summernote may be freely distributed under the MIT license.
 
-Date: 2026-09-10T17:26Z
+Date: 2026-10-16T12:50Z
  */
 (function() {
   "use strict";
@@ -4188,6 +4188,7 @@ Date: 2026-09-10T17:26Z
         }
       });
     }
+    fragment.find("style, script, meta, link, title, head, xml, template").remove();
     fragment.find("table").attr("border", 1);
     return fragment.html();
   }
